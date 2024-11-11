@@ -1,0 +1,3140 @@
+{
+  "0": {
+    "모병": { "term": "모병", "sentenceIndexes": [0, 2, 3, 6, 10, 14, 16] }
+  },
+  "1": {},
+  "2": {
+    "모병": { "term": "모병", "sentenceIndexes": [0, 2, 3, 6, 10, 14, 16] },
+    "찬성": { "term": "찬성", "sentenceIndexes": [2, 13] }
+  },
+  "3": {
+    "모병": { "term": "모병", "sentenceIndexes": [0, 2, 3, 6, 10, 14, 16] },
+    "도입": { "term": "도입", "sentenceIndexes": [3, 10, 14] }
+  },
+  "4": {
+    "김종대": { "term": "김종대", "sentenceIndexes": [4, 15] },
+    "의원": { "term": "의원", "sentenceIndexes": [4, 15] }
+  },
+  "5": { "자리": { "term": "자리", "sentenceIndexes": [5, 8] } },
+  "6": {
+    "모병": { "term": "모병", "sentenceIndexes": [0, 2, 3, 6, 10, 14, 16] },
+    "반대": { "term": "반대", "sentenceIndexes": [6, 13] }
+  },
+  "7": {},
+  "8": { "자리": { "term": "자리", "sentenceIndexes": [5, 8] } },
+  "9": { "민주연구": { "term": "민주연구", "sentenceIndexes": [9, 16, 26] } },
+  "10": {
+    "모병": { "term": "모병", "sentenceIndexes": [0, 2, 3, 6, 10, 14, 16] },
+    "도입": { "term": "도입", "sentenceIndexes": [3, 10, 14] },
+    "내용": { "term": "내용", "sentenceIndexes": [10, 11] }
+  },
+  "11": {
+    "내용": { "term": "내용", "sentenceIndexes": [10, 11] },
+    "인구절벽": { "term": "인구절벽", "sentenceIndexes": [11, 18, 26] }
+  },
+  "12": {},
+  "13": {
+    "찬성": { "term": "찬성", "sentenceIndexes": [2, 13] },
+    "반대": { "term": "반대", "sentenceIndexes": [6, 13] }
+  },
+  "14": {
+    "모병": { "term": "모병", "sentenceIndexes": [0, 2, 3, 6, 10, 14, 16] },
+    "도입": { "term": "도입", "sentenceIndexes": [3, 10, 14] }
+  },
+  "15": {
+    "김종대": { "term": "김종대", "sentenceIndexes": [4, 15] },
+    "의원": { "term": "의원", "sentenceIndexes": [4, 15] }
+  },
+  "16": {
+    "민주연구": { "term": "민주연구", "sentenceIndexes": [9, 16, 26] },
+    "모병": { "term": "모병", "sentenceIndexes": [0, 2, 3, 6, 10, 14, 16] },
+    "문제제기": { "term": "문제제기", "sentenceIndexes": [16, 17] }
+  },
+  "17": { "문제제기": { "term": "문제제기", "sentenceIndexes": [16, 17] } },
+  "18": {
+    "인구절벽": { "term": "인구절벽", "sentenceIndexes": [11, 18, 26] },
+    "군대": { "term": "군대", "sentenceIndexes": [18, 19, 21, 30, 35] },
+    "쓰나미": { "term": "쓰나미", "sentenceIndexes": [18, 19] },
+    "충격": { "term": "충격", "sentenceIndexes": [18, 19] },
+    "영향": { "term": "영향", "sentenceIndexes": [18, 19] }
+  },
+  "19": {
+    "군대": { "term": "군대", "sentenceIndexes": [18, 19, 21, 30, 35] },
+    "쓰나미": { "term": "쓰나미", "sentenceIndexes": [18, 19] },
+    "충격": { "term": "충격", "sentenceIndexes": [18, 19] },
+    "영향": { "term": "영향", "sentenceIndexes": [18, 19] },
+    "보완": { "term": "보완", "sentenceIndexes": [19, 30] }
+  },
+  "20": {},
+  "21": { "군대": { "term": "군대", "sentenceIndexes": [18, 19, 21, 30, 35] } },
+  "22": {},
+  "23": {},
+  "24": {},
+  "25": {},
+  "26": {
+    "민주연구": { "term": "민주연구", "sentenceIndexes": [9, 16, 26] },
+    "인구절벽": { "term": "인구절벽", "sentenceIndexes": [11, 18, 26] },
+    "찬성": { "term": "찬성", "sentenceIndexes": [26, 33] }
+  },
+  "27": {},
+  "28": {},
+  "29": { "위협": { "term": "위협", "sentenceIndexes": [29, 30] } },
+  "30": {
+    "위협": { "term": "위협", "sentenceIndexes": [29, 30] },
+    "군대": { "term": "군대", "sentenceIndexes": [18, 19, 21, 30, 35] },
+    "보완": { "term": "보완", "sentenceIndexes": [19, 30] }
+  },
+  "31": {},
+  "32": { "모병": { "term": "모병", "sentenceIndexes": [32, 36] } },
+  "33": {
+    "찬성": { "term": "찬성", "sentenceIndexes": [26, 33] },
+    "근본": { "term": "근본", "sentenceIndexes": [33, 36] },
+    "해결": { "term": "해결", "sentenceIndexes": [33, 36] }
+  },
+  "34": { "진급": { "term": "진급", "sentenceIndexes": [34, 35] } },
+  "35": {
+    "진급": { "term": "진급", "sentenceIndexes": [34, 35] },
+    "군대": { "term": "군대", "sentenceIndexes": [18, 19, 21, 30, 35] }
+  },
+  "36": {
+    "근본": { "term": "근본", "sentenceIndexes": [33, 36] },
+    "해결": { "term": "해결", "sentenceIndexes": [33, 36] },
+    "모병": { "term": "모병", "sentenceIndexes": [32, 36] }
+  },
+  "37": {},
+  "38": {},
+  "39": {},
+  "40": {
+    "애초": { "term": "애초", "sentenceIndexes": [40, 42] },
+    "유지": { "term": "유지", "sentenceIndexes": [40, 42, 44, 45] },
+    "불가능": { "term": "불가능", "sentenceIndexes": [40, 42] }
+  },
+  "41": {},
+  "42": {
+    "애초": { "term": "애초", "sentenceIndexes": [40, 42] },
+    "유지": { "term": "유지", "sentenceIndexes": [40, 42, 44, 45] },
+    "불가능": { "term": "불가능", "sentenceIndexes": [40, 42] }
+  },
+  "43": {},
+  "44": { "유지": { "term": "유지", "sentenceIndexes": [40, 42, 44, 45] } },
+  "45": {
+    "유지": { "term": "유지", "sentenceIndexes": [40, 42, 44, 45] },
+    "복무연장": { "term": "복무연장", "sentenceIndexes": [45, 46] }
+  },
+  "46": {
+    "복무연장": { "term": "복무연장", "sentenceIndexes": [45, 46] },
+    "징병": { "term": "징병", "sentenceIndexes": [46, 53] },
+    "주장": { "term": "주장", "sentenceIndexes": [46, 53, 55] }
+  },
+  "47": {
+    "국방": { "term": "국방", "sentenceIndexes": [47, 49] },
+    "강화": { "term": "강화", "sentenceIndexes": [47, 49] }
+  },
+  "48": {},
+  "49": {
+    "국방": { "term": "국방", "sentenceIndexes": [47, 49] },
+    "강화": { "term": "강화", "sentenceIndexes": [47, 49] }
+  },
+  "50": {},
+  "51": { "시작": { "term": "시작", "sentenceIndexes": [51, 59] } },
+  "52": {},
+  "53": {
+    "징병": { "term": "징병", "sentenceIndexes": [46, 53] },
+    "주장": { "term": "주장", "sentenceIndexes": [46, 53, 55] }
+  },
+  "54": { "위원": { "term": "위원", "sentenceIndexes": [54, 64] } },
+  "55": {
+    "주장": { "term": "주장", "sentenceIndexes": [46, 53, 55] },
+    "정부": { "term": "정부", "sentenceIndexes": [55, 59] }
+  },
+  "56": {
+    "우유": { "term": "우유", "sentenceIndexes": [56, 57] },
+    "가격제한": { "term": "가격제한", "sentenceIndexes": [56, 58] }
+  },
+  "57": {
+    "우유": { "term": "우유", "sentenceIndexes": [56, 57] },
+    "가격": { "term": "가격", "sentenceIndexes": [57, 61] }
+  },
+  "58": { "가격제한": { "term": "가격제한", "sentenceIndexes": [56, 58] } },
+  "59": {
+    "정부": { "term": "정부", "sentenceIndexes": [55, 59] },
+    "시작": { "term": "시작", "sentenceIndexes": [51, 59] },
+    "정책": { "term": "정책", "sentenceIndexes": [59, 61, 64, 69] },
+    "의도": { "term": "의도", "sentenceIndexes": [59, 63] },
+    "반대": { "term": "반대", "sentenceIndexes": [59, 64] },
+    "문재인": { "term": "문재인", "sentenceIndexes": [59, 64] }
+  },
+  "60": {},
+  "61": {
+    "정책": { "term": "정책", "sentenceIndexes": [59, 61, 64, 69] },
+    "가격": { "term": "가격", "sentenceIndexes": [57, 61] }
+  },
+  "62": {},
+  "63": {
+    "의도": { "term": "의도", "sentenceIndexes": [59, 63] },
+    "모병": { "term": "모병", "sentenceIndexes": [63, 66, 72] }
+  },
+  "64": {
+    "반대": { "term": "반대", "sentenceIndexes": [59, 64] },
+    "정책": { "term": "정책", "sentenceIndexes": [59, 61, 64, 69] },
+    "위원": { "term": "위원", "sentenceIndexes": [54, 64] },
+    "문재인": { "term": "문재인", "sentenceIndexes": [59, 64] }
+  },
+  "65": {},
+  "66": {
+    "모병": { "term": "모병", "sentenceIndexes": [63, 66, 72] },
+    "연구": { "term": "연구", "sentenceIndexes": [66, 68] },
+    "보고서": { "term": "보고서", "sentenceIndexes": [66, 69] },
+    "공식": { "term": "공식", "sentenceIndexes": [66, 69] }
+  },
+  "67": {},
+  "68": { "연구": { "term": "연구", "sentenceIndexes": [66, 68] } },
+  "69": {
+    "정책": { "term": "정책", "sentenceIndexes": [59, 61, 64, 69] },
+    "보고서": { "term": "보고서", "sentenceIndexes": [66, 69] },
+    "공식": { "term": "공식", "sentenceIndexes": [66, 69] }
+  },
+  "70": { "개인의견": { "term": "개인의견", "sentenceIndexes": [70, 71] } },
+  "71": { "개인의견": { "term": "개인의견", "sentenceIndexes": [70, 71] } },
+  "72": { "모병": { "term": "모병", "sentenceIndexes": [63, 66, 72] } },
+  "73": {},
+  "74": {},
+  "75": { "보수": { "term": "보수", "sentenceIndexes": [75, 86] } },
+  "76": {},
+  "77": { "문재인": { "term": "문재인", "sentenceIndexes": [77, 86, 90, 92] } },
+  "78": {},
+  "79": {},
+  "80": {
+    "정부": {
+      "term": "정부",
+      "sentenceIndexes": [80, 81, 83, 86, 89, 90, 91, 92]
+    }
+  },
+  "81": {
+    "정부": {
+      "term": "정부",
+      "sentenceIndexes": [80, 81, 83, 86, 89, 90, 91, 92]
+    },
+    "공약": { "term": "공약", "sentenceIndexes": [81, 82, 89, 91] },
+    "박근혜": { "term": "박근혜", "sentenceIndexes": [81, 89, 91] }
+  },
+  "82": { "공약": { "term": "공약", "sentenceIndexes": [81, 82, 89, 91] } },
+  "83": {
+    "정부": {
+      "term": "정부",
+      "sentenceIndexes": [80, 81, 83, 86, 89, 90, 91, 92]
+    }
+  },
+  "84": {
+    "김관진": { "term": "김관진", "sentenceIndexes": [84, 88] },
+    "장관": { "term": "장관", "sentenceIndexes": [84, 88] }
+  },
+  "85": {
+    "적정": { "term": "적정", "sentenceIndexes": [85, 88] },
+    "이야기": { "term": "이야기", "sentenceIndexes": [85, 88] }
+  },
+  "86": {
+    "보수": { "term": "보수", "sentenceIndexes": [75, 86] },
+    "문재인": { "term": "문재인", "sentenceIndexes": [77, 86, 90, 92] },
+    "정부": {
+      "term": "정부",
+      "sentenceIndexes": [80, 81, 83, 86, 89, 90, 91, 92]
+    },
+    "대한민국": { "term": "대한민국", "sentenceIndexes": [86, 88] },
+    "논의": { "term": "논의", "sentenceIndexes": [86, 97] }
+  },
+  "87": {},
+  "88": {
+    "김관진": { "term": "김관진", "sentenceIndexes": [84, 88] },
+    "장관": { "term": "장관", "sentenceIndexes": [84, 88] },
+    "적정": { "term": "적정", "sentenceIndexes": [85, 88] },
+    "이야기": { "term": "이야기", "sentenceIndexes": [85, 88] },
+    "대한민국": { "term": "대한민국", "sentenceIndexes": [86, 88] }
+  },
+  "89": {
+    "박근혜": { "term": "박근혜", "sentenceIndexes": [81, 89, 91] },
+    "정부": {
+      "term": "정부",
+      "sentenceIndexes": [80, 81, 83, 86, 89, 90, 91, 92]
+    },
+    "공약": { "term": "공약", "sentenceIndexes": [81, 82, 89, 91] }
+  },
+  "90": {
+    "문재인": { "term": "문재인", "sentenceIndexes": [77, 86, 90, 92] },
+    "정부": {
+      "term": "정부",
+      "sentenceIndexes": [80, 81, 83, 86, 89, 90, 91, 92]
+    }
+  },
+  "91": {
+    "박근혜": { "term": "박근혜", "sentenceIndexes": [81, 89, 91] },
+    "정부": {
+      "term": "정부",
+      "sentenceIndexes": [80, 81, 83, 86, 89, 90, 91, 92]
+    },
+    "공약": { "term": "공약", "sentenceIndexes": [81, 82, 89, 91] }
+  },
+  "92": {
+    "문재인": { "term": "문재인", "sentenceIndexes": [77, 86, 90, 92] },
+    "정부": {
+      "term": "정부",
+      "sentenceIndexes": [80, 81, 83, 86, 89, 90, 91, 92]
+    }
+  },
+  "93": {},
+  "94": {},
+  "95": {
+    "정치": { "term": "정치", "sentenceIndexes": [95, 96] },
+    "문제": { "term": "문제", "sentenceIndexes": [95, 96] }
+  },
+  "96": {
+    "정치": { "term": "정치", "sentenceIndexes": [95, 96] },
+    "문제": { "term": "문제", "sentenceIndexes": [95, 96] },
+    "프레임": { "term": "프레임", "sentenceIndexes": [96, 97] }
+  },
+  "97": {
+    "프레임": { "term": "프레임", "sentenceIndexes": [96, 97] },
+    "논의": { "term": "논의", "sentenceIndexes": [86, 97] }
+  },
+  "98": {},
+  "99": {},
+  "100": {},
+  "101": {},
+  "102": { "시작": { "term": "시작", "sentenceIndexes": [102, 113, 121] } },
+  "103": {
+    "군대": {
+      "term": "군대",
+      "sentenceIndexes": [103, 107, 113, 117, 125, 126, 129, 130]
+    }
+  },
+  "104": {},
+  "105": {},
+  "106": {},
+  "107": {
+    "군대": {
+      "term": "군대",
+      "sentenceIndexes": [103, 107, 113, 117, 125, 126, 129, 130]
+    }
+  },
+  "108": {},
+  "109": {},
+  "110": {},
+  "111": {},
+  "112": { "감축": { "term": "감축", "sentenceIndexes": [112, 117] } },
+  "113": {
+    "군대": {
+      "term": "군대",
+      "sentenceIndexes": [103, 107, 113, 117, 125, 126, 129, 130]
+    },
+    "시작": { "term": "시작", "sentenceIndexes": [102, 113, 121] },
+    "논의": { "term": "논의", "sentenceIndexes": [113, 116, 117] }
+  },
+  "114": {},
+  "115": {},
+  "116": {
+    "논의": { "term": "논의", "sentenceIndexes": [113, 116, 117] },
+    "김종대": { "term": "김종대", "sentenceIndexes": [116, 117] },
+    "의원": { "term": "의원", "sentenceIndexes": [116, 117] },
+    "충원": { "term": "충원", "sentenceIndexes": [116, 117] },
+    "모병": { "term": "모병", "sentenceIndexes": [116, 120, 125] },
+    "문제": { "term": "문제", "sentenceIndexes": [116, 120, 121, 122, 131] }
+  },
+  "117": {
+    "감축": { "term": "감축", "sentenceIndexes": [112, 117] },
+    "논의": { "term": "논의", "sentenceIndexes": [113, 116, 117] },
+    "김종대": { "term": "김종대", "sentenceIndexes": [116, 117] },
+    "의원": { "term": "의원", "sentenceIndexes": [116, 117] },
+    "군대": {
+      "term": "군대",
+      "sentenceIndexes": [103, 107, 113, 117, 125, 126, 129, 130]
+    },
+    "충원": { "term": "충원", "sentenceIndexes": [116, 117] }
+  },
+  "118": {},
+  "119": {
+    "인구절벽": { "term": "인구절벽", "sentenceIndexes": [119, 121, 122] }
+  },
+  "120": {
+    "모병": { "term": "모병", "sentenceIndexes": [116, 120, 125] },
+    "문제": { "term": "문제", "sentenceIndexes": [116, 120, 121, 122, 131] }
+  },
+  "121": {
+    "시작": { "term": "시작", "sentenceIndexes": [102, 113, 121] },
+    "인구절벽": { "term": "인구절벽", "sentenceIndexes": [119, 121, 122] },
+    "문제": { "term": "문제", "sentenceIndexes": [116, 120, 121, 122, 131] },
+    "해결": { "term": "해결", "sentenceIndexes": [121, 122, 124] }
+  },
+  "122": {
+    "인구절벽": { "term": "인구절벽", "sentenceIndexes": [119, 121, 122] },
+    "문제": { "term": "문제", "sentenceIndexes": [116, 120, 121, 122, 131] },
+    "해결": { "term": "해결", "sentenceIndexes": [121, 122, 124] }
+  },
+  "123": {},
+  "124": { "해결": { "term": "해결", "sentenceIndexes": [121, 122, 124] } },
+  "125": {
+    "모병": { "term": "모병", "sentenceIndexes": [116, 120, 125] },
+    "군대": {
+      "term": "군대",
+      "sentenceIndexes": [103, 107, 113, 117, 125, 126, 129, 130]
+    },
+    "나라": { "term": "나라", "sentenceIndexes": [125, 130] }
+  },
+  "126": {
+    "군대": {
+      "term": "군대",
+      "sentenceIndexes": [103, 107, 113, 117, 125, 126, 129, 130]
+    }
+  },
+  "127": { "근무": { "term": "근무", "sentenceIndexes": [127, 128] } },
+  "128": { "근무": { "term": "근무", "sentenceIndexes": [127, 128] } },
+  "129": {
+    "군대": {
+      "term": "군대",
+      "sentenceIndexes": [103, 107, 113, 117, 125, 126, 129, 130]
+    }
+  },
+  "130": {
+    "군대": {
+      "term": "군대",
+      "sentenceIndexes": [103, 107, 113, 117, 125, 126, 129, 130]
+    },
+    "나라": { "term": "나라", "sentenceIndexes": [125, 130] },
+    "총선": { "term": "총선", "sentenceIndexes": [130, 131] },
+    "정치": { "term": "정치", "sentenceIndexes": [130, 131, 134, 135] },
+    "다음": { "term": "다음", "sentenceIndexes": [130, 134] }
+  },
+  "131": {
+    "총선": { "term": "총선", "sentenceIndexes": [130, 131] },
+    "문제": { "term": "문제", "sentenceIndexes": [116, 120, 121, 122, 131] },
+    "정치": { "term": "정치", "sentenceIndexes": [130, 131, 134, 135] }
+  },
+  "132": {},
+  "133": { "사람": { "term": "사람", "sentenceIndexes": [133, 144] } },
+  "134": {
+    "다음": { "term": "다음", "sentenceIndexes": [130, 134] },
+    "정치": { "term": "정치", "sentenceIndexes": [130, 131, 134, 135] }
+  },
+  "135": {
+    "정치": { "term": "정치", "sentenceIndexes": [130, 131, 134, 135] },
+    "토론": { "term": "토론", "sentenceIndexes": [135, 140, 142] }
+  },
+  "136": {},
+  "137": {},
+  "138": { "교수": { "term": "교수", "sentenceIndexes": [138, 141] } },
+  "139": {},
+  "140": { "토론": { "term": "토론", "sentenceIndexes": [135, 140, 142] } },
+  "141": { "교수": { "term": "교수", "sentenceIndexes": [138, 141] } },
+  "142": { "토론": { "term": "토론", "sentenceIndexes": [135, 140, 142] } },
+  "143": {
+    "모병": { "term": "모병", "sentenceIndexes": [143, 144, 152, 159] }
+  },
+  "144": {
+    "사람": { "term": "사람", "sentenceIndexes": [133, 144] },
+    "모병": { "term": "모병", "sentenceIndexes": [143, 144, 152, 159] },
+    "군대": {
+      "term": "군대",
+      "sentenceIndexes": [144, 147, 148, 152, 158, 160, 161, 163, 172, 173, 178]
+    }
+  },
+  "145": {},
+  "146": {},
+  "147": {
+    "군대": {
+      "term": "군대",
+      "sentenceIndexes": [144, 147, 148, 152, 158, 160, 161, 163, 172, 173, 178]
+    },
+    "유지": { "term": "유지", "sentenceIndexes": [147, 148] }
+  },
+  "148": {
+    "군대": {
+      "term": "군대",
+      "sentenceIndexes": [144, 147, 148, 152, 158, 160, 161, 163, 172, 173, 178]
+    },
+    "유지": { "term": "유지", "sentenceIndexes": [147, 148] }
+  },
+  "149": { "준비": { "term": "준비", "sentenceIndexes": [149, 160] } },
+  "150": {},
+  "151": {
+    "병력": { "term": "병력", "sentenceIndexes": [151, 157] },
+    "자체": { "term": "자체", "sentenceIndexes": [151, 161] }
+  },
+  "152": {
+    "군대": {
+      "term": "군대",
+      "sentenceIndexes": [144, 147, 148, 152, 158, 160, 161, 163, 172, 173, 178]
+    },
+    "모병": { "term": "모병", "sentenceIndexes": [143, 144, 152, 159] },
+    "방식": { "term": "방식", "sentenceIndexes": [152, 158, 169] },
+    "숫자": { "term": "숫자", "sentenceIndexes": [152, 161] }
+  },
+  "153": {},
+  "154": {},
+  "155": {},
+  "156": {},
+  "157": { "병력": { "term": "병력", "sentenceIndexes": [151, 157] } },
+  "158": {
+    "군대": {
+      "term": "군대",
+      "sentenceIndexes": [144, 147, 148, 152, 158, 160, 161, 163, 172, 173, 178]
+    },
+    "방식": { "term": "방식", "sentenceIndexes": [152, 158, 169] },
+    "스마트군대": { "term": "스마트군대", "sentenceIndexes": [158, 159] },
+    "기반": { "term": "기반", "sentenceIndexes": [158, 160] },
+    "징병": { "term": "징병", "sentenceIndexes": [158, 160, 163] },
+    "소수": { "term": "소수", "sentenceIndexes": [158, 163] },
+    "정예": { "term": "정예", "sentenceIndexes": [158, 163] }
+  },
+  "159": {
+    "스마트군대": { "term": "스마트군대", "sentenceIndexes": [158, 159] },
+    "모병": { "term": "모병", "sentenceIndexes": [143, 144, 152, 159] }
+  },
+  "160": {
+    "군대": {
+      "term": "군대",
+      "sentenceIndexes": [144, 147, 148, 152, 158, 160, 161, 163, 172, 173, 178]
+    },
+    "기반": { "term": "기반", "sentenceIndexes": [158, 160] },
+    "징병": { "term": "징병", "sentenceIndexes": [158, 160, 163] },
+    "준비": { "term": "준비", "sentenceIndexes": [149, 160] }
+  },
+  "161": {
+    "군대": {
+      "term": "군대",
+      "sentenceIndexes": [144, 147, 148, 152, 158, 160, 161, 163, 172, 173, 178]
+    },
+    "숫자": { "term": "숫자", "sentenceIndexes": [152, 161] },
+    "자체": { "term": "자체", "sentenceIndexes": [151, 161] }
+  },
+  "162": {},
+  "163": {
+    "군대": {
+      "term": "군대",
+      "sentenceIndexes": [144, 147, 148, 152, 158, 160, 161, 163, 172, 173, 178]
+    },
+    "소수": { "term": "소수", "sentenceIndexes": [158, 163] },
+    "정예": { "term": "정예", "sentenceIndexes": [158, 163] },
+    "징병": { "term": "징병", "sentenceIndexes": [158, 160, 163] },
+    "스마트": { "term": "스마트", "sentenceIndexes": [163, 172] }
+  },
+  "164": {},
+  "165": {},
+  "166": {},
+  "167": {},
+  "168": {
+    "감군": {
+      "term": "감군",
+      "sentenceIndexes": [168, 169, 172, 173, 174, 177]
+    },
+    "의원": { "term": "의원", "sentenceIndexes": [168, 172, 176] },
+    "과정": { "term": "과정", "sentenceIndexes": [168, 177, 178] },
+    "나라": { "term": "나라", "sentenceIndexes": [168, 178] }
+  },
+  "169": {
+    "감군": {
+      "term": "감군",
+      "sentenceIndexes": [168, 169, 172, 173, 174, 177]
+    },
+    "방식": { "term": "방식", "sentenceIndexes": [152, 158, 169] },
+    "국방": { "term": "국방", "sentenceIndexes": [169, 174] }
+  },
+  "170": {},
+  "171": {
+    "자주국방": { "term": "자주국방", "sentenceIndexes": [171, 173, 174] }
+  },
+  "172": {
+    "의원": { "term": "의원", "sentenceIndexes": [168, 172, 176] },
+    "감군": {
+      "term": "감군",
+      "sentenceIndexes": [168, 169, 172, 173, 174, 177]
+    },
+    "스마트": { "term": "스마트", "sentenceIndexes": [163, 172] },
+    "군대": {
+      "term": "군대",
+      "sentenceIndexes": [144, 147, 148, 152, 158, 160, 161, 163, 172, 173, 178]
+    }
+  },
+  "173": {
+    "감군": {
+      "term": "감군",
+      "sentenceIndexes": [168, 169, 172, 173, 174, 177]
+    },
+    "군대": {
+      "term": "군대",
+      "sentenceIndexes": [144, 147, 148, 152, 158, 160, 161, 163, 172, 173, 178]
+    },
+    "자주국방": { "term": "자주국방", "sentenceIndexes": [171, 173, 174] },
+    "인력": { "term": "인력", "sentenceIndexes": [173, 174] },
+    "확충": { "term": "확충", "sentenceIndexes": [173, 174] },
+    "강화": { "term": "강화", "sentenceIndexes": [173, 184] }
+  },
+  "174": {
+    "자주국방": { "term": "자주국방", "sentenceIndexes": [171, 173, 174] },
+    "국방": { "term": "국방", "sentenceIndexes": [169, 174] },
+    "인력": { "term": "인력", "sentenceIndexes": [173, 174] },
+    "확충": { "term": "확충", "sentenceIndexes": [173, 174] },
+    "감군": {
+      "term": "감군",
+      "sentenceIndexes": [168, 169, 172, 173, 174, 177]
+    },
+    "병력": {
+      "term": "병력",
+      "sentenceIndexes": [174, 178, 182, 184, 195, 196]
+    }
+  },
+  "175": {},
+  "176": { "의원": { "term": "의원", "sentenceIndexes": [168, 172, 176] } },
+  "177": {
+    "감군": {
+      "term": "감군",
+      "sentenceIndexes": [168, 169, 172, 173, 174, 177]
+    },
+    "과정": { "term": "과정", "sentenceIndexes": [168, 177, 178] },
+    "전투": { "term": "전투", "sentenceIndexes": [177, 181] }
+  },
+  "178": {
+    "병력": {
+      "term": "병력",
+      "sentenceIndexes": [174, 178, 182, 184, 195, 196]
+    },
+    "군대": {
+      "term": "군대",
+      "sentenceIndexes": [144, 147, 148, 152, 158, 160, 161, 163, 172, 173, 178]
+    },
+    "과정": { "term": "과정", "sentenceIndexes": [168, 177, 178] },
+    "나라": { "term": "나라", "sentenceIndexes": [168, 178] },
+    "현대전": { "term": "현대전", "sentenceIndexes": [178, 182] },
+    "유지": { "term": "유지", "sentenceIndexes": [178, 182] },
+    "위주": { "term": "위주", "sentenceIndexes": [178, 184] },
+    "상황": { "term": "상황", "sentenceIndexes": [178, 187] }
+  },
+  "179": {},
+  "180": { "무기": { "term": "무기", "sentenceIndexes": [180, 185, 188] } },
+  "181": { "전투": { "term": "전투", "sentenceIndexes": [177, 181] } },
+  "182": {
+    "현대전": { "term": "현대전", "sentenceIndexes": [178, 182] },
+    "병력": {
+      "term": "병력",
+      "sentenceIndexes": [174, 178, 182, 184, 195, 196]
+    },
+    "유지": { "term": "유지", "sentenceIndexes": [178, 182] },
+    "편제": { "term": "편제", "sentenceIndexes": [182, 184] },
+    "정예": { "term": "정예", "sentenceIndexes": [182, 187, 196, 197] }
+  },
+  "183": {},
+  "184": {
+    "병력": {
+      "term": "병력",
+      "sentenceIndexes": [174, 178, 182, 184, 195, 196]
+    },
+    "강화": { "term": "강화", "sentenceIndexes": [173, 184] },
+    "위주": { "term": "위주", "sentenceIndexes": [178, 184] },
+    "편제": { "term": "편제", "sentenceIndexes": [182, 184] }
+  },
+  "185": {
+    "무기": { "term": "무기", "sentenceIndexes": [180, 185, 188] },
+    "생화학": { "term": "생화학", "sentenceIndexes": [185, 188] }
+  },
+  "186": {
+    "생화학무기": { "term": "생화학무기", "sentenceIndexes": [186, 189] }
+  },
+  "187": {
+    "정예": { "term": "정예", "sentenceIndexes": [182, 187, 196, 197] },
+    "상황": { "term": "상황", "sentenceIndexes": [178, 187] },
+    "병사": { "term": "병사", "sentenceIndexes": [187, 189, 190] },
+    "확충": { "term": "확충", "sentenceIndexes": [187, 191] },
+    "징병": { "term": "징병", "sentenceIndexes": [187, 192, 193, 201] }
+  },
+  "188": {
+    "생화학": { "term": "생화학", "sentenceIndexes": [185, 188] },
+    "무기": { "term": "무기", "sentenceIndexes": [180, 185, 188] }
+  },
+  "189": {
+    "병사": { "term": "병사", "sentenceIndexes": [187, 189, 190] },
+    "생화학무기": { "term": "생화학무기", "sentenceIndexes": [186, 189] }
+  },
+  "190": {
+    "병사": { "term": "병사", "sentenceIndexes": [187, 189, 190] },
+    "모병": {
+      "term": "모병",
+      "sentenceIndexes": [190, 192, 198, 200, 202, 203, 211, 212, 214]
+    }
+  },
+  "191": { "확충": { "term": "확충", "sentenceIndexes": [187, 191] } },
+  "192": {
+    "징병": { "term": "징병", "sentenceIndexes": [187, 192, 193, 201] },
+    "모병": {
+      "term": "모병",
+      "sentenceIndexes": [190, 192, 198, 200, 202, 203, 211, 212, 214]
+    },
+    "사람": {
+      "term": "사람",
+      "sentenceIndexes": [192, 193, 201, 202, 203, 204]
+    },
+    "가스": { "term": "가스", "sentenceIndexes": [192, 193] },
+    "감군": { "term": "감군", "sentenceIndexes": [192, 194] },
+    "군대": {
+      "term": "군대",
+      "sentenceIndexes": [192, 198, 202, 203, 205, 207, 210, 211, 214, 216, 220]
+    }
+  },
+  "193": {
+    "징병": { "term": "징병", "sentenceIndexes": [187, 192, 193, 201] },
+    "사람": {
+      "term": "사람",
+      "sentenceIndexes": [192, 193, 201, 202, 203, 204]
+    },
+    "가스": { "term": "가스", "sentenceIndexes": [192, 193] }
+  },
+  "194": { "감군": { "term": "감군", "sentenceIndexes": [192, 194] } },
+  "195": {
+    "병력": {
+      "term": "병력",
+      "sentenceIndexes": [174, 178, 182, 184, 195, 196]
+    },
+    "유지": { "term": "유지", "sentenceIndexes": [195, 196] }
+  },
+  "196": {
+    "병력": {
+      "term": "병력",
+      "sentenceIndexes": [174, 178, 182, 184, 195, 196]
+    },
+    "유지": { "term": "유지", "sentenceIndexes": [195, 196] },
+    "정예": { "term": "정예", "sentenceIndexes": [182, 187, 196, 197] }
+  },
+  "197": {
+    "정예": { "term": "정예", "sentenceIndexes": [182, 187, 196, 197] }
+  },
+  "198": {
+    "모병": {
+      "term": "모병",
+      "sentenceIndexes": [190, 192, 198, 200, 202, 203, 211, 212, 214]
+    },
+    "군대": {
+      "term": "군대",
+      "sentenceIndexes": [192, 198, 202, 203, 205, 207, 210, 211, 214, 216, 220]
+    }
+  },
+  "199": {},
+  "200": {
+    "모병": {
+      "term": "모병",
+      "sentenceIndexes": [190, 192, 198, 200, 202, 203, 211, 212, 214]
+    },
+    "군인": { "term": "군인", "sentenceIndexes": [200, 201] }
+  },
+  "201": {
+    "군인": { "term": "군인", "sentenceIndexes": [200, 201] },
+    "사람": {
+      "term": "사람",
+      "sentenceIndexes": [192, 193, 201, 202, 203, 204]
+    },
+    "징병": { "term": "징병", "sentenceIndexes": [187, 192, 193, 201] },
+    "미국": { "term": "미국", "sentenceIndexes": [201, 207, 218] }
+  },
+  "202": {
+    "모병": {
+      "term": "모병",
+      "sentenceIndexes": [190, 192, 198, 200, 202, 203, 211, 212, 214]
+    },
+    "사람": {
+      "term": "사람",
+      "sentenceIndexes": [192, 193, 201, 202, 203, 204]
+    },
+    "군대": {
+      "term": "군대",
+      "sentenceIndexes": [192, 198, 202, 203, 205, 207, 210, 211, 214, 216, 220]
+    }
+  },
+  "203": {
+    "모병": {
+      "term": "모병",
+      "sentenceIndexes": [190, 192, 198, 200, 202, 203, 211, 212, 214]
+    },
+    "군대": {
+      "term": "군대",
+      "sentenceIndexes": [192, 198, 202, 203, 205, 207, 210, 211, 214, 216, 220]
+    },
+    "사람": {
+      "term": "사람",
+      "sentenceIndexes": [192, 193, 201, 202, 203, 204]
+    }
+  },
+  "204": {
+    "사람": {
+      "term": "사람",
+      "sentenceIndexes": [192, 193, 201, 202, 203, 204]
+    }
+  },
+  "205": {
+    "군대": {
+      "term": "군대",
+      "sentenceIndexes": [192, 198, 202, 203, 205, 207, 210, 211, 214, 216, 220]
+    },
+    "미군": { "term": "미군", "sentenceIndexes": [205, 206, 208] },
+    "로봇": { "term": "로봇", "sentenceIndexes": [205, 207, 210, 211] }
+  },
+  "206": { "미군": { "term": "미군", "sentenceIndexes": [205, 206, 208] } },
+  "207": {
+    "미국": { "term": "미국", "sentenceIndexes": [201, 207, 218] },
+    "로봇": { "term": "로봇", "sentenceIndexes": [205, 207, 210, 211] },
+    "군대": {
+      "term": "군대",
+      "sentenceIndexes": [192, 198, 202, 203, 205, 207, 210, 211, 214, 216, 220]
+    }
+  },
+  "208": {
+    "미군": { "term": "미군", "sentenceIndexes": [205, 206, 208] },
+    "숫자": { "term": "숫자", "sentenceIndexes": [208, 209] }
+  },
+  "209": { "숫자": { "term": "숫자", "sentenceIndexes": [208, 209] } },
+  "210": {
+    "로봇": { "term": "로봇", "sentenceIndexes": [205, 207, 210, 211] },
+    "군대": {
+      "term": "군대",
+      "sentenceIndexes": [192, 198, 202, 203, 205, 207, 210, 211, 214, 216, 220]
+    }
+  },
+  "211": {
+    "로봇": { "term": "로봇", "sentenceIndexes": [205, 207, 210, 211] },
+    "군대": {
+      "term": "군대",
+      "sentenceIndexes": [192, 198, 202, 203, 205, 207, 210, 211, 214, 216, 220]
+    },
+    "모병": {
+      "term": "모병",
+      "sentenceIndexes": [190, 192, 198, 200, 202, 203, 211, 212, 214]
+    },
+    "장비": { "term": "장비", "sentenceIndexes": [211, 217] }
+  },
+  "212": {
+    "모병": {
+      "term": "모병",
+      "sentenceIndexes": [190, 192, 198, 200, 202, 203, 211, 212, 214]
+    },
+    "필요": { "term": "필요", "sentenceIndexes": [212, 221] }
+  },
+  "213": {},
+  "214": {
+    "군대": {
+      "term": "군대",
+      "sentenceIndexes": [192, 198, 202, 203, 205, 207, 210, 211, 214, 216, 220]
+    },
+    "모병": {
+      "term": "모병",
+      "sentenceIndexes": [190, 192, 198, 200, 202, 203, 211, 212, 214]
+    }
+  },
+  "215": {},
+  "216": {
+    "군대": {
+      "term": "군대",
+      "sentenceIndexes": [192, 198, 202, 203, 205, 207, 210, 211, 214, 216, 220]
+    }
+  },
+  "217": {
+    "장비": { "term": "장비", "sentenceIndexes": [211, 217] },
+    "지상군": { "term": "지상군", "sentenceIndexes": [217, 218, 227] },
+    "투입": { "term": "투입", "sentenceIndexes": [217, 218] },
+    "첨단": { "term": "첨단", "sentenceIndexes": [217, 222] }
+  },
+  "218": {
+    "미국": { "term": "미국", "sentenceIndexes": [201, 207, 218] },
+    "지상군": { "term": "지상군", "sentenceIndexes": [217, 218, 227] },
+    "투입": { "term": "투입", "sentenceIndexes": [217, 218] }
+  },
+  "219": {},
+  "220": {
+    "군대": {
+      "term": "군대",
+      "sentenceIndexes": [192, 198, 202, 203, 205, 207, 210, 211, 214, 216, 220]
+    },
+    "전쟁": { "term": "전쟁", "sentenceIndexes": [220, 222] }
+  },
+  "221": { "필요": { "term": "필요", "sentenceIndexes": [212, 221] } },
+  "222": {
+    "첨단": { "term": "첨단", "sentenceIndexes": [217, 222] },
+    "전쟁": { "term": "전쟁", "sentenceIndexes": [220, 222] }
+  },
+  "223": {
+    "미래전쟁": { "term": "미래전쟁", "sentenceIndexes": [223, 224] },
+    "양상": { "term": "양상", "sentenceIndexes": [223, 224] }
+  },
+  "224": {
+    "미래전쟁": { "term": "미래전쟁", "sentenceIndexes": [223, 224] },
+    "양상": { "term": "양상", "sentenceIndexes": [223, 224] }
+  },
+  "225": {},
+  "226": {
+    "감군": { "term": "감군", "sentenceIndexes": [226, 227] },
+    "모병": {
+      "term": "모병",
+      "sentenceIndexes": [
+        226,
+        231,
+        232,
+        234,
+        235,
+        246,
+        251,
+        252,
+        256,
+        257,
+        259,
+        266,
+        267,
+        271,
+        277,
+        278,
+        280,
+        282,
+        285
+      ]
+    }
+  },
+  "227": {
+    "감군": { "term": "감군", "sentenceIndexes": [226, 227] },
+    "지상군": { "term": "지상군", "sentenceIndexes": [217, 218, 227] }
+  },
+  "228": {},
+  "229": {},
+  "230": {},
+  "231": {
+    "모병": {
+      "term": "모병",
+      "sentenceIndexes": [
+        226,
+        231,
+        232,
+        234,
+        235,
+        246,
+        251,
+        252,
+        256,
+        257,
+        259,
+        266,
+        267,
+        271,
+        277,
+        278,
+        280,
+        282,
+        285
+      ]
+    }
+  },
+  "232": {
+    "모병": {
+      "term": "모병",
+      "sentenceIndexes": [
+        226,
+        231,
+        232,
+        234,
+        235,
+        246,
+        251,
+        252,
+        256,
+        257,
+        259,
+        266,
+        267,
+        271,
+        277,
+        278,
+        280,
+        282,
+        285
+      ]
+    },
+    "전환": { "term": "전환", "sentenceIndexes": [232, 234] }
+  },
+  "233": {
+    "미국": { "term": "미국", "sentenceIndexes": [233, 234] },
+    "성공": { "term": "성공", "sentenceIndexes": [233, 236] }
+  },
+  "234": {
+    "미국": { "term": "미국", "sentenceIndexes": [233, 234] },
+    "모병": {
+      "term": "모병",
+      "sentenceIndexes": [
+        226,
+        231,
+        232,
+        234,
+        235,
+        246,
+        251,
+        252,
+        256,
+        257,
+        259,
+        266,
+        267,
+        271,
+        277,
+        278,
+        280,
+        282,
+        285
+      ]
+    },
+    "전환": { "term": "전환", "sentenceIndexes": [232, 234] },
+    "자랑": { "term": "자랑", "sentenceIndexes": [234, 237] },
+    "미국시민": { "term": "미국시민", "sentenceIndexes": [234, 237] },
+    "사회": { "term": "사회", "sentenceIndexes": [234, 238] },
+    "사람": { "term": "사람", "sentenceIndexes": [234, 241, 244] }
+  },
+  "235": {
+    "모병": {
+      "term": "모병",
+      "sentenceIndexes": [
+        226,
+        231,
+        232,
+        234,
+        235,
+        246,
+        251,
+        252,
+        256,
+        257,
+        259,
+        266,
+        267,
+        271,
+        277,
+        278,
+        280,
+        282,
+        285
+      ]
+    }
+  },
+  "236": { "성공": { "term": "성공", "sentenceIndexes": [233, 236] } },
+  "237": {
+    "자랑": { "term": "자랑", "sentenceIndexes": [234, 237] },
+    "미국시민": { "term": "미국시민", "sentenceIndexes": [234, 237] },
+    "군대": {
+      "term": "군대",
+      "sentenceIndexes": [237, 239, 241, 243, 244, 249]
+    }
+  },
+  "238": {
+    "사회": { "term": "사회", "sentenceIndexes": [234, 238] },
+    "계층": { "term": "계층", "sentenceIndexes": [238, 241] }
+  },
+  "239": {
+    "군대": {
+      "term": "군대",
+      "sentenceIndexes": [237, 239, 241, 243, 244, 249]
+    },
+    "청년": { "term": "청년", "sentenceIndexes": [239, 241] }
+  },
+  "240": {},
+  "241": {
+    "계층": { "term": "계층", "sentenceIndexes": [238, 241] },
+    "사람": { "term": "사람", "sentenceIndexes": [234, 241, 244] },
+    "청년": { "term": "청년", "sentenceIndexes": [239, 241] },
+    "군대": {
+      "term": "군대",
+      "sentenceIndexes": [237, 239, 241, 243, 244, 249]
+    },
+    "사다리": { "term": "사다리", "sentenceIndexes": [241, 244] }
+  },
+  "242": {},
+  "243": {
+    "군대": {
+      "term": "군대",
+      "sentenceIndexes": [237, 239, 241, 243, 244, 249]
+    }
+  },
+  "244": {
+    "사람": { "term": "사람", "sentenceIndexes": [234, 241, 244] },
+    "사다리": { "term": "사다리", "sentenceIndexes": [241, 244] },
+    "군대": {
+      "term": "군대",
+      "sentenceIndexes": [237, 239, 241, 243, 244, 249]
+    },
+    "상황": { "term": "상황", "sentenceIndexes": [244, 253, 256] }
+  },
+  "245": {
+    "이준석": { "term": "이준석", "sentenceIndexes": [245, 248] },
+    "위원": { "term": "위원", "sentenceIndexes": [245, 248] }
+  },
+  "246": {
+    "모병": {
+      "term": "모병",
+      "sentenceIndexes": [
+        226,
+        231,
+        232,
+        234,
+        235,
+        246,
+        251,
+        252,
+        256,
+        257,
+        259,
+        266,
+        267,
+        271,
+        277,
+        278,
+        280,
+        282,
+        285
+      ]
+    }
+  },
+  "247": {},
+  "248": {
+    "이준석": { "term": "이준석", "sentenceIndexes": [245, 248] },
+    "위원": { "term": "위원", "sentenceIndexes": [245, 248] }
+  },
+  "249": {
+    "군대": {
+      "term": "군대",
+      "sentenceIndexes": [237, 239, 241, 243, 244, 249]
+    }
+  },
+  "250": {},
+  "251": {
+    "모병": {
+      "term": "모병",
+      "sentenceIndexes": [
+        226,
+        231,
+        232,
+        234,
+        235,
+        246,
+        251,
+        252,
+        256,
+        257,
+        259,
+        266,
+        267,
+        271,
+        277,
+        278,
+        280,
+        282,
+        285
+      ]
+    },
+    "문제": { "term": "문제", "sentenceIndexes": [251, 252] },
+    "수요": { "term": "수요", "sentenceIndexes": [251, 253] },
+    "병력": { "term": "병력", "sentenceIndexes": [251, 261] }
+  },
+  "252": {
+    "모병": {
+      "term": "모병",
+      "sentenceIndexes": [
+        226,
+        231,
+        232,
+        234,
+        235,
+        246,
+        251,
+        252,
+        256,
+        257,
+        259,
+        266,
+        267,
+        271,
+        277,
+        278,
+        280,
+        282,
+        285
+      ]
+    },
+    "문제": { "term": "문제", "sentenceIndexes": [251, 252] },
+    "제도": {
+      "term": "제도",
+      "sentenceIndexes": [252, 261, 263, 271, 274, 282]
+    },
+    "징병": { "term": "징병", "sentenceIndexes": [252, 261] }
+  },
+  "253": {
+    "수요": { "term": "수요", "sentenceIndexes": [251, 253] },
+    "상황": { "term": "상황", "sentenceIndexes": [244, 253, 256] },
+    "미달": { "term": "미달", "sentenceIndexes": [253, 257] }
+  },
+  "254": {},
+  "255": {},
+  "256": {
+    "모병": {
+      "term": "모병",
+      "sentenceIndexes": [
+        226,
+        231,
+        232,
+        234,
+        235,
+        246,
+        251,
+        252,
+        256,
+        257,
+        259,
+        266,
+        267,
+        271,
+        277,
+        278,
+        280,
+        282,
+        285
+      ]
+    },
+    "상황": { "term": "상황", "sentenceIndexes": [244, 253, 256] }
+  },
+  "257": {
+    "모병": {
+      "term": "모병",
+      "sentenceIndexes": [
+        226,
+        231,
+        232,
+        234,
+        235,
+        246,
+        251,
+        252,
+        256,
+        257,
+        259,
+        266,
+        267,
+        271,
+        277,
+        278,
+        280,
+        282,
+        285
+      ]
+    },
+    "미달": { "term": "미달", "sentenceIndexes": [253, 257] }
+  },
+  "258": {},
+  "259": {
+    "모병": {
+      "term": "모병",
+      "sentenceIndexes": [
+        226,
+        231,
+        232,
+        234,
+        235,
+        246,
+        251,
+        252,
+        256,
+        257,
+        259,
+        266,
+        267,
+        271,
+        277,
+        278,
+        280,
+        282,
+        285
+      ]
+    },
+    "경제": { "term": "경제", "sentenceIndexes": [259, 260] }
+  },
+  "260": { "경제": { "term": "경제", "sentenceIndexes": [259, 260] } },
+  "261": {
+    "제도": {
+      "term": "제도",
+      "sentenceIndexes": [252, 261, 263, 271, 274, 282]
+    },
+    "징병": { "term": "징병", "sentenceIndexes": [252, 261] },
+    "병력": { "term": "병력", "sentenceIndexes": [251, 261] },
+    "북한": { "term": "북한", "sentenceIndexes": [261, 266, 267, 270] },
+    "고정": { "term": "고정", "sentenceIndexes": [261, 269] },
+    "유지": { "term": "유지", "sentenceIndexes": [261, 269] }
+  },
+  "262": {
+    "장경태": { "term": "장경태", "sentenceIndexes": [262, 265, 268, 273] },
+    "의원": { "term": "의원", "sentenceIndexes": [262, 268, 276] },
+    "부탁": { "term": "부탁", "sentenceIndexes": [262, 268] }
+  },
+  "263": {
+    "제도": {
+      "term": "제도",
+      "sentenceIndexes": [252, 261, 263, 271, 274, 282]
+    }
+  },
+  "264": {},
+  "265": {
+    "장경태": { "term": "장경태", "sentenceIndexes": [262, 265, 268, 273] },
+    "위원": { "term": "위원", "sentenceIndexes": [265, 273] }
+  },
+  "266": {
+    "북한": { "term": "북한", "sentenceIndexes": [261, 266, 267, 270] },
+    "모병": {
+      "term": "모병",
+      "sentenceIndexes": [
+        226,
+        231,
+        232,
+        234,
+        235,
+        246,
+        251,
+        252,
+        256,
+        257,
+        259,
+        266,
+        267,
+        271,
+        277,
+        278,
+        280,
+        282,
+        285
+      ]
+    }
+  },
+  "267": {
+    "북한": { "term": "북한", "sentenceIndexes": [261, 266, 267, 270] },
+    "모병": {
+      "term": "모병",
+      "sentenceIndexes": [
+        226,
+        231,
+        232,
+        234,
+        235,
+        246,
+        251,
+        252,
+        256,
+        257,
+        259,
+        266,
+        267,
+        271,
+        277,
+        278,
+        280,
+        282,
+        285
+      ]
+    }
+  },
+  "268": {
+    "장경태": { "term": "장경태", "sentenceIndexes": [262, 265, 268, 273] },
+    "의원": { "term": "의원", "sentenceIndexes": [262, 268, 276] },
+    "부탁": { "term": "부탁", "sentenceIndexes": [262, 268] }
+  },
+  "269": {
+    "고정": { "term": "고정", "sentenceIndexes": [261, 269] },
+    "유지": { "term": "유지", "sentenceIndexes": [261, 269] }
+  },
+  "270": {
+    "북한": { "term": "북한", "sentenceIndexes": [261, 266, 267, 270] }
+  },
+  "271": {
+    "제도": {
+      "term": "제도",
+      "sentenceIndexes": [252, 261, 263, 271, 274, 282]
+    },
+    "모병": {
+      "term": "모병",
+      "sentenceIndexes": [
+        226,
+        231,
+        232,
+        234,
+        235,
+        246,
+        251,
+        252,
+        256,
+        257,
+        259,
+        266,
+        267,
+        271,
+        277,
+        278,
+        280,
+        282,
+        285
+      ]
+    }
+  },
+  "272": {},
+  "273": {
+    "장경태": { "term": "장경태", "sentenceIndexes": [262, 265, 268, 273] },
+    "위원": { "term": "위원", "sentenceIndexes": [265, 273] }
+  },
+  "274": {
+    "제도": {
+      "term": "제도",
+      "sentenceIndexes": [252, 261, 263, 271, 274, 282]
+    }
+  },
+  "275": {},
+  "276": { "의원": { "term": "의원", "sentenceIndexes": [262, 268, 276] } },
+  "277": {
+    "모병": {
+      "term": "모병",
+      "sentenceIndexes": [
+        226,
+        231,
+        232,
+        234,
+        235,
+        246,
+        251,
+        252,
+        256,
+        257,
+        259,
+        266,
+        267,
+        271,
+        277,
+        278,
+        280,
+        282,
+        285
+      ]
+    }
+  },
+  "278": {
+    "모병": {
+      "term": "모병",
+      "sentenceIndexes": [
+        226,
+        231,
+        232,
+        234,
+        235,
+        246,
+        251,
+        252,
+        256,
+        257,
+        259,
+        266,
+        267,
+        271,
+        277,
+        278,
+        280,
+        282,
+        285
+      ]
+    },
+    "전환": { "term": "전환", "sentenceIndexes": [278, 279] }
+  },
+  "279": {
+    "전환": { "term": "전환", "sentenceIndexes": [278, 279] },
+    "의미": { "term": "의미", "sentenceIndexes": [279, 282] }
+  },
+  "280": {
+    "모병": {
+      "term": "모병",
+      "sentenceIndexes": [
+        226,
+        231,
+        232,
+        234,
+        235,
+        246,
+        251,
+        252,
+        256,
+        257,
+        259,
+        266,
+        267,
+        271,
+        277,
+        278,
+        280,
+        282,
+        285
+      ]
+    },
+    "일본": { "term": "일본", "sentenceIndexes": [280, 281] },
+    "국방": { "term": "국방", "sentenceIndexes": [280, 282] },
+    "약화": { "term": "약화", "sentenceIndexes": [280, 282] }
+  },
+  "281": {
+    "일본": { "term": "일본", "sentenceIndexes": [280, 281] },
+    "군대": {
+      "term": "군대",
+      "sentenceIndexes": [281, 288, 293, 295, 298, 299, 301, 307, 313, 314]
+    }
+  },
+  "282": {
+    "국방": { "term": "국방", "sentenceIndexes": [280, 282] },
+    "약화": { "term": "약화", "sentenceIndexes": [280, 282] },
+    "제도": {
+      "term": "제도",
+      "sentenceIndexes": [252, 261, 263, 271, 274, 282]
+    },
+    "모병": {
+      "term": "모병",
+      "sentenceIndexes": [
+        226,
+        231,
+        232,
+        234,
+        235,
+        246,
+        251,
+        252,
+        256,
+        257,
+        259,
+        266,
+        267,
+        271,
+        277,
+        278,
+        280,
+        282,
+        285
+      ]
+    },
+    "의미": { "term": "의미", "sentenceIndexes": [279, 282] },
+    "육군": { "term": "육군", "sentenceIndexes": [282, 283, 284] },
+    "해체": { "term": "해체", "sentenceIndexes": [282, 284] },
+    "논리": { "term": "논리", "sentenceIndexes": [282, 284] }
+  },
+  "283": { "육군": { "term": "육군", "sentenceIndexes": [282, 283, 284] } },
+  "284": {
+    "육군": { "term": "육군", "sentenceIndexes": [282, 283, 284] },
+    "해체": { "term": "해체", "sentenceIndexes": [282, 284] },
+    "논리": { "term": "논리", "sentenceIndexes": [282, 284] }
+  },
+  "285": {
+    "모병": {
+      "term": "모병",
+      "sentenceIndexes": [
+        226,
+        231,
+        232,
+        234,
+        235,
+        246,
+        251,
+        252,
+        256,
+        257,
+        259,
+        266,
+        267,
+        271,
+        277,
+        278,
+        280,
+        282,
+        285
+      ]
+    }
+  },
+  "286": {},
+  "287": {},
+  "288": {
+    "군대": {
+      "term": "군대",
+      "sentenceIndexes": [281, 288, 293, 295, 298, 299, 301, 307, 313, 314]
+    }
+  },
+  "289": {},
+  "290": {},
+  "291": {
+    "기본": { "term": "기본", "sentenceIndexes": [291, 293, 302] },
+    "부자": { "term": "부자", "sentenceIndexes": [291, 293] },
+    "사람": { "term": "사람", "sentenceIndexes": [291, 293, 295, 299] },
+    "가난": { "term": "가난", "sentenceIndexes": [291, 293, 295] }
+  },
+  "292": {},
+  "293": {
+    "기본": { "term": "기본", "sentenceIndexes": [291, 293, 302] },
+    "부자": { "term": "부자", "sentenceIndexes": [291, 293] },
+    "사람": { "term": "사람", "sentenceIndexes": [291, 293, 295, 299] },
+    "군대": {
+      "term": "군대",
+      "sentenceIndexes": [281, 288, 293, 295, 298, 299, 301, 307, 313, 314]
+    },
+    "가난": { "term": "가난", "sentenceIndexes": [291, 293, 295] }
+  },
+  "294": {},
+  "295": {
+    "가난": { "term": "가난", "sentenceIndexes": [291, 293, 295] },
+    "사람": { "term": "사람", "sentenceIndexes": [291, 293, 295, 299] },
+    "군대": {
+      "term": "군대",
+      "sentenceIndexes": [281, 288, 293, 295, 298, 299, 301, 307, 313, 314]
+    }
+  },
+  "296": {},
+  "297": {
+    "자녀": { "term": "자녀", "sentenceIndexes": [297, 298, 299] },
+    "이야기": { "term": "이야기", "sentenceIndexes": [297, 298] }
+  },
+  "298": {
+    "군대": {
+      "term": "군대",
+      "sentenceIndexes": [281, 288, 293, 295, 298, 299, 301, 307, 313, 314]
+    },
+    "자녀": { "term": "자녀", "sentenceIndexes": [297, 298, 299] },
+    "이야기": { "term": "이야기", "sentenceIndexes": [297, 298] },
+    "모병": { "term": "모병", "sentenceIndexes": [298, 301, 305] },
+    "소외계층": { "term": "소외계층", "sentenceIndexes": [298, 307] }
+  },
+  "299": {
+    "자녀": { "term": "자녀", "sentenceIndexes": [297, 298, 299] },
+    "군대": {
+      "term": "군대",
+      "sentenceIndexes": [281, 288, 293, 295, 298, 299, 301, 307, 313, 314]
+    },
+    "사람": { "term": "사람", "sentenceIndexes": [291, 293, 295, 299] }
+  },
+  "300": {},
+  "301": {
+    "군대": {
+      "term": "군대",
+      "sentenceIndexes": [281, 288, 293, 295, 298, 299, 301, 307, 313, 314]
+    },
+    "모병": { "term": "모병", "sentenceIndexes": [298, 301, 305] }
+  },
+  "302": {
+    "기본": { "term": "기본", "sentenceIndexes": [291, 293, 302] },
+    "일자리": {
+      "term": "일자리",
+      "sentenceIndexes": [302, 303, 305, 306, 307, 309, 311, 314]
+    },
+    "양질": { "term": "양질", "sentenceIndexes": [302, 306, 314] }
+  },
+  "303": {
+    "일자리": {
+      "term": "일자리",
+      "sentenceIndexes": [302, 303, 305, 306, 307, 309, 311, 314]
+    }
+  },
+  "304": {},
+  "305": {
+    "모병": { "term": "모병", "sentenceIndexes": [298, 301, 305] },
+    "일자리": {
+      "term": "일자리",
+      "sentenceIndexes": [302, 303, 305, 306, 307, 309, 311, 314]
+    }
+  },
+  "306": {
+    "양질": { "term": "양질", "sentenceIndexes": [302, 306, 314] },
+    "일자리": {
+      "term": "일자리",
+      "sentenceIndexes": [302, 303, 305, 306, 307, 309, 311, 314]
+    }
+  },
+  "307": {
+    "일자리": {
+      "term": "일자리",
+      "sentenceIndexes": [302, 303, 305, 306, 307, 309, 311, 314]
+    },
+    "군대": {
+      "term": "군대",
+      "sentenceIndexes": [281, 288, 293, 295, 298, 299, 301, 307, 313, 314]
+    },
+    "소외계층": { "term": "소외계층", "sentenceIndexes": [298, 307] }
+  },
+  "308": {},
+  "309": {
+    "일자리": {
+      "term": "일자리",
+      "sentenceIndexes": [302, 303, 305, 306, 307, 309, 311, 314]
+    }
+  },
+  "310": {},
+  "311": {
+    "일자리": {
+      "term": "일자리",
+      "sentenceIndexes": [302, 303, 305, 306, 307, 309, 311, 314]
+    }
+  },
+  "312": {},
+  "313": {
+    "군대": {
+      "term": "군대",
+      "sentenceIndexes": [281, 288, 293, 295, 298, 299, 301, 307, 313, 314]
+    },
+    "사람": { "term": "사람", "sentenceIndexes": [313, 314] },
+    "인식": { "term": "인식", "sentenceIndexes": [313, 314] }
+  },
+  "314": {
+    "사람": { "term": "사람", "sentenceIndexes": [313, 314] },
+    "양질": { "term": "양질", "sentenceIndexes": [302, 306, 314] },
+    "일자리": {
+      "term": "일자리",
+      "sentenceIndexes": [302, 303, 305, 306, 307, 309, 311, 314]
+    },
+    "군대": {
+      "term": "군대",
+      "sentenceIndexes": [281, 288, 293, 295, 298, 299, 301, 307, 313, 314]
+    },
+    "인식": { "term": "인식", "sentenceIndexes": [313, 314] }
+  },
+  "315": {},
+  "316": {
+    "군인황제": { "term": "군인황제", "sentenceIndexes": [316, 317] },
+    "시대": { "term": "시대", "sentenceIndexes": [316, 317] },
+    "로마": { "term": "로마", "sentenceIndexes": [316, 318] }
+  },
+  "317": {
+    "군인황제": { "term": "군인황제", "sentenceIndexes": [316, 317] },
+    "시대": { "term": "시대", "sentenceIndexes": [316, 317] },
+    "지원병": { "term": "지원병", "sentenceIndexes": [317, 321] }
+  },
+  "318": {
+    "로마": { "term": "로마", "sentenceIndexes": [316, 318] },
+    "용병": { "term": "용병", "sentenceIndexes": [318, 322, 323] }
+  },
+  "319": {},
+  "320": { "모병": { "term": "모병", "sentenceIndexes": [320, 329, 338] } },
+  "321": { "지원병": { "term": "지원병", "sentenceIndexes": [317, 321] } },
+  "322": { "용병": { "term": "용병", "sentenceIndexes": [318, 322, 323] } },
+  "323": { "용병": { "term": "용병", "sentenceIndexes": [318, 322, 323] } },
+  "324": { "위원": { "term": "위원", "sentenceIndexes": [324, 325] } },
+  "325": {
+    "위원": { "term": "위원", "sentenceIndexes": [324, 325] },
+    "아들": { "term": "아들", "sentenceIndexes": [325, 329, 335, 337, 338] }
+  },
+  "326": {},
+  "327": {},
+  "328": {},
+  "329": {
+    "아들": { "term": "아들", "sentenceIndexes": [325, 329, 335, 337, 338] },
+    "모병": { "term": "모병", "sentenceIndexes": [320, 329, 338] },
+    "찬성": { "term": "찬성", "sentenceIndexes": [329, 330, 331, 335] },
+    "평생": { "term": "평생", "sentenceIndexes": [329, 335] },
+    "병장": { "term": "병장", "sentenceIndexes": [329, 335] }
+  },
+  "330": {
+    "찬성": { "term": "찬성", "sentenceIndexes": [329, 330, 331, 335] }
+  },
+  "331": {
+    "찬성": { "term": "찬성", "sentenceIndexes": [329, 330, 331, 335] },
+    "사람": { "term": "사람", "sentenceIndexes": [331, 337] }
+  },
+  "332": {
+    "군대": {
+      "term": "군대",
+      "sentenceIndexes": [332, 333, 334, 337, 340, 342, 343, 345, 347]
+    },
+    "인식": { "term": "인식", "sentenceIndexes": [332, 339, 340] }
+  },
+  "333": {
+    "군대": {
+      "term": "군대",
+      "sentenceIndexes": [332, 333, 334, 337, 340, 342, 343, 345, 347]
+    }
+  },
+  "334": {
+    "군대": {
+      "term": "군대",
+      "sentenceIndexes": [332, 333, 334, 337, 340, 342, 343, 345, 347]
+    }
+  },
+  "335": {
+    "아들": { "term": "아들", "sentenceIndexes": [325, 329, 335, 337, 338] },
+    "평생": { "term": "평생", "sentenceIndexes": [329, 335] },
+    "병장": { "term": "병장", "sentenceIndexes": [329, 335] },
+    "찬성": { "term": "찬성", "sentenceIndexes": [329, 330, 331, 335] },
+    "상황": { "term": "상황", "sentenceIndexes": [335, 338] },
+    "사회": { "term": "사회", "sentenceIndexes": [335, 339] }
+  },
+  "336": {},
+  "337": {
+    "사람": { "term": "사람", "sentenceIndexes": [331, 337] },
+    "군대": {
+      "term": "군대",
+      "sentenceIndexes": [332, 333, 334, 337, 340, 342, 343, 345, 347]
+    },
+    "아들": { "term": "아들", "sentenceIndexes": [325, 329, 335, 337, 338] }
+  },
+  "338": {
+    "아들": { "term": "아들", "sentenceIndexes": [325, 329, 335, 337, 338] },
+    "상황": { "term": "상황", "sentenceIndexes": [335, 338] },
+    "모병": { "term": "모병", "sentenceIndexes": [320, 329, 338] }
+  },
+  "339": {
+    "사회": { "term": "사회", "sentenceIndexes": [335, 339] },
+    "인식": { "term": "인식", "sentenceIndexes": [332, 339, 340] }
+  },
+  "340": {
+    "군대": {
+      "term": "군대",
+      "sentenceIndexes": [332, 333, 334, 337, 340, 342, 343, 345, 347]
+    },
+    "인식": { "term": "인식", "sentenceIndexes": [332, 339, 340] },
+    "미국": { "term": "미국", "sentenceIndexes": [340, 345, 347] }
+  },
+  "341": {},
+  "342": {
+    "군대": {
+      "term": "군대",
+      "sentenceIndexes": [332, 333, 334, 337, 340, 342, 343, 345, 347]
+    },
+    "위협": {
+      "term": "위협",
+      "sentenceIndexes": [342, 344, 346, 348, 349, 350]
+    }
+  },
+  "343": {
+    "군대": {
+      "term": "군대",
+      "sentenceIndexes": [332, 333, 334, 337, 340, 342, 343, 345, 347]
+    }
+  },
+  "344": {
+    "위협": {
+      "term": "위협",
+      "sentenceIndexes": [342, 344, 346, 348, 349, 350]
+    }
+  },
+  "345": {
+    "미국": { "term": "미국", "sentenceIndexes": [340, 345, 347] },
+    "군대": {
+      "term": "군대",
+      "sentenceIndexes": [332, 333, 334, 337, 340, 342, 343, 345, 347]
+    },
+    "유지": { "term": "유지", "sentenceIndexes": [345, 349] }
+  },
+  "346": {
+    "위협": {
+      "term": "위협",
+      "sentenceIndexes": [342, 344, 346, 348, 349, 350]
+    },
+    "세계": { "term": "세계", "sentenceIndexes": [346, 356] }
+  },
+  "347": {
+    "미국": { "term": "미국", "sentenceIndexes": [340, 345, 347] },
+    "군대": {
+      "term": "군대",
+      "sentenceIndexes": [332, 333, 334, 337, 340, 342, 343, 345, 347]
+    }
+  },
+  "348": {
+    "위협": {
+      "term": "위협",
+      "sentenceIndexes": [342, 344, 346, 348, 349, 350]
+    }
+  },
+  "349": {
+    "위협": {
+      "term": "위협",
+      "sentenceIndexes": [342, 344, 346, 348, 349, 350]
+    },
+    "유지": { "term": "유지", "sentenceIndexes": [345, 349] },
+    "방법": { "term": "방법", "sentenceIndexes": [349, 350] },
+    "대응": { "term": "대응", "sentenceIndexes": [349, 350] }
+  },
+  "350": {
+    "방법": { "term": "방법", "sentenceIndexes": [349, 350] },
+    "위협": {
+      "term": "위협",
+      "sentenceIndexes": [342, 344, 346, 348, 349, 350]
+    },
+    "대응": { "term": "대응", "sentenceIndexes": [349, 350] }
+  },
+  "351": {},
+  "352": {},
+  "353": {},
+  "354": { "논쟁": { "term": "논쟁", "sentenceIndexes": [354, 363] } },
+  "355": { "나라": { "term": "나라", "sentenceIndexes": [355, 357] } },
+  "356": { "세계": { "term": "세계", "sentenceIndexes": [346, 356] } },
+  "357": { "나라": { "term": "나라", "sentenceIndexes": [355, 357] } },
+  "358": {},
+  "359": {},
+  "360": {},
+  "361": { "존재": { "term": "존재", "sentenceIndexes": [361, 364] } },
+  "362": { "위협": { "term": "위협", "sentenceIndexes": [362, 363, 364] } },
+  "363": {
+    "위협": { "term": "위협", "sentenceIndexes": [362, 363, 364] },
+    "논쟁": { "term": "논쟁", "sentenceIndexes": [354, 363] },
+    "지속가능": { "term": "지속가능", "sentenceIndexes": [363, 364, 366] }
+  },
+  "364": {
+    "지속가능": { "term": "지속가능", "sentenceIndexes": [363, 364, 366] },
+    "위협": { "term": "위협", "sentenceIndexes": [362, 363, 364] },
+    "존재": { "term": "존재", "sentenceIndexes": [361, 364] },
+    "방법": { "term": "방법", "sentenceIndexes": [364, 375] }
+  },
+  "365": {},
+  "366": {
+    "지속가능": { "term": "지속가능", "sentenceIndexes": [363, 364, 366] }
+  },
+  "367": {
+    "자원": { "term": "자원", "sentenceIndexes": [367, 368] },
+    "군대": { "term": "군대", "sentenceIndexes": [367, 370, 372, 373, 377] }
+  },
+  "368": {
+    "자원": { "term": "자원", "sentenceIndexes": [367, 368] },
+    "수준": { "term": "수준", "sentenceIndexes": [368, 371, 375] }
+  },
+  "369": {
+    "스펙": { "term": "스펙", "sentenceIndexes": [369, 370] },
+    "세계": { "term": "세계", "sentenceIndexes": [369, 370] },
+    "병사": { "term": "병사", "sentenceIndexes": [369, 375] }
+  },
+  "370": {
+    "스펙": { "term": "스펙", "sentenceIndexes": [369, 370] },
+    "군대": { "term": "군대", "sentenceIndexes": [367, 370, 372, 373, 377] },
+    "세계": { "term": "세계", "sentenceIndexes": [369, 370] }
+  },
+  "371": { "수준": { "term": "수준", "sentenceIndexes": [368, 371, 375] } },
+  "372": {
+    "군대": { "term": "군대", "sentenceIndexes": [367, 370, 372, 373, 377] },
+    "청년": { "term": "청년", "sentenceIndexes": [372, 374, 377] },
+    "자율": { "term": "자율", "sentenceIndexes": [372, 374] },
+    "창의": { "term": "창의", "sentenceIndexes": [372, 374] },
+    "극대": { "term": "극대", "sentenceIndexes": [372, 377] }
+  },
+  "373": {
+    "군대": { "term": "군대", "sentenceIndexes": [367, 370, 372, 373, 377] }
+  },
+  "374": {
+    "청년": { "term": "청년", "sentenceIndexes": [372, 374, 377] },
+    "자율": { "term": "자율", "sentenceIndexes": [372, 374] },
+    "창의": { "term": "창의", "sentenceIndexes": [372, 374] }
+  },
+  "375": {
+    "병사": { "term": "병사", "sentenceIndexes": [369, 375] },
+    "수준": { "term": "수준", "sentenceIndexes": [368, 371, 375] },
+    "방법": { "term": "방법", "sentenceIndexes": [364, 375] },
+    "개발": { "term": "개발", "sentenceIndexes": [375, 377] }
+  },
+  "376": {
+    "다음": { "term": "다음", "sentenceIndexes": [376, 383, 389, 397] }
+  },
+  "377": {
+    "청년": { "term": "청년", "sentenceIndexes": [372, 374, 377] },
+    "개발": { "term": "개발", "sentenceIndexes": [375, 377] },
+    "극대": { "term": "극대", "sentenceIndexes": [372, 377] },
+    "군대": { "term": "군대", "sentenceIndexes": [367, 370, 372, 373, 377] }
+  },
+  "378": {},
+  "379": {},
+  "380": {
+    "시청": { "term": "시청", "sentenceIndexes": [380, 383, 384] },
+    "의견": { "term": "의견", "sentenceIndexes": [380, 383, 384, 386] }
+  },
+  "381": {
+    "질문": {
+      "term": "질문",
+      "sentenceIndexes": [381, 383, 384, 386, 388, 398]
+    }
+  },
+  "382": {
+    "답변": { "term": "답변", "sentenceIndexes": [382, 383, 390, 399] }
+  },
+  "383": {
+    "시청": { "term": "시청", "sentenceIndexes": [380, 383, 384] },
+    "의견": { "term": "의견", "sentenceIndexes": [380, 383, 384, 386] },
+    "질문": {
+      "term": "질문",
+      "sentenceIndexes": [381, 383, 384, 386, 388, 398]
+    },
+    "다음": { "term": "다음", "sentenceIndexes": [376, 383, 389, 397] },
+    "답변": { "term": "답변", "sentenceIndexes": [382, 383, 390, 399] },
+    "토론": { "term": "토론", "sentenceIndexes": [383, 384] }
+  },
+  "384": {
+    "토론": { "term": "토론", "sentenceIndexes": [383, 384] },
+    "시청": { "term": "시청", "sentenceIndexes": [380, 383, 384] },
+    "질문": {
+      "term": "질문",
+      "sentenceIndexes": [381, 383, 384, 386, 388, 398]
+    },
+    "의견": { "term": "의견", "sentenceIndexes": [380, 383, 384, 386] }
+  },
+  "385": {},
+  "386": {
+    "의견": { "term": "의견", "sentenceIndexes": [380, 383, 384, 386] },
+    "질문": {
+      "term": "질문",
+      "sentenceIndexes": [381, 383, 384, 386, 388, 398]
+    }
+  },
+  "387": {
+    "군생활": { "term": "군생활", "sentenceIndexes": [387, 388] },
+    "적응": { "term": "적응", "sentenceIndexes": [387, 388] }
+  },
+  "388": {
+    "군생활": { "term": "군생활", "sentenceIndexes": [387, 388] },
+    "적응": { "term": "적응", "sentenceIndexes": [387, 388] },
+    "질문": {
+      "term": "질문",
+      "sentenceIndexes": [381, 383, 384, 386, 388, 398]
+    },
+    "모병": { "term": "모병", "sentenceIndexes": [388, 389, 390, 391, 399] },
+    "사명": { "term": "사명", "sentenceIndexes": [388, 396, 397, 398] },
+    "전문": { "term": "전문", "sentenceIndexes": [388, 396, 397, 398] }
+  },
+  "389": {
+    "다음": { "term": "다음", "sentenceIndexes": [376, 383, 389, 397] },
+    "모병": { "term": "모병", "sentenceIndexes": [388, 389, 390, 391, 399] }
+  },
+  "390": {
+    "모병": { "term": "모병", "sentenceIndexes": [388, 389, 390, 391, 399] },
+    "답변": { "term": "답변", "sentenceIndexes": [382, 383, 390, 399] }
+  },
+  "391": {
+    "모병": { "term": "모병", "sentenceIndexes": [388, 389, 390, 391, 399] },
+    "성장": { "term": "성장", "sentenceIndexes": [391, 397] },
+    "가능": { "term": "가능", "sentenceIndexes": [391, 397] }
+  },
+  "392": { "계급": { "term": "계급", "sentenceIndexes": [392, 397] } },
+  "393": {},
+  "394": { "장기복무": { "term": "장기복무", "sentenceIndexes": [394, 397] } },
+  "395": { "성립": { "term": "성립", "sentenceIndexes": [395, 398] } },
+  "396": {
+    "사명": { "term": "사명", "sentenceIndexes": [388, 396, 397, 398] },
+    "전문": { "term": "전문", "sentenceIndexes": [388, 396, 397, 398] },
+    "언급": { "term": "언급", "sentenceIndexes": [396, 398] }
+  },
+  "397": {
+    "전문": { "term": "전문", "sentenceIndexes": [388, 396, 397, 398] },
+    "계급": { "term": "계급", "sentenceIndexes": [392, 397] },
+    "성장": { "term": "성장", "sentenceIndexes": [391, 397] },
+    "사명": { "term": "사명", "sentenceIndexes": [388, 396, 397, 398] },
+    "장기복무": { "term": "장기복무", "sentenceIndexes": [394, 397] },
+    "다음": { "term": "다음", "sentenceIndexes": [376, 383, 389, 397] },
+    "가능": { "term": "가능", "sentenceIndexes": [391, 397] },
+    "병사": { "term": "병사", "sentenceIndexes": [397, 407] },
+    "나이": { "term": "나이", "sentenceIndexes": [397, 407] },
+    "군대": { "term": "군대", "sentenceIndexes": [397, 408] }
+  },
+  "398": {
+    "질문": {
+      "term": "질문",
+      "sentenceIndexes": [381, 383, 384, 386, 388, 398]
+    },
+    "언급": { "term": "언급", "sentenceIndexes": [396, 398] },
+    "전문": { "term": "전문", "sentenceIndexes": [388, 396, 397, 398] },
+    "사명": { "term": "사명", "sentenceIndexes": [388, 396, 397, 398] },
+    "성립": { "term": "성립", "sentenceIndexes": [395, 398] }
+  },
+  "399": {
+    "답변": { "term": "답변", "sentenceIndexes": [382, 383, 390, 399] },
+    "모병": { "term": "모병", "sentenceIndexes": [388, 389, 390, 391, 399] },
+    "정의당": { "term": "정의당", "sentenceIndexes": [399, 404] }
+  },
+  "400": {},
+  "401": {},
+  "402": {
+    "전환": { "term": "전환", "sentenceIndexes": [402, 403] },
+    "직무혼합": { "term": "직무혼합", "sentenceIndexes": [402, 405, 411] },
+    "단계": { "term": "단계", "sentenceIndexes": [402, 405, 411, 421] }
+  },
+  "403": { "전환": { "term": "전환", "sentenceIndexes": [402, 403] } },
+  "404": { "정의당": { "term": "정의당", "sentenceIndexes": [399, 404] } },
+  "405": {
+    "직무혼합": { "term": "직무혼합", "sentenceIndexes": [402, 405, 411] },
+    "단계": { "term": "단계", "sentenceIndexes": [402, 405, 411, 421] }
+  },
+  "406": { "전방": { "term": "전방", "sentenceIndexes": [406, 407] } },
+  "407": {
+    "병사": { "term": "병사", "sentenceIndexes": [397, 407] },
+    "나이": { "term": "나이", "sentenceIndexes": [397, 407] },
+    "전방": { "term": "전방", "sentenceIndexes": [406, 407] },
+    "전투": { "term": "전투", "sentenceIndexes": [407, 411] }
+  },
+  "408": { "군대": { "term": "군대", "sentenceIndexes": [397, 408] } },
+  "409": {},
+  "410": {
+    "유지": { "term": "유지", "sentenceIndexes": [410, 412, 419] },
+    "전문": { "term": "전문", "sentenceIndexes": [410, 417] }
+  },
+  "411": {
+    "직무혼합": { "term": "직무혼합", "sentenceIndexes": [402, 405, 411] },
+    "단계": { "term": "단계", "sentenceIndexes": [402, 405, 411, 421] },
+    "전투": { "term": "전투", "sentenceIndexes": [407, 411] },
+    "모병": { "term": "모병", "sentenceIndexes": [411, 420] }
+  },
+  "412": {
+    "유지": { "term": "유지", "sentenceIndexes": [410, 412, 419] },
+    "징병": { "term": "징병", "sentenceIndexes": [412, 413, 417, 418] },
+    "복무기간": { "term": "복무기간", "sentenceIndexes": [412, 416] },
+    "가능": { "term": "가능", "sentenceIndexes": [412, 417] }
+  },
+  "413": {
+    "징병": { "term": "징병", "sentenceIndexes": [412, 413, 417, 418] },
+    "훈련기간": { "term": "훈련기간", "sentenceIndexes": [413, 414] }
+  },
+  "414": { "훈련기간": { "term": "훈련기간", "sentenceIndexes": [413, 414] } },
+  "415": {},
+  "416": { "복무기간": { "term": "복무기간", "sentenceIndexes": [412, 416] } },
+  "417": {
+    "전문": { "term": "전문", "sentenceIndexes": [410, 417] },
+    "가능": { "term": "가능", "sentenceIndexes": [412, 417] },
+    "징병": { "term": "징병", "sentenceIndexes": [412, 413, 417, 418] }
+  },
+  "418": {
+    "징병": { "term": "징병", "sentenceIndexes": [412, 413, 417, 418] }
+  },
+  "419": {
+    "유지": { "term": "유지", "sentenceIndexes": [410, 412, 419] },
+    "직업군인": { "term": "직업군인", "sentenceIndexes": [419, 422, 427] }
+  },
+  "420": { "모병": { "term": "모병", "sentenceIndexes": [411, 420] } },
+  "421": {
+    "단계": { "term": "단계", "sentenceIndexes": [402, 405, 411, 421] },
+    "장기복무": { "term": "장기복무", "sentenceIndexes": [421, 422, 423] },
+    "질문": { "term": "질문", "sentenceIndexes": [421, 425, 430, 436, 440] }
+  },
+  "422": {
+    "장기복무": { "term": "장기복무", "sentenceIndexes": [421, 422, 423] },
+    "직업군인": { "term": "직업군인", "sentenceIndexes": [419, 422, 427] },
+    "보장": { "term": "보장", "sentenceIndexes": [422, 423] }
+  },
+  "423": {
+    "장기복무": { "term": "장기복무", "sentenceIndexes": [421, 422, 423] },
+    "보장": { "term": "보장", "sentenceIndexes": [422, 423] }
+  },
+  "424": {},
+  "425": {
+    "질문": { "term": "질문", "sentenceIndexes": [421, 425, 430, 436, 440] }
+  },
+  "426": {},
+  "427": {
+    "직업군인": { "term": "직업군인", "sentenceIndexes": [419, 422, 427] }
+  },
+  "428": {},
+  "429": {},
+  "430": {
+    "질문": { "term": "질문", "sentenceIndexes": [421, 425, 430, 436, 440] }
+  },
+  "431": {},
+  "432": {},
+  "433": {},
+  "434": { "이야기": { "term": "이야기", "sentenceIndexes": [434, 440] } },
+  "435": {},
+  "436": {
+    "질문": { "term": "질문", "sentenceIndexes": [421, 425, 430, 436, 440] }
+  },
+  "437": {
+    "장교": { "term": "장교", "sentenceIndexes": [437, 440, 442, 444] },
+    "의견": { "term": "의견", "sentenceIndexes": [437, 440] },
+    "출신": { "term": "출신", "sentenceIndexes": [437, 442] }
+  },
+  "438": {
+    "지원": { "term": "지원", "sentenceIndexes": [438, 439] },
+    "간부": { "term": "간부", "sentenceIndexes": [438, 440, 445] },
+    "모병": {
+      "term": "모병",
+      "sentenceIndexes": [438, 448, 456, 467, 471, 477]
+    }
+  },
+  "439": {
+    "지원": { "term": "지원", "sentenceIndexes": [438, 439] },
+    "군의": { "term": "군의", "sentenceIndexes": [439, 440, 446, 447, 451] },
+    "의사": { "term": "의사", "sentenceIndexes": [439, 447] }
+  },
+  "440": {
+    "군의": { "term": "군의", "sentenceIndexes": [439, 440, 446, 447, 451] },
+    "간부": { "term": "간부", "sentenceIndexes": [438, 440, 445] },
+    "질문": { "term": "질문", "sentenceIndexes": [421, 425, 430, 436, 440] },
+    "장교": { "term": "장교", "sentenceIndexes": [437, 440, 442, 444] },
+    "의견": { "term": "의견", "sentenceIndexes": [437, 440] },
+    "이야기": { "term": "이야기", "sentenceIndexes": [434, 440] }
+  },
+  "441": {},
+  "442": {
+    "장교": { "term": "장교", "sentenceIndexes": [437, 440, 442, 444] },
+    "출신": { "term": "출신", "sentenceIndexes": [437, 442] }
+  },
+  "443": { "중심": { "term": "중심", "sentenceIndexes": [443, 445] } },
+  "444": {
+    "장교": { "term": "장교", "sentenceIndexes": [437, 440, 442, 444] },
+    "체제": { "term": "체제", "sentenceIndexes": [444, 445] },
+    "부사": { "term": "부사", "sentenceIndexes": [444, 455, 456] }
+  },
+  "445": {
+    "체제": { "term": "체제", "sentenceIndexes": [444, 445] },
+    "간부": { "term": "간부", "sentenceIndexes": [438, 440, 445] },
+    "중심": { "term": "중심", "sentenceIndexes": [443, 445] },
+    "군대": { "term": "군대", "sentenceIndexes": [445, 447] }
+  },
+  "446": {
+    "군의": { "term": "군의", "sentenceIndexes": [439, 440, 446, 447, 451] }
+  },
+  "447": {
+    "군의": { "term": "군의", "sentenceIndexes": [439, 440, 446, 447, 451] },
+    "의사": { "term": "의사", "sentenceIndexes": [439, 447] },
+    "군대": { "term": "군대", "sentenceIndexes": [445, 447] },
+    "민간병원": { "term": "민간병원", "sentenceIndexes": [447, 448] },
+    "이용": { "term": "이용", "sentenceIndexes": [447, 448] }
+  },
+  "448": {
+    "모병": {
+      "term": "모병",
+      "sentenceIndexes": [438, 448, 456, 467, 471, 477]
+    },
+    "민간병원": { "term": "민간병원", "sentenceIndexes": [447, 448] },
+    "이용": { "term": "이용", "sentenceIndexes": [447, 448] },
+    "병사": { "term": "병사", "sentenceIndexes": [448, 458, 463, 464] }
+  },
+  "449": {},
+  "450": {},
+  "451": {
+    "군의": { "term": "군의", "sentenceIndexes": [439, 440, 446, 447, 451] }
+  },
+  "452": {},
+  "453": {},
+  "454": {},
+  "455": { "부사": { "term": "부사", "sentenceIndexes": [444, 455, 456] } },
+  "456": {
+    "부사": { "term": "부사", "sentenceIndexes": [444, 455, 456] },
+    "모병": {
+      "term": "모병",
+      "sentenceIndexes": [438, 448, 456, 467, 471, 477]
+    }
+  },
+  "457": {
+    "필요": { "term": "필요", "sentenceIndexes": [457, 463, 464, 471] }
+  },
+  "458": {
+    "병사": { "term": "병사", "sentenceIndexes": [448, 458, 463, 464] },
+    "다음": { "term": "다음", "sentenceIndexes": [458, 467, 472, 482, 489] }
+  },
+  "459": {},
+  "460": {},
+  "461": {},
+  "462": {},
+  "463": {
+    "병사": { "term": "병사", "sentenceIndexes": [448, 458, 463, 464] },
+    "필요": { "term": "필요", "sentenceIndexes": [457, 463, 464, 471] }
+  },
+  "464": {
+    "병사": { "term": "병사", "sentenceIndexes": [448, 458, 463, 464] },
+    "필요": { "term": "필요", "sentenceIndexes": [457, 463, 464, 471] }
+  },
+  "465": {},
+  "466": {},
+  "467": {
+    "모병": {
+      "term": "모병",
+      "sentenceIndexes": [438, 448, 456, 467, 471, 477]
+    },
+    "다음": { "term": "다음", "sentenceIndexes": [458, 467, 472, 482, 489] },
+    "전방": { "term": "전방", "sentenceIndexes": [467, 469] },
+    "전문": { "term": "전문", "sentenceIndexes": [467, 470] },
+    "근무": { "term": "근무", "sentenceIndexes": [467, 476] }
+  },
+  "468": {},
+  "469": { "전방": { "term": "전방", "sentenceIndexes": [467, 469] } },
+  "470": {
+    "전문": { "term": "전문", "sentenceIndexes": [467, 470] },
+    "보병": { "term": "보병", "sentenceIndexes": [470, 471] }
+  },
+  "471": {
+    "보병": { "term": "보병", "sentenceIndexes": [470, 471] },
+    "필요": { "term": "필요", "sentenceIndexes": [457, 463, 464, 471] },
+    "모병": {
+      "term": "모병",
+      "sentenceIndexes": [438, 448, 456, 467, 471, 477]
+    }
+  },
+  "472": {
+    "다음": { "term": "다음", "sentenceIndexes": [458, 467, 472, 482, 489] },
+    "예비역": { "term": "예비역", "sentenceIndexes": [472, 476, 477] }
+  },
+  "473": {
+    "장교": { "term": "장교", "sentenceIndexes": [473, 483, 484, 485] }
+  },
+  "474": {},
+  "475": {},
+  "476": {
+    "예비역": { "term": "예비역", "sentenceIndexes": [472, 476, 477] },
+    "근무": { "term": "근무", "sentenceIndexes": [467, 476] }
+  },
+  "477": {
+    "모병": {
+      "term": "모병",
+      "sentenceIndexes": [438, 448, 456, 467, 471, 477]
+    },
+    "예비역": { "term": "예비역", "sentenceIndexes": [472, 476, 477] }
+  },
+  "478": {},
+  "479": {},
+  "480": {},
+  "481": {
+    "사람": { "term": "사람", "sentenceIndexes": [481, 485] },
+    "군대": { "term": "군대", "sentenceIndexes": [481, 492] }
+  },
+  "482": {
+    "다음": { "term": "다음", "sentenceIndexes": [458, 467, 472, 482, 489] },
+    "일리": { "term": "일리", "sentenceIndexes": [482, 484] }
+  },
+  "483": {
+    "장교": { "term": "장교", "sentenceIndexes": [473, 483, 484, 485] },
+    "병사": { "term": "병사", "sentenceIndexes": [483, 484, 485] }
+  },
+  "484": {
+    "일리": { "term": "일리", "sentenceIndexes": [482, 484] },
+    "병사": { "term": "병사", "sentenceIndexes": [483, 484, 485] },
+    "장교": { "term": "장교", "sentenceIndexes": [473, 483, 484, 485] },
+    "부사": { "term": "부사", "sentenceIndexes": [484, 485, 486] }
+  },
+  "485": {
+    "병사": { "term": "병사", "sentenceIndexes": [483, 484, 485] },
+    "사람": { "term": "사람", "sentenceIndexes": [481, 485] },
+    "부사": { "term": "부사", "sentenceIndexes": [484, 485, 486] },
+    "장교": { "term": "장교", "sentenceIndexes": [473, 483, 484, 485] }
+  },
+  "486": { "부사": { "term": "부사", "sentenceIndexes": [484, 485, 486] } },
+  "487": {},
+  "488": {
+    "질문": { "term": "질문", "sentenceIndexes": [488, 489, 490, 491, 493] }
+  },
+  "489": {
+    "다음": { "term": "다음", "sentenceIndexes": [458, 467, 472, 482, 489] },
+    "질문": { "term": "질문", "sentenceIndexes": [488, 489, 490, 491, 493] },
+    "이준석": { "term": "이준석", "sentenceIndexes": [489, 494] },
+    "위원": { "term": "위원", "sentenceIndexes": [489, 494] }
+  },
+  "490": {
+    "질문": { "term": "질문", "sentenceIndexes": [488, 489, 490, 491, 493] },
+    "여성": {
+      "term": "여성",
+      "sentenceIndexes": [490, 492, 501, 503, 504, 506, 511]
+    },
+    "부족": { "term": "부족", "sentenceIndexes": [490, 500] }
+  },
+  "491": {
+    "질문": { "term": "질문", "sentenceIndexes": [488, 489, 490, 491, 493] }
+  },
+  "492": {
+    "여성": {
+      "term": "여성",
+      "sentenceIndexes": [490, 492, 501, 503, 504, 506, 511]
+    },
+    "군대": { "term": "군대", "sentenceIndexes": [481, 492] }
+  },
+  "493": {
+    "질문": { "term": "질문", "sentenceIndexes": [488, 489, 490, 491, 493] }
+  },
+  "494": {
+    "이준석": { "term": "이준석", "sentenceIndexes": [489, 494] },
+    "위원": { "term": "위원", "sentenceIndexes": [489, 494] }
+  },
+  "495": {},
+  "496": {
+    "이야기": { "term": "이야기", "sentenceIndexes": [496, 500] },
+    "의원": { "term": "의원", "sentenceIndexes": [496, 507] }
+  },
+  "497": {
+    "남성": { "term": "남성", "sentenceIndexes": [497, 499, 503] },
+    "사람": { "term": "사람", "sentenceIndexes": [497, 500] }
+  },
+  "498": { "가산점": { "term": "가산점", "sentenceIndexes": [498, 500, 502] } },
+  "499": {
+    "남성": { "term": "남성", "sentenceIndexes": [497, 499, 503] },
+    "징병": { "term": "징병", "sentenceIndexes": [499, 500] },
+    "제한": { "term": "제한", "sentenceIndexes": [499, 501] },
+    "지적": { "term": "지적", "sentenceIndexes": [499, 503] },
+    "노력": { "term": "노력", "sentenceIndexes": [499, 504] }
+  },
+  "500": {
+    "사람": { "term": "사람", "sentenceIndexes": [497, 500] },
+    "징병": { "term": "징병", "sentenceIndexes": [499, 500] },
+    "부족": { "term": "부족", "sentenceIndexes": [490, 500] },
+    "가산점": { "term": "가산점", "sentenceIndexes": [498, 500, 502] },
+    "이야기": { "term": "이야기", "sentenceIndexes": [496, 500] },
+    "복무": { "term": "복무", "sentenceIndexes": [500, 501, 502, 506] },
+    "기회": { "term": "기회", "sentenceIndexes": [500, 501, 506] },
+    "미국": { "term": "미국", "sentenceIndexes": [500, 504] },
+    "나라": { "term": "나라", "sentenceIndexes": [500, 505] }
+  },
+  "501": {
+    "여성": {
+      "term": "여성",
+      "sentenceIndexes": [490, 492, 501, 503, 504, 506, 511]
+    },
+    "복무": { "term": "복무", "sentenceIndexes": [500, 501, 502, 506] },
+    "기회": { "term": "기회", "sentenceIndexes": [500, 501, 506] },
+    "제한": { "term": "제한", "sentenceIndexes": [499, 501] },
+    "사병": {
+      "term": "사병",
+      "sentenceIndexes": [501, 502, 506, 511, 512, 514, 516, 524, 528, 531]
+    },
+    "자체": { "term": "자체", "sentenceIndexes": [501, 505] }
+  },
+  "502": {
+    "사병": {
+      "term": "사병",
+      "sentenceIndexes": [501, 502, 506, 511, 512, 514, 516, 524, 528, 531]
+    },
+    "복무": { "term": "복무", "sentenceIndexes": [500, 501, 502, 506] },
+    "가산점": { "term": "가산점", "sentenceIndexes": [498, 500, 502] }
+  },
+  "503": {
+    "지적": { "term": "지적", "sentenceIndexes": [499, 503] },
+    "남성": { "term": "남성", "sentenceIndexes": [497, 499, 503] },
+    "여성": {
+      "term": "여성",
+      "sentenceIndexes": [490, 492, 501, 503, 504, 506, 511]
+    },
+    "허용": { "term": "허용", "sentenceIndexes": [503, 504] }
+  },
+  "504": {
+    "미국": { "term": "미국", "sentenceIndexes": [500, 504] },
+    "여성": {
+      "term": "여성",
+      "sentenceIndexes": [490, 492, 501, 503, 504, 506, 511]
+    },
+    "허용": { "term": "허용", "sentenceIndexes": [503, 504] },
+    "노력": { "term": "노력", "sentenceIndexes": [499, 504] }
+  },
+  "505": {
+    "자체": { "term": "자체", "sentenceIndexes": [501, 505] },
+    "나라": { "term": "나라", "sentenceIndexes": [500, 505] }
+  },
+  "506": {
+    "여성": {
+      "term": "여성",
+      "sentenceIndexes": [490, 492, 501, 503, 504, 506, 511]
+    },
+    "복무": { "term": "복무", "sentenceIndexes": [500, 501, 502, 506] },
+    "기회": { "term": "기회", "sentenceIndexes": [500, 501, 506] },
+    "사병": {
+      "term": "사병",
+      "sentenceIndexes": [501, 502, 506, 511, 512, 514, 516, 524, 528, 531]
+    },
+    "장교": { "term": "장교", "sentenceIndexes": [506, 512, 514] }
+  },
+  "507": { "의원": { "term": "의원", "sentenceIndexes": [496, 507] } },
+  "508": {
+    "모병": { "term": "모병", "sentenceIndexes": [508, 509, 510, 515] }
+  },
+  "509": {
+    "모병": { "term": "모병", "sentenceIndexes": [508, 509, 510, 515] }
+  },
+  "510": {
+    "모병": { "term": "모병", "sentenceIndexes": [508, 509, 510, 515] }
+  },
+  "511": {
+    "여성": {
+      "term": "여성",
+      "sentenceIndexes": [490, 492, 501, 503, 504, 506, 511]
+    },
+    "사병": {
+      "term": "사병",
+      "sentenceIndexes": [501, 502, 506, 511, 512, 514, 516, 524, 528, 531]
+    }
+  },
+  "512": {
+    "사병": {
+      "term": "사병",
+      "sentenceIndexes": [501, 502, 506, 511, 512, 514, 516, 524, 528, 531]
+    },
+    "장교": { "term": "장교", "sentenceIndexes": [506, 512, 514] },
+    "부사": {
+      "term": "부사",
+      "sentenceIndexes": [512, 514, 524, 535, 536, 541]
+    },
+    "임금": { "term": "임금", "sentenceIndexes": [512, 519] }
+  },
+  "513": {
+    "차이": { "term": "차이", "sentenceIndexes": [513, 515] },
+    "호봉": { "term": "호봉", "sentenceIndexes": [513, 516, 524] }
+  },
+  "514": {
+    "사병": {
+      "term": "사병",
+      "sentenceIndexes": [501, 502, 506, 511, 512, 514, 516, 524, 528, 531]
+    },
+    "부사": {
+      "term": "부사",
+      "sentenceIndexes": [512, 514, 524, 535, 536, 541]
+    },
+    "장교": { "term": "장교", "sentenceIndexes": [506, 512, 514] },
+    "사명": { "term": "사명", "sentenceIndexes": [514, 515] }
+  },
+  "515": {
+    "모병": { "term": "모병", "sentenceIndexes": [508, 509, 510, 515] },
+    "차이": { "term": "차이", "sentenceIndexes": [513, 515] },
+    "사명": { "term": "사명", "sentenceIndexes": [514, 515] },
+    "책임": { "term": "책임", "sentenceIndexes": [515, 519] }
+  },
+  "516": {
+    "사병": {
+      "term": "사병",
+      "sentenceIndexes": [501, 502, 506, 511, 512, 514, 516, 524, 528, 531]
+    },
+    "호봉": { "term": "호봉", "sentenceIndexes": [513, 516, 524] }
+  },
+  "517": {
+    "전공": { "term": "전공", "sentenceIndexes": [517, 518] },
+    "군대": { "term": "군대", "sentenceIndexes": [517, 521, 528] }
+  },
+  "518": { "전공": { "term": "전공", "sentenceIndexes": [517, 518] } },
+  "519": {
+    "책임": { "term": "책임", "sentenceIndexes": [515, 519] },
+    "임금": { "term": "임금", "sentenceIndexes": [512, 519] },
+    "위험": { "term": "위험", "sentenceIndexes": [519, 520] }
+  },
+  "520": { "위험": { "term": "위험", "sentenceIndexes": [519, 520] } },
+  "521": {
+    "군대": { "term": "군대", "sentenceIndexes": [517, 521, 528] },
+    "논의": { "term": "논의", "sentenceIndexes": [521, 525] }
+  },
+  "522": {
+    "김종대": { "term": "김종대", "sentenceIndexes": [522, 527] },
+    "의원": { "term": "의원", "sentenceIndexes": [522, 527, 533, 542, 544] }
+  },
+  "523": {},
+  "524": {
+    "사병": {
+      "term": "사병",
+      "sentenceIndexes": [501, 502, 506, 511, 512, 514, 516, 524, 528, 531]
+    },
+    "호봉": { "term": "호봉", "sentenceIndexes": [513, 516, 524] },
+    "부사": {
+      "term": "부사",
+      "sentenceIndexes": [512, 514, 524, 535, 536, 541]
+    }
+  },
+  "525": { "논의": { "term": "논의", "sentenceIndexes": [521, 525] } },
+  "526": {},
+  "527": {
+    "김종대": { "term": "김종대", "sentenceIndexes": [522, 527] },
+    "의원": { "term": "의원", "sentenceIndexes": [522, 527, 533, 542, 544] }
+  },
+  "528": {
+    "군대": { "term": "군대", "sentenceIndexes": [517, 521, 528] },
+    "사병": {
+      "term": "사병",
+      "sentenceIndexes": [501, 502, 506, 511, 512, 514, 516, 524, 528, 531]
+    },
+    "용어": { "term": "용어", "sentenceIndexes": [528, 531, 533, 537] },
+    "폐지": { "term": "폐지", "sentenceIndexes": [528, 533] }
+  },
+  "529": { "용사": { "term": "용사", "sentenceIndexes": [529, 530, 531] } },
+  "530": { "용사": { "term": "용사", "sentenceIndexes": [529, 530, 531] } },
+  "531": {
+    "사병": {
+      "term": "사병",
+      "sentenceIndexes": [501, 502, 506, 511, 512, 514, 516, 524, 528, 531]
+    },
+    "용사": { "term": "용사", "sentenceIndexes": [529, 530, 531] },
+    "용어": { "term": "용어", "sentenceIndexes": [528, 531, 533, 537] },
+    "병사": { "term": "병사", "sentenceIndexes": [531, 532, 541] }
+  },
+  "532": { "병사": { "term": "병사", "sentenceIndexes": [531, 532, 541] } },
+  "533": {
+    "의원": { "term": "의원", "sentenceIndexes": [522, 527, 533, 542, 544] },
+    "용어": { "term": "용어", "sentenceIndexes": [528, 531, 533, 537] },
+    "폐지": { "term": "폐지", "sentenceIndexes": [528, 533] }
+  },
+  "534": {},
+  "535": {
+    "부사": {
+      "term": "부사",
+      "sentenceIndexes": [512, 514, 524, 535, 536, 541]
+    }
+  },
+  "536": {
+    "부사": {
+      "term": "부사",
+      "sentenceIndexes": [512, 514, 524, 535, 536, 541]
+    }
+  },
+  "537": {
+    "용어": { "term": "용어", "sentenceIndexes": [528, 531, 533, 537] },
+    "문제": { "term": "문제", "sentenceIndexes": [537, 547] }
+  },
+  "538": {},
+  "539": {},
+  "540": {
+    "여성": {
+      "term": "여성",
+      "sentenceIndexes": [540, 541, 543, 547, 555, 564]
+    }
+  },
+  "541": {
+    "여성": {
+      "term": "여성",
+      "sentenceIndexes": [540, 541, 543, 547, 555, 564]
+    },
+    "부사": {
+      "term": "부사",
+      "sentenceIndexes": [512, 514, 524, 535, 536, 541]
+    },
+    "병사": { "term": "병사", "sentenceIndexes": [531, 532, 541] },
+    "제도": { "term": "제도", "sentenceIndexes": [541, 544] }
+  },
+  "542": {
+    "의원": { "term": "의원", "sentenceIndexes": [522, 527, 533, 542, 544] }
+  },
+  "543": {
+    "여성": {
+      "term": "여성",
+      "sentenceIndexes": [540, 541, 543, 547, 555, 564]
+    }
+  },
+  "544": {
+    "제도": { "term": "제도", "sentenceIndexes": [541, 544] },
+    "의원": { "term": "의원", "sentenceIndexes": [522, 527, 533, 542, 544] },
+    "기회": { "term": "기회", "sentenceIndexes": [544, 547] },
+    "군가산": { "term": "군가산", "sentenceIndexes": [544, 547] },
+    "취지": { "term": "취지", "sentenceIndexes": [544, 553, 555] }
+  },
+  "545": {},
+  "546": {},
+  "547": {
+    "여성": {
+      "term": "여성",
+      "sentenceIndexes": [540, 541, 543, 547, 555, 564]
+    },
+    "기회": { "term": "기회", "sentenceIndexes": [544, 547] },
+    "문제": { "term": "문제", "sentenceIndexes": [537, 547] },
+    "군가산": { "term": "군가산", "sentenceIndexes": [544, 547] }
+  },
+  "548": {},
+  "549": {},
+  "550": {},
+  "551": {},
+  "552": {},
+  "553": { "취지": { "term": "취지", "sentenceIndexes": [544, 553, 555] } },
+  "554": {
+    "모병": { "term": "모병", "sentenceIndexes": [554, 555, 561, 564, 565] }
+  },
+  "555": {
+    "여성": {
+      "term": "여성",
+      "sentenceIndexes": [540, 541, 543, 547, 555, 564]
+    },
+    "모병": { "term": "모병", "sentenceIndexes": [554, 555, 561, 564, 565] },
+    "취지": { "term": "취지", "sentenceIndexes": [544, 553, 555] }
+  },
+  "556": {},
+  "557": {},
+  "558": {},
+  "559": { "진화": { "term": "진화", "sentenceIndexes": [559, 562] } },
+  "560": {},
+  "561": {
+    "모병": { "term": "모병", "sentenceIndexes": [554, 555, 561, 564, 565] }
+  },
+  "562": { "진화": { "term": "진화", "sentenceIndexes": [559, 562] } },
+  "563": {},
+  "564": {
+    "여성": {
+      "term": "여성",
+      "sentenceIndexes": [540, 541, 543, 547, 555, 564]
+    },
+    "모병": { "term": "모병", "sentenceIndexes": [554, 555, 561, 564, 565] }
+  },
+  "565": {
+    "모병": { "term": "모병", "sentenceIndexes": [554, 555, 561, 564, 565] },
+    "제도": { "term": "제도", "sentenceIndexes": [565, 566, 568] }
+  },
+  "566": { "제도": { "term": "제도", "sentenceIndexes": [565, 566, 568] } },
+  "567": {},
+  "568": {
+    "제도": { "term": "제도", "sentenceIndexes": [565, 566, 568] },
+    "미국": { "term": "미국", "sentenceIndexes": [568, 570, 571] }
+  },
+  "569": { "월급": { "term": "월급", "sentenceIndexes": [569, 570] } },
+  "570": {
+    "미국": { "term": "미국", "sentenceIndexes": [568, 570, 571] },
+    "월급": { "term": "월급", "sentenceIndexes": [569, 570] }
+  },
+  "571": { "미국": { "term": "미국", "sentenceIndexes": [568, 570, 571] } },
+  "572": { "시민": { "term": "시민", "sentenceIndexes": [572, 575] } },
+  "573": {},
+  "574": { "외국": { "term": "외국", "sentenceIndexes": [574, 576] } },
+  "575": { "시민": { "term": "시민", "sentenceIndexes": [572, 575] } },
+  "576": { "외국": { "term": "외국", "sentenceIndexes": [574, 576] } },
+  "577": {},
+  "578": {},
+  "579": {
+    "주제": { "term": "주제", "sentenceIndexes": [579, 580, 584] },
+    "부탁": { "term": "부탁", "sentenceIndexes": [579, 584] }
+  },
+  "580": { "주제": { "term": "주제", "sentenceIndexes": [579, 580, 584] } },
+  "581": { "예산부분": { "term": "예산부분", "sentenceIndexes": [581, 592] } },
+  "582": {
+    "여성": {
+      "term": "여성",
+      "sentenceIndexes": [582, 587, 588, 589, 591, 592]
+    }
+  },
+  "583": {},
+  "584": {
+    "주제": { "term": "주제", "sentenceIndexes": [579, 580, 584] },
+    "부탁": { "term": "부탁", "sentenceIndexes": [579, 584] }
+  },
+  "585": {},
+  "586": {},
+  "587": {
+    "여성": {
+      "term": "여성",
+      "sentenceIndexes": [582, 587, 588, 589, 591, 592]
+    }
+  },
+  "588": {
+    "여성": {
+      "term": "여성",
+      "sentenceIndexes": [582, 587, 588, 589, 591, 592]
+    },
+    "남녀": { "term": "남녀", "sentenceIndexes": [588, 592] }
+  },
+  "589": {
+    "여성": {
+      "term": "여성",
+      "sentenceIndexes": [582, 587, 588, 589, 591, 592]
+    }
+  },
+  "590": {},
+  "591": {
+    "여성": {
+      "term": "여성",
+      "sentenceIndexes": [582, 587, 588, 589, 591, 592]
+    },
+    "사람": { "term": "사람", "sentenceIndexes": [591, 597, 598] }
+  },
+  "592": {
+    "남녀": { "term": "남녀", "sentenceIndexes": [588, 592] },
+    "여성": {
+      "term": "여성",
+      "sentenceIndexes": [582, 587, 588, 589, 591, 592]
+    },
+    "예산부분": { "term": "예산부분", "sentenceIndexes": [581, 592] }
+  },
+  "593": {},
+  "594": {},
+  "595": {},
+  "596": {
+    "국방예산": {
+      "term": "국방예산",
+      "sentenceIndexes": [596, 603, 607, 611, 612]
+    }
+  },
+  "597": {
+    "사람": { "term": "사람", "sentenceIndexes": [591, 597, 598] },
+    "예산": { "term": "예산", "sentenceIndexes": [597, 598, 599, 600, 603] },
+    "추가": { "term": "추가", "sentenceIndexes": [597, 605] }
+  },
+  "598": {
+    "사람": { "term": "사람", "sentenceIndexes": [591, 597, 598] },
+    "예산": { "term": "예산", "sentenceIndexes": [597, 598, 599, 600, 603] },
+    "소요": { "term": "소요", "sentenceIndexes": [598, 600, 602] }
+  },
+  "599": {
+    "예산": { "term": "예산", "sentenceIndexes": [597, 598, 599, 600, 603] }
+  },
+  "600": {
+    "예산": { "term": "예산", "sentenceIndexes": [597, 598, 599, 600, 603] },
+    "소요": { "term": "소요", "sentenceIndexes": [598, 600, 602] },
+    "기준": { "term": "기준", "sentenceIndexes": [600, 602] },
+    "병사": { "term": "병사", "sentenceIndexes": [600, 608] }
+  },
+  "601": {},
+  "602": {
+    "소요": { "term": "소요", "sentenceIndexes": [598, 600, 602] },
+    "기준": { "term": "기준", "sentenceIndexes": [600, 602] }
+  },
+  "603": {
+    "국방예산": {
+      "term": "국방예산",
+      "sentenceIndexes": [596, 603, 607, 611, 612]
+    },
+    "예산": { "term": "예산", "sentenceIndexes": [597, 598, 599, 600, 603] },
+    "절감": { "term": "절감", "sentenceIndexes": [603, 604, 605] },
+    "부대": { "term": "부대", "sentenceIndexes": [603, 612] }
+  },
+  "604": { "절감": { "term": "절감", "sentenceIndexes": [603, 604, 605] } },
+  "605": {
+    "추가": { "term": "추가", "sentenceIndexes": [597, 605] },
+    "절감": { "term": "절감", "sentenceIndexes": [603, 604, 605] }
+  },
+  "606": {},
+  "607": {
+    "국방예산": {
+      "term": "국방예산",
+      "sentenceIndexes": [596, 603, 607, 611, 612]
+    }
+  },
+  "608": { "병사": { "term": "병사", "sentenceIndexes": [600, 608] } },
+  "609": {},
+  "610": {},
+  "611": {
+    "국방예산": {
+      "term": "국방예산",
+      "sentenceIndexes": [596, 603, 607, 611, 612]
+    }
+  },
+  "612": {
+    "국방예산": {
+      "term": "국방예산",
+      "sentenceIndexes": [596, 603, 607, 611, 612]
+    },
+    "부대": { "term": "부대", "sentenceIndexes": [603, 612] },
+    "비용": { "term": "비용", "sentenceIndexes": [612, 616] }
+  },
+  "613": { "조정": { "term": "조정", "sentenceIndexes": [613, 623] } },
+  "614": {},
+  "615": {
+    "인건": { "term": "인건", "sentenceIndexes": [615, 618, 622] },
+    "언급": { "term": "언급", "sentenceIndexes": [615, 622] },
+    "감군": { "term": "감군", "sentenceIndexes": [615, 625] }
+  },
+  "616": { "비용": { "term": "비용", "sentenceIndexes": [612, 616] } },
+  "617": {},
+  "618": { "인건": { "term": "인건", "sentenceIndexes": [615, 618, 622] } },
+  "619": {},
+  "620": {},
+  "621": {},
+  "622": {
+    "언급": { "term": "언급", "sentenceIndexes": [615, 622] },
+    "인건": { "term": "인건", "sentenceIndexes": [615, 618, 622] },
+    "국방": { "term": "국방", "sentenceIndexes": [622, 623] }
+  },
+  "623": {
+    "조정": { "term": "조정", "sentenceIndexes": [613, 623] },
+    "국방": { "term": "국방", "sentenceIndexes": [622, 623] }
+  },
+  "624": {
+    "독일": { "term": "독일", "sentenceIndexes": [624, 625, 627] },
+    "모병": { "term": "모병", "sentenceIndexes": [624, 625] }
+  },
+  "625": {
+    "독일": { "term": "독일", "sentenceIndexes": [624, 625, 627] },
+    "감군": { "term": "감군", "sentenceIndexes": [615, 625] },
+    "모병": { "term": "모병", "sentenceIndexes": [624, 625] }
+  },
+  "626": {},
+  "627": { "독일": { "term": "독일", "sentenceIndexes": [624, 625, 627] } },
+  "628": {},
+  "629": {},
+  "630": {},
+  "631": {},
+  "632": {},
+  "633": {},
+  "634": { "지적": { "term": "지적", "sentenceIndexes": [634, 635, 636] } },
+  "635": {
+    "지적": { "term": "지적", "sentenceIndexes": [634, 635, 636] },
+    "국방예산": { "term": "국방예산", "sentenceIndexes": [635, 637] },
+    "전차": { "term": "전차", "sentenceIndexes": [635, 639] },
+    "다음": { "term": "다음", "sentenceIndexes": [635, 644, 645, 646, 648] },
+    "인건": { "term": "인건", "sentenceIndexes": [635, 645] }
+  },
+  "636": { "지적": { "term": "지적", "sentenceIndexes": [634, 635, 636] } },
+  "637": { "국방예산": { "term": "국방예산", "sentenceIndexes": [635, 637] } },
+  "638": {},
+  "639": { "전차": { "term": "전차", "sentenceIndexes": [635, 639] } },
+  "640": {},
+  "641": {},
+  "642": {
+    "장비": { "term": "장비", "sentenceIndexes": [642, 644] },
+    "소요": { "term": "소요", "sentenceIndexes": [642, 644] }
+  },
+  "643": {},
+  "644": {
+    "장비": { "term": "장비", "sentenceIndexes": [642, 644] },
+    "다음": { "term": "다음", "sentenceIndexes": [635, 644, 645, 646, 648] },
+    "소요": { "term": "소요", "sentenceIndexes": [642, 644] }
+  },
+  "645": {
+    "다음": { "term": "다음", "sentenceIndexes": [635, 644, 645, 646, 648] },
+    "인건": { "term": "인건", "sentenceIndexes": [635, 645] }
+  },
+  "646": {
+    "다음": { "term": "다음", "sentenceIndexes": [635, 644, 645, 646, 648] }
+  },
+  "647": {
+    "국방": { "term": "국방", "sentenceIndexes": [647, 649, 658, 662] }
+  },
+  "648": {
+    "다음": { "term": "다음", "sentenceIndexes": [635, 644, 645, 646, 648] }
+  },
+  "649": {
+    "국방": { "term": "국방", "sentenceIndexes": [647, 649, 658, 662] },
+    "경영": { "term": "경영", "sentenceIndexes": [649, 651] },
+    "병력": { "term": "병력", "sentenceIndexes": [649, 653, 655] }
+  },
+  "650": {},
+  "651": { "경영": { "term": "경영", "sentenceIndexes": [649, 651] } },
+  "652": {},
+  "653": { "병력": { "term": "병력", "sentenceIndexes": [649, 653, 655] } },
+  "654": {},
+  "655": {
+    "병력": { "term": "병력", "sentenceIndexes": [649, 653, 655] },
+    "국민": { "term": "국민", "sentenceIndexes": [655, 658] },
+    "필요": { "term": "필요", "sentenceIndexes": [655, 661] }
+  },
+  "656": {},
+  "657": {},
+  "658": {
+    "국민": { "term": "국민", "sentenceIndexes": [655, 658] },
+    "국방": { "term": "국방", "sentenceIndexes": [647, 649, 658, 662] },
+    "상황": { "term": "상황", "sentenceIndexes": [658, 661] },
+    "국방예산": { "term": "국방예산", "sentenceIndexes": [658, 662, 665, 668] }
+  },
+  "659": {},
+  "660": {},
+  "661": {
+    "상황": { "term": "상황", "sentenceIndexes": [658, 661] },
+    "필요": { "term": "필요", "sentenceIndexes": [655, 661] }
+  },
+  "662": {
+    "국방예산": { "term": "국방예산", "sentenceIndexes": [658, 662, 665, 668] },
+    "국방": { "term": "국방", "sentenceIndexes": [647, 649, 658, 662] }
+  },
+  "663": { "절약": { "term": "절약", "sentenceIndexes": [663, 664, 665] } },
+  "664": { "절약": { "term": "절약", "sentenceIndexes": [663, 664, 665] } },
+  "665": {
+    "국방예산": { "term": "국방예산", "sentenceIndexes": [658, 662, 665, 668] },
+    "절약": { "term": "절약", "sentenceIndexes": [663, 664, 665] }
+  },
+  "666": {},
+  "667": {},
+  "668": {
+    "국방예산": { "term": "국방예산", "sentenceIndexes": [658, 662, 665, 668] }
+  },
+  "669": {},
+  "670": {},
+  "671": {},
+  "672": {
+    "제로콜라": { "term": "제로콜라", "sentenceIndexes": [672, 676] },
+    "절감": { "term": "절감", "sentenceIndexes": [672, 677] },
+    "비용": { "term": "비용", "sentenceIndexes": [672, 677] },
+    "효과": { "term": "효과", "sentenceIndexes": [672, 677, 681] }
+  },
+  "673": {},
+  "674": {},
+  "675": {},
+  "676": { "제로콜라": { "term": "제로콜라", "sentenceIndexes": [672, 676] } },
+  "677": {
+    "절감": { "term": "절감", "sentenceIndexes": [672, 677] },
+    "비용": { "term": "비용", "sentenceIndexes": [672, 677] },
+    "효과": { "term": "효과", "sentenceIndexes": [672, 677, 681] }
+  },
+  "678": {},
+  "679": {},
+  "680": {
+    "모병": {
+      "term": "모병",
+      "sentenceIndexes": [680, 691, 695, 706, 712, 717, 725, 736, 737]
+    }
+  },
+  "681": { "효과": { "term": "효과", "sentenceIndexes": [672, 677, 681] } },
+  "682": {
+    "징병": { "term": "징병", "sentenceIndexes": [682, 683, 694] },
+    "체제": { "term": "체제", "sentenceIndexes": [682, 683] },
+    "유지": { "term": "유지", "sentenceIndexes": [682, 683, 694, 696, 702] },
+    "국방": { "term": "국방", "sentenceIndexes": [682, 683] },
+    "약화": { "term": "약화", "sentenceIndexes": [682, 683] }
+  },
+  "683": {
+    "징병": { "term": "징병", "sentenceIndexes": [682, 683, 694] },
+    "체제": { "term": "체제", "sentenceIndexes": [682, 683] },
+    "유지": { "term": "유지", "sentenceIndexes": [682, 683, 694, 696, 702] },
+    "국방": { "term": "국방", "sentenceIndexes": [682, 683] },
+    "약화": { "term": "약화", "sentenceIndexes": [682, 683] },
+    "교수": { "term": "교수", "sentenceIndexes": [683, 685, 695, 705] }
+  },
+  "684": {},
+  "685": {
+    "교수": { "term": "교수", "sentenceIndexes": [683, 685, 695, 705] },
+    "마무리발언": { "term": "마무리발언", "sentenceIndexes": [685, 687, 692] },
+    "위원": { "term": "위원", "sentenceIndexes": [685, 693, 700] }
+  },
+  "686": {},
+  "687": {
+    "마무리발언": { "term": "마무리발언", "sentenceIndexes": [685, 687, 692] },
+    "의견": { "term": "의견", "sentenceIndexes": [687, 688] }
+  },
+  "688": { "의견": { "term": "의견", "sentenceIndexes": [687, 688] } },
+  "689": {},
+  "690": {},
+  "691": {
+    "모병": {
+      "term": "모병",
+      "sentenceIndexes": [680, 691, 695, 706, 712, 717, 725, 736, 737]
+    },
+    "군대": { "term": "군대", "sentenceIndexes": [691, 696] },
+    "중요": { "term": "중요", "sentenceIndexes": [691, 697, 707] }
+  },
+  "692": {
+    "마무리발언": { "term": "마무리발언", "sentenceIndexes": [685, 687, 692] }
+  },
+  "693": { "위원": { "term": "위원", "sentenceIndexes": [685, 693, 700] } },
+  "694": {
+    "유지": { "term": "유지", "sentenceIndexes": [682, 683, 694, 696, 702] },
+    "징병": { "term": "징병", "sentenceIndexes": [682, 683, 694] }
+  },
+  "695": {
+    "모병": {
+      "term": "모병",
+      "sentenceIndexes": [680, 691, 695, 706, 712, 717, 725, 736, 737]
+    },
+    "교수": { "term": "교수", "sentenceIndexes": [683, 685, 695, 705] },
+    "논의": { "term": "논의", "sentenceIndexes": [695, 697] }
+  },
+  "696": {
+    "군대": { "term": "군대", "sentenceIndexes": [691, 696] },
+    "유지": { "term": "유지", "sentenceIndexes": [682, 683, 694, 696, 702] }
+  },
+  "697": {
+    "중요": { "term": "중요", "sentenceIndexes": [691, 697, 707] },
+    "논의": { "term": "논의", "sentenceIndexes": [695, 697] }
+  },
+  "698": { "국민": { "term": "국민", "sentenceIndexes": [698, 706, 717] } },
+  "699": {},
+  "700": { "위원": { "term": "위원", "sentenceIndexes": [685, 693, 700] } },
+  "701": { "사고": { "term": "사고", "sentenceIndexes": [701, 706] } },
+  "702": {
+    "유지": { "term": "유지", "sentenceIndexes": [682, 683, 694, 696, 702] }
+  },
+  "703": {},
+  "704": {},
+  "705": {
+    "교수": { "term": "교수", "sentenceIndexes": [683, 685, 695, 705] }
+  },
+  "706": {
+    "국민": { "term": "국민", "sentenceIndexes": [698, 706, 717] },
+    "모병": {
+      "term": "모병",
+      "sentenceIndexes": [680, 691, 695, 706, 712, 717, 725, 736, 737]
+    },
+    "사고": { "term": "사고", "sentenceIndexes": [701, 706] }
+  },
+  "707": { "중요": { "term": "중요", "sentenceIndexes": [691, 697, 707] } },
+  "708": {},
+  "709": { "병사": { "term": "병사", "sentenceIndexes": [709, 713] } },
+  "710": {
+    "자율": { "term": "자율", "sentenceIndexes": [710, 714, 720, 723, 725] },
+    "책임": { "term": "책임", "sentenceIndexes": [710, 714, 720, 723, 725] }
+  },
+  "711": {},
+  "712": {
+    "모병": {
+      "term": "모병",
+      "sentenceIndexes": [680, 691, 695, 706, 712, 717, 725, 736, 737]
+    }
+  },
+  "713": { "병사": { "term": "병사", "sentenceIndexes": [709, 713] } },
+  "714": {
+    "자율": { "term": "자율", "sentenceIndexes": [710, 714, 720, 723, 725] },
+    "책임": { "term": "책임", "sentenceIndexes": [710, 714, 720, 723, 725] }
+  },
+  "715": {
+    "다음": { "term": "다음", "sentenceIndexes": [715, 717, 726, 729] }
+  },
+  "716": {
+    "북핵": { "term": "북핵", "sentenceIndexes": [716, 717] },
+    "문제": { "term": "문제", "sentenceIndexes": [716, 717, 726] }
+  },
+  "717": {
+    "모병": {
+      "term": "모병",
+      "sentenceIndexes": [680, 691, 695, 706, 712, 717, 725, 736, 737]
+    },
+    "북핵": { "term": "북핵", "sentenceIndexes": [716, 717] },
+    "문제": { "term": "문제", "sentenceIndexes": [716, 717, 726] },
+    "다음": { "term": "다음", "sentenceIndexes": [715, 717, 726, 729] },
+    "국민": { "term": "국민", "sentenceIndexes": [698, 706, 717] }
+  },
+  "718": {},
+  "719": {},
+  "720": {
+    "자율": { "term": "자율", "sentenceIndexes": [710, 714, 720, 723, 725] },
+    "책임": { "term": "책임", "sentenceIndexes": [710, 714, 720, 723, 725] }
+  },
+  "721": { "진화": { "term": "진화", "sentenceIndexes": [721, 725] } },
+  "722": {},
+  "723": {
+    "자율": { "term": "자율", "sentenceIndexes": [710, 714, 720, 723, 725] },
+    "책임": { "term": "책임", "sentenceIndexes": [710, 714, 720, 723, 725] },
+    "직업": { "term": "직업", "sentenceIndexes": [723, 732] }
+  },
+  "724": {},
+  "725": {
+    "자율": { "term": "자율", "sentenceIndexes": [710, 714, 720, 723, 725] },
+    "책임": { "term": "책임", "sentenceIndexes": [710, 714, 720, 723, 725] },
+    "진화": { "term": "진화", "sentenceIndexes": [721, 725] },
+    "모병": {
+      "term": "모병",
+      "sentenceIndexes": [680, 691, 695, 706, 712, 717, 725, 736, 737]
+    }
+  },
+  "726": {
+    "다음": { "term": "다음", "sentenceIndexes": [715, 717, 726, 729] },
+    "문제": { "term": "문제", "sentenceIndexes": [716, 717, 726] },
+    "청년": { "term": "청년", "sentenceIndexes": [726, 727, 732] }
+  },
+  "727": { "청년": { "term": "청년", "sentenceIndexes": [726, 727, 732] } },
+  "728": {},
+  "729": {
+    "다음": { "term": "다음", "sentenceIndexes": [715, 717, 726, 729] }
+  },
+  "730": {},
+  "731": {},
+  "732": {
+    "직업": { "term": "직업", "sentenceIndexes": [723, 732] },
+    "청년": { "term": "청년", "sentenceIndexes": [726, 727, 732] }
+  },
+  "733": {
+    "변화": { "term": "변화", "sentenceIndexes": [733, 736] },
+    "군대": { "term": "군대", "sentenceIndexes": [733, 739] }
+  },
+  "734": {},
+  "735": {},
+  "736": {
+    "모병": {
+      "term": "모병",
+      "sentenceIndexes": [680, 691, 695, 706, 712, 717, 725, 736, 737]
+    },
+    "변화": { "term": "변화", "sentenceIndexes": [733, 736] }
+  },
+  "737": {
+    "모병": {
+      "term": "모병",
+      "sentenceIndexes": [680, 691, 695, 706, 712, 717, 725, 736, 737]
+    }
+  },
+  "738": {},
+  "739": { "군대": { "term": "군대", "sentenceIndexes": [733, 739] } },
+  "740": { "토론": { "term": "토론", "sentenceIndexes": [740, 748, 749] } },
+  "741": { "감사": { "term": "감사", "sentenceIndexes": [741, 748] } },
+  "742": { "공항": { "term": "공항", "sentenceIndexes": [742, 743] } },
+  "743": {
+    "공항": { "term": "공항", "sentenceIndexes": [742, 743] },
+    "남성": { "term": "남성", "sentenceIndexes": [743, 744] }
+  },
+  "744": {
+    "남성": { "term": "남성", "sentenceIndexes": [743, 744] },
+    "군인": { "term": "군인", "sentenceIndexes": [744, 746] }
+  },
+  "745": {},
+  "746": { "군인": { "term": "군인", "sentenceIndexes": [744, 746] } },
+  "747": {},
+  "748": {
+    "토론": { "term": "토론", "sentenceIndexes": [740, 748, 749] },
+    "감사": { "term": "감사", "sentenceIndexes": [741, 748] }
+  },
+  "749": { "토론": { "term": "토론", "sentenceIndexes": [740, 748, 749] } },
+  "750": {}
+}

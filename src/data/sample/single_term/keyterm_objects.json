@@ -1,0 +1,6 @@
+﻿[
+  { "name": "기본", "frequency": 4, "index": 0 },
+  { "name": "소득", "frequency": 9, "index": 4 },
+  { "name": "안심", "frequency": 4, "index": 5 },
+  { "name": "효과", "frequency": 5, "index": 10 }
+]

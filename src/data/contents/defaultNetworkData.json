@@ -1,0 +1,1865 @@
+{
+    "nodes": [
+        {
+            "id": "id-미세먼지",
+            "label": "미세먼지",
+            "count": 2,
+            "size": 184,
+            "font": {
+                "size": 184
+            }
+        },
+        {
+            "id": "id-중국",
+            "label": "중국",
+            "count": 117,
+            "size": 49,
+            "font": {
+                "size": 49
+            }
+        },
+        {
+            "id": "id-환경부",
+            "label": "환경부",
+            "count": 1,
+            "size": 32,
+            "font": {
+                "size": 32
+            }
+        },
+        {
+            "id": "id-환경",
+            "label": "환경",
+            "count": 11,
+            "size": 25,
+            "font": {
+                "size": 25
+            }
+        },
+        {
+            "id": "id-배출",
+            "label": "배출",
+            "count": 33,
+            "size": 25,
+            "font": {
+                "size": 25
+            }
+        },
+        {
+            "id": "id-대책",
+            "label": "대책",
+            "count": 28,
+            "size": 14,
+            "font": {
+                "size": 14
+            }
+        },
+        {
+            "id": "id-국내",
+            "label": "국내",
+            "count": 16,
+            "size": 14,
+            "font": {
+                "size": 14
+            }
+        },
+        {
+            "id": "id-정부",
+            "label": "정부",
+            "count": 30,
+            "size": 13,
+            "font": {
+                "size": 13
+            }
+        },
+        {
+            "id": "id-우리나라",
+            "label": "우리나라",
+            "count": 1,
+            "size": 13,
+            "font": {
+                "size": 13
+            }
+        },
+        {
+            "id": "id-정책",
+            "label": "정책",
+            "count": 30,
+            "size": 13,
+            "font": {
+                "size": 13
+            }
+        },
+        {
+            "id": "id-에너지",
+            "label": "에너지",
+            "count": 16,
+            "size": 13,
+            "font": {
+                "size": 13
+            }
+        },
+        {
+            "id": "id-영향",
+            "label": "영향",
+            "count": 27,
+            "size": 12,
+            "font": {
+                "size": 12
+            }
+        },
+        {
+            "id": "id-연구",
+            "label": "연구",
+            "count": 18,
+            "size": 12,
+            "font": {
+                "size": 12
+            }
+        },
+        {
+            "id": "id-대기",
+            "label": "대기",
+            "count": 8,
+            "size": 12,
+            "font": {
+                "size": 12
+            }
+        },
+        {
+            "id": "id-위원회",
+            "label": "위원회",
+            "count": 1,
+            "size": 11,
+            "font": {
+                "size": 11
+            }
+        },
+        {
+            "id": "id-국민",
+            "label": "국민",
+            "count": 28,
+            "size": 11,
+            "font": {
+                "size": 11
+            }
+        },
+        {
+            "id": "id-발전소",
+            "label": "발전소",
+            "count": 1,
+            "size": 11,
+            "font": {
+                "size": 11
+            }
+        },
+        {
+            "id": "id-초미세먼지",
+            "label": "초미세먼지",
+            "count": 3,
+            "size": 10,
+            "font": {
+                "size": 10
+            }
+        },
+        {
+            "id": "id-석탄",
+            "label": "석탄",
+            "count": 28,
+            "size": 10,
+            "font": {
+                "size": 10
+            }
+        },
+        {
+            "id": "id-비중",
+            "label": "비중",
+            "count": 20,
+            "size": 10,
+            "font": {
+                "size": 10
+            }
+        },
+        {
+            "id": "id-원전",
+            "label": "원전",
+            "count": 34,
+            "size": 10,
+            "font": {
+                "size": 10
+            }
+        },
+        {
+            "id": "id-시작",
+            "label": "시작",
+            "count": 24,
+            "size": 9,
+            "font": {
+                "size": 9
+            }
+        },
+        {
+            "id": "id-요인",
+            "label": "요인",
+            "count": 17,
+            "size": 9,
+            "font": {
+                "size": 9
+            }
+        },
+        {
+            "id": "id-정도",
+            "label": "정도",
+            "count": 29,
+            "size": 8,
+            "font": {
+                "size": 8
+            }
+        },
+        {
+            "id": "id-청정에너지",
+            "label": "청정에너지",
+            "count": 2,
+            "size": 8,
+            "font": {
+                "size": 8
+            }
+        },
+        {
+            "id": "id-오염",
+            "label": "오염",
+            "count": 11,
+            "size": 8,
+            "font": {
+                "size": 8
+            }
+        },
+        {
+            "id": "id-기여도",
+            "label": "기여도",
+            "count": 1,
+            "size": 8,
+            "font": {
+                "size": 8
+            }
+        },
+        {
+            "id": "id-경유",
+            "label": "경유",
+            "count": 32,
+            "size": 8,
+            "font": {
+                "size": 8
+            }
+        },
+        {
+            "id": "id-친환경",
+            "label": "친환경",
+            "count": 1,
+            "size": 8,
+            "font": {
+                "size": 8
+            }
+        },
+        {
+            "id": "id-발전",
+            "label": "발전",
+            "count": 15,
+            "size": 8,
+            "font": {
+                "size": 8
+            }
+        },
+        {
+            "id": "id-발생",
+            "label": "발생",
+            "count": 14,
+            "size": 7,
+            "font": {
+                "size": 7
+            }
+        },
+        {
+            "id": "id-저감",
+            "label": "저감",
+            "count": 11,
+            "size": 7,
+            "font": {
+                "size": 7
+            }
+        },
+        {
+            "id": "id-기가",
+            "label": "기가",
+            "count": 3,
+            "size": 7,
+            "font": {
+                "size": 7
+            }
+        },
+        {
+            "id": "id-차량",
+            "label": "차량",
+            "count": 15,
+            "size": 6,
+            "font": {
+                "size": 6
+            }
+        },
+        {
+            "id": "id-공기",
+            "label": "공기",
+            "count": 14,
+            "size": 6,
+            "font": {
+                "size": 6
+            }
+        },
+        {
+            "id": "id-매연",
+            "label": "매연",
+            "count": 17,
+            "size": 6,
+            "font": {
+                "size": 6
+            }
+        },
+        {
+            "id": "id-상황",
+            "label": "상황",
+            "count": 13,
+            "size": 6,
+            "font": {
+                "size": 6
+            }
+        },
+        {
+            "id": "id-얼마",
+            "label": "얼마",
+            "count": 7,
+            "size": 6,
+            "font": {
+                "size": 6
+            }
+        },
+        {
+            "id": "id-화력",
+            "label": "화력",
+            "count": 15,
+            "size": 6,
+            "font": {
+                "size": 6
+            }
+        },
+        {
+            "id": "id-회의",
+            "label": "회의",
+            "count": 6,
+            "size": 6,
+            "font": {
+                "size": 6
+            }
+        },
+        {
+            "id": "id-배출량",
+            "label": "배출량",
+            "count": 1,
+            "size": 6,
+            "font": {
+                "size": 6
+            }
+        },
+        {
+            "id": "id-경유차",
+            "label": "경유차",
+            "count": 1,
+            "size": 6,
+            "font": {
+                "size": 6
+            }
+        },
+        {
+            "id": "id-농도",
+            "label": "농도",
+            "count": 15,
+            "size": 5,
+            "font": {
+                "size": 5
+            }
+        },
+        {
+            "id": "id-물질",
+            "label": "물질",
+            "count": 8,
+            "size": 5,
+            "font": {
+                "size": 5
+            }
+        },
+        {
+            "id": "id-산업",
+            "label": "산업",
+            "count": 12,
+            "size": 5,
+            "font": {
+                "size": 5
+            }
+        },
+        {
+            "id": "id-원인",
+            "label": "원인",
+            "count": 17,
+            "size": 5,
+            "font": {
+                "size": 5
+            }
+        },
+        {
+            "id": "id-국외",
+            "label": "국외",
+            "count": 13,
+            "size": 5,
+            "font": {
+                "size": 5
+            }
+        },
+        {
+            "id": "id-문재인",
+            "label": "문재인",
+            "count": 13,
+            "size": 5,
+            "font": {
+                "size": 5
+            }
+        },
+        {
+            "id": "id-장관",
+            "label": "장관",
+            "count": 13,
+            "size": 5,
+            "font": {
+                "size": 5
+            }
+        },
+        {
+            "id": "id-나라",
+            "label": "나라",
+            "count": 4,
+            "size": 5,
+            "font": {
+                "size": 5
+            }
+        },
+        {
+            "id": "id-의제",
+            "label": "의제",
+            "count": 16,
+            "size": 5,
+            "font": {
+                "size": 5
+            }
+        },
+        {
+            "id": "id-회담",
+            "label": "회담",
+            "count": 4,
+            "size": 5,
+            "font": {
+                "size": 5
+            }
+        },
+        {
+            "id": "id-정상",
+            "label": "정상",
+            "count": 1,
+            "size": 5,
+            "font": {
+                "size": 5
+            }
+        },
+        {
+            "id": "id-국민들",
+            "label": "국민들",
+            "count": 1,
+            "size": 5,
+            "font": {
+                "size": 5
+            }
+        },
+        {
+            "id": "id-특별",
+            "label": "특별",
+            "count": 8,
+            "size": 4,
+            "font": {
+                "size": 4
+            }
+        },
+        {
+            "id": "id-조치",
+            "label": "조치",
+            "count": 13,
+            "size": 4,
+            "font": {
+                "size": 4
+            }
+        },
+        {
+            "id": "id-해결",
+            "label": "해결",
+            "count": 17,
+            "size": 4,
+            "font": {
+                "size": 4
+            }
+        },
+        {
+            "id": "id-서울",
+            "label": "서울",
+            "count": 12,
+            "size": 4,
+            "font": {
+                "size": 4
+            }
+        },
+        {
+            "id": "id-이동",
+            "label": "이동",
+            "count": 6,
+            "size": 4,
+            "font": {
+                "size": 4
+            }
+        },
+        {
+            "id": "id-생산",
+            "label": "생산",
+            "count": 8,
+            "size": 4,
+            "font": {
+                "size": 4
+            }
+        },
+        {
+            "id": "id-청정",
+            "label": "청정",
+            "count": 1,
+            "size": 4,
+            "font": {
+                "size": 4
+            }
+        },
+        {
+            "id": "id-10",
+            "label": "10",
+            "count": 6,
+            "size": 3,
+            "font": {
+                "size": 3
+            }
+        },
+        {
+            "id": "id-국회",
+            "label": "국회",
+            "count": 6,
+            "size": 3,
+            "font": {
+                "size": 3
+            }
+        },
+        {
+            "id": "id-경험",
+            "label": "경험",
+            "count": 10,
+            "size": 3,
+            "font": {
+                "size": 3
+            }
+        },
+        {
+            "id": "id-노력",
+            "label": "노력",
+            "count": 9,
+            "size": 3,
+            "font": {
+                "size": 3
+            }
+        },
+        {
+            "id": "id-소비",
+            "label": "소비",
+            "count": 9,
+            "size": 3,
+            "font": {
+                "size": 3
+            }
+        },
+        {
+            "id": "id-지대",
+            "label": "지대",
+            "count": 4,
+            "size": 3,
+            "font": {
+                "size": 3
+            }
+        },
+        {
+            "id": "id-협력",
+            "label": "협력",
+            "count": 10,
+            "size": 3,
+            "font": {
+                "size": 3
+            }
+        },
+        {
+            "id": "id-공동",
+            "label": "공동",
+            "count": 11,
+            "size": 3,
+            "font": {
+                "size": 3
+            }
+        },
+        {
+            "id": "id-가야",
+            "label": "가야",
+            "count": 5,
+            "size": 3,
+            "font": {
+                "size": 3
+            }
+        },
+        {
+            "id": "id-모두",
+            "label": "모두",
+            "count": 7,
+            "size": 3,
+            "font": {
+                "size": 3
+            }
+        },
+        {
+            "id": "id-재난",
+            "label": "재난",
+            "count": 10,
+            "size": 2,
+            "font": {
+                "size": 2
+            }
+        },
+        {
+            "id": "id-규정",
+            "label": "규정",
+            "count": 5,
+            "size": 2,
+            "font": {
+                "size": 2
+            }
+        },
+        {
+            "id": "id-공장",
+            "label": "공장",
+            "count": 8,
+            "size": 2,
+            "font": {
+                "size": 2
+            }
+        },
+        {
+            "id": "id-비상",
+            "label": "비상",
+            "count": 5,
+            "size": 2,
+            "font": {
+                "size": 2
+            }
+        },
+        {
+            "id": "id-측면",
+            "label": "측면",
+            "count": 6,
+            "size": 2,
+            "font": {
+                "size": 2
+            }
+        },
+        {
+            "id": "id-대통령",
+            "label": "대통령",
+            "count": 10,
+            "size": 2,
+            "font": {
+                "size": 2
+            }
+        },
+        {
+            "id": "id-평균",
+            "label": "평균",
+            "count": 4,
+            "size": 2,
+            "font": {
+                "size": 2
+            }
+        },
+        {
+            "id": "id-자체",
+            "label": "자체",
+            "count": 7,
+            "size": 2,
+            "font": {
+                "size": 2
+            }
+        },
+        {
+            "id": "id-논의",
+            "label": "논의",
+            "count": 9,
+            "size": 2,
+            "font": {
+                "size": 2
+            }
+        },
+        {
+            "id": "id-노후",
+            "label": "노후",
+            "count": 12,
+            "size": 2,
+            "font": {
+                "size": 2
+            }
+        },
+        {
+            "id": "id-탈원전",
+            "label": "탈원전",
+            "count": 1,
+            "size": 2,
+            "font": {
+                "size": 2
+            }
+        },
+        {
+            "id": "id-위원",
+            "label": "위원",
+            "count": 1,
+            "size": 1,
+            "font": {
+                "size": 1
+            }
+        },
+        {
+            "id": "id-센터",
+            "label": "센터",
+            "count": 7,
+            "size": 1,
+            "font": {
+                "size": 1
+            }
+        },
+        {
+            "id": "id-사회",
+            "label": "사회",
+            "count": 4,
+            "size": 1,
+            "font": {
+                "size": 1
+            }
+        },
+        {
+            "id": "id-지자체",
+            "label": "지자체",
+            "count": 1,
+            "size": 1,
+            "font": {
+                "size": 1
+            }
+        },
+        {
+            "id": "id-지역",
+            "label": "지역",
+            "count": 10,
+            "size": 1,
+            "font": {
+                "size": 1
+            }
+        },
+        {
+            "id": "id-부제",
+            "label": "부제",
+            "count": 7,
+            "size": 1,
+            "font": {
+                "size": 1
+            }
+        },
+        {
+            "id": "id-과거",
+            "label": "과거",
+            "count": 5,
+            "size": 1,
+            "font": {
+                "size": 1
+            }
+        },
+        {
+            "id": "id-대표",
+            "label": "대표",
+            "count": 5,
+            "size": 1,
+            "font": {
+                "size": 1
+            }
+        },
+        {
+            "id": "id-제한",
+            "label": "제한",
+            "count": 5,
+            "size": 1,
+            "font": {
+                "size": 1
+            }
+        },
+        {
+            "id": "id-뉴스",
+            "label": "뉴스",
+            "count": 11,
+            "size": 1,
+            "font": {
+                "size": 1
+            }
+        },
+        {
+            "id": "id-마이크로",
+            "label": "마이크로",
+            "count": 3,
+            "size": 1,
+            "font": {
+                "size": 1
+            }
+        },
+        {
+            "id": "id-미터",
+            "label": "미터",
+            "count": 1,
+            "size": 1,
+            "font": {
+                "size": 1
+            }
+        },
+        {
+            "id": "id-보고서",
+            "label": "보고서",
+            "count": 6,
+            "size": 1,
+            "font": {
+                "size": 1
+            }
+        },
+        {
+            "id": "id-주석",
+            "label": "주석",
+            "count": 4,
+            "size": 1,
+            "font": {
+                "size": 1
+            }
+        },
+        {
+            "id": "id-전환",
+            "label": "전환",
+            "count": 5,
+            "size": 1,
+            "font": {
+                "size": 1
+            }
+        },
+        {
+            "id": "id-장기",
+            "label": "장기",
+            "count": 6,
+            "size": 1,
+            "font": {
+                "size": 1
+            }
+        },
+        {
+            "id": "id-가짜",
+            "label": "가짜",
+            "count": 11,
+            "size": 1,
+            "font": {
+                "size": 1
+            }
+        },
+        {
+            "id": "id-가동",
+            "label": "가동",
+            "count": 10,
+            "size": 1,
+            "font": {
+                "size": 1
+            }
+        },
+        {
+            "id": "id-발의",
+            "label": "발의",
+            "count": 4,
+            "size": 1,
+            "font": {
+                "size": 1
+            }
+        },
+        {
+            "id": "id-운행",
+            "label": "운행",
+            "count": 6,
+            "size": 1,
+            "font": {
+                "size": 1
+            }
+        },
+        {
+            "id": "id-장치",
+            "label": "장치",
+            "count": 4,
+            "size": 1,
+            "font": {
+                "size": 1
+            }
+        },
+        {
+            "id": "id-화력발전소",
+            "label": "화력발전소",
+            "count": 3,
+            "size": 1,
+            "font": {
+                "size": 1
+            }
+        },
+        {
+            "id": "id-자유",
+            "label": "자유",
+            "count": 3,
+            "size": 0,
+            "font": {
+                "size": 0
+            }
+        },
+        {
+            "id": "id-한국당",
+            "label": "한국당",
+            "count": 2,
+            "size": 0,
+            "font": {
+                "size": 0
+            }
+        },
+        {
+            "id": "id-예산",
+            "label": "예산",
+            "count": 3,
+            "size": 0,
+            "font": {
+                "size": 0
+            }
+        },
+        {
+            "id": "id-투입",
+            "label": "투입",
+            "count": 3,
+            "size": 0,
+            "font": {
+                "size": 0
+            }
+        },
+        {
+            "id": "id-청정기",
+            "label": "청정기",
+            "count": 4,
+            "size": 0,
+            "font": {
+                "size": 0
+            }
+        }
+    ],
+    "edges": [
+        {
+            "from": "id-미세먼지",
+            "to": "id-중국",
+            "width": 25.000000000000085,
+            "count": 1
+        },
+        {
+            "from": "id-미세먼지",
+            "to": "id-정부",
+            "width": 19.60000000000001,
+            "count": 1
+        },
+        {
+            "from": "id-미세먼지",
+            "to": "id-초미세먼지",
+            "width": 17.59999999999998,
+            "count": 1
+        },
+        {
+            "from": "id-대책",
+            "to": "id-미세먼지",
+            "width": 16.399999999999963,
+            "count": 1
+        },
+        {
+            "from": "id-미세먼지",
+            "to": "id-배출",
+            "width": 15.79999999999996,
+            "count": 1
+        },
+        {
+            "from": "id-영향",
+            "to": "id-중국",
+            "width": 15.399999999999977,
+            "count": 9
+        },
+        {
+            "from": "id-발전소",
+            "to": "id-화력",
+            "width": 15.199999999999982,
+            "count": 10
+        },
+        {
+            "from": "id-장관",
+            "to": "id-환경부",
+            "width": 13.999999999999975,
+            "count": 7
+        },
+        {
+            "from": "id-환경",
+            "to": "id-환경부",
+            "width": 13.599999999999968,
+            "count": 1
+        },
+        {
+            "from": "id-가짜",
+            "to": "id-뉴스",
+            "width": 12.599999999999987,
+            "count": 9
+        },
+        {
+            "from": "id-대통령",
+            "to": "id-문재인",
+            "width": 12.399999999999984,
+            "count": 8
+        },
+        {
+            "from": "id-대책",
+            "to": "id-위원회",
+            "width": 11.399999999999988,
+            "count": 8
+        },
+        {
+            "from": "id-위원회",
+            "to": "id-특별",
+            "width": 11.399999999999988,
+            "count": 8
+        },
+        {
+            "from": "id-발전",
+            "to": "id-화력",
+            "width": 10.199999999999985,
+            "count": 6
+        },
+        {
+            "from": "id-발전",
+            "to": "id-석탄",
+            "width": 9.999999999999986,
+            "count": 6
+        },
+        {
+            "from": "id-나라",
+            "to": "id-우리나라",
+            "width": 9.599999999999982,
+            "count": 1
+        },
+        {
+            "from": "id-정부",
+            "to": "id-중국",
+            "width": 9.39999999999998,
+            "count": 4
+        },
+        {
+            "from": "id-요인",
+            "to": "id-중국",
+            "width": 9.299999999999985,
+            "count": 5
+        },
+        {
+            "from": "id-비중",
+            "to": "id-에너지",
+            "width": 9.199999999999989,
+            "count": 6
+        },
+        {
+            "from": "id-중국",
+            "to": "id-환경부",
+            "width": 9.199999999999983,
+            "count": 1
+        },
+        {
+            "from": "id-국민",
+            "to": "id-국민들",
+            "width": 8.599999999999985,
+            "count": 1
+        },
+        {
+            "from": "id-저감",
+            "to": "id-조치",
+            "width": 8.499999999999991,
+            "count": 6
+        },
+        {
+            "from": "id-문재인",
+            "to": "id-정부",
+            "width": 8.099999999999989,
+            "count": 5
+        },
+        {
+            "from": "id-정부",
+            "to": "id-정책",
+            "width": 7.899999999999986,
+            "count": 4
+        },
+        {
+            "from": "id-부제",
+            "to": "id-차량",
+            "width": 7.799999999999994,
+            "count": 6
+        },
+        {
+            "from": "id-정상",
+            "to": "id-회담",
+            "width": 7.3999999999999915,
+            "count": 5
+        },
+        {
+            "from": "id-석탄",
+            "to": "id-화력",
+            "width": 7.299999999999988,
+            "count": 4
+        },
+        {
+            "from": "id-물질",
+            "to": "id-오염",
+            "width": 7.199999999999992,
+            "count": 5
+        },
+        {
+            "from": "id-국외",
+            "to": "id-요인",
+            "width": 6.999999999999993,
+            "count": 5
+        },
+        {
+            "from": "id-발전",
+            "to": "id-발전소",
+            "width": 6.999999999999992,
+            "count": 1
+        },
+        {
+            "from": "id-의제",
+            "to": "id-정상",
+            "width": 6.999999999999989,
+            "count": 4
+        },
+        {
+            "from": "id-에너지",
+            "to": "id-청정",
+            "width": 6.699999999999994,
+            "count": 5
+        },
+        {
+            "from": "id-장관",
+            "to": "id-환경",
+            "width": 6.699999999999992,
+            "count": 2
+        },
+        {
+            "from": "id-경유",
+            "to": "id-경유차",
+            "width": 6.699999999999992,
+            "count": 1
+        },
+        {
+            "from": "id-공동",
+            "to": "id-연구",
+            "width": 6.599999999999991,
+            "count": 4
+        },
+        {
+            "from": "id-위원",
+            "to": "id-위원회",
+            "width": 6.399999999999994,
+            "count": 1
+        },
+        {
+            "from": "id-대기",
+            "to": "id-오염",
+            "width": 6.399999999999992,
+            "count": 3
+        },
+        {
+            "from": "id-장관",
+            "to": "id-회담",
+            "width": 6.299999999999992,
+            "count": 4
+        },
+        {
+            "from": "id-배출",
+            "to": "id-오염",
+            "width": 6.199999999999993,
+            "count": 3
+        },
+        {
+            "from": "id-협력",
+            "to": "id-환경",
+            "width": 6.199999999999992,
+            "count": 4
+        },
+        {
+            "from": "id-장치",
+            "to": "id-저감",
+            "width": 5.999999999999993,
+            "count": 4
+        },
+        {
+            "from": "id-의제",
+            "to": "id-회담",
+            "width": 5.899999999999993,
+            "count": 4
+        },
+        {
+            "from": "id-마이크로",
+            "to": "id-미터",
+            "width": 5.699999999999994,
+            "count": 4
+        },
+        {
+            "from": "id-공기",
+            "to": "id-청정기",
+            "width": 5.599999999999994,
+            "count": 4
+        },
+        {
+            "from": "id-생산",
+            "to": "id-에너지",
+            "width": 5.599999999999994,
+            "count": 4
+        },
+        {
+            "from": "id-발전소",
+            "to": "id-석탄",
+            "width": 5.399999999999997,
+            "count": 2
+        },
+        {
+            "from": "id-대기",
+            "to": "id-물질",
+            "width": 5.299999999999996,
+            "count": 3
+        },
+        {
+            "from": "id-우리나라",
+            "to": "id-초미세먼지",
+            "width": 5.1999999999999975,
+            "count": 1
+        },
+        {
+            "from": "id-노후",
+            "to": "id-화력",
+            "width": 5.199999999999997,
+            "count": 3
+        },
+        {
+            "from": "id-석탄",
+            "to": "id-원전",
+            "width": 5.099999999999999,
+            "count": 1
+        },
+        {
+            "from": "id-발전소",
+            "to": "id-배출",
+            "width": 4.999999999999999,
+            "count": 1
+        },
+        {
+            "from": "id-발전소",
+            "to": "id-화력발전소",
+            "width": 4.999999999999998,
+            "count": 1
+        },
+        {
+            "from": "id-대기",
+            "to": "id-이동",
+            "width": 4.999999999999997,
+            "count": 3
+        },
+        {
+            "from": "id-에너지",
+            "to": "id-정책",
+            "width": 4.899999999999999,
+            "count": 2
+        },
+        {
+            "from": "id-발전",
+            "to": "id-원전",
+            "width": 4.7,
+            "count": 1
+        },
+        {
+            "from": "id-가동",
+            "to": "id-원전",
+            "width": 4.7,
+            "count": 1
+        },
+        {
+            "from": "id-규정",
+            "to": "id-재난",
+            "width": 4.699999999999998,
+            "count": 3
+        },
+        {
+            "from": "id-보고서",
+            "to": "id-연구",
+            "width": 4.599999999999999,
+            "count": 3
+        },
+        {
+            "from": "id-배출",
+            "to": "id-비중",
+            "width": 4.5,
+            "count": 2
+        },
+        {
+            "from": "id-물질",
+            "to": "id-연구",
+            "width": 4.5,
+            "count": 2
+        },
+        {
+            "from": "id-자유",
+            "to": "id-한국당",
+            "width": 4.499999999999999,
+            "count": 3
+        },
+        {
+            "from": "id-사회",
+            "to": "id-재난",
+            "width": 4.499999999999999,
+            "count": 3
+        },
+        {
+            "from": "id-센터",
+            "to": "id-협력",
+            "width": 4.499999999999999,
+            "count": 3
+        },
+        {
+            "from": "id-에너지",
+            "to": "id-전환",
+            "width": 4.499999999999999,
+            "count": 3
+        },
+        {
+            "from": "id-운행",
+            "to": "id-제한",
+            "width": 4.499999999999999,
+            "count": 3
+        },
+        {
+            "from": "id-시작",
+            "to": "id-우리나라",
+            "width": 4.400000000000001,
+            "count": 1
+        },
+        {
+            "from": "id-국내",
+            "to": "id-요인",
+            "width": 4.4,
+            "count": 2
+        },
+        {
+            "from": "id-원전",
+            "to": "id-탈원전",
+            "width": 4.4,
+            "count": 1
+        },
+        {
+            "from": "id-영향",
+            "to": "id-정도",
+            "width": 4.300000000000001,
+            "count": 2
+        },
+        {
+            "from": "id-비상",
+            "to": "id-저감",
+            "width": 4.3,
+            "count": 3
+        },
+        {
+            "from": "id-국외",
+            "to": "id-기여도",
+            "width": 4.000000000000002,
+            "count": 2
+        },
+        {
+            "from": "id-전환",
+            "to": "id-정책",
+            "width": 4.000000000000002,
+            "count": 2
+        },
+        {
+            "from": "id-국회",
+            "to": "id-위원회",
+            "width": 4.000000000000002,
+            "count": 1
+        },
+        {
+            "from": "id-얼마",
+            "to": "id-영향",
+            "width": 4.000000000000002,
+            "count": 1
+        },
+        {
+            "from": "id-공장",
+            "to": "id-매연",
+            "width": 4.000000000000001,
+            "count": 3
+        },
+        {
+            "from": "id-배출량",
+            "to": "id-친환경",
+            "width": 3.600000000000002,
+            "count": 1
+        },
+        {
+            "from": "id-생산",
+            "to": "id-소비",
+            "width": 3.6000000000000014,
+            "count": 2
+        },
+        {
+            "from": "id-공동",
+            "to": "id-보고서",
+            "width": 3.6000000000000014,
+            "count": 2
+        },
+        {
+            "from": "id-농도",
+            "to": "id-평균",
+            "width": 3.5000000000000013,
+            "count": 2
+        },
+        {
+            "from": "id-대통령",
+            "to": "id-주석",
+            "width": 3.5000000000000013,
+            "count": 2
+        },
+        {
+            "from": "id-운행",
+            "to": "id-차량",
+            "width": 3.5000000000000013,
+            "count": 2
+        },
+        {
+            "from": "id-대책",
+            "to": "id-해결",
+            "width": 3.400000000000002,
+            "count": 1
+        },
+        {
+            "from": "id-경유",
+            "to": "id-친환경",
+            "width": 3.4000000000000017,
+            "count": 1
+        },
+        {
+            "from": "id-청정",
+            "to": "id-청정에너지",
+            "width": 3.4000000000000017,
+            "count": 1
+        },
+        {
+            "from": "id-발생",
+            "to": "id-지역",
+            "width": 3.4000000000000012,
+            "count": 2
+        },
+        {
+            "from": "id-발생",
+            "to": "id-원인",
+            "width": 3.300000000000001,
+            "count": 2
+        },
+        {
+            "from": "id-국민들",
+            "to": "id-모두",
+            "width": 3.300000000000001,
+            "count": 2
+        },
+        {
+            "from": "id-노력",
+            "to": "id-모두",
+            "width": 3.300000000000001,
+            "count": 2
+        },
+        {
+            "from": "id-10",
+            "to": "id-초미세먼지",
+            "width": 3.2000000000000015,
+            "count": 1
+        },
+        {
+            "from": "id-국민",
+            "to": "id-모두",
+            "width": 3.100000000000002,
+            "count": 1
+        },
+        {
+            "from": "id-산업",
+            "to": "id-시작",
+            "width": 3.100000000000001,
+            "count": 2
+        },
+        {
+            "from": "id-정도",
+            "to": "id-평균",
+            "width": 3.0000000000000018,
+            "count": 1
+        },
+        {
+            "from": "id-물질",
+            "to": "id-이동",
+            "width": 3.0000000000000018,
+            "count": 1
+        },
+        {
+            "from": "id-가야",
+            "to": "id-청정에너지",
+            "width": 3.0000000000000013,
+            "count": 1
+        },
+        {
+            "from": "id-자체",
+            "to": "id-지자체",
+            "width": 3.0000000000000013,
+            "count": 1
+        },
+        {
+            "from": "id-생산",
+            "to": "id-측면",
+            "width": 3.000000000000001,
+            "count": 2
+        },
+        {
+            "from": "id-대표",
+            "to": "id-발의",
+            "width": 3.000000000000001,
+            "count": 2
+        },
+        {
+            "from": "id-매연",
+            "to": "id-저감",
+            "width": 3.000000000000001,
+            "count": 2
+        },
+        {
+            "from": "id-국회",
+            "to": "id-논의",
+            "width": 3.000000000000001,
+            "count": 2
+        },
+        {
+            "from": "id-공장",
+            "to": "id-지대",
+            "width": 2.900000000000001,
+            "count": 2
+        },
+        {
+            "from": "id-비상",
+            "to": "id-조치",
+            "width": 2.8000000000000016,
+            "count": 1
+        },
+        {
+            "from": "id-경험",
+            "to": "id-서울",
+            "width": 2.7000000000000015,
+            "count": 1
+        },
+        {
+            "from": "id-장관",
+            "to": "id-회의",
+            "width": 2.7000000000000015,
+            "count": 1
+        },
+        {
+            "from": "id-발생",
+            "to": "id-상황",
+            "width": 2.6000000000000014,
+            "count": 1
+        },
+        {
+            "from": "id-공기",
+            "to": "id-기가",
+            "width": 2.600000000000001,
+            "count": 1
+        },
+        {
+            "from": "id-예산",
+            "to": "id-투입",
+            "width": 2.6000000000000005,
+            "count": 2
+        },
+        {
+            "from": "id-과거",
+            "to": "id-매연",
+            "width": 2.5000000000000013,
+            "count": 1
+        },
+        {
+            "from": "id-산업",
+            "to": "id-소비",
+            "width": 2.5000000000000013,
+            "count": 1
+        },
+        {
+            "from": "id-가야",
+            "to": "id-장기",
+            "width": 2.5000000000000013,
+            "count": 1
+        }
+    ],
+    "topics": [
+        {
+            "label": "미세먼지",
+            "count": 184,
+            "keywords": [
+                {
+                    "label": "중국",
+                    "count": 49
+                },
+                {
+                    "label": "정부",
+                    "count": 13
+                },
+                {
+                    "label": "초미세먼지",
+                    "count": 10
+                },
+                {
+                    "label": "대책",
+                    "count": 14
+                },
+                {
+                    "label": "배출",
+                    "count": 25
+                }
+            ]
+        },
+        {
+            "label": "중국",
+            "count": 49,
+            "keywords": [
+                {
+                    "label": "미세먼지",
+                    "count": 184
+                },
+                {
+                    "label": "영향",
+                    "count": 12
+                },
+                {
+                    "label": "정부",
+                    "count": 13
+                },
+                {
+                    "label": "요인",
+                    "count": 9
+                },
+                {
+                    "label": "환경부",
+                    "count": 32
+                }
+            ]
+        },
+        {
+            "label": "환경부",
+            "count": 32,
+            "keywords": [
+                {
+                    "label": "장관",
+                    "count": 5
+                },
+                {
+                    "label": "환경",
+                    "count": 25
+                },
+                {
+                    "label": "중국",
+                    "count": 49
+                }
+            ]
+        },
+        {
+            "label": "환경",
+            "count": 25,
+            "keywords": [
+                {
+                    "label": "환경부",
+                    "count": 32
+                },
+                {
+                    "label": "장관",
+                    "count": 5
+                },
+                {
+                    "label": "협력",
+                    "count": 3
+                }
+            ]
+        },
+        {
+            "label": "배출",
+            "count": 25,
+            "keywords": [
+                {
+                    "label": "미세먼지",
+                    "count": 184
+                },
+                {
+                    "label": "오염",
+                    "count": 8
+                },
+                {
+                    "label": "발전소",
+                    "count": 11
+                },
+                {
+                    "label": "비중",
+                    "count": 10
+                }
+            ]
+        },
+        {
+            "label": "대책",
+            "count": 14,
+            "keywords": [
+                {
+                    "label": "미세먼지",
+                    "count": 184
+                },
+                {
+                    "label": "위원회",
+                    "count": 11
+                },
+                {
+                    "label": "해결",
+                    "count": 4
+                }
+            ]
+        },
+        {
+            "label": "국내",
+            "count": 14,
+            "keywords": [
+                {
+                    "label": "요인",
+                    "count": 9
+                }
+            ]
+        },
+        {
+            "label": "정부",
+            "count": 13,
+            "keywords": [
+                {
+                    "label": "미세먼지",
+                    "count": 184
+                },
+                {
+                    "label": "중국",
+                    "count": 49
+                },
+                {
+                    "label": "문재인",
+                    "count": 5
+                },
+                {
+                    "label": "정책",
+                    "count": 13
+                }
+            ]
+        },
+        {
+            "label": "우리나라",
+            "count": 13,
+            "keywords": [
+                {
+                    "label": "나라",
+                    "count": 5
+                },
+                {
+                    "label": "초미세먼지",
+                    "count": 10
+                },
+                {
+                    "label": "시작",
+                    "count": 9
+                }
+            ]
+        },
+        {
+            "label": "정책",
+            "count": 13,
+            "keywords": [
+                {
+                    "label": "정부",
+                    "count": 13
+                },
+                {
+                    "label": "에너지",
+                    "count": 13
+                },
+                {
+                    "label": "전환",
+                    "count": 1
+                }
+            ]
+        },
+        {
+            "label": "에너지",
+            "count": 13,
+            "keywords": [
+                {
+                    "label": "비중",
+                    "count": 10
+                },
+                {
+                    "label": "청정",
+                    "count": 4
+                },
+                {
+                    "label": "생산",
+                    "count": 4
+                },
+                {
+                    "label": "정책",
+                    "count": 13
+                },
+                {
+                    "label": "전환",
+                    "count": 1
+                }
+            ]
+        }
+    ]
+}

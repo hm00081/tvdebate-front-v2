@@ -1,0 +1,74 @@
+{
+  "sentences": [
+    {
+      "text": {
+        "content": "기본소득과안심소득이 다른 건가요?",
+        "beginOffset": -1
+      },
+      "sentiment": {
+        "magnitude": 0.20000000298023224,
+        "score": 0.20000000298023224
+      }
+    },
+    {
+      "text": {
+        "content": "기본소득은 안심소득보다 경제적 효과가 뛰어납니다.",
+        "beginOffset": -1
+      },
+      "sentiment": {
+        "magnitude": 0.10000000149011612,
+        "score": 0.10000000149011612
+      }
+    },
+    {
+      "text": { "content": "다른 방안으로는 어렵습니다.", "beginOffset": -1 },
+      "sentiment": {
+        "magnitude": 0.10000000149011612,
+        "score": -0.10000000149011612
+      }
+    },
+    {
+      "text": { "content": "기본소득만이 정답은 아닙니다.", "beginOffset": -1 },
+      "sentiment": {
+        "magnitude": 0.30000001192092896,
+        "score": 0.30000001192092896
+      }
+    },
+    {
+      "text": {
+        "content": "안심소득은 저소득층에게 효과가 더 좋을텐데,. 기본소득은 민주주의 효과가 있습니다.",
+        "beginOffset": -1
+      },
+      "sentiment": {
+        "magnitude": 0.4000000059604645,
+        "score": 0.4000000059604645
+      }
+    },
+    {
+      "text": {
+        "content": "안심소득은 대신에 절세효과가 있어요.",
+        "beginOffset": -1
+      },
+      "sentiment": {
+        "magnitude": 0.699999988079071,
+        "score": 0.699999988079071
+      }
+    },
+    {
+      "text": { "content": "복지적 효과도 생각해주세요.", "beginOffset": -1 },
+      "sentiment": {
+        "magnitude": 0.20000000298023224,
+        "score": 0.20000000298023224
+      }
+    },
+    {
+      "text": { "content": "<100분토론> 마치겠습니다.", "beginOffset": -1 },
+      "sentiment": {
+        "magnitude": 0.10000000149011612,
+        "score": 0.10000000149011612
+      }
+    }
+  ],
+  "documentSentiment": { "magnitude": 2.5, "score": 0.20000000298023224 },
+  "language": "ko"
+}

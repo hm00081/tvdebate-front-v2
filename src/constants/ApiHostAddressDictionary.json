@@ -1,0 +1,5 @@
+{
+  "nodeExpress": "http://localhost:3001",
+  "pythonFlask": "http://localhost:5000",
+  "aiopenWiseNLU": "http://aiopen.etri.re.kr:8000/WiseNLU"
+}

@@ -1,0 +1,335 @@
+[
+  {
+    "_id": {
+      "$oid": "60767f6949763f526835c3ea"
+    },
+    "ageGroup": "thirty",
+    "gender": "man",
+    "major": "전문연구요원/미디어컨텐츠",
+    "participationCode": "ab522bc9-6633-4d16-8658-de887467e243",
+    "debateName": "기본소득clipped",
+    "sentenceIndexesOfSegments": [18, 95, 186, 310, 544, 551],
+    "date": "Wed Apr 14 2021 14:36:41 GMT+0900 (Korean Standard Time)"
+  },
+  {
+    "_id": {
+      "$oid": "60810ba7a3f2350da8ea5d67"
+    },
+    "ageGroup": "fifthy",
+    "gender": "woman",
+    "major": "주부",
+    "participationCode": "3ba1db51-d13b-411a-b99b-0d66a0d33cc4",
+    "debateName": "기본소득clipped",
+    "sentenceIndexesOfSegments": [37, 95, 186, 241, 393, 466, 551],
+    "date": "Thu Apr 22 2021 14:37:43 GMT+0900 (Korean Standard Time)"
+  },
+  {
+    "_id": {
+      "$oid": "6082a1a28a46b4471078a69d"
+    },
+    "ageGroup": "twenty",
+    "gender": "woman",
+    "major": "회사원",
+    "participationCode": "6b43e2dc-f31d-417f-bf6b-c2a08fbbe3b3",
+    "debateName": "기본소득clipped",
+    "sentenceIndexesOfSegments": [95, 186, 190, 242, 303, 393, 479, 551],
+    "date": "Fri Apr 23 2021 19:29:54 GMT+0900 (Korean Standard Time)"
+  },
+  {
+    "_id": {
+      "$oid": "60841c945f66392e847dc949"
+    },
+    "ageGroup": "thirty",
+    "gender": "man",
+    "major": "대학원생",
+    "participationCode": "c3276230-7e18-46cf-ac4c-8dda66f7b77e",
+    "debateName": "모병제clipped",
+    "sentenceIndexesOfSegments": [70, 140, 214, 295, 341, 381],
+    "date": "Sat Apr 24 2021 22:26:44 GMT+0900 (Korean Standard Time)"
+  },
+  {
+    "_id": {
+      "$oid": "6084364a5f66392e847dc94a"
+    },
+    "ageGroup": "thirty",
+    "gender": "man",
+    "major": "대학원생",
+    "participationCode": "6521c43e-2ccd-4051-a2a6-31abec353205",
+    "debateName": "기본소득clipped",
+    "sentenceIndexesOfSegments": [
+      95,
+      186,
+      190,
+      241,
+      351,
+      364,
+      378,
+      403,
+      450,
+      478,
+      497,
+      551
+    ],
+    "date": "Sun Apr 25 2021 00:16:26 GMT+0900 (Korean Standard Time)"
+  },
+  {
+    "_id": {
+      "$oid": "60851d8ce940742cc0998338"
+    },
+    "ageGroup": "thirty",
+    "gender": "man",
+    "major": "대학원생",
+    "participationCode": "d60c72e1-a33f-4da8-a20c-93f2dff2df19",
+    "debateName": "정시확대clipped",
+    "sentenceIndexesOfSegments": [
+      21,
+      66,
+      78,
+      86,
+      149,
+      193,
+      235,
+      257,
+      279,
+      351,
+      427,
+      441
+    ],
+    "date": "Sun Apr 25 2021 16:43:08 GMT+0900 (Korean Standard Time)"
+  },
+  {
+    "_id": {
+      "$oid": "60851e47e940742cc0998339"
+    },
+    "ageGroup": "twenty",
+    "gender": "man",
+    "major": "대학생",
+    "participationCode": "6722b3ab-9fa4-4a6f-ab35-f5c6d7501684",
+    "debateName": "기본소득clipped",
+    "sentenceIndexesOfSegments": [
+      39,
+      67,
+      95,
+      153,
+      162,
+      173,
+      186,
+      190,
+      194,
+      241,
+      303,
+      351,
+      364,
+      393,
+      403,
+      460,
+      469,
+      544,
+      551
+    ],
+    "date": "Sun Apr 25 2021 16:46:15 GMT+0900 (Korean Standard Time)"
+  },
+  {
+    "_id": {
+      "$oid": "60855c9be940742cc099833a"
+    },
+    "ageGroup": "fifthy",
+    "gender": "man",
+    "major": "수의사",
+    "participationCode": "f5afc24f-63b3-4e6a-9fc7-bf8218b8477b",
+    "debateName": "기본소득clipped",
+    "sentenceIndexesOfSegments": [40, 98, 217, 247, 369, 426, 551],
+    "date": "Sun Apr 25 2021 21:12:11 GMT+0900 (Korean Standard Time)"
+  },
+  {
+    "_id": {
+      "$oid": "6086aa0c169a66400cf3d786"
+    },
+    "ageGroup": "thirty",
+    "gender": "man",
+    "major": "회사원",
+    "participationCode": "aaa5bbb1-dd24-46db-b3af-90d427fd7901",
+    "debateName": "정시확대clipped",
+    "sentenceIndexesOfSegments": [
+      20,
+      87,
+      101,
+      154,
+      193,
+      267,
+      351,
+      409,
+      427,
+      441
+    ],
+    "date": "Mon Apr 26 2021 20:54:52 GMT+0900 (Korean Standard Time)"
+  },
+  {
+    "_id": {
+      "$oid": "6086c07c169a66400cf3d787"
+    },
+    "ageGroup": "twenty",
+    "gender": "man",
+    "major": "라이프미디어협동과정",
+    "participationCode": "7095745a-b33a-455d-85d3-b26b3e6655d3",
+    "debateName": "정시확대clipped",
+    "sentenceIndexesOfSegments": [
+      39,
+      49,
+      78,
+      101,
+      195,
+      257,
+      344,
+      352,
+      409,
+      441
+    ],
+    "date": "Mon Apr 26 2021 22:30:36 GMT+0900 (Korean Standard Time)"
+  },
+  {
+    "_id": {
+      "$oid": "6092ced1fedef84538b14e64"
+    },
+    "ageGroup": "thirty",
+    "gender": "woman",
+    "major": "회사원",
+    "participationCode": "2914926c-c221-4894-add1-cb62d6bab5e7",
+    "debateName": "정시확대clipped",
+    "sentenceIndexesOfSegments": [24, 49, 149, 195, 276, 408, 441],
+    "date": "Thu May 06 2021 01:58:57 GMT+0900 (Korean Standard Time)"
+  },
+  {
+    "_id": {
+      "$oid": "609363ad44984b2e347affb6"
+    },
+    "ageGroup": "fifthy",
+    "gender": "woman",
+    "major": "주부",
+    "participationCode": "592e3a09-7004-4186-8089-87e3418f9fb9",
+    "debateName": "모병제clipped",
+    "sentenceIndexesOfSegments": [70, 115, 140, 197, 295, 353, 381],
+    "date": "Thu May 06 2021 12:34:05 GMT+0900 (Korean Standard Time)"
+  },
+  {
+    "_id": {
+      "$oid": "60937c5d44984b2e347affb7"
+    },
+    "ageGroup": "twenty",
+    "gender": "man",
+    "major": "대학원생",
+    "participationCode": "df721c05-752d-4178-9165-a2e1ed0185ee",
+    "debateName": "모병제clipped",
+    "sentenceIndexesOfSegments": [53, 79, 120, 144, 197, 288, 342, 381],
+    "date": "Thu May 06 2021 14:19:25 GMT+0900 (Korean Standard Time)"
+  },
+  {
+    "_id": {
+      "$oid": "60938b0e44984b2e347affb8"
+    },
+    "ageGroup": "thirty",
+    "gender": "man",
+    "major": "대학원생/데이터사이언스전공",
+    "participationCode": "a851f427-0b35-4fba-aa69-dd117bceb2e7",
+    "debateName": "모병제clipped",
+    "sentenceIndexesOfSegments": [
+      36,
+      71,
+      97,
+      124,
+      140,
+      176,
+      216,
+      247,
+      260,
+      276,
+      341,
+      381
+    ],
+    "date": "Thu May 06 2021 15:22:06 GMT+0900 (Korean Standard Time)"
+  },
+  {
+    "_id": {
+      "$oid": "6093d57144984b2e347affb9"
+    },
+    "ageGroup": "fifthy",
+    "gender": "woman",
+    "major": "주부",
+    "participationCode": "76042868-d27b-4eb3-8bad-a221bd2ba901",
+    "debateName": "정시확대clipped",
+    "sentenceIndexesOfSegments": [22, 78, 149, 195, 269, 407, 441],
+    "date": "Thu May 06 2021 20:39:29 GMT+0900 (Korean Standard Time)"
+  },
+  {
+    "_id": {
+      "$oid": "6095416d1d5f881028b1b7c9"
+    },
+    "ageGroup": "fifthy",
+    "gender": "man",
+    "major": "동물병원",
+    "participationCode": "10845c4f-a22d-44fd-b1d8-5e28bc6b94ee",
+    "debateName": "모병제clipped",
+    "sentenceIndexesOfSegments": [78, 97, 140, 163, 197, 219, 295, 381],
+    "date": "Fri May 07 2021 22:32:29 GMT+0900 (Korean Standard Time)"
+  },
+  {
+    "_id": {
+      "$oid": "60955b971d5f881028b1b7ca"
+    },
+    "ageGroup": "twenty",
+    "gender": "man",
+    "major": "대학생",
+    "participationCode": "10845c4f-a22d-44fd-b1d8-5e28bc6b94ee",
+    "debateName": "모병제clipped",
+    "sentenceIndexesOfSegments": [77, 97, 117, 197, 225, 248, 290, 341, 381],
+    "date": "Sat May 08 2021 00:24:07 GMT+0900 (Korean Standard Time)"
+  },
+  {
+    "_id": {
+      "$oid": "6096a3c1da24a843b4d70551"
+    },
+    "ageGroup": "fifthy",
+    "gender": "man",
+    "major": "수의사",
+    "participationCode": "71039590-a875-4aeb-af82-51dcb73f4b65",
+    "debateName": "정시확대clipped",
+    "sentenceIndexesOfSegments": [53, 86, 157, 204, 352, 441],
+    "date": "Sat May 08 2021 23:44:17 GMT+0900 (Korean Standard Time)"
+  },
+  {
+    "_id": {
+      "$oid": "609bf5352f8e6517cc31bc19"
+    },
+    "ageGroup": "thirty",
+    "gender": "woman",
+    "major": "회사원",
+    "participationCode": "3106eccb-36a0-4547-8a6f-1cdcb866fb3c",
+    "debateName": "모병제clipped",
+    "sentenceIndexesOfSegments": [53, 96, 117, 140, 197, 250, 342, 381],
+    "date": "Thu May 13 2021 00:33:09 GMT+0900 (Korean Standard Time)"
+  },
+  {
+    "_id": {
+      "$oid": "609b63432f8e6517cc31bc18"
+    },
+    "ageGroup": "thirty",
+    "gender": "man",
+    "major": "대학원생",
+    "participationCode": "880adc77-aae2-4db8-8dc8-8af3ab3b33fb",
+    "debateName": "정시확대clipped",
+    "sentenceIndexesOfSegments": [78, 101, 149, 195, 267, 351, 409, 441],
+    "date": "Wed May 12 2021 14:10:27 GMT+0900 (Korean Standard Time)"
+  },
+  {
+    "_id": {
+      "$oid": "609e6759cbc5b32aec89446a"
+    },
+    "ageGroup": "twenty",
+    "gender": "man",
+    "major": "제과제빵사",
+    "participationCode": "bc16d03d-b48d-4e73-9fb5-55dee51a7e6f",
+    "debateName": "기본소득clipped",
+    "sentenceIndexesOfSegments": [98, 173, 242, 313, 404, 451, 498, 548, 551],
+    "date": "Fri May 14 2021 21:04:41 GMT+0900 (Korean Standard Time)"
+  }
+]

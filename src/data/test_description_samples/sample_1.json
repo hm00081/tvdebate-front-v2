@@ -1,0 +1,82 @@
+[
+  {
+    "name": "정영진",
+    "utterance": "지금은 정년연장할 때가 아니라는게 제 생각입니다. ······",
+    "sentenceObjects": [
+      {
+        "sentence": "지금은 정년연장할 때가 아니라는게 제 생각입니다.",
+        "sentiment": 0,
+        "singleTermCountDict": {},
+        "compoundTermCountDict": {},
+        "time": ""
+      },
+      {
+        "sentence": "······",
+        "sentiment": 0,
+        "singleTermCountDict": {},
+        "compoundTermCountDict": {},
+        "time": ""
+      }
+    ]
+  },
+  {
+    "name": "박연미",
+    "utterance": "정년을 연장하자는 것에 대해 찬성하는 입장입니다. ······",
+    "sentenceObjects": [
+      {
+        "sentence": "정년을 연장하자는 것에 대해 찬성하는 입장입니다.",
+        "sentiment": 0,
+        "singleTermCountDict": {},
+        "compoundTermCountDict": {},
+        "time": ""
+      },
+      {
+        "sentence": "······",
+        "sentiment": 0,
+        "singleTermCountDict": {},
+        "compoundTermCountDict": {},
+        "time": ""
+      }
+    ]
+  },
+  {
+    "name": "사회자",
+    "utterance": "네, 알겠습니다. ······ 노인들의 생활을 위해 소득수준을 높여주기 위한 다른 대안 같은 게 좀 있어야 되지 않을까 생각되는데 그 부분에 대해서 어떻게 생각하시는지요.",
+    "sentenceObjects": [
+      {
+        "sentence": "네, 알겠습니다.",
+        "sentiment": 0,
+        "singleTermCountDict": {},
+        "compoundTermCountDict": {},
+        "time": ""
+      },
+      {
+        "sentence": "······",
+        "sentiment": 0,
+        "singleTermCountDict": {},
+        "compoundTermCountDict": {},
+        "time": ""
+      },
+      {
+        "sentence": "노인들의 생활을 위해 소득수준을 높여주기 위한 다른 대안 같은 게 좀 있어야 되지 않을까 생각되는데 그 부분에 대해서 어떻게 생각하시는지요.",
+        "sentiment": 0,
+        "singleTermCountDict": {},
+        "compoundTermCountDict": {},
+        "time": ""
+      }
+    ]
+  },
+  {
+    "name": "이지만",
+    "utterance": "그 부분에 대한 저의 의견은 ······",
+    "sentenceObjects": [
+      {
+        "sentence": "그 부분에 대한 저의 의견은 ······",
+        "sentiment": 0,
+        "singleTermCountDict": {},
+        "compoundTermCountDict": {},
+        "time": ""
+      }
+    ]
+  }
+]

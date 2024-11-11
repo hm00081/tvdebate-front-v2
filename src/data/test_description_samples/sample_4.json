@@ -1,0 +1,75 @@
+[
+  {
+    "name": "김범중",
+    "utterance": "저도 직무성과급제는 일정부분 합리적인 부분이 있다고 생각합니다.",
+    "sentenceObjects": [
+      {
+        "sentence": "저도 직무성과급제는 일정부분 합리적인 부분이 있다고 생각합니다.",
+        "singleTermCountDict": {},
+        "compoundTermCountDict": {},
+        "sentiment": 0,
+        "time": ""
+      },
+      {
+        "sentence": "······",
+        "singleTermCountDict": {},
+        "compoundTermCountDict": {},
+        "sentiment": 0,
+        "time": ""
+      }
+    ]
+  },
+  {
+    "name": "이지만",
+    "utterance": "호봉제의 개편 방향을 직무성과급제 하나로 선택지를 국한하는 건 전 반대입니다. ······",
+    "sentenceObjects": [
+      {
+        "sentence": "호봉제의 개편 방향을 직무성과급제 하나로 선택지를 국한하는 건 전 반대입니다.",
+        "singleTermCountDict": {},
+        "compoundTermCountDict": {},
+        "sentiment": 0,
+        "time": ""
+      },
+      {
+        "sentence": "······",
+        "singleTermCountDict": {},
+        "compoundTermCountDict": {},
+        "sentiment": 0,
+        "time": ""
+      }
+    ]
+  },
+  {
+    "name": "사회자",
+    "utterance": "마지막으로 한 가지 질문을 드리고 싶은 게 65세 정년연장을 하게 되면 기업에 의무화를 할 수 있을 방안은 어떻게 될까요?",
+    "sentenceObjects": [
+      {
+        "sentence": "마지막으로 한 가지 질문을 드리고 싶은 게 65세 정년연장을 하게 되면 기업에 의무화를 할 수 있을 방안은 어떻게 될까요?",
+        "singleTermCountDict": {},
+        "compoundTermCountDict": {},
+        "sentiment": 0,
+        "time": ""
+      }
+    ]
+  },
+  {
+    "name": "김범중",
+    "utterance": "인센티브를 주고 여러 가지 세제혜택들을 주는 등의 정부의 역할에 따라서 전 충분히 가능하다고 생각합니다. ······",
+    "sentenceObjects": [
+      {
+        "sentence": "인센티브를 주고 여러 가지 세제혜택들을 주는 등의 정부의 역할에 따라서 전 충분히 가능하다고 생각합니다.",
+        "singleTermCountDict": {},
+        "compoundTermCountDict": {},
+        "sentiment": 0,
+        "time": ""
+      },
+      {
+        "sentence": "······",
+        "singleTermCountDict": {},
+        "compoundTermCountDict": {},
+        "sentiment": 0,
+        "time": ""
+      }
+    ]
+  }
+]

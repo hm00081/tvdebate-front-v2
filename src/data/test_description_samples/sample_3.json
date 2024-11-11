@@ -1,0 +1,82 @@
+[
+  {
+    "name": "이지만",
+    "utterance": "노동시장 유연화가 바로 근로자들의 일자리의 상실과 연결되지 않습니다. ······",
+    "sentenceObjects": [
+      {
+        "sentence": "노동시장 유연화가 바로 근로자들의 일자리의 상실과 연결되지 않습니다.",
+        "singleTermCountDict": {},
+        "compoundTermCountDict": {},
+        "sentiment": 0,
+        "time": ""
+      },
+      {
+        "sentence": "······",
+        "singleTermCountDict": {},
+        "compoundTermCountDict": {},
+        "sentiment": 0,
+        "time": ""
+      }
+    ]
+  },
+  {
+    "name": "김범중",
+    "utterance": "저는 노동시장 유연화가 대단히 위험한 발상이라고 생각합니다. ······",
+    "sentenceObjects": [
+      {
+        "sentence": "저는 노동시장 유연화가 대단히 위험한 발상이라고 생각합니다.",
+        "singleTermCountDict": {},
+        "compoundTermCountDict": {},
+        "sentiment": 0,
+        "time": ""
+      },
+      {
+        "sentence": "······",
+        "singleTermCountDict": {},
+        "compoundTermCountDict": {},
+        "sentiment": 0,
+        "time": ""
+      }
+    ]
+  },
+  {
+    "name": "사회자",
+    "utterance": "한쪽은 노동시장이 유연해져야 한다는 입장이시고 다른쪽은 그러기엔 우리가 아직 사회안전망이 갖춰지지 않았다는 입장이신데요. 지금 임금구조 개편 얘기를 하고 있었으니까 직무급제에 대해서 얘기해보겠습니다.",
+    "sentenceObjects": [
+      {
+        "sentence": "한쪽은 노동시장이 유연해져야 한다는 입장이시고 다른쪽은 그러기엔 우리가 아직 사회안전망이 갖춰지지 않았다는 입장이신데요.",
+        "singleTermCountDict": {},
+        "compoundTermCountDict": {},
+        "sentiment": 0,
+        "time": ""
+      },
+      {
+        "sentence": "지금 임금구조 개편 얘기를 하고 있었으니까 직무급제에 대해서 얘기해보겠습니다.",
+        "singleTermCountDict": {},
+        "compoundTermCountDict": {},
+        "sentiment": 0,
+        "time": ""
+      }
+    ]
+  },
+  {
+    "name": "정영진",
+    "utterance": "저는 직무급제를 시행하는 것이 바람직하다고 생각해요. ······",
+    "sentenceObjects": [
+      {
+        "sentence": "저는 직무급제를 시행하는 것이 바람직하다고 생각해요.",
+        "singleTermCountDict": {},
+        "compoundTermCountDict": {},
+        "sentiment": 0,
+        "time": ""
+      },
+      {
+        "sentence": "······",
+        "singleTermCountDict": {},
+        "compoundTermCountDict": {},
+        "sentiment": 0,
+        "time": ""
+      }
+    ]
+  }
+]

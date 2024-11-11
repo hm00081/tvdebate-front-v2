@@ -1,0 +1,15 @@
+.sliderContainer {
+  display: flex;
+  align-items: center;
+  // margin-bottom: 6px;
+  .slider {
+    // width: 120px;
+    margin: 6px 6px 6px 0;
+  }
+  .inputNumber {
+    margin-left: 8px;
+    width: 70px;
+    // height: 28px;
+    font-size: 10px;
+  }
+}

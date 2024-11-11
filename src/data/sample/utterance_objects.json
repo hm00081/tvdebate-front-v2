@@ -1,0 +1,113 @@
+[
+  {
+    "name": "진행자",
+    "utterance": "기본소득과안심소득이 다른 건가요?",
+    "sentenceObjects": [
+      {
+        "sentence": "기본소득과안심소득이 다른 건가요?",
+        "singleTermCountDict": { "기본": 1, "소득": 2, "안심": 1 },
+        "compoundTermCountDict": { "기본소득": 1, "안심소득": 1 },
+        "sentiment": 0.20000000298023224,
+        "time": "00:00:04"
+      }
+    ]
+  },
+  {
+    "name": "이재명",
+    "utterance": "기본소득은 안심소득보다 경제적 효과가 뛰어납니다. 다른 방안으로는 어렵습니다.",
+    "sentenceObjects": [
+      {
+        "sentence": "기본소득은 안심소득보다 경제적 효과가 뛰어납니다.",
+        "singleTermCountDict": { "기본": 1, "소득": 2, "안심": 1, "효과": 1 },
+        "compoundTermCountDict": { "기본소득": 1, "안심소득": 1, "효과": 1 },
+        "sentiment": 0.10000000149011612,
+        "time": "00:00:11"
+      },
+      {
+        "sentence": "다른 방안으로는 어렵습니다.",
+        "singleTermCountDict": {},
+        "compoundTermCountDict": { "방안": 1 },
+        "sentiment": -0.10000000149011612,
+        "time": "00:00:16"
+      }
+    ]
+  },
+  {
+    "name": "오세훈",
+    "utterance": "기본소득만이 정답은 아닙니다. 안심소득은 저소득층에게 효과가 더 좋을텐데,.",
+    "sentenceObjects": [
+      {
+        "sentence": "기본소득만이 정답은 아닙니다.",
+        "singleTermCountDict": { "기본": 1, "소득": 1, "정답": 1 },
+        "compoundTermCountDict": { "기본소득": 1, "정답": 1 },
+        "sentiment": 0.30000001192092896,
+        "time": "00:00:19"
+      },
+      {
+        "sentence": "안심소득은 저소득층에게 효과가 더 좋을텐데,.",
+        "singleTermCountDict": { "안심": 1, "소득": 2, "효과": 1 },
+        "compoundTermCountDict": { "안심소득": 1, "소득": 1, "효과": 1 },
+        "sentiment": 0.4000000059604645,
+        "time": "00:00:20"
+      }
+    ]
+  },
+  {
+    "name": "이원재",
+    "utterance": "기본소득은 민주주의 효과가 있습니다.",
+    "sentenceObjects": [
+      {
+        "sentence": "기본소득은 민주주의 효과가 있습니다.",
+        "singleTermCountDict": {
+          "기본": 1,
+          "소득": 1,
+          "민주": 1,
+          "주의": 1,
+          "효과": 1
+        },
+        "compoundTermCountDict": { "기본소득": 1, "민주주의": 1, "효과": 1 },
+        "sentiment": 0,
+        "time": "00:00:24"
+      }
+    ]
+  },
+  {
+    "name": "박기성",
+    "utterance": "안심소득은 대신에 절세효과가 있어요.",
+    "sentenceObjects": [
+      {
+        "sentence": "안심소득은 대신에 절세효과가 있어요.",
+        "singleTermCountDict": { "안심": 1, "소득": 1, "절세": 1, "효과": 1 },
+        "compoundTermCountDict": { "안심소득": 1, "절세효과": 1 },
+        "sentiment": 0.699999988079071,
+        "time": "00:00:27"
+      }
+    ]
+  },
+  {
+    "name": "이재명",
+    "utterance": "복지적 효과도 생각해주세요.",
+    "sentenceObjects": [
+      {
+        "sentence": "복지적 효과도 생각해주세요.",
+        "singleTermCountDict": { "복지": 1, "효과": 1, "생각": 1 },
+        "compoundTermCountDict": { "복지": 1, "효과": 1, "생각": 1 },
+        "sentiment": 0.20000000298023224,
+        "time": "00:00:29"
+      }
+    ]
+  },
+  {
+    "name": "진행자",
+    "utterance": "<100분토론> 마치겠습니다.",
+    "sentenceObjects": [
+      {
+        "sentence": "<100분토론> 마치겠습니다.",
+        "singleTermCountDict": { "토론": 1 },
+        "compoundTermCountDict": { "토론": 1 },
+        "sentiment": 0.10000000149011612,
+        "time": "00:00:32"
+      }
+    ]
+  }
+]

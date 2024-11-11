@@ -1,0 +1,89 @@
+[
+  {
+    "name": "정영진",
+    "utterance": "기업 입장에서는 호봉제 때문에 직원들을 부담스러워할 수 밖에 없어요. ······",
+    "sentenceObjects": [
+      {
+        "sentence": "기업 입장에서는 호봉제 때문에 직원들을 부담스러워할 수 밖에 없어요.",
+        "sentiment": 0,
+        "singleTermCountDict": {},
+        "compoundTermCountDict": {},
+        "time": ""
+      },
+      {
+        "sentence": "······",
+        "sentiment": 0,
+        "singleTermCountDict": {},
+        "compoundTermCountDict": {},
+        "time": ""
+      }
+    ]
+  },
+  {
+    "name": "김범중",
+    "utterance": "호봉제로 인해 경영부담으로 간다면 여러 가지 보완책이 필요합니다. ······",
+    "sentenceObjects": [
+      {
+        "sentence": "호봉제로 인해 경영부담으로 간다면 여러 가지 보완책이 필요합니다.",
+        "sentiment": 0,
+        "singleTermCountDict": {},
+        "compoundTermCountDict": {},
+        "time": ""
+      },
+      {
+        "sentence": "······",
+        "sentiment": 0,
+        "singleTermCountDict": {},
+        "compoundTermCountDict": {},
+        "time": ""
+      }
+    ]
+  },
+  {
+    "name": "박연미",
+    "utterance": "보완책이 있다는 전제 하에선 정년연장이란 게 피할 수 없는 조치라는 데에는 저희가 동의하는 것 같아요. 나아가 노인이 더 많아지는 사회에서 우리가 어떤 산업구조를 가져가야 할 것인가 미리보기를 하자는 겁니다.",
+    "sentenceObjects": [
+      {
+        "sentence": "보완책이 있다는 전제 하에선 정년연장이란 게 피할 수 없는 조치라는 데에는 저희가 동의하는 것 같아요.",
+        "sentiment": 0,
+        "singleTermCountDict": {},
+        "compoundTermCountDict": {},
+        "time": ""
+      },
+      {
+        "sentence": "나아가 노인이 더 많아지는 사회에서 우리가 어떤 산업구조를 가져가야 할 것인가 미리보기를 하자는 겁니다.",
+        "sentiment": 0,
+        "singleTermCountDict": {},
+        "compoundTermCountDict": {},
+        "time": ""
+      },
+      {
+        "sentence": "······",
+        "sentiment": 0,
+        "singleTermCountDict": {},
+        "compoundTermCountDict": {},
+        "time": ""
+      }
+    ]
+  },
+  {
+    "name": "이지만",
+    "utterance": "그러한 인구 구조 변화 관점과 함께 청년 문제에 대해 생각해봐야 합니다. ······",
+    "sentenceObjects": [
+      {
+        "sentence": "그러한 인구 구조 변화 관점과 함께 청년 문제에 대해 생각해봐야 합니다.",
+        "sentiment": 0,
+        "singleTermCountDict": {},
+        "compoundTermCountDict": {},
+        "time": ""
+      },
+      {
+        "sentence": "······",
+        "sentiment": 0,
+        "singleTermCountDict": {},
+        "compoundTermCountDict": {},
+        "time": ""
+      }
+    ]
+  }
+]
