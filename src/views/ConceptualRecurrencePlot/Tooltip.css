@@ -1,0 +1,6 @@
+.tooltip {
+  background-color: white;
+  padding: 5px;
+  pointer-events: none;
+  z-index: 1000;
+}

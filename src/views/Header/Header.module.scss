@@ -1,0 +1,21 @@
+$navi: #9c27b0;
+
+.mainLink {
+  text-decoration: none;
+  margin-top: 0px;
+  z-index: 1000;
+  //   text-align: justify;
+}
+.navi {
+  position: absolute;
+  display: flex;
+  text-align: justify;
+  width: 100%;
+  height: 35px;
+  background-color: $navi;
+  color: white;
+  font-weight: 600;
+  font-size: 24px;
+  padding-top: -5px;
+  padding-left: 15px;
+}

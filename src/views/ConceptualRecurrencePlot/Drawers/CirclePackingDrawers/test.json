@@ -1,0 +1,689 @@
+[
+  {
+    "class": "CP1",
+    "elements": [
+      {
+        "type": "text",
+        "transform": "matrix(1 0 0 1 95 326)",
+        "className": "st0 st1 st13",
+        "onClick": null,
+        "style": "{ fontSize: \"17.54px\" ",
+        "content": [
+          {
+            "text": "\ud1a0\ub860 \uc2dc\uc791 \ubc0f"
+          },
+          {
+            "text": "handleClickText(0)\n              >\n                \"\ud1a0\ub860 \uc2dc\uc791 \ubc0f\""
+          }
+        ]
+      },
+      {
+        "type": "text",
+        "transform": "matrix(1 0 0 1 96 351.5)",
+        "className": "st0 st1 st13",
+        "onClick": null,
+        "style": "{ fontSize: \"17.54px\" ",
+        "content": [
+          {
+            "text": "\ubaa8\ubcd1\uc81c \ub3c4\uc785"
+          },
+          {
+            "text": "handleClickText(0)\n              >\n                \" \ubaa8\ubcd1\uc81c \ub3c4\uc785\""
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "class": "T1-1",
+    "elements": [
+      {
+        "type": "circle",
+        "cx": "81.5",
+        "cy": "172.2",
+        "r": "51.7",
+        "className": "st15"
+      },
+      {
+        "type": "text",
+        "transform": "matrix(1 0 0 1 50 104.3537)",
+        "className": "st7",
+        "onClick": null,
+        "style": null,
+        "content": [
+          {
+            "text": "st0 st1 st14"
+          },
+          {
+            "type": "tspan",
+            "x": "5",
+            "y": "9.9",
+            "className": "st0 st1 st14",
+            "onClick": null,
+            "style": "{ fontSize: \"8px\" ",
+            "text": "\"\ud604 \uc0ac\ud68c\uc0c1\ud669\""
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "class": "T1-1-J1",
+    "elements": [
+      {
+        "type": "text",
+        "transform": "matrix(1 0 0 1 40.7148 146.8604)",
+        "className": "st7",
+        "onClick": null,
+        "style": "{ fontSize: \"6.4px\" ",
+        "content": [
+          {
+            "text": "st24 st1"
+          },
+          {
+            "type": "tspan",
+            "x": "11",
+            "y": "-1",
+            "className": "st24 st1 ",
+            "onClick": null,
+            "style": null,
+            "text": "\"\uc778\uad6c\""
+          },
+          {
+            "type": "tspan",
+            "x": "11",
+            "y": "6",
+            "className": "st24 st1",
+            "onClick": null,
+            "style": null,
+            "text": "\"\uc808\ubcbd\uc704\ud611\""
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "class": "T1-1-P1",
+    "elements": [
+      {
+        "type": "text",
+        "transform": "matrix(1 0 0 1 60.6143 168.4858)",
+        "className": "st7",
+        "onClick": null,
+        "style": "{ fontSize: \"4.5px\" ",
+        "content": [
+          {
+            "text": "st24 st1"
+          },
+          {
+            "type": "tspan",
+            "x": "8",
+            "y": "0",
+            "className": "st24 st1",
+            "onClick": null,
+            "style": null,
+            "text": "\"\uc548\ubcf4\uc704\ud611 \""
+          },
+          {
+            "type": "tspan",
+            "x": "8",
+            "y": "5",
+            "className": "st24 st1 ",
+            "onClick": null,
+            "style": null,
+            "text": "\"\uacfc\uc18c\ud3c9\uac00\""
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "class": "T1-1-L1",
+    "elements": [
+      {
+        "type": "path",
+        "className": "LJS selected",
+        "onClick": "handleClick(7, e)",
+        "d": "M102.6,143.5l2.5-2.5c2.6-2.6,2.6-6.9,0-9.5l-5.6-5.6c-2.6-2.6-6.9-2.6-9.5,0l-2.5,2.5l-2.5-2.5 c-2.6-2.6-6.9-2.6-9.5,0l-5.6,5.6c-2.6,2.6-2.6,6.9,0,9.5l2.5,2.5l-2.5,2.5c-2.6,2.6-2.6,6.9,0,9.5l5.6,5.6c2.6,2.6,6.9,2.6,9.5,0 l2.5-2.5l2.5,2.5c2.6,2.6,6.9,2.6,9.5,0l5.6-5.6c2.6-2.6,2.6-6.9,0-9.5L102.6,143.5z"
+      },
+      {
+        "type": "text",
+        "transform": "matrix(1 0 0 1 69.2554 139.6934)",
+        "className": "st7",
+        "onClick": null,
+        "style": "{ fontSize: \"8px\" ",
+        "content": [
+          {
+            "text": "st24 st1"
+          },
+          {
+            "type": "tspan",
+            "x": "18",
+            "y": "0",
+            "className": "st24 st1",
+            "onClick": null,
+            "style": null,
+            "text": "\"\uc548\ubcf4\uc704\ud611 \""
+          },
+          {
+            "type": "tspan",
+            "x": "18",
+            "y": "13",
+            "className": "st24 st1",
+            "onClick": null,
+            "style": null,
+            "text": "\"\uacfc\uc18c\ud3c9\uac00 \""
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "class": "T1-1-P2",
+    "elements": [
+      {
+        "type": "path",
+        "className": "PHR selected",
+        "onClick": "handleClick(3, e)",
+        "d": "M117.6,190l3-3c3.2-3.2,3.2-8.5,0-11.7l-6.9-6.9c-3.2-3.2-8.5-3.2-11.7,0l-3,3l-3-3c-3.2-3.2-8.5-3.2-11.7,0 l-6.9,6.9c-3.2,3.2-3.2,8.5,0,11.7l3,3l-3,3c-3.2,3.2-3.2,8.5,0,11.7l6.9,6.9c3.2,3.2,8.5,3.2,11.7,0l3-3l3,3 c3.2,3.2,8.5,3.2,11.7,0l6.9-6.9c3.2-3.2,3.2-8.5,0-11.7L117.6,190z"
+      },
+      {
+        "type": "text",
+        "transform": "matrix(1 0 0 1 89.9458 179.4644)",
+        "className": "st7",
+        "onClick": null,
+        "style": "{ fontSize: \"12px\" ",
+        "content": [
+          {
+            "text": "st24 st1"
+          },
+          {
+            "type": "tspan",
+            "x": "3",
+            "y": "6.5",
+            "className": "st24 st1",
+            "onClick": null,
+            "style": null,
+            "text": "\"\ubd81\""
+          },
+          {
+            "type": "tspan",
+            "x": "-7",
+            "y": "20.5",
+            "className": "st24 st1",
+            "onClick": null,
+            "style": null,
+            "text": "\"\ud575\uc704\ud611\""
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "class": "T1-1-J2",
+    "elements": [
+      {
+        "type": "ellipse",
+        "transform": "matrix(0.6641 -0.7477 0.7477 0.6641 -114.6271 89.0518)",
+        "className": "JKT selected",
+        "onClick": "handleClick(5, e)",
+        "cx": "41.8",
+        "cy": "172.1",
+        "rx": "11.2",
+        "ry": "11.2"
+      },
+      {
+        "type": "text",
+        "transform": "matrix(1 0 0 1 31.8335 171.4048)",
+        "className": "st7",
+        "onClick": null,
+        "style": "{ fontSize: \"5px\" ",
+        "content": [
+          {
+            "text": "st24 st1"
+          },
+          {
+            "type": "tspan",
+            "x": "10",
+            "y": "-3",
+            "className": "st24 st1",
+            "onClick": null,
+            "style": null,
+            "text": "\"\uccad\ub144\""
+          },
+          {
+            "type": "tspan",
+            "x": "10",
+            "y": "2",
+            "className": "st24 st1",
+            "onClick": null,
+            "style": null,
+            "text": "\"\uc2e4\uc5c5\ub960\""
+          },
+          {
+            "type": "tspan",
+            "x": "10",
+            "y": "7",
+            "className": "st24 st1",
+            "onClick": null,
+            "style": null,
+            "text": "\"\uc99d\uac00\""
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "class": "T1-1-J3",
+    "elements": [
+      {
+        "type": "ellipse",
+        "transform": "matrix(0.3847 -0.923 0.923 0.3847 -145.8439 173.9329)",
+        "className": "JKT selected",
+        "onClick": "handleClick(5, e)",
+        "cx": "57.5",
+        "cy": "196.4",
+        "rx": "17.2",
+        "ry": "17.2"
+      },
+      {
+        "type": "text",
+        "transform": "matrix(1 0 0 1 45.5747 189.7864)",
+        "className": "st7",
+        "onClick": null,
+        "style": "{ fontSize: \"8px\" ",
+        "content": [
+          {
+            "text": "st24 st1"
+          },
+          {
+            "type": "tspan",
+            "x": "12",
+            "y": "2",
+            "className": "st24 st1",
+            "onClick": null,
+            "style": null,
+            "text": "\"50\ub9cc\uad70\""
+          },
+          {
+            "type": "tspan",
+            "x": "12",
+            "y": "12",
+            "className": "st24 st1",
+            "onClick": null,
+            "style": null,
+            "text": "\"\uc720\uc9c0\ubd88\uac00\""
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "class": "T1-2",
+    "elements": [
+      {
+        "type": "circle",
+        "cx": "188.8",
+        "cy": "171.7",
+        "r": "55.2",
+        "className": "st15"
+      },
+      {
+        "type": "text",
+        "transform": "matrix(1 0 0 1 185 98.9778)",
+        "className": "st7",
+        "onClick": null,
+        "style": null,
+        "content": [
+          {
+            "text": "8px"
+          },
+          {
+            "type": "tspan",
+            "x": "0",
+            "y": "0",
+            "className": "st0 st1 st14",
+            "onClick": null,
+            "style": null,
+            "text": "\"Current \""
+          },
+          {
+            "type": "tspan",
+            "x": "-16.5",
+            "y": "9.9",
+            "className": "st0 st1 st14",
+            "onClick": null,
+            "style": null,
+            "text": "\"\ud604 \uad70\uc0c1\ud669\""
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "class": "T1-2-K1",
+    "elements": [
+      {
+        "type": "ellipse",
+        "transform": "matrix(0.2318 -0.9728 0.9728 0.2318 -27.5608 273.884)",
+        "className": "KJD selected",
+        "onClick": "handleClick(15, e)",
+        "cx": "159.6",
+        "cy": "154.4",
+        "rx": "19.4",
+        "ry": "19.4"
+      },
+      {
+        "type": "text",
+        "transform": "matrix(1 0 0 1 145.1528 148.4434)",
+        "className": "st7",
+        "onClick": null,
+        "style": "{ fontSize: \"8.2px\" ",
+        "content": [
+          {
+            "text": "st24 st1"
+          },
+          {
+            "type": "tspan",
+            "x": "15",
+            "y": "3",
+            "className": "st24 st1",
+            "onClick": null,
+            "style": null,
+            "text": "\"\uccad\ub144\uc778\uad6c\""
+          },
+          {
+            "type": "tspan",
+            "x": "15",
+            "y": "12",
+            "className": "st24 st1",
+            "onClick": null,
+            "style": null,
+            "text": "\"\uac10\uc18c\""
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "class": "T1-2-P1",
+    "elements": [
+      {
+        "type": "path",
+        "className": "PHR selected",
+        "onClick": "handleClick(18, e)",
+        "d": "M219.2,206.8l1.7-1.7c1.8-1.8,1.8-4.7,0-6.5l-3.8-3.8c-1.8-1.8-4.7-1.8-6.5,0l-1.7,1.7l-1.7-1.7 c-1.8-1.8-4.7-1.8-6.5,0l-3.8,3.8c-1.8,1.8-1.8,4.7,0,6.5l1.7,1.7l-1.7,1.7c-1.8,1.8-1.8,4.7,0,6.5l3.8,3.8c1.8,1.8,4.7,1.8,6.5,0 l1.7-1.7l1.7,1.7c1.8,1.8,4.7,1.8,6.5,0l3.8-3.8c1.8-1.8,1.8-4.7,0-6.5L219.2,206.8z"
+      },
+      {
+        "type": "text",
+        "transform": "matrix(1 0 0 1 200.4277 201.721)",
+        "className": "st7",
+        "onClick": null,
+        "style": "{ fontSize: \"5.3px\" ",
+        "content": [
+          {
+            "text": "st24 st1"
+          },
+          {
+            "type": "tspan",
+            "x": "9",
+            "y": "3",
+            "className": "st24 st1",
+            "onClick": null,
+            "style": null,
+            "text": "\"\ubbf8\ube44\ud55c\""
+          },
+          {
+            "type": "tspan",
+            "x": "9",
+            "y": "11",
+            "className": "st24 st1",
+            "onClick": null,
+            "style": null,
+            "text": "\"\uad70\uc815\ucc45\uac80\ud1a0 \""
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "class": "T1-2-L1",
+    "elements": [
+      {
+        "type": "path",
+        "className": "LJS selected",
+        "onClick": "handleClick(16, e)",
+        "d": "M223.4,149l3.1-3.1c3.3-3.3,3.3-8.9,0-12.2l-7.2-7.2c-3.3-3.3-8.9-3.3-12.2,0l-3.1,3.1l-3.1-3.1 c-3.3-3.3-8.9-3.3-12.2,0l-7.2,7.2c-3.3,3.3-3.3,8.9,0,12.2l3.1,3.1l-3.1,3.1c-3.3,3.3-3.3,8.9,0,12.2l7.2,7.2 c3.3,3.3,8.9,3.3,12.2,0l3.1-3.1l3.1,3.1c3.3,3.3,8.9,3.3,12.2,0l7.2-7.2c3.3-3.3,3.3-8.9,0-12.2L223.4,149z"
+      },
+      {
+        "type": "text",
+        "transform": "matrix(1 0 0 1 189.605 143.2314)",
+        "className": "st7",
+        "onClick": null,
+        "style": "{ fontSize: \"9.3px\" ",
+        "content": [
+          {
+            "text": "st24 st1"
+          },
+          {
+            "type": "tspan",
+            "x": "14",
+            "y": "1",
+            "className": "st24 st1",
+            "onClick": null,
+            "style": null,
+            "text": "\"\uac10\uad70\ub300\ube44\""
+          },
+          {
+            "type": "tspan",
+            "x": "14",
+            "y": "14",
+            "className": "st24 st1",
+            "onClick": null,
+            "style": null,
+            "text": "\"\ubb34\ub300\ucc45\""
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "class": "T1-2-J1",
+    "elements": [
+      {
+        "type": "ellipse",
+        "transform": "matrix(0.7071 -0.7071 0.7071 0.7071 -76.6033 186.8325)",
+        "className": "JKT selected",
+        "onClick": "handleClick(12, e)",
+        "cx": "187.2",
+        "cy": "185.9",
+        "rx": "12.9",
+        "ry": "12.9"
+      },
+      {
+        "type": "text",
+        "transform": "matrix(1 0 0 1 176.1748 184.9607)",
+        "className": "st7",
+        "onClick": null,
+        "style": "{ fontSize: \"5px\" ",
+        "content": [
+          {
+            "text": "st24 st1"
+          },
+          {
+            "type": "tspan",
+            "x": "11",
+            "y": "-3",
+            "className": "st24 st1",
+            "onClick": null,
+            "style": null,
+            "text": "\"\ubcf5\ubb34\""
+          },
+          {
+            "type": "tspan",
+            "x": "11",
+            "y": "3",
+            "className": "st24 st1",
+            "onClick": null,
+            "style": null,
+            "text": "\"\ub2e8\ucd95\""
+          },
+          {
+            "type": "tspan",
+            "x": "11",
+            "y": "9",
+            "className": "st24 st1",
+            "onClick": null,
+            "style": null,
+            "text": "\"\uacf5\uc57d\""
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "class": "T1-2-K2",
+    "elements": [
+      {
+        "type": "ellipse",
+        "transform": "matrix(0.5227 -0.8525 0.8525 0.5227 -88.026 224.9724)",
+        "className": "KJD selected",
+        "onClick": "handleClick(15, e)",
+        "cx": "156.9",
+        "cy": "191.1",
+        "rx": "17.6",
+        "ry": "17.6"
+      },
+      {
+        "type": "text",
+        "transform": "matrix(1 0 0 1 144.7456 184.1839)",
+        "className": "st7",
+        "onClick": null,
+        "style": "{ fontSize: \"7px\" ",
+        "content": [
+          {
+            "text": "st24 st1"
+          },
+          {
+            "type": "tspan",
+            "x": "12",
+            "y": "0",
+            "className": "st24 st1",
+            "onClick": null,
+            "style": null,
+            "text": "\"\uad70\""
+          },
+          {
+            "type": "tspan",
+            "x": "12",
+            "y": "8",
+            "className": "st24 st1",
+            "onClick": null,
+            "style": null,
+            "text": "\"\ubd80\uc801\uc751\uc790\""
+          },
+          {
+            "type": "tspan",
+            "x": "12",
+            "y": "16",
+            "className": "st24 st1",
+            "onClick": null,
+            "style": null,
+            "text": "\"\ub9e4\ub144\uc99d\uac00\""
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "class": "T1-2-L2",
+    "elements": [
+      {
+        "type": "path",
+        "className": "LJS selected",
+        "onClick": "handleClick(13, e)",
+        "d": "M236.9,184.1l1.7-1.7c1.8-1.8,1.8-4.7,0-6.5l-3.8-3.8c-1.8-1.8-4.7-1.8-6.5,0l-1.7,1.7l-1.7-1.7 c-1.8-1.8-4.7-1.8-6.5,0l-3.8,3.8c-1.8,1.8-1.8,4.7,0,6.5l1.7,1.7l-1.7,1.7c-1.8,1.8-1.8,4.7,0,6.5l3.8,3.8c1.8,1.8,4.7,1.8,6.5,0 l1.7-1.7l1.7,1.7c1.8,1.8,4.7,1.8,6.5,0l3.8-3.8c1.8-1.8,1.8-4.7,0-6.5L236.9,184.1z"
+      },
+      {
+        "type": "text",
+        "transform": "matrix(1 0 0 1 217.3013 179.4031)",
+        "className": "st7",
+        "onClick": null,
+        "style": "{ fontSize: \"6px\" ",
+        "content": [
+          {
+            "text": "st24 st1"
+          },
+          {
+            "type": "tspan",
+            "x": "10",
+            "y": "1",
+            "className": "st24 st1",
+            "onClick": null,
+            "style": null,
+            "text": "\"\uad70\uc778\uc218\""
+          },
+          {
+            "type": "tspan",
+            "x": "10",
+            "y": "7.5",
+            "className": "st24 st1",
+            "onClick": null,
+            "style": null,
+            "text": "\"25\ub9cc\""
+          },
+          {
+            "type": "tspan",
+            "x": "10",
+            "y": "14",
+            "className": "st24 st1",
+            "onClick": null,
+            "style": null,
+            "text": "\"\uc801\uc815\""
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "class": "T1-2-K3",
+    "elements": [
+      {
+        "type": "path",
+        "className": "KJD selected",
+        "onClick": "handleClick(15, e)",
+        "d": "M181.4,197.8c7.7,0,14,6.3,14,14c0,7.7-6.3,14-14,14c-7.7,0-14-6.3-14-14 C167.4,204.1,173.6,197.8,181.4,197.8z"
+      },
+      {
+        "type": "text",
+        "transform": "matrix(1 0 0 1 171.5542 208.66)",
+        "className": "st7",
+        "onClick": null,
+        "style": "{ fontSize: \"6px\" ",
+        "content": [
+          {
+            "text": "st24 st1"
+          },
+          {
+            "type": "tspan",
+            "x": "9",
+            "y": "1",
+            "className": "st24 st1",
+            "onClick": null,
+            "style": null,
+            "text": "\"\uad00\uc2ec\ubcd1\uc0ac\""
+          },
+          {
+            "type": "tspan",
+            "x": "9",
+            "y": "9",
+            "className": "st24 st1",
+            "onClick": null,
+            "style": null,
+            "text": "\"\uc99d\uac00\""
+          }
+        ]
+      }
+    ]
+  }
+]

@@ -1,6 +1,6 @@
 /* eslint-disable no-unused-vars */
 import { CHANGE_STANDARD_SIMILARITY_SCORE } from "../actionTypes";
-import { Reducer } from "redux";
+import { Reducer } from "@reduxjs/toolkit";
 import { ChangeStandardSimilarityScoreAction } from "../actions";
 // import { maxSimilarityScore } from "../../views/ConceptualRecurrencePlot/DataStructureMaker";
 

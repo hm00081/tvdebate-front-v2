@@ -1,0 +1,39 @@
+.mainLink {
+  text-decoration: none;
+  z-index: 1000;
+}
+
+.naviTwo {
+  position: absolute;
+  top: 0;
+  left: 0;
+  text-align: justify;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  width: calc(100% - 280px); // Add this line
+  color: black;
+  background-color: white;
+  font-weight: 600;
+  font-size: 14px;
+
+  margin-top: 35px;
+  height: 60px;
+  padding-left: 10px;
+}
+
+.st0 {
+  fill: #ac1d3b;
+}
+
+.st1 {
+  fill: #bf6020;
+}
+
+.st2 {
+  fill: #1da36b;
+}
+
+.st3 {
+  fill: #1e96d1;
+}

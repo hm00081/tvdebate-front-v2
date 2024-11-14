@@ -78,13 +78,11 @@ export default class Evaluation {
       let segmentUtteranceIndex: number = -1;
 
       if (index < segmentSentenceIndexes.length - 1) {
-        segmentUtteranceIndex = this.sentenceIndexUtteranceIndexDict[
-          sentenceIndex + 1
-        ];
+        segmentUtteranceIndex =
+          this.sentenceIndexUtteranceIndexDict[sentenceIndex + 1];
       } else {
-        segmentUtteranceIndex = this.sentenceIndexUtteranceIndexDict[
-          sentenceIndex
-        ];
+        segmentUtteranceIndex =
+          this.sentenceIndexUtteranceIndexDict[sentenceIndex];
       }
 
       segmentUtteranceIndexes.push(segmentUtteranceIndex);
