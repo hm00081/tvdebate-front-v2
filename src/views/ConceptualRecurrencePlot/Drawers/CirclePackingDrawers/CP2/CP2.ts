@@ -3,7 +3,7 @@
 import React from "react";
 import { DataStructureSet } from "../../../DataStructureMaker/DataStructureManager";
 import * as d3 from "d3";
-import _ from "lodash";
+// import _ from "lodash";
 import { TranscriptViewerMethods } from "../../../TranscriptViewer/TranscriptViewer";
 import { CP2Data, pathsData, lineData } from "./tagData";
 import { styleText } from "../StyleText";
@@ -66,10 +66,12 @@ export class CP2Drawer extends CPDrawer {
       .attr("class", (d) => d.className)
       .attr("d", (d) => d.d);
     groups.append("title").text((d) => {
-      const name = this.dataStructureSet?.utteranceObjectsForDrawingManager
-        ?.utteranceObjectsForDrawing[d.scriptIndex]?.name;
-      const utterance = this.dataStructureSet?.utteranceObjectsForDrawingManager
-        ?.utteranceObjectsForDrawing[d.scriptIndex]?.utterance;
+      const name =
+        this.dataStructureSet?.utteranceObjectsForDrawingManager
+          ?.utteranceObjectsForDrawing[d.scriptIndex]?.name;
+      const utterance =
+        this.dataStructureSet?.utteranceObjectsForDrawingManager
+          ?.utteranceObjectsForDrawing[d.scriptIndex]?.utterance;
       return `scriptIndex: ${d.scriptIndex}\nName: ${name}\nUtterance: ${utterance}`;
     });
     groups.attr("transform", (d, i) => {

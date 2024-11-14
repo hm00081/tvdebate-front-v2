@@ -46,20 +46,15 @@ function ConceptualMapModal(
   const [modalVisible, setModalVisible] = useState<boolean>(false);
   const [modalTitle, setModalTitle] = useState<string>("");
   const [maxCooccurrence, setMaxCooccurrence] = useState<number>(0);
-  const [
-    standardTermCountToGenerateNode,
-    setStandardTermCountToGenerateNode,
-  ] = useState<number>(0);
+  const [standardTermCountToGenerateNode, setStandardTermCountToGenerateNode] =
+    useState<number>(0);
   const [maxOfLinksPerNode, setMaxOfLinksPerNode] = useState<number>(3);
-  const [showNodeNotHavingLinks, setShowNodeNotHavingLinks] = useState<boolean>(
-    true
-  );
-  const [conceptualMapDrawer, setConceptualMapDrawer] = useState<
-    ConceptualMapDrawer
-  >();
-  const [graphDataStructureMaker, setGraphDataStructureMaker] = useState<
-    GraphDataStructureMaker
-  >();
+  const [showNodeNotHavingLinks, setShowNodeNotHavingLinks] =
+    useState<boolean>(true);
+  const [conceptualMapDrawer, setConceptualMapDrawer] =
+    useState<ConceptualMapDrawer>();
+  const [graphDataStructureMaker, setGraphDataStructureMaker] =
+    useState<GraphDataStructureMaker>();
 
   useEffect(() => {
     const modalPadding = 24;
@@ -94,7 +89,9 @@ function ConceptualMapModal(
         props.termType
       );
 
-      const cooccurrenceMatrixOfEG = graphDataStructureMaker.getCooccurrenceMatrixOfEG();
+      const cooccurrenceMatrixOfEG =
+        graphDataStructureMaker.getCooccurrenceMatrixOfEG();
+      //@ts-ignore
       const ceiledMedian = Math.ceil(math.mean(cooccurrenceMatrixOfEG));
 
       const nodeLinkDict = graphDataStructureMaker.generateNodesAndLinks(

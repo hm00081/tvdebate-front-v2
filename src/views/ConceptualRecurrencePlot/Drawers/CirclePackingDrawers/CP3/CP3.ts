@@ -3,7 +3,7 @@
 import React from "react";
 import { DataStructureSet } from "../../../DataStructureMaker/DataStructureManager";
 import * as d3 from "d3";
-import _ from "lodash";
+// import _ from "lodash";
 import { TranscriptViewerMethods } from "../../../TranscriptViewer/TranscriptViewer";
 import { CP3Data, pathsData, lineData } from "./tagData";
 import { styleText } from "../StyleText";

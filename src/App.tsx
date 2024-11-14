@@ -1,9 +1,7 @@
-// /* eslint-disable no-unused-vars */
-// export default App;
 import React from "react";
 import {
   HashRouter as Router, // 변경: BrowserRouter -> HashRouter
-  Switch,
+  Routes,
   Route,
 } from "react-router-dom";
 import "./App.scss";
@@ -14,14 +12,13 @@ function App() {
   return (
     <Router>
       <div>
-        <Switch>
-          <Route path="/coocurence_matrix">
-            <ConceptualRecurrencePlot />
-          </Route>
-          <Route path="/">
-            <Home />
-          </Route>
-        </Switch>
+        <Routes>
+          <Route
+            path="/coocurence_matrix"
+            element={<ConceptualRecurrencePlot />}
+          />
+          <Route path="/" element={<Home />} />
+        </Routes>
       </div>
     </Router>
   );

@@ -68,9 +68,8 @@ export class D3Drawer {
   public readonly CP6Drawer: CP6Drawer;
   public readonly CP7Drawer: CP7Drawer;
   public readonly PlotChartDrawer: PlotChartDrawer;
-  private transcriptViewerRef: React.RefObject<
-    TranscriptViewerMethods
-  > | null = null;
+  private transcriptViewerRef: React.RefObject<TranscriptViewerMethods> | null =
+    null;
   private readonly svgWidth: number;
   private readonly svgHeight: number;
   private _zoomListener: ((transform: d3.ZoomTransform) => void) | null = null;
@@ -102,10 +101,12 @@ export class D3Drawer {
       const rowIndex = d.rowUtteranceIndex;
       const colIndex = d.columnUtteranceIndex;
 
-      const rowUtterance = this.dataStructureSet
-        .utteranceObjectsForDrawingManager.utteranceObjectsForDrawing[rowIndex];
-      const colUtterance = this.dataStructureSet
-        .utteranceObjectsForDrawingManager.utteranceObjectsForDrawing[colIndex];
+      const rowUtterance =
+        this.dataStructureSet.utteranceObjectsForDrawingManager
+          .utteranceObjectsForDrawing[rowIndex];
+      const colUtterance =
+        this.dataStructureSet.utteranceObjectsForDrawingManager
+          .utteranceObjectsForDrawing[colIndex];
 
       // 키워드 빈도수 계산 함수
       const countCompoundTerms = (
@@ -161,9 +162,7 @@ export class D3Drawer {
     private readonly debateDataSet: DebateDataSet,
     private readonly dataStructureSet: DataStructureSet,
     private readonly termType: TermType,
-    private readonly transcriptViewerRefs: React.RefObject<
-      TranscriptViewerMethods
-    >
+    private readonly transcriptViewerRefs: React.RefObject<TranscriptViewerMethods>
   ) {
     // declare variables
     this.conceptRecurrencePlotDiv = d3.select(".concept-recurrence-plot");
@@ -260,7 +259,8 @@ export class D3Drawer {
       ) {
         this.refutationIconDrawer.similarityBlock = d;
         this.insistenceIconDrawerTwo.similarityBlock = d;
-      } else null;
+      } else {
+      }
       this.refutationIconDrawer.update();
       this.refutationIconDrawerTwo.update();
       this.insistenceIconDrawer.update();
@@ -393,8 +393,9 @@ export class D3Drawer {
   }
 
   public centerConceptualRecurrentPlot() {
-    const utteranceObjectsForDrawing = this.dataStructureSet
-      .utteranceObjectsForDrawingManager.utteranceObjectsForDrawing;
+    const utteranceObjectsForDrawing =
+      this.dataStructureSet.utteranceObjectsForDrawingManager
+        .utteranceObjectsForDrawing;
     const ar = [];
     const arr = [];
     for (let i = 0; i < utteranceObjectsForDrawing.length; i++) {

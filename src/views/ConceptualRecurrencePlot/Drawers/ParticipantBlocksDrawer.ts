@@ -134,8 +134,7 @@ export class ParticipantBlocksDrawer {
 
         const compoundTermCountDict =
           d.sentenceObjects[i].compoundTermCountDict;
-        compoundTermCountDict;
-        // compoundTermCountDict에서 가장 높은 값을 가진 항목들을 추출합니다.
+        // compoundTermCountDict;
         const sortedTerms = Object.entries(compoundTermCountDict)
           .sort((a, b) => b[1] - a[1]) // 내림차순 정렬
           .slice(0, 3) // 상위 3개 항목만 추출

@@ -73,7 +73,7 @@ const LegendItem: React.FC<LegendProps> = ({ color, label }) => {
 
 export default function Header({ isOpen, setIsOpen }: HeaderProps) {
   return (
-    <a className={style.mainLink}>
+    <div className={style.mainLink}>
       <div
         className={style.naviTwo}
         style={{
@@ -219,6 +219,6 @@ export default function Header({ isOpen, setIsOpen }: HeaderProps) {
           {isOpen ? "Hide Script" : "View Script"}
         </button>
       </div>
-    </a>
+    </div>
   );
 }

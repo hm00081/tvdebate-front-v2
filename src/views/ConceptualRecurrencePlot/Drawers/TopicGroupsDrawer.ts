@@ -93,7 +93,7 @@ export class TopicGroupsDrawer {
   public update() {
     const excludedIndex = [1, 3, 5];
     const excludedIndexTwo = [1, 3, 5];
-    const self = this;
+    // const self = this;
     // 주제별로 보고 싶다면 this._guideColor로 필터링 적용해도 될듯함.
     // filter 후 데이터 제공.
     const filteredData = this._topicGroups.filter(
@@ -131,8 +131,8 @@ export class TopicGroupsDrawer {
         conceptMatrixTransposed: this.debateDataSet.conceptMatrixTransposed,
         keytermObjects: this.debateDataSet.keytermObjects,
         termList: this.debateDataSet.termList,
-        termUtteranceBooleanMatrixTransposed: this.debateDataSet
-          .termUtteranceBooleanMatrixTransposed,
+        termUtteranceBooleanMatrixTransposed:
+          this.debateDataSet.termUtteranceBooleanMatrixTransposed,
       })
     );
 
@@ -412,8 +412,8 @@ export class TopicGroupsDrawer {
         .style("cursor", "pointer")
         .attr("transform", "rotate(-135) scale(-1, 1)")
         .on("click", (e, d) => {
-          const mouseEvent = (e as unknown) as MouseEvent;
-          const engagementGroup = (d as unknown) as SimilarityBlock[][];
+          const mouseEvent = e as unknown as MouseEvent;
+          const engagementGroup = d as unknown as SimilarityBlock[][];
           mouseEvent.stopPropagation();
           const engagementGroupIndex = _.indexOf(
             this._topicGroups,

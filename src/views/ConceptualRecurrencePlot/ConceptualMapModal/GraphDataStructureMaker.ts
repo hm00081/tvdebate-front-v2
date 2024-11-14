@@ -69,9 +69,12 @@ export class GraphDataStructureMaker {
       termType
     );
     const termCountDictOfEG = termCountDictOfEGMaker.getTermCountDictOfEG();
-    const termBooleanCountDictOfEG = termCountDictOfEGMaker.getTermBooleanCountDictOfEG();
-    const termCountDetailDictOfEG = termCountDictOfEGMaker.getTermCountDetailDictOfEG();
-    const termBooleanCountDetailDictOfEG = termCountDictOfEGMaker.getTermBooleanCountDetailDictOfEG();
+    const termBooleanCountDictOfEG =
+      termCountDictOfEGMaker.getTermBooleanCountDictOfEG();
+    const termCountDetailDictOfEG =
+      termCountDictOfEGMaker.getTermCountDetailDictOfEG();
+    const termBooleanCountDetailDictOfEG =
+      termCountDictOfEGMaker.getTermBooleanCountDetailDictOfEG();
 
     this.termListOfEG = this.makeTermListOfEG(termCountDictOfEG, 2);
     const frequencyVectorOfEG = this.makeFrequencyVectorOfEG(
@@ -315,9 +318,8 @@ export class GraphDataStructureMaker {
     });
 
     // delete links until max_of_links_per_node
-    const filteredLinkDict: { [linkId: string]: LinkDatum } = _.cloneDeep(
-      linkCandidateDict
-    );
+    const filteredLinkDict: { [linkId: string]: LinkDatum } =
+      _.cloneDeep(linkCandidateDict);
     _.forEach(termListOfEG, (term, termIndex) => {
       const filteredLinkCandidates = _.chain(filteredLinkDict)
         .filter(

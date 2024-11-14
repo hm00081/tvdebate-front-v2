@@ -8,8 +8,8 @@ interface HeaderProps {
 
 export default function Header({ isOpen, setIsOpen }: HeaderProps) {
   return (
-    <a className={style.mainLink}>
+    <div className={style.mainLink}>
       <div className={style.navi}>MetaDebateVis</div>
-    </a>
+    </div>
   );
 }

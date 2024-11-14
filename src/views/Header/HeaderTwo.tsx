@@ -76,7 +76,7 @@ const LegendItem: React.FC<LegendProps> = ({ color, label }) => {
 export default function Header({ isOpen, setIsOpen }: HeaderProps) {
   //const [isOpen, setIsOpen] = useState(true);
   return (
-    <a className={style.mainLink}>
+    <div className={style.mainLink}>
       <div className={style.naviTwo}>
         {/* <h3 style={{ marginLeft: "5px", marginTop: "-18px" }}>Data: 모병제</h3> */}
         <h3
@@ -222,6 +222,6 @@ export default function Header({ isOpen, setIsOpen }: HeaderProps) {
           {isOpen ? "Hide Script" : "View Script"}
         </button>
       </div>
-    </a>
+    </div>
   );
 }

@@ -1,15 +1,10 @@
 // export default Home;
 /* eslint-disable no-unused-vars */
-import { Button, Checkbox } from "antd";
-import React, { useState } from "react";
+// import { Button, Checkbox } from "antd";
+import { useState } from "react";
 import styles from "./Home.module.scss";
 import { Link } from "react-router-dom"; // Link 를 사용하기 위해 임포트
-import Axios from "axios";
-import {
-  aiopenAccessKey,
-  nodeExpressAddress,
-  pythonFlaskAddress,
-} from "../../constants/constants";
+// import Axios from "axios";
 import { TermType } from "../ConceptualRecurrencePlot/DataImporter";
 
 // ... (기타 임포트 내용)
