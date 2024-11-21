@@ -92,214 +92,214 @@ export class Controllers extends React.Component<
     };
   }
 
-  render() {
-    return (
-      <div
-        // style={{ backgroundColor: "gray" }}
-        className={styles.controllersZone}
-      >
-        <div
-          className={styles.verticalSpace}
-          // style={{ marginTop: "100px" }}
-        ></div>
-        <Checkbox
-          className={styles.checkbox}
-          defaultChecked
-          onChange={(event) => {
-            this.props.d3Drawer!.similarityBlocksDrawer.coloringRebuttal =
-              event.target.checked;
-            this.props.d3Drawer!.insistenceMarkersDrawer.visible =
-              event.target.checked;
+  // render() {
+  //   return (
+  //     <div
+  //       // style={{ backgroundColor: "gray" }}
+  //       className={styles.controllersZone}
+  //     >
+  //       <div
+  //         className={styles.verticalSpace}
+  //         // style={{ marginTop: "100px" }}
+  //       ></div>
+  //       <Checkbox
+  //         className={styles.checkbox}
+  //         defaultChecked
+  //         onChange={(event) => {
+  //           this.props.d3Drawer!.similarityBlocksDrawer.coloringRebuttal =
+  //             event.target.checked;
+  //           this.props.d3Drawer!.insistenceMarkersDrawer.visible =
+  //             event.target.checked;
 
-            this.props.d3Drawer!.similarityBlocksDrawer.update();
-            this.props.d3Drawer!.insistenceMarkersDrawer.update();
-          }}
-          style={{ fontWeight: "bold" }}
-        >
-          Coloring Refutation/Insistence
-        </Checkbox>
-        <div
-          style={{
-            fontSize: 11,
-            fontWeight: "bold",
-            marginTop: "10px",
-            marginBottom: "5px",
-          }}
-        >
-          Conditions of insistence & refutation Weight
-        </div>
-        <div className={styles.verticalSpace}></div>
-        <div>Insistence (주장)</div>
-        <SliderWithInput
-          min={0}
-          max={5}
-          value={this.state.insistenceWeight}
-          step={0.1}
-          onChangeListener={(changedValue) => {
-            this.props.dataStructureSet!.similarityBlockManager.insistenceWeight =
-              changedValue;
+  //           this.props.d3Drawer!.similarityBlocksDrawer.update();
+  //           this.props.d3Drawer!.insistenceMarkersDrawer.update();
+  //         }}
+  //         style={{ fontWeight: "bold" }}
+  //       >
+  //         Coloring Refutation/Insistence
+  //       </Checkbox>
+  //       <div
+  //         style={{
+  //           fontSize: 11,
+  //           fontWeight: "bold",
+  //           marginTop: "10px",
+  //           marginBottom: "5px",
+  //         }}
+  //       >
+  //         Conditions of insistence & refutation Weight
+  //       </div>
+  //       <div className={styles.verticalSpace}></div>
+  //       <div>Insistence (주장)</div>
+  //       <SliderWithInput
+  //         min={0}
+  //         max={5}
+  //         value={this.state.insistenceWeight}
+  //         step={0.1}
+  //         onChangeListener={(changedValue) => {
+  //           this.props.dataStructureSet!.similarityBlockManager.insistenceWeight =
+  //             changedValue;
 
-            // const engagementGroups = this.props.combinedEGsMaker!.make();
-            const topicGroups =
-              this.props.combinedEGsMaker!.makeByNumOfSegments(
-                this.state.numberOfTopicGroups
-              );
-            this.props.d3Drawer!.topicGroupsDrawer.topicGroups = topicGroups;
-            this.props.d3Drawer!.topicGroupsDrawer.update();
+  //           // const engagementGroups = this.props.combinedEGsMaker!.make();
+  //           const topicGroups =
+  //             this.props.combinedEGsMaker!.makeByNumOfSegments(
+  //               this.state.numberOfTopicGroups
+  //             );
+  //           this.props.d3Drawer!.topicGroupsDrawer.topicGroups = topicGroups;
+  //           this.props.d3Drawer!.topicGroupsDrawer.update();
 
-            // find most similarity in similarityBlocks
-            this.props.d3Drawer!.similarityBlocksDrawer.applyColorRatioSettingByTopSimilarityBlock();
-            this.props.d3Drawer!.similarityBlocksDrawer.update();
+  //           // find most similarity in similarityBlocks
+  //           this.props.d3Drawer!.similarityBlocksDrawer.applyColorRatioSettingByTopSimilarityBlock();
+  //           this.props.d3Drawer!.similarityBlocksDrawer.update();
 
-            this.setState({
-              insistenceWeight: changedValue,
-            });
-          }}
-        ></SliderWithInput>
-        <div>Refutation (반박)</div>
-        <SliderWithInput
-          min={0}
-          max={5}
-          value={this.state.refutationWeight}
-          step={0.1}
-          onChangeListener={(changedValue) => {
-            this.props.dataStructureSet!.similarityBlockManager.refutationWeight =
-              changedValue;
+  //           this.setState({
+  //             insistenceWeight: changedValue,
+  //           });
+  //         }}
+  //       ></SliderWithInput>
+  //       <div>Refutation (반박)</div>
+  //       <SliderWithInput
+  //         min={0}
+  //         max={5}
+  //         value={this.state.refutationWeight}
+  //         step={0.1}
+  //         onChangeListener={(changedValue) => {
+  //           this.props.dataStructureSet!.similarityBlockManager.refutationWeight =
+  //             changedValue;
 
-            // const engagementGroups = this.props.combinedEGsMaker!.make();
-            const topicGroups =
-              this.props.combinedEGsMaker!.makeByNumOfSegments(
-                this.state.numberOfTopicGroups
-              );
-            this.props.d3Drawer!.topicGroupsDrawer.topicGroups = topicGroups;
-            this.props.d3Drawer!.topicGroupsDrawer.update();
+  //           // const engagementGroups = this.props.combinedEGsMaker!.make();
+  //           const topicGroups =
+  //             this.props.combinedEGsMaker!.makeByNumOfSegments(
+  //               this.state.numberOfTopicGroups
+  //             );
+  //           this.props.d3Drawer!.topicGroupsDrawer.topicGroups = topicGroups;
+  //           this.props.d3Drawer!.topicGroupsDrawer.update();
 
-            // find most similarity in similarityBlocks
-            this.props.d3Drawer!.similarityBlocksDrawer.applyColorRatioSettingByTopSimilarityBlock();
-            this.props.d3Drawer!.similarityBlocksDrawer.update();
+  //           // find most similarity in similarityBlocks
+  //           this.props.d3Drawer!.similarityBlocksDrawer.applyColorRatioSettingByTopSimilarityBlock();
+  //           this.props.d3Drawer!.similarityBlocksDrawer.update();
 
-            this.setState({
-              refutationWeight: changedValue,
-            });
-          }}
-        ></SliderWithInput>
+  //           this.setState({
+  //             refutationWeight: changedValue,
+  //           });
+  //         }}
+  //       ></SliderWithInput>
 
-        <div
-          style={{
-            fontSize: 11,
-            fontWeight: "bold",
-            marginTop: "10px",
-            marginBottom: "5px",
-          }}
-        >
-          Conditions of Sentiment & Length of Text Weight
-        </div>
-        <div className={styles.smallControllerTitle}>Positive</div>
-        <SliderWithInput
-          min={0}
-          max={5}
-          value={this.state.positiveSumStandard}
-          step={0.1}
-          sliderWidth={104}
-          onChangeListener={(changedValue) => {
-            // this.props.dataStructureSet?.utteranceObjectsForDrawing[0].
-            this.props.dataStructureSet!.utteranceObjectsForDrawingManager.positiveSumStandard =
-              changedValue;
-            this.props.dataStructureSet!.similarityBlockManager.positiveSumStandard =
-              changedValue;
+  //       <div
+  //         style={{
+  //           fontSize: 11,
+  //           fontWeight: "bold",
+  //           marginTop: "10px",
+  //           marginBottom: "5px",
+  //         }}
+  //       >
+  //         Conditions of Sentiment & Length of Text Weight
+  //       </div>
+  //       <div className={styles.smallControllerTitle}>Positive</div>
+  //       <SliderWithInput
+  //         min={0}
+  //         max={5}
+  //         value={this.state.positiveSumStandard}
+  //         step={0.1}
+  //         sliderWidth={104}
+  //         onChangeListener={(changedValue) => {
+  //           // this.props.dataStructureSet?.utteranceObjectsForDrawing[0].
+  //           this.props.dataStructureSet!.utteranceObjectsForDrawingManager.positiveSumStandard =
+  //             changedValue;
+  //           this.props.dataStructureSet!.similarityBlockManager.positiveSumStandard =
+  //             changedValue;
 
-            // make topic_segments
-            const topicGroups =
-              this.props.combinedEGsMaker!.makeByNumOfSegments(
-                this.state.numberOfTopicGroups
-              );
+  //           // make topic_segments
+  //           const topicGroups =
+  //             this.props.combinedEGsMaker!.makeByNumOfSegments(
+  //               this.state.numberOfTopicGroups
+  //             );
 
-            // draw topic_segments
-            this.props.d3Drawer!.topicGroupsDrawer.topicGroups = topicGroups;
-            this.props.d3Drawer!.topicGroupsDrawer.update();
+  //           // draw topic_segments
+  //           this.props.d3Drawer!.topicGroupsDrawer.topicGroups = topicGroups;
+  //           this.props.d3Drawer!.topicGroupsDrawer.update();
 
-            // draw similarity_blocks
-            this.props.d3Drawer!.similarityBlocksDrawer.applyColorRatioSettingByTopSimilarityBlock();
-            this.props.d3Drawer!.similarityBlocksDrawer.update();
+  //           // draw similarity_blocks
+  //           this.props.d3Drawer!.similarityBlocksDrawer.applyColorRatioSettingByTopSimilarityBlock();
+  //           this.props.d3Drawer!.similarityBlocksDrawer.update();
 
-            this.props.d3Drawer!.insistenceMarkersDrawer.update();
+  //           this.props.d3Drawer!.insistenceMarkersDrawer.update();
 
-            this.setState({
-              positiveSumStandard: changedValue,
-            });
-          }}
-        ></SliderWithInput>
-        <div className={styles.smallControllerTitle}>Negative</div>
-        <SliderWithInput
-          min={0}
-          max={5}
-          value={this.state.negativeSumStandard}
-          step={0.1}
-          sliderWidth={104}
-          onChangeListener={(changedValue) => {
-            // adjust weight of similarity_blocks
-            this.props.dataStructureSet!.similarityBlockManager.negativeSumStandard =
-              changedValue;
+  //           this.setState({
+  //             positiveSumStandard: changedValue,
+  //           });
+  //         }}
+  //       ></SliderWithInput>
+  //       <div className={styles.smallControllerTitle}>Negative</div>
+  //       <SliderWithInput
+  //         min={0}
+  //         max={5}
+  //         value={this.state.negativeSumStandard}
+  //         step={0.1}
+  //         sliderWidth={104}
+  //         onChangeListener={(changedValue) => {
+  //           // adjust weight of similarity_blocks
+  //           this.props.dataStructureSet!.similarityBlockManager.negativeSumStandard =
+  //             changedValue;
 
-            // make topic_segments
-            // const engagementGroups = this.props.combinedEGsMaker!.make();
-            const topicGroups =
-              this.props.combinedEGsMaker!.makeByNumOfSegments(
-                this.state.numberOfTopicGroups
-              );
+  //           // make topic_segments
+  //           // const engagementGroups = this.props.combinedEGsMaker!.make();
+  //           const topicGroups =
+  //             this.props.combinedEGsMaker!.makeByNumOfSegments(
+  //               this.state.numberOfTopicGroups
+  //             );
 
-            // draw topic_segments
-            this.props.d3Drawer!.topicGroupsDrawer.topicGroups = topicGroups;
-            this.props.d3Drawer!.topicGroupsDrawer.update();
+  //           // draw topic_segments
+  //           this.props.d3Drawer!.topicGroupsDrawer.topicGroups = topicGroups;
+  //           this.props.d3Drawer!.topicGroupsDrawer.update();
 
-            // draw similarity_blocks
-            this.props.d3Drawer!.similarityBlocksDrawer.applyColorRatioSettingByTopSimilarityBlock();
-            this.props.d3Drawer!.similarityBlocksDrawer.update();
+  //           // draw similarity_blocks
+  //           this.props.d3Drawer!.similarityBlocksDrawer.applyColorRatioSettingByTopSimilarityBlock();
+  //           this.props.d3Drawer!.similarityBlocksDrawer.update();
 
-            this.setState({ negativeSumStandard: changedValue });
-          }}
-        ></SliderWithInput>
-        <div className={styles.smallControllerTitle}>Text Length</div>
-        <SliderWithInput
-          min={0}
-          max={300}
-          value={this.state.colUtteranceLongStandard}
-          sliderWidth={104}
-          onChangeListener={(changedValue) => {
-            // adjust weight of similarity_blocks
-            this.props.dataStructureSet!.similarityBlockManager.colUtteranceLongStandard =
-              changedValue;
-            this.props.dataStructureSet!.utteranceObjectsForDrawingManager.colUtteranceLongStandard =
-              changedValue;
+  //           this.setState({ negativeSumStandard: changedValue });
+  //         }}
+  //       ></SliderWithInput>
+  //       <div className={styles.smallControllerTitle}>Text Length</div>
+  //       <SliderWithInput
+  //         min={0}
+  //         max={300}
+  //         value={this.state.colUtteranceLongStandard}
+  //         sliderWidth={104}
+  //         onChangeListener={(changedValue) => {
+  //           // adjust weight of similarity_blocks
+  //           this.props.dataStructureSet!.similarityBlockManager.colUtteranceLongStandard =
+  //             changedValue;
+  //           this.props.dataStructureSet!.utteranceObjectsForDrawingManager.colUtteranceLongStandard =
+  //             changedValue;
 
-            // make topic_segments
-            // const engagementGroups = this.props.combinedEGsMaker!.make();
-            const topicGroups =
-              this.props.combinedEGsMaker!.makeByNumOfSegments(
-                this.state.numberOfTopicGroups
-              );
+  //           // make topic_segments
+  //           // const engagementGroups = this.props.combinedEGsMaker!.make();
+  //           const topicGroups =
+  //             this.props.combinedEGsMaker!.makeByNumOfSegments(
+  //               this.state.numberOfTopicGroups
+  //             );
 
-            // draw topic_segments
-            this.props.d3Drawer!.topicGroupsDrawer.topicGroups = topicGroups;
-            this.props.d3Drawer!.topicGroupsDrawer.update();
+  //           // draw topic_segments
+  //           this.props.d3Drawer!.topicGroupsDrawer.topicGroups = topicGroups;
+  //           this.props.d3Drawer!.topicGroupsDrawer.update();
 
-            // draw similarity_blocks
-            this.props.d3Drawer!.similarityBlocksDrawer.applyColorRatioSettingByTopSimilarityBlock();
-            this.props.d3Drawer!.similarityBlocksDrawer.update();
+  //           // draw similarity_blocks
+  //           this.props.d3Drawer!.similarityBlocksDrawer.applyColorRatioSettingByTopSimilarityBlock();
+  //           this.props.d3Drawer!.similarityBlocksDrawer.update();
 
-            this.setState({
-              colUtteranceLongStandard: changedValue,
-            });
-          }}
-        ></SliderWithInput>
-        <div className={styles.verticalSpace}></div>
-        <div className={styles.verticalSpace}></div>
-        <div className={styles.pkwd}></div>
-        <div className={styles.verticalSpace}></div>
-        <div className={styles.verticalSpace}></div>
-      </div>
-    );
-  }
+  //           this.setState({
+  //             colUtteranceLongStandard: changedValue,
+  //           });
+  //         }}
+  //       ></SliderWithInput>
+  //       <div className={styles.verticalSpace}></div>
+  //       <div className={styles.verticalSpace}></div>
+  //       <div className={styles.pkwd}></div>
+  //       <div className={styles.verticalSpace}></div>
+  //       <div className={styles.verticalSpace}></div>
+  //     </div>
+  //   );
+  // }
 }
 
 const mapStateToProps: MapStateToProps<

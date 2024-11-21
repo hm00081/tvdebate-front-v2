@@ -203,7 +203,7 @@ function ConceptualRecurrencePlot() {
       d3Drawer.insistenceMarkersDrawer.update();
       d3Drawer!.similarityBlocksDrawer.standardHighPointOfSimilarityScore =
         standardSimilarityScore;
-      d3Drawer.similarityBlocksDrawer.update();
+      d3Drawer.similarityBlocksDrawer.update(); // 얘가 문제
       d3Drawer.CP1Drawer.update();
       d3Drawer.CP2Drawer.update();
       d3Drawer.CP3Drawer.update();
@@ -248,16 +248,18 @@ function ConceptualRecurrencePlot() {
             }}
           ></div>
           <svg
-            className="fullSvg"
-            ref={d3Container}
-            style={{ overflow: "visible" }}
+          // className="fullSvg"
+          // ref={d3Container}
+          // style={{ overflow: "visible" }}
           >
-            <g
+            {/* <g
+            
               className="zoomable"
-              transform={transform ? transform.toString() : undefined}
-            >
-              <g className="svgG" ref={svgGRef}></g>
-            </g>
+               transform={transform ? transform.toString() : undefined}
+             > */}
+            {/* <g className="svgG" ref={svgGRef}></g> */}
+            <g className="svgG"></g>
+            {/* </g> */}
           </svg>
         </div>
       </div>
