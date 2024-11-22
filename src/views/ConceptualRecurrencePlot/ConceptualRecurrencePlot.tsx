@@ -12,7 +12,8 @@ import { useLocation } from "react-router-dom";
 import TranscriptViewer, {
   TranscriptViewerMethods,
 } from "./TranscriptViewer/TranscriptViewer";
-import { CombinedState } from "redux";
+// import { CombinedState } from "redux";
+import { RootState } from "../../redux/selectors";
 import { useDispatch, useSelector } from "react-redux";
 import { StandardSimilarityScoreState } from "../../redux/reducers/standardSimilarityScoreReducer";
 import {
@@ -51,12 +52,16 @@ function ConceptualRecurrencePlot() {
   const [d3Drawer, setD3Drawer] = useState<D3Drawer | null>(null);
 
   const conceptualMapModalRef = React.useRef<ConceptualMapModalRef>(null);
-  const standardSimilarityScore = useSelector<
-    CombinedState<{
-      standardSimilarityScoreReducer: StandardSimilarityScoreState;
-    }>,
-    number
-  >((state) => state.standardSimilarityScoreReducer.standardSimilarityScore);
+  // const standardSimilarityScore = useSelector<
+  //   RootState<{
+  //     standardSimilarityScoreReducer: StandardSimilarityScoreState;
+  //   }>,
+  //   number
+  // >((state) => state.standardSimilarityScoreReducer.standardSimilarityScore);
+  const standardSimilarityScore = useSelector(
+    (state: RootState) =>
+      state.standardSimilarityScoreReducer.standardSimilarityScore
+  );
   const dispatch = useDispatch();
   const d3Container = useRef<SVGSVGElement>(null);
   // variables for tooltip

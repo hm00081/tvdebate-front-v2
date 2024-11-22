@@ -8,7 +8,7 @@ import { changeStandardSimilarityScoreActionCreator } from "../../../redux/actio
 import { getStandardSimilarityScore } from "../../../redux/selectors";
 import store from "../../../redux/store";
 import { connect, MapDispatchToProps, MapStateToProps } from "react-redux";
-import { CombinedState, ActionCreator } from "redux";
+import { ActionCreator } from "redux";
 import { StandardSimilarityScoreState } from "../../../redux/reducers/standardSimilarityScoreReducer";
 import { ChangeStandardSimilarityScoreAction } from "../../../redux/actions";
 import SliderWithInput from "../../../components/SliderWithInput/SliderWithInput";
@@ -302,21 +302,21 @@ export class Controllers extends React.Component<
   // }
 }
 
-const mapStateToProps: MapStateToProps<
-  any,
-  any,
-  CombinedState<{
-    standardSimilarityScoreReducer: StandardSimilarityScoreState;
-  }>
-> = (state) => {
-  //@ts-ignore
-  const standardSimilarityScore = getStandardSimilarityScore(store);
-  return {
-    standardSimilarityScore,
-  };
-};
-const mapDispatchToProps: MapDispatchToProps<any, any> = {
-  changeStandardSimilarityScore: changeStandardSimilarityScoreActionCreator,
-};
+// const mapStateToProps: MapStateToProps<
+//   any,
+//   any,
+//   CombinedState<{
+//     standardSimilarityScoreReducer: StandardSimilarityScoreState;
+//   }>
+// > = (state) => {
+//   //@ts-ignore
+//   const standardSimilarityScore = getStandardSimilarityScore(store);
+//   return {
+//     standardSimilarityScore,
+//   };
+// };
+// const mapDispatchToProps: MapDispatchToProps<any, any> = {
+//   changeStandardSimilarityScore: changeStandardSimilarityScoreActionCreator,
+// };
 
-export default connect(mapStateToProps, mapDispatchToProps)(Controllers);
+// export default connect(mapStateToProps, mapDispatchToProps)(Controllers);
