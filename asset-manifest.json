@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/tvdebate-front-v2/static/css/main.8f05f2f1.css",
+    "main.js": "/tvdebate-front-v2/static/js/main.c0100e46.js",
+    "index.html": "/tvdebate-front-v2/index.html",
+    "main.8f05f2f1.css.map": "/tvdebate-front-v2/static/css/main.8f05f2f1.css.map",
+    "main.c0100e46.js.map": "/tvdebate-front-v2/static/js/main.c0100e46.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.8f05f2f1.css",
+    "static/js/main.c0100e46.js"
+  ]
+}
