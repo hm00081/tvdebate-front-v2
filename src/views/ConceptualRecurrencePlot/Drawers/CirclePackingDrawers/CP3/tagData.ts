@@ -37,6 +37,7 @@ export const CP3Data = [
         transform: "matrix(1 0 0 1 592 325)",
         className: "st0 st1 st13",
         onClick: 36,
+        onHover: 36,
         style: "13.2px",
         content: [
           {
@@ -49,6 +50,7 @@ export const CP3Data = [
         transform: "matrix(1 0 0 1 580 343)",
         className: "st0 st1 st13",
         onClick: 36,
+        onHover: 36,
         style: "13.2px",
         content: [
           {

@@ -23,6 +23,7 @@ interface Rect {
   type: string;
   attributes: {
     onClick: number;
+    onHover: number;
     x: string;
     y: string;
     className: string;

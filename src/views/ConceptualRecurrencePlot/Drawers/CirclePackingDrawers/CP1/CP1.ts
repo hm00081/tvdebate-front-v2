@@ -146,6 +146,14 @@ export class CP1Drawer extends CPDrawer {
             //@ts-ignore
             .attr("transform", element.transform)
             .attr("class", element.className);
+          
+          // 마우스 오버 이벤트 추가
+          text
+          //@ts-ignore
+          .on("mouseenter", (e) => this.handleMouseEnter(element.onHover, e))
+          //@ts-ignore
+          .on("mouseleave", (e) => this.handleMouseLeave(element.onHover, e));
+          
           if (element.style && element.style !== "None") {
             text.style("font-size", element.style);
           }

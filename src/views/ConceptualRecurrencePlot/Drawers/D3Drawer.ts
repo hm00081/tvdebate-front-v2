@@ -67,6 +67,8 @@ export class D3Drawer {
   public readonly CP5Drawer: CP5Drawer;
   public readonly CP6Drawer: CP6Drawer;
   public readonly CP7Drawer: CP7Drawer;
+  public static allDrawers: D3Drawer[] = [];
+
   public readonly PlotChartDrawer: PlotChartDrawer;
   private transcriptViewerRef: React.RefObject<TranscriptViewerMethods> | null =
     null;
@@ -164,6 +166,9 @@ export class D3Drawer {
     private readonly termType: TermType,
     private readonly transcriptViewerRefs: React.RefObject<TranscriptViewerMethods>
   ) {
+
+    D3Drawer.allDrawers.push(this);
+    
     // declare variables
     this.conceptRecurrencePlotDiv = d3.select(".concept-recurrence-plot");
     //this.setupZoom();
@@ -432,6 +437,31 @@ export class D3Drawer {
 
   public set zoomListener(zoomListener: (transform: d3.ZoomTransform) => void) {
     this._zoomListener = zoomListener;
+  }
+
+  public setupHoverHighlight() {
+    d3.selectAll("text")
+      .on("mouseover", (event, data) => (this.handleMouseOver(event), console.log(d3.selectAll("text"))))
+      .on("mouseout", () => this.handleMouseOut());
+  }
+
+  private handleMouseOver(event: MouseEvent) {
+    // 현재 D3Drawer의 SVG 그룹 강조
+    d3.select(this.svgGSelection.node()).style("opacity", 1);
+
+    // 나머지 D3Drawer의 SVG 그룹 흐리게 처리
+    D3Drawer.allDrawers.forEach((drawer) => {
+      if (drawer !== this) {
+        d3.select(drawer.svgGSelection.node()).style("opacity", 0.2);
+      }
+    });
+  }
+
+  private handleMouseOut() {
+    // 모든 D3Drawer의 SVG 그룹을 원래 상태로 복구
+    D3Drawer.allDrawers.forEach((drawer) => {
+      d3.select(drawer.svgGSelection.node()).style("opacity", 1);
+    });
   }
 }
 

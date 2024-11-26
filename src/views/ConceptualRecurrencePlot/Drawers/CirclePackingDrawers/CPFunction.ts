@@ -52,6 +52,8 @@ export class CPDrawer {
       return;
     }
 
+    console.log(index);
+
     const utterance = this.dataStructureSet.utteranceObjectsForDrawingManager
       .utteranceObjectsForDrawing[index];
     const compoundTerms = this.countCompoundTerms(utterance.sentenceObjects);
@@ -109,5 +111,63 @@ export class CPDrawer {
         -1
       );
     }
+  }
+
+  public handleMouseEnter(
+    index: number,
+    event: React.MouseEvent<SVGPathElement, MouseEvent>
+  ) {
+    if(!index){
+      return;
+    }
+
+    if (!this.dataStructureSet) {
+      console.error("dataStructureSet is not provided to CPK component");
+      return;
+    }
+
+    if (!this.transcriptViewerRef.current) {
+      console.error("transcriptViewerRef is not set");
+      return;
+    }
+
+    console.log("enter");
+    console.log(index);
+
+    const utterance = this.dataStructureSet.utteranceObjectsForDrawingManager
+      .utteranceObjectsForDrawing[index];
+    const compoundTerms = this.countCompoundTerms(utterance.sentenceObjects);
+    const topTerms = this.getTopCompoundTerms(compoundTerms, 30);
+
+    if (this.transcriptViewerRef && this.transcriptViewerRef.current) {
+      this.transcriptViewerRef.current.scrollToIndex(index);
+      this.transcriptViewerRef.current.highlightKeywords(
+        topTerms,
+        [],
+        index,
+        -1
+      );
+    }
+  }
+
+  public handleMouseLeave(
+    index: number,
+    event: React.MouseEvent<SVGPathElement, MouseEvent>
+  ) {
+    if(!index){
+      return;
+    }
+
+    if (!this.dataStructureSet) {
+      console.error("dataStructureSet is not provided to CPK component");
+      return;
+    }
+
+    if (!this.transcriptViewerRef.current) {
+      console.error("transcriptViewerRef is not set");
+      return;
+    }
+
+    console.log('leave');
   }
 }

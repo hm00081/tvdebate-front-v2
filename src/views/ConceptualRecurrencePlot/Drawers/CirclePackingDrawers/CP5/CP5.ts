@@ -148,6 +148,14 @@ export class CP5Drawer extends CPDrawer {
             //@ts-ignore
             .attr("transform", element.transform)
             .attr("class", element.className);
+          
+            // 마우스 오버 이벤트 추가
+          text
+          //@ts-ignore
+          .on("mouseenter", (e) => this.handleMouseEnter(element.onHover, e))
+          //@ts-ignore
+          .on("mouseleave", (e) => this.handleMouseLeave(element.onHover, e));
+
           // 스타일이 정의되어 있으면 적용
           if (element.style && element.style !== "None") {
             //@ts-ignore
