@@ -41,6 +41,15 @@ export class CP4Drawer extends CPDrawer {
   public update() {
     const highlightedGroup = store.getState().highlight.highlightedGroup;
 
+    this.topicGuideCP1GSelection
+    .selectAll("circle, path, ellipse, text, tspan, line")
+    .style("opacity", () => {
+      if (highlightedGroup && highlightedGroup !== "CP4") {
+        return 0.3;
+      }
+      return 1;
+    });
+
     const lineGroups = this.topicGuideCP1GSelection
       .selectAll("g.CP4Line")
       .data(lineData)
@@ -135,6 +144,13 @@ export class CP4Drawer extends CPDrawer {
           return `translate(${x},${y}) scale(-1.1, 1.1) rotate(${r})`;
         });
 
+        group.selectAll("*").style("opacity", () => {
+          if (highlightedGroup && highlightedGroup !== "CP4") {
+            return 0.3;
+          }
+          return 1;
+        });
+  
       //@ts-ignore
       groupData.elements.forEach((element) => {
         if (element.type === "circle") {
@@ -148,7 +164,13 @@ export class CP4Drawer extends CPDrawer {
             .attr("r", element.r)
             .attr("class", element.className)
             //@ts-ignore
-            .on("click", (e) => this.handleClick(element.onClick, e));
+            .on("click", (e) => this.handleClick(element.onClick, e))
+            .style("opacity", () => {
+              if (highlightedGroup && highlightedGroup !== "CP4") {
+                return 0.3;
+              }
+              return 1;
+            });
         }
 
         // 'path' 요소 처리
@@ -159,7 +181,13 @@ export class CP4Drawer extends CPDrawer {
             .attr("d", element.d)
             .attr("class", element.className)
             //@ts-ignore
-            .on("click", (e) => this.handleClick(element.onClick, e));
+            .on("click", (e) => this.handleClick(element.onClick, e))
+            .style("opacity", () => {
+              if (highlightedGroup && highlightedGroup !== "CP4") {
+                return 0.3;
+              }
+              return 1;
+            });
         }
 
         // 'ellipse' 요소 처리
@@ -178,7 +206,13 @@ export class CP4Drawer extends CPDrawer {
             .attr("transform", element.transform)
             .attr("class", element.className)
             //@ts-ignore
-            .on("click", (e) => this.handleClick(element.onClick, e));
+            .on("click", (e) => this.handleClick(element.onClick, e))
+            .style("opacity", () => {
+              if (highlightedGroup && highlightedGroup !== "CP4") {
+                return 0.3;
+              }
+              return 1;
+            });
         }
 
         // 'text' 요소와 'tspan' 요소 처리
@@ -194,7 +228,13 @@ export class CP4Drawer extends CPDrawer {
           //@ts-ignore
           .on("mouseenter", (e) => this.handleMouseEnter(element.onHover, e))
           //@ts-ignore
-          .on("mouseleave", (e) => this.handleMouseLeave(element.onHover, e));
+          .on("mouseleave", (e) => this.handleMouseLeave(element.onHover, e))
+          .style("opacity", () => {
+            if (highlightedGroup && highlightedGroup !== "CP4") {
+              return 0.3;
+            }
+            return 1;
+          });
           
           // 스타일이 정의되어 있으면 적용
           if (element.style && element.style !== "None") {
@@ -221,7 +261,13 @@ export class CP4Drawer extends CPDrawer {
                 //@ts-ignore
                 .attr("class", content.className)
                 //@ts-ignore
-                .text(content.text);
+                .text(content.text)
+                .style("opacity", () => {
+                  if (highlightedGroup && highlightedGroup !== "CP4") {
+                    return 0.3;
+                  }
+                  return 1;
+                });
               // 스타일이 정의되어 있으면 적용
               //@ts-ignore
               if (content.style && content.style !== "None") {
