@@ -363,8 +363,8 @@ export class TopicGroupsDrawer {
             if (arg.topicGroupTitles) {
               const textLines = splitTextToLines(arg.topicGroupTitles[i] || "");
 
-              return `Show Topic Modal` || "";
-              //return "" || "";
+              // return `Show Topic Modal` || "";
+              return "" || "";
             } else {
               const highFrequencyTerms = extractFrequencyTermsFromEG(
                 eg,

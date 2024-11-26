@@ -39,12 +39,12 @@ export class SvgGSelectionsMaker {
         `${-this.svgWidth / 2}, ${-this.svgHeight / 2}, ${this.svgWidth}, ${
           this.svgHeight
         }`
-      )
-      .call(
-        d3.zoom<SVGSVGElement, any>().on("zoom", (event) => {
-          this.svgGSelection!.attr("transform", () => event.transform);
-        })
       );
+    // .call(
+    //   d3.zoom<SVGSVGElement, any>().on("zoom", (event) => {
+    //     this.svgGSelection!.attr("transform", () => event.transform);
+    //   })
+    // );
 
     return this.svgSelection;
   }

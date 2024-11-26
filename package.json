@@ -1,4 +1,5 @@
 {
+  "homepage": "https://hm00081.github.io/tvdebate-front-v2",
   "name": "tvdebate-front-v2",
   "version": "0.1.0",
   "private": true,
@@ -17,8 +18,10 @@
     "compute-cosine-similarity": "^1.1.0",
     "d3": "^7.9.0",
     "d3-selection": "^3.0.0",
+    "gh-pages": "^6.2.0",
     "lodash": "^4.17.21",
     "mathjs": "^13.2.2",
+    "panzoom": "^9.4.3",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "react-redux": "^9.1.2",
@@ -33,7 +36,9 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build"
   },
   "eslintConfig": {
     "extends": [

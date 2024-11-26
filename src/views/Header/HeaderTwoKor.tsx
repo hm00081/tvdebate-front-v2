@@ -41,7 +41,7 @@ const LegendItem: React.FC<LegendProps> = ({ color, label }) => {
 
   if (label === "논쟁") {
     //@ts-ignore
-    labelStyle = { ...labelStyle, marginRight: "11px" };
+    labelStyle = { marginTop: "-23px", marginRight: "11px" };
     svgStyle = {
       marginTop: "-22.5px",
       marginRight: "5px",
@@ -49,7 +49,7 @@ const LegendItem: React.FC<LegendProps> = ({ color, label }) => {
     }; // changed style
   } else if (label === "논쟁구간") {
     //@ts-ignore
-    labelStyle = { ...labelStyle, marginLeft: "25px" };
+    labelStyle = { marginTop: "-23px", marginLeft: "25px" };
   }
 
   return (
@@ -79,11 +79,18 @@ export default function Header({ isOpen, setIsOpen }: HeaderProps) {
         style={{
           display: "flex",
           alignItems: "center",
+          width: "fit-content",
+          // height: "100%",
           //justifyContent: "space-between",
         }}
       >
         <div
-          style={{ display: "flex", alignItems: "center", flexWrap: "wrap" }}
+          style={{
+            display: "flex",
+            alignItems: "center",
+            flexWrap: "wrap",
+            height: "100%",
+          }}
         >
           <h3
             style={{ marginLeft: "5px", marginTop: "-18px", fontWeight: "550" }}
@@ -100,7 +107,7 @@ export default function Header({ isOpen, setIsOpen }: HeaderProps) {
         </div>
         <div
           style={{
-            display: "flex",
+            display: "contents",
             alignItems: "center",
             marginBottom: "-55px",
             marginLeft: "-327px",
@@ -118,7 +125,7 @@ export default function Header({ isOpen, setIsOpen }: HeaderProps) {
             height="22"
             style={{
               marginBottom: "28px",
-              marginLeft: "-290px",
+              marginLeft: "-300px",
               marginTop: "8px",
               scale: "0.9",
             }}
@@ -141,7 +148,7 @@ export default function Header({ isOpen, setIsOpen }: HeaderProps) {
             height="22"
             style={{
               marginBottom: "21px",
-              marginLeft: "15px",
+              marginLeft: "10px",
               scale: "0.85",
             }}
           >
