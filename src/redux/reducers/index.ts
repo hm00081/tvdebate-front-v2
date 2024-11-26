@@ -1,7 +1,9 @@
 import { combineReducers } from "@reduxjs/toolkit";
 import standardSimilarityScoreReducer from "./standardSimilarityScoreReducer";
+import highlightReducer from "./highlightReducer";
 
-const combinedReducers = combineReducers({
+const rootReducer = combineReducers({
+  highlight: highlightReducer,
   standardSimilarityScoreReducer,
 });
-export default combinedReducers;
+export default rootReducer;

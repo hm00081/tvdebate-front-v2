@@ -1,6 +1,8 @@
 // migration CP1 to d3 method
 /* eslint-disable no-unused-vars */
 import React from "react";
+import store from "../../../../redux/store";
+import highlightReducer, { setHighlightedGroup } from "../../../../redux/reducers/highlightReducer";
 import { DataStructureSet } from "../../DataStructureMaker/DataStructureManager";
 import { SimilarityBlock } from "../../interfaces";
 import _ from "lodash";
@@ -145,6 +147,29 @@ export class CPDrawer {
     console.log("enter");
     console.log(index);
 
+    let groupId: string | null = null;
+    if (index >= 0 && index < 17) {
+      groupId = "CP1";
+    } else if (index >= 17 && index < 36) {
+      groupId = "CP2";
+    } else if (index >= 36 && index < 55) {
+      groupId = "CP3";
+    } else if (index >= 55 && index < 78) {
+      groupId = "CP4";
+    } else if (index >= 78 && index < 108) {
+      groupId = "CP5";
+    } else if (index >= 108 && index < 175) {
+      groupId = "CP6";
+    } else if (index >= 175) {
+      groupId = "CP7";
+    }
+
+    // Redux 상태 업데이트
+    if (groupId) {
+      store.dispatch(setHighlightedGroup(groupId)); // Redux에 그룹 ID 저장
+      console.log(store.getState().highlight)
+    }
+
     const utterance = this.dataStructureSet.utteranceObjectsForDrawingManager
       .utteranceObjectsForDrawing[index];
     const compoundTerms = this.countCompoundTerms(utterance.sentenceObjects);
@@ -179,7 +204,8 @@ export class CPDrawer {
       console.error("transcriptViewerRef is not set");
       return;
     }
-
+    store.dispatch(setHighlightedGroup(null)); 
+    console.log(store.getState().highlight)
     console.log('leave');
   }
 }

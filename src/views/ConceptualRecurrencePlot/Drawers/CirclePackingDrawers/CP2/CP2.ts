@@ -1,6 +1,7 @@
 // migration CP to d3 method
 /* eslint-disable no-unused-vars */
 import React from "react";
+import store from "../../../../../redux/store";
 import { DataStructureSet } from "../../../DataStructureMaker/DataStructureManager";
 import * as d3 from "d3";
 // import _ from "lodash";
@@ -17,6 +18,8 @@ export class CP2Drawer extends CPDrawer {
     any
   >;
 
+  private previousHighlightedGroup: string | null = null;
+
   public constructor(
     svgSelection: d3.Selection<SVGGElement, MouseEvent, HTMLElement, any>,
     dataStructureSet: DataStructureSet,
@@ -24,9 +27,20 @@ export class CP2Drawer extends CPDrawer {
   ) {
     super(dataStructureSet, transcriptViewerRef);
     this.topicGuideCP1GSelection = svgSelection.append("g");
+
+    // Redux 상태 변경 시 update 호출
+    store.subscribe(() => {
+      const currentHighlightedGroup = store.getState().highlight.highlightedGroup;
+      if (this.previousHighlightedGroup !== currentHighlightedGroup) {
+        this.previousHighlightedGroup = currentHighlightedGroup;
+        this.update(); // 상태가 실제로 변경되었을 때만 update 호출
+      }
+    });
   }
 
   public update() {
+    const highlightedGroup = store.getState().highlight.highlightedGroup;
+
     const lineGroups = this.topicGuideCP1GSelection
       .selectAll("g.CP2Line")
       .data(lineData)
@@ -56,24 +70,38 @@ export class CP2Drawer extends CPDrawer {
     });
     //const topicGuideCP1GSelection
     const groups = this.topicGuideCP1GSelection
-      .selectAll("g")
+      .selectAll("g") // 기존 요소도 선택
       .data(pathsData)
-      .enter()
-      .append("g");
-    groups.append("style").text(styleText);
-    groups
-      .append("path")
-      .attr("class", (d) => d.className)
-      .attr("d", (d) => d.d);
-    groups.append("title").text((d) => {
-      const name =
-        this.dataStructureSet?.utteranceObjectsForDrawingManager
-          ?.utteranceObjectsForDrawing[d.scriptIndex]?.name;
-      const utterance =
-        this.dataStructureSet?.utteranceObjectsForDrawingManager
-          ?.utteranceObjectsForDrawing[d.scriptIndex]?.utterance;
-      return `scriptIndex: ${d.scriptIndex}\nName: ${name}\nUtterance: ${utterance}`;
-    });
+      .join(
+        (enter) => {
+          // 새로 추가되는 요소 처리
+          const enterGroups = enter.append("g");
+          enterGroups.append("style").text(styleText);
+          enterGroups.append("path").attr("class", (d) => d.className).attr("d", (d) => d.d);
+          enterGroups.append("title").text((d) => {
+            const name =
+              this.dataStructureSet?.utteranceObjectsForDrawingManager
+                ?.utteranceObjectsForDrawing[d.scriptIndex]?.name;
+            const utterance =
+              this.dataStructureSet?.utteranceObjectsForDrawingManager
+                ?.utteranceObjectsForDrawing[d.scriptIndex]?.utterance;
+            return `scriptIndex: ${d.scriptIndex}\nName: ${name}\nUtterance: ${utterance}`;
+          });
+          return enterGroups;
+        },
+        (update) => {
+          // 기존 요소 업데이트
+          update.selectAll("path, line").style("opacity", () => {
+            if (highlightedGroup && highlightedGroup !== "CP2") {
+              return 0.3;
+            }
+            return 1;
+          });
+          return update;
+        },
+        (exit) => exit.remove() // 필요시 제거
+      );
+
     groups.attr("transform", (d, i) => {
       const x = -483;
       const y = 358;
