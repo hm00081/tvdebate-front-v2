@@ -42,6 +42,11 @@ export class CPDrawer {
   }
 
   public handleClickText(index: number) {
+    if(!index){
+      if(index !== 0)
+        return;
+    }
+
     if (!this.dataStructureSet) {
       console.error("dataStructureSet is not provided to CPK component");
       return;
@@ -74,6 +79,11 @@ export class CPDrawer {
     index: number,
     event: React.MouseEvent<SVGPathElement, MouseEvent>
   ) {
+    if(!index){
+      if(index !== 0)
+        return;
+    }
+
     if (!this.dataStructureSet) {
       console.error("dataStructureSet is not provided to CP");
       return;
@@ -118,7 +128,8 @@ export class CPDrawer {
     event: React.MouseEvent<SVGPathElement, MouseEvent>
   ) {
     if(!index){
-      return;
+      if(index !== 0)
+        return;
     }
 
     if (!this.dataStructureSet) {
@@ -155,7 +166,8 @@ export class CPDrawer {
     event: React.MouseEvent<SVGPathElement, MouseEvent>
   ) {
     if(!index){
-      return;
+      if(index !== 0)
+        return;
     }
 
     if (!this.dataStructureSet) {
