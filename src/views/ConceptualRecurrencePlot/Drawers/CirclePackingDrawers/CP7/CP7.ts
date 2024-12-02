@@ -167,7 +167,7 @@ export class CP7Drawer extends CPDrawer {
               const tspan = text
                 .append("tspan")
                 //@ts-ignore
-                .attr("x", Number(content.x) - 7)
+                .attr("x", Number(content.x) - 8.5)
                 //@ts-ignore
                 .attr("y", Number(content.y))
                 //@ts-ignore
