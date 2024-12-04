@@ -3,6 +3,10 @@ import { TermType } from "../DataImporter";
 import { DataStructureSet } from "../DataStructureMaker/DataStructureManager";
 import { DebateDataSet } from "../../../interfaces/DebateDataInterface";
 import { SimilarityBlock } from "../interfaces";
+
+import store from "../../../redux/store";
+import highlightReducer, { setHighlightedGroup } from "../../../redux/reducers/highlightReducer";
+
 import * as d3 from "d3";
 import _ from "lodash";
 import {
@@ -46,6 +50,11 @@ export class TopicGroupsDrawer {
   ) {
     this.topicGuideRectGSelection = svgSelection.append("g");
     this.topicGuideTextGSelection = svgSelection.append("g");
+
+    store.subscribe(() => {
+      const { highlightedGroup } = store.getState().highlight; // Redux 상태에서 highlightedGroup 추출
+      this.applyHighlightEffect(highlightedGroup); // 상태 변경 시 강조 효과 적용
+    });
   }
 
   public set topicGroups(topicGroups: SimilarityBlock[][][]) {
@@ -89,7 +98,93 @@ export class TopicGroupsDrawer {
       };
     });
   }
+  private applyHighlightEffect(highlightedGroup: string | null) {
+    // SVG 내부에서 모든 rect 요소를 선택
+    this.topicGuideRectGSelection
+      // @ts-ignore
+      .selectAll<SVGRectElement>("rect") // rect 요소 모두 선택
+      .each(function () {
+        // 현재 rect 요소의 idx 속성을 가져오기
+        const idx = d3.select(this).attr("idx"); 
+  
+        // idx와 highlightedGroup 비교하여 opacity 설정
+        d3.select(this).style("opacity", highlightedGroup && highlightedGroup !== `g${idx}` ? 0.2 : 1);
+        //@ts-ignore
+        d3.selectAll<SVGRectElement>("g > rect")
+          .filter(function () {
+            // Filter rect elements that have rowIdx and colIdx attributes
+            //@ts-ignore
+            const rowIdx = d3.select(this).attr("rowIdx");
+            const colIdx = d3.select(this).attr("colIdx");
+            return rowIdx !== null && colIdx !== null; // Keep only elements with these attributes
+          })
+          .style("opacity", function () {
+            const rowIdx = parseInt(d3.select(this).attr("rowIdx") || "-1", 10);
+            const colIdx = parseInt(d3.select(this).attr("colIdx") || "-1", 10);
+        
+            // Define the ranges for each group
+            const groupRanges: Record<string, { row: [number, number]; col: [number, number] }> = {
+              g1: { row: [0, 18], col: [0, 19] },
+              g2: { row: [14, 37], col: [15, 38] },
+              g3: { row: [23, 58], col: [24, 59] },
+              g4: { row: [42, 79], col: [43, 80] },
+              g5: { row: [72, 106], col: [73, 107] },
+              g6: { row: [93, 126], col: [94, 127] },
+              g7: { row: [145, 183], col: [146, 184] },
+            };
+            if (!highlightedGroup) {
+              return "initial" || 1; // Default to 1 if no initial opacity found
+            }
+            //@ts-ignore
+            if (highlightedGroup in groupRanges) {
+              //@ts-ignore
+              const { row, col } = groupRanges[highlightedGroup];
+              if (rowIdx >= row[0] && rowIdx <= row[1] && colIdx >= col[0] && colIdx <= col[1]) {
+                return 1; // Highlight the element
+              }
+            }
+        
+            return 0.2; // Dim the element
+          });
 
+        //@ts-ignore
+        d3.selectAll<SVGRectElement>("g > rect")
+          .filter(function () {
+            // Filter rect elements that have rowIdx and colIdx attributes
+            //@ts-ignore
+            const insistence = d3.select(this).attr("insistence");
+            return insistence !== null; // Keep only elements with these attributes
+          })
+          .style("opacity", function () {
+            const x = parseInt(d3.select(this).attr("x") || "-1", 10);
+            const colIdx = parseInt(d3.select(this).attr("colIdx") || "-1", 10);
+        
+            // Define the ranges for each group
+            const groupRanges: Record<string, { range: [number, number] }> = {
+              g1: { range: [0, 108] },
+              g2: { range: [84, 206] },
+              g3: { range: [132, 280] },
+              g4: { range: [229, 366] },
+              g5: { range: [324, 470] },
+              g6: { range: [427, 549] },
+              g7: { range: [604, 758] },
+            };
+            if (!highlightedGroup) {
+              return "initial" || 1; // Default to 1 if no initial opacity found
+            }
+            //@ts-ignore
+            if (highlightedGroup in groupRanges) {
+              //@ts-ignore
+              const { range } = groupRanges[highlightedGroup];
+              if (x >= range[0] && x <= range[1]) {
+                return 1; // Highlight the element
+              }
+            }
+        
+            return 0.2; // Dim the element
+          });
+      });
+  }
   public update() {
     const excludedIndex = [1, 3, 5];
     const excludedIndexTwo = [1, 3, 5];
@@ -194,6 +289,23 @@ export class TopicGroupsDrawer {
             mostRightBottomBlock.height -
             mostLeftTopBlock.beginningPointOfY;
           return height;
+        })
+        .attr("idx", (eg, i) => {
+          if(eg.length===18)
+            return 1;
+          else if(eg.length===22)
+            return 2;
+          else if(eg.length===34)
+            return 3;
+          else if(eg.length===36)
+            return 4;
+          else if(eg.length===33)
+            return 5;
+          else if(eg.length===32)
+            return 6;
+          else if(eg.length===37)
+            return 7;
+          return i;
         })
         .style("fill", this._guideColor === "#000000" ? "none" : "none")
         .style("clip-path", "polygon(0% 0%, 0% 0%, 100% 100%, 0% 100%)")
@@ -440,6 +552,7 @@ export class TopicGroupsDrawer {
         });
     }
   }
+
   public getTopicGroupTitlesPositions(): { x: number; y: number }[] {
     const positions: { x: number; y: number }[] = [];
     // 초기화 상태 확인 및 기본값 설정

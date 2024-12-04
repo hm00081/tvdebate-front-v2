@@ -89,16 +89,25 @@ export class SimilarityBlocksDrawer {
       this.conceptSimilarityRectGSelection
         .selectAll<SVGRectElement, SimilarityBlock>("rect")
         .data(this.similarityBlocks);
-    //console.log("Binding data to rects:", this.similarityBlocks); // 잘나옴
+    // console.log("Binding data to rects:", this.similarityBlocks); // 잘나옴
 
     const enter = similarityRectGSelectionDataBound.enter().append("rect");
 
+    // 피라미드 내부 작은 사각형들
     similarityRectGSelectionDataBound
       .merge(enter) // Merge enter and update selections
       .attr("x", (d) => d.beginningPointOfX)
       .attr("y", (d) => d.beginningPointOfY)
       .attr("width", (d) => d.width)
       .attr("height", (d) => d.height)
+      // .attr("col", (d) => d.colUtteranceName)
+      // .attr("row", (d) => d.rowUtteranceName)
+      .attr("colIdx", (d) => d.columnUtteranceIndex)
+      .attr("rowIdx", (d) => d.rowUtteranceIndex)
+      // .attr("other", (d) => d.other)
+      // .attr("refutation", (d) => d.refutation)
+      // .attr("engagementPoint", (d) => d.engagementPoint)
+      // .attr("visible", (d) => d.visible)
       .style("fill", (d) => {
         const isWithinRange =
           Math.abs(d.beginningPointOfX - d.beginningPointOfY) < 200;
@@ -626,7 +635,7 @@ export class SimilarityBlocksDrawer {
   }
   // no error
   updateSelectedBlock() {
-    console.log("updateSelectedBlock start");
+    console.log("updateSelectedBlock start a");
     this.conceptSimilarityRectGSelection
       .selectAll<SVGRectElement, SimilarityBlock>("rect")
       .style("stroke", (d) => {

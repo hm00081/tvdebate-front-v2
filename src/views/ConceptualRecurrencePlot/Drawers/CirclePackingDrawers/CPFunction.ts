@@ -149,19 +149,19 @@ export class CPDrawer {
 
     let groupId: string | null = null;
     if (index >= 0 && index < 17) {
-      groupId = "CP1";
+      groupId = "g1";
     } else if (index >= 17 && index < 36) {
-      groupId = "CP2";
+      groupId = "g2";
     } else if (index >= 36 && index < 55) {
-      groupId = "CP3";
+      groupId = "g3";
     } else if (index >= 55 && index < 78) {
-      groupId = "CP4";
+      groupId = "g4";
     } else if (index >= 78 && index < 108) {
-      groupId = "CP5";
+      groupId = "g5";
     } else if (index >= 108 && index < 175) {
-      groupId = "CP6";
+      groupId = "g6";
     } else if (index >= 175) {
-      groupId = "CP7";
+      groupId = "g7";
     }
 
     // Redux 상태 업데이트

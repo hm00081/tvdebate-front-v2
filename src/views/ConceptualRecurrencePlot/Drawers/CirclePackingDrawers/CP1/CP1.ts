@@ -44,7 +44,7 @@ export class CP1Drawer extends CPDrawer {
     this.topicGuideCP1GSelection
     .selectAll("circle, path, ellipse, text, tspan, line")
     .style("opacity", () => {
-      if (highlightedGroup && highlightedGroup !== "CP1") {
+      if (highlightedGroup && highlightedGroup !== "g1") {
         return 0.3;
       }
       return 1;
@@ -99,7 +99,7 @@ export class CP1Drawer extends CPDrawer {
         (update) => {
           // 기존 요소 업데이트
           update.selectAll("path, line").style("opacity", () => {
-            if (highlightedGroup && highlightedGroup !== "CP1") {
+            if (highlightedGroup && highlightedGroup !== "g1") {
               return 0.3;
             }
             return 1;
@@ -129,7 +129,7 @@ export class CP1Drawer extends CPDrawer {
         });
 
         group.selectAll("*").style("opacity", () => {
-          if (highlightedGroup && highlightedGroup !== "CP1") {
+          if (highlightedGroup && highlightedGroup !== "g1") {
             return 0.3;
           }
           return 1;
@@ -150,7 +150,7 @@ export class CP1Drawer extends CPDrawer {
             //@ts-ignore
             .on("click", (e) => this.handleClick(element.onClick, e))
             .style("opacity", () => {
-              if (highlightedGroup && highlightedGroup !== "CP1") {
+              if (highlightedGroup && highlightedGroup !== "g1") {
                 return 0.3;
               }
               return 1;
@@ -167,7 +167,7 @@ export class CP1Drawer extends CPDrawer {
             //@ts-ignore
             .on("click", (e) => this.handleClick(element.onClick, e))
             .style("opacity", () => {
-              if (highlightedGroup && highlightedGroup !== "CP1") {
+              if (highlightedGroup && highlightedGroup !== "g1") {
                 return 0.3;
               }
               return 1;
@@ -192,7 +192,7 @@ export class CP1Drawer extends CPDrawer {
             //@ts-ignore
             .on("click", (e) => this.handleClick(element.onClick, e))
             .style("opacity", () => {
-              if (highlightedGroup && highlightedGroup !== "CP1") {
+              if (highlightedGroup && highlightedGroup !== "g1") {
                 return 0.3;
               }
               return 1;
@@ -214,7 +214,7 @@ export class CP1Drawer extends CPDrawer {
           //@ts-ignore
           .on("mouseleave", (e) => this.handleMouseLeave(element.onHover, e))
           .style("opacity", () => {
-            if (highlightedGroup && highlightedGroup !== "CP1") {
+            if (highlightedGroup && highlightedGroup !== "g1") {
               return 0.3;
             }
             return 1;
@@ -243,7 +243,7 @@ export class CP1Drawer extends CPDrawer {
                 //@ts-ignore
                 .text(content.text)
                 .style("opacity", () => {
-                  if (highlightedGroup && highlightedGroup !== "CP1") {
+                  if (highlightedGroup && highlightedGroup !== "g1") {
                     return 0.3;
                   }
                   return 1;
