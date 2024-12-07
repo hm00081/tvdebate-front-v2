@@ -118,6 +118,7 @@ export class ParticipantBlocksDrawer {
       .attr("y", (d) => d.beginningPointOfXY)
       .attr("width", (d) => d.width) // 노드 두께
       .attr("height", (d) => d.width) // 노드 높이
+      .attr("insistence", (d) => d.insistence)
       .style("fill", (d) => participantDict[d.name].color);
 
     selection

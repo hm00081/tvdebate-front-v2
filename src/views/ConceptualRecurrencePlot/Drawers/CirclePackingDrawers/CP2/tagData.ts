@@ -48,6 +48,7 @@ export const CP2Data = [
         transform: "matrix(1 0 0 1 313 553)",
         className: "st0 st1 st13",
         onClick: 17,
+        onHover: 17,
         style: "14px",
         content: [
           {
@@ -60,6 +61,7 @@ export const CP2Data = [
         transform: "matrix(1 0 0 1 338 573)",
         className: "st0 st1 st13",
         onClick: 17,
+        onHover: 17,
         style: "14.5px",
         content: [
           {

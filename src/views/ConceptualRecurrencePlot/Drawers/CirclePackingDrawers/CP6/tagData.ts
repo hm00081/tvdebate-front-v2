@@ -37,6 +37,7 @@ export const CP6Data = [
         transform: "matrix(1 0 0 1 1327 505)",
         className: "st0 st1 st13",
         onClick: 108,
+        onHover: 108,
         style: "13.1px",
         content: [
           {
@@ -49,6 +50,7 @@ export const CP6Data = [
         transform: "matrix(1 0 0 1 1337 524)",
         className: "st0 st1 st13",
         onClick: 108,
+        onHover: 108,
         style: "13.1px",
         content: [
           {

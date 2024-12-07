@@ -37,6 +37,7 @@ export const CP7Data = [
         transform: "matrix(1 0 0 1 1565 325)",
         className: "st0 st1 st13",
         onClick: 175,
+        onHover: 175,
         style: "None",
         content: [
           {
@@ -49,6 +50,7 @@ export const CP7Data = [
         transform: "matrix(1 0 0 1 1580 345)",
         className: "st0 st1 st13",
         onClick: 175,
+        onHover: 175,
         style: "None",
         content: [{ text: "토론 마무리" }],
       },
