@@ -114,30 +114,15 @@ export class CPDrawer {
         console.log('enter');
         console.log(index);
 
-        let groupId: string | null = null;
-        if (index >= 0 && index < 17) {
-            groupId = 'g1';
-        } else if (index >= 17 && index < 36) {
-            groupId = 'g2';
-        } else if (index >= 36 && index < 55) {
-            groupId = 'g3';
-        } else if (index >= 55 && index < 78) {
-            groupId = 'g4';
-        } else if (index >= 78 && index < 108) {
-            groupId = 'g5';
-        } else if (index >= 108 && index < 175) {
-            groupId = 'g6';
-        } else if (index >= 175) {
-            groupId = 'g7';
-        }
-
+        const groupId = this.getGroupIdByIndex(index);
+        const utterance = this.dataStructureSet.utteranceObjectsForDrawingManager.utteranceObjectsForDrawing[index];
+        const name = utterance.name;
         // Redux 상태 업데이트
         if (groupId) {
-            store.dispatch(setHighlightedGroup(groupId)); // Redux에 그룹 ID 저장
+            store.dispatch(setHighlightedGroup({ group: groupId, name })); // Redux에 그룹 ID와 이름 저장
             console.log(store.getState().highlight);
         }
 
-        const utterance = this.dataStructureSet.utteranceObjectsForDrawingManager.utteranceObjectsForDrawing[index];
         const compoundTerms = this.countCompoundTerms(utterance.sentenceObjects);
         const topTerms = this.getTopCompoundTerms(compoundTerms, 30);
 
@@ -164,5 +149,24 @@ export class CPDrawer {
         store.dispatch(setHighlightedGroup(null));
         console.log(store.getState().highlight);
         console.log('leave');
+    }
+
+    public getGroupIdByIndex(index: number): string | null {
+        if (index >= 0 && index < 17) {
+            return 'g1';
+        } else if (index >= 17 && index < 36) {
+            return 'g2';
+        } else if (index >= 36 && index < 55) {
+            return 'g3';
+        } else if (index >= 55 && index < 78) {
+            return 'g4';
+        } else if (index >= 78 && index < 108) {
+            return 'g5';
+        } else if (index >= 108 && index < 175) {
+            return 'g6';
+        } else if (index >= 175) {
+            return 'g7';
+        }
+        return null;
     }
 }

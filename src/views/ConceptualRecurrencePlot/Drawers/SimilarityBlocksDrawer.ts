@@ -460,7 +460,6 @@ export class SimilarityBlocksDrawer {
     setMultipleBlockIndices(indices: [number, number][]) {
         this._selectedBlockIndices = [...this._selectedBlockIndices, ...indices];
 
-        console.log(this._selectedBlockIndices);
         this.updateSelectedBlock();
     }
 
