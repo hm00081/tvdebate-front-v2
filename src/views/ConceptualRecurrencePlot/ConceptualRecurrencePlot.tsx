@@ -28,7 +28,7 @@ import DataImporter, { DebateName, TermType } from "./DataImporter";
 import { CHANGE_STANDARD_SIMILARITY_SCORE } from "../../redux/actionTypes";
 import CombinedEGsMaker from "./DataStructureMaker/CombinedEGsMaker";
 import Header from "./../Header/Header";
-import HeaderTwoKor from "./../Header/HeaderTwoKor";
+import HeaderTwoKor from "../Header/HeaderTwoKor";
 import * as d3 from "d3";
 // TODO: 상태관리 Redux 사용하여 한곳에 관리하도록 추후 변경하기
 function ConceptualRecurrencePlot() {

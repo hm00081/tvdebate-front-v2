@@ -27,10 +27,11 @@ export class CP1Drawer extends CPDrawer {
   ) {
     super(dataStructureSet, transcriptViewerRef);
     this.topicGuideCP1GSelection = svgSelection.append("g");
-    
+
     // Redux 상태 변경 시 update 호출
     store.subscribe(() => {
-      const currentHighlightedGroup = store.getState().highlight.highlightedGroup;
+      const currentHighlightedGroup =
+        store.getState().highlight.highlightedGroup;
       if (this.previousHighlightedGroup !== currentHighlightedGroup) {
         this.previousHighlightedGroup = currentHighlightedGroup;
         this.update(); // 상태가 실제로 변경되었을 때만 update 호출
@@ -40,15 +41,14 @@ export class CP1Drawer extends CPDrawer {
 
   public update() {
     const highlightedGroup = store.getState().highlight.highlightedGroup;
-
     this.topicGuideCP1GSelection
-    .selectAll("circle, path, ellipse, text, tspan, line")
-    .style("opacity", () => {
-      if (highlightedGroup && highlightedGroup !== "g1") {
-        return 0.3;
-      }
-      return 1;
-    });
+      .selectAll("circle, path, ellipse, text, tspan, line")
+      .style("opacity", () => {
+        if (highlightedGroup && highlightedGroup !== "g1") {
+          return 0.3;
+        }
+        return 1;
+      });
 
     const lineGroups = this.topicGuideCP1GSelection
       .selectAll("g.CP1Line")
@@ -84,7 +84,10 @@ export class CP1Drawer extends CPDrawer {
           // 새로 추가되는 요소 처리
           const enterGroups = enter.append("g");
           enterGroups.append("style").text(styleText);
-          enterGroups.append("path").attr("class", (d) => d.className).attr("d", (d) => d.d);
+          enterGroups
+            .append("path")
+            .attr("class", (d) => d.className)
+            .attr("d", (d) => d.d);
           enterGroups.append("title").text((d) => {
             const name =
               this.dataStructureSet?.utteranceObjectsForDrawingManager
@@ -128,13 +131,13 @@ export class CP1Drawer extends CPDrawer {
           return `translate(${x},${y}) scale(-0.67, 0.67) rotate(${r})`;
         });
 
-        group.selectAll("*").style("opacity", () => {
-          if (highlightedGroup && highlightedGroup !== "g1") {
-            return 0.3;
-          }
-          return 1;
-        });
-  
+      group.selectAll("*").style("opacity", () => {
+        if (highlightedGroup && highlightedGroup !== "g1") {
+          return 0.3;
+        }
+        return 1;
+      });
+
       // 'circle' 요소 처리
       groupData.elements.forEach((element) => {
         if (element.type === "circle") {
@@ -206,19 +209,19 @@ export class CP1Drawer extends CPDrawer {
             //@ts-ignore
             .attr("transform", element.transform)
             .attr("class", element.className);
-          
+
           // 마우스 오버 이벤트 추가
           text
-          //@ts-ignore
-          .on("mouseenter", (e) => this.handleMouseEnter(element.onHover, e))
-          //@ts-ignore
-          .on("mouseleave", (e) => this.handleMouseLeave(element.onHover, e))
-          .style("opacity", () => {
-            if (highlightedGroup && highlightedGroup !== "g1") {
-              return 0.3;
-            }
-            return 1;
-          });
+            //@ts-ignore
+            .on("mouseenter", (e) => this.handleMouseEnter(element.onHover, e))
+            //@ts-ignore
+            .on("mouseleave", (e) => this.handleMouseLeave(element.onHover, e))
+            .style("opacity", () => {
+              if (highlightedGroup && highlightedGroup !== "g1") {
+                return 0.3;
+              }
+              return 1;
+            });
           if (element.style && element.style !== "None") {
             text.style("font-size", element.style);
           }
