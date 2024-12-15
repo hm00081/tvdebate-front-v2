@@ -5,6 +5,7 @@ import { ParticipantDict } from "../../../common_functions/makeParticipants";
 import { SentenceObject } from "../../../interfaces/DebateDataInterface";
 import { UtteranceObjectForDrawing } from "../interfaces";
 import { SimilarityBlock } from "../interfaces";
+import store from "../../../redux/store";
 import * as fs from "fs";
 import * as d3 from "d3";
 
@@ -26,6 +27,7 @@ export class SimilarityBlocksDrawer {
   private _coloringRebuttal: boolean = true; // 논쟁이 나타나는 곳 색상 부여
   private _standardHighPointOfSimilarityScore!: number;
   private _selectedBlockIndices: Array<[number, number]> = [];
+  private unsubscribe: () => void; 
 
   // argumentScore
   private calculateArgumentScore(d: SimilarityBlock) {
@@ -51,6 +53,13 @@ export class SimilarityBlocksDrawer {
   ) {
     //
     this.conceptSimilarityRectGSelection = svgSelection.append("g");
+    this.unsubscribe = store.subscribe(() => {
+      this.update();
+    });
+  }
+  public destroy() {
+    // Cleanup subscription when the object is destroyed
+    this.unsubscribe();
   }
 
   public set standardHighPointOfSimilarityScore(
@@ -85,6 +94,10 @@ export class SimilarityBlocksDrawer {
   }
 
   public update() {
+    const { filter } = store.getState().matrixFilter;
+    const [minOpacity, maxOpacity] = [filter[0]/100, filter[1]/100];
+    console.log(minOpacity, maxOpacity);
+
     const similarityRectGSelectionDataBound =
       this.conceptSimilarityRectGSelection
         .selectAll<SVGRectElement, SimilarityBlock>("rect")
@@ -585,6 +598,9 @@ export class SimilarityBlocksDrawer {
           }
         } else {
           finalOpacity = 0.05;
+        }
+        if (finalOpacity < minOpacity || finalOpacity > maxOpacity) {
+          finalOpacity = 0;
         }
         const rgbaColor = hexToRGBA(selectedColor, finalOpacity * 0.9);
         color = rgbaColor;
