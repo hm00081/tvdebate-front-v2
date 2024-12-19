@@ -11,7 +11,7 @@ import { styleText } from "../StyleText";
 import { CPDrawer } from "../CPFunction";
 
 export class CP2Drawer extends CPDrawer {
-  private readonly topicGuideCP1GSelection: d3.Selection<
+  private readonly topicGuideCP2GSelection: d3.Selection<
     SVGGElement,
     MouseEvent,
     HTMLElement,
@@ -26,7 +26,7 @@ export class CP2Drawer extends CPDrawer {
     transcriptViewerRef: React.RefObject<TranscriptViewerMethods>
   ) {
     super(dataStructureSet, transcriptViewerRef);
-    this.topicGuideCP1GSelection = svgSelection.append("g");
+    this.topicGuideCP2GSelection = svgSelection.append("g");
 
     // Redux 상태 변경 시 update 호출
     store.subscribe(() => {
@@ -42,7 +42,7 @@ export class CP2Drawer extends CPDrawer {
   public update() {
     const highlightedGroup = store.getState().highlight.highlightedGroup;
 
-    this.topicGuideCP1GSelection
+    this.topicGuideCP2GSelection
       .selectAll("circle, path, ellipse, text, tspan, line")
       .style("opacity", () => {
         if (highlightedGroup && highlightedGroup !== "g2") {
@@ -51,7 +51,7 @@ export class CP2Drawer extends CPDrawer {
         return 1;
       });
 
-    const lineGroups = this.topicGuideCP1GSelection
+    const lineGroups = this.topicGuideCP2GSelection
       .selectAll("g.CP2Line")
       .data(lineData)
       .enter()
@@ -78,8 +78,8 @@ export class CP2Drawer extends CPDrawer {
       const r = 135; // 회전 각도 (도)
       return `translate(${x},${y}) scale(-0.8, 0.8) rotate(${r})`;
     });
-    //const topicGuideCP1GSelection
-    const groups = this.topicGuideCP1GSelection
+    //const topicGuideCP2GSelection
+    const groups = this.topicGuideCP2GSelection
       .selectAll("g") // 기존 요소도 선택
       .data(pathsData)
       .join(
@@ -123,7 +123,7 @@ export class CP2Drawer extends CPDrawer {
     });
 
     CP2Data.forEach((groupData, i) => {
-      const group = this.topicGuideCP1GSelection
+      const group = this.topicGuideCP2GSelection
         .append("g")
 
         .attr("class", groupData.class) // 클래스별로 그리도록!, 그리고 여기서 타입별로 또 그리게하면 됨.
