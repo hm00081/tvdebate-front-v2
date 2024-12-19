@@ -140,6 +140,7 @@ export class CP1Drawer extends CPDrawer {
     });
 
     CP1Data.forEach((groupData, i) => {
+      console.log("groupData", groupData.class); // 이걸로 관리해야함
       const group = this.topicGuideCP1GSelection
         .append("g")
         .attr("class", groupData.class) // 클래스별로 그리도록!, 그리고 여기서 타입별로 또 그리게하면 됨.
@@ -149,7 +150,7 @@ export class CP1Drawer extends CPDrawer {
           const r = 135; // 회전 각도
           return `translate(${x},${y}) scale(-0.67, 0.67) rotate(${r})`;
         });
-      console.log("highlightedClassName", highlightedClassName);
+      // console.log("highlightedClassName", highlightedClassName);
       const isMatched =
         highlightedClassName &&
         groupData.class.startsWith(highlightedClassName);
@@ -164,6 +165,7 @@ export class CP1Drawer extends CPDrawer {
 
       // 'circle' 요소 처리
       groupData.elements.forEach((element) => {
+        // console.log("circle className", element.className);
         if (element.type === "circle") {
           group
             .append("circle")
@@ -186,6 +188,7 @@ export class CP1Drawer extends CPDrawer {
 
         // 'path' 요소 처리
         if (element.type === "path") {
+          // console.log("path className", element.className);
           group
             .append("path")
             //@ts-ignore
@@ -203,6 +206,7 @@ export class CP1Drawer extends CPDrawer {
 
         // 'ellipse' 요소 처리
         if (element.type === "ellipse") {
+          // console.log("ellipse className", element.className);
           group
             .append("ellipse")
             //@ts-ignore
@@ -228,6 +232,7 @@ export class CP1Drawer extends CPDrawer {
 
         // 'text' 요소와 'tspan' 요소 처리
         if (element.type === "text") {
+          // console.log("text className", element.className);
           const text = group
             .append("text")
             //@ts-ignore
@@ -259,6 +264,7 @@ export class CP1Drawer extends CPDrawer {
           element.content.forEach((content) => {
             //@ts-ignore
             if (content.type === "tspan") {
+              // console.log("tspan className", element.className);
               const tspan = text
                 .append("tspan")
                 //@ts-ignore
