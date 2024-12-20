@@ -10,6 +10,12 @@ import { CP1Data, pathsData, lineData } from "./tagData";
 import { styleText } from "../StyleText";
 import { CPDrawer } from "../CPFunction";
 
+interface PathData {
+  className: string;
+  d: string;
+  scriptIndex?: number;
+}
+
 export class CP1Drawer extends CPDrawer {
   private readonly topicGuideCP1GSelection: d3.Selection<
     SVGGElement,
@@ -33,7 +39,7 @@ export class CP1Drawer extends CPDrawer {
     store.subscribe(() => {
       const currentHighlightedGroup =
         store.getState().highlight.highlightedGroup;
-      console.log("currentHighlightedGroup!!!", currentHighlightedGroup);
+      // console.log("currentHighlightedGroup!!!", currentHighlightedGroup);
       const currentHighlightedClassName =
         store.getState().classHighLight.highlightedClassName;
       console.log(
@@ -54,6 +60,14 @@ export class CP1Drawer extends CPDrawer {
   public update() {
     const { highlightedGroup } = store.getState().highlight;
     const { highlightedClassName } = store.getState().classHighLight;
+
+    const classMapping: { [key: string]: string } = {
+      st16: "P",
+      st18: "L",
+      st19: "K",
+      st20: "J",
+    };
+
     this.topicGuideCP1GSelection
       .selectAll("circle, path, ellipse, text, tspan, line")
       .style(
@@ -103,6 +117,7 @@ export class CP1Drawer extends CPDrawer {
     const groups = this.topicGuideCP1GSelection
       .selectAll("g") // 기존 요소도 선택
       .data(pathsData)
+      //className st16: PHR, st17: 진행자, st18: LJS, st19: KJD, st20: JKT
       .join(
         (enter) => {
           // 새로 추가되는 요소 처리
@@ -111,7 +126,17 @@ export class CP1Drawer extends CPDrawer {
           enterGroups
             .append("path")
             .attr("class", (d) => d.className)
-            .attr("d", (d) => d.d);
+            .attr("d", (d) => d.d)
+            .style("opacity", (d) => {
+              const mappedClass = classMapping[d.className];
+              if (
+                highlightedClassName &&
+                mappedClass !== highlightedClassName
+              ) {
+                return 0.3;
+              }
+              return 1;
+            });
           enterGroups.append("title").text((d) => {
             const name =
               this.dataStructureSet?.utteranceObjectsForDrawingManager
@@ -125,12 +150,25 @@ export class CP1Drawer extends CPDrawer {
         },
         (update) => {
           // 기존 요소 업데이트
-          update.selectAll("path, line").style("opacity", () => {
-            if (highlightedGroup && highlightedGroup !== "g1") {
-              return 0.3;
-            }
-            return 1;
-          });
+          update
+            .selectAll("path, line")
+            .style("opacity", () => {
+              if (highlightedGroup && highlightedGroup !== "g1") {
+                return 0.3;
+              }
+              return 1;
+            })
+            .style("opacity", (d) => {
+              //@ts-ignore
+              const mappedClass = classMapping[d.className];
+              if (
+                highlightedClassName &&
+                mappedClass !== highlightedClassName
+              ) {
+                return 0.3;
+              }
+              return 1;
+            });
           return update;
         },
         (exit) => exit.remove() // 필요시 제거
@@ -147,11 +185,7 @@ export class CP1Drawer extends CPDrawer {
     CP1Data.forEach((groupData, i) => {
       const groupClass = groupData.class;
       const groupType = groupClass.match(/-(\D+)/)?.[1]; // 숫자 제외 접두사 추출
-      console.log("groupType", groupType);
-      if (["J", "K", "L", "P"].includes(groupType!)) {
-        console.log(`Managing group of type: ${groupType}`);
-        // 그룹 타입에 따라 특정 작업 수행
-      }
+
       const group = this.topicGuideCP1GSelection
         .append("g")
         .attr("class", groupData.class) // 클래스별로 그리도록!, 그리고 여기서 타입별로 또 그리게하면 됨.
@@ -161,11 +195,6 @@ export class CP1Drawer extends CPDrawer {
           const r = 135; // 회전 각도
           return `translate(${x},${y}) scale(-0.67, 0.67) rotate(${r})`;
         });
-      // console.log("highlightedClassName", highlightedClassName);
-      // const isMatched =
-      //   highlightedClassName &&
-      //   groupData.class.startsWith(highlightedClassName);
-      // group.style("opacity", isMatched || !highlightedClassName ? 1 : 0.3);
 
       group.selectAll("*").style("opacity", () => {
         if (highlightedGroup && highlightedGroup !== "g1") {
@@ -176,11 +205,10 @@ export class CP1Drawer extends CPDrawer {
 
       const isHighlighted =
         highlightedClassName && highlightedClassName === groupType;
-      console.log("isHighlighted", isHighlighted);
+      // console.log("isHighlighted", isHighlighted);
       const opacityValue = isHighlighted ? 1 : 0.3;
-      // 'circle' 요소 처리
+
       groupData.elements.forEach((element) => {
-        // console.log("circle className", element.className);
         if (element.type === "circle") {
           group
             .append("circle")
@@ -217,7 +245,8 @@ export class CP1Drawer extends CPDrawer {
                 return 0.3;
               }
               return 1;
-            });
+            })
+            .style("opacity", opacityValue);
         }
 
         // 'ellipse' 요소 처리
@@ -243,7 +272,8 @@ export class CP1Drawer extends CPDrawer {
                 return 0.3;
               }
               return 1;
-            });
+            })
+            .style("opacity", opacityValue);
         }
 
         // 'text' 요소와 'tspan' 요소 처리
@@ -266,7 +296,8 @@ export class CP1Drawer extends CPDrawer {
                 return 0.3;
               }
               return 1;
-            });
+            })
+            .style("opacity", opacityValue);
           if (element.style && element.style !== "None") {
             text.style("font-size", element.style);
           }
@@ -296,7 +327,8 @@ export class CP1Drawer extends CPDrawer {
                     return 0.3;
                   }
                   return 1;
-                });
+                })
+                .style("opacity", opacityValue);
               // 스타일이 정의되어 있으면 적용
               //@ts-ignore
               if (content.style && content.style !== "None") {

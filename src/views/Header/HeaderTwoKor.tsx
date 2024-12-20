@@ -13,14 +13,9 @@ interface HeaderProps {
 
 export default function Header({ isOpen, setIsOpen }: HeaderProps) {
   const handleMouseEnter = (className: string) => {
-    // console.log("😒😒😒className@@@", className);
     store.dispatch(setHighlightedClass({ className })); // Redux 상태 업데이트
 
     const state = store.getState();
-    console.log(
-      "Current Redux state:",
-      state.classHighLight.highlightedClassName
-    );
   };
 
   const handleMouseLeave = () => {
@@ -126,7 +121,7 @@ export default function Header({ isOpen, setIsOpen }: HeaderProps) {
             width="16"
             height="16"
             fill="#00AB6E"
-            onMouseEnter={() => handleMouseEnter("J")}
+            onMouseEnter={() => handleMouseEnter("K")}
             onMouseLeave={handleMouseLeave}
           />
           <path
@@ -139,7 +134,7 @@ export default function Header({ isOpen, setIsOpen }: HeaderProps) {
             width="16"
             height="16"
             fill="#00A0E2"
-            onMouseEnter={() => handleMouseEnter("K")}
+            onMouseEnter={() => handleMouseEnter("J")}
             onMouseLeave={handleMouseLeave}
           />
           <path
