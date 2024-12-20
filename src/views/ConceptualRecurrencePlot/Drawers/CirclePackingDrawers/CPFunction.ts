@@ -8,6 +8,7 @@ import { SimilarityBlock } from "../../interfaces";
 import _ from "lodash";
 import { SentenceObject } from "../../../../interfaces/DebateDataInterface";
 import { TranscriptViewerMethods } from "../../TranscriptViewer/TranscriptViewer";
+import { current } from "@reduxjs/toolkit";
 
 export class CPDrawer {
   public onTitleClicked:
@@ -59,7 +60,36 @@ export class CPDrawer {
       return;
     }
 
-    console.log(index);
+    let groupId: string | null = null;
+    if (index >= 0 && index < 17) {
+      groupId = "g1";
+    } else if (index >= 17 && index < 36) {
+      groupId = "g2";
+    } else if (index >= 36 && index < 55) {
+      groupId = "g3";
+    } else if (index >= 55 && index < 78) {
+      groupId = "g4";
+    } else if (index >= 78 && index < 108) {
+      groupId = "g5";
+    } else if (index >= 108 && index < 175) {
+      groupId = "g6";
+    } else if (index >= 175) {
+      groupId = "g7";
+    }
+
+    // 현재 Redux 상태 확인
+    const currentHighlight = store.getState().highlight.highlightedGroup;
+
+    //@ts-ignore
+    if (currentHighlight === groupId) {
+      // 같은 groupId가 이미 Redux 상태에 저장되어 있다면 해제
+      store.dispatch(setHighlightedGroup(null));
+      console.log("Group deselected: ", groupId);
+    } else {
+      // 다른 groupId로 Redux 상태 변경
+      store.dispatch(setHighlightedGroup(groupId));
+      console.log("Group selected: ", groupId);
+    }
 
     const utterance = this.dataStructureSet.utteranceObjectsForDrawingManager
       .utteranceObjectsForDrawing[index];

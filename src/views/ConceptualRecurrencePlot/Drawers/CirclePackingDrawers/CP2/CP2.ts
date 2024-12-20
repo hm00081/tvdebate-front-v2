@@ -211,16 +211,12 @@ export class CP2Drawer extends CPDrawer {
         
           // 마우스 오버 이벤트 추가
           text
-          //@ts-ignore
-          .on("mouseenter", (e) => this.handleMouseEnter(element.onHover, e))
-          //@ts-ignore
-          .on("mouseleave", (e) => this.handleMouseLeave(element.onHover, e))
-          .style("opacity", () => {
-            if (highlightedGroup && highlightedGroup !== "g2") {
-              return 0.3;
-            }
-            return 1;
-          });
+            .style("opacity", () => {
+              if (highlightedGroup && highlightedGroup !== "g2") {
+                return 0.3;
+              }
+              return 1;
+            });
 
           if (element.style && element.style !== "None") {
             text.style("font-size", element.style);
