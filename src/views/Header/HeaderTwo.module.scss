@@ -1,41 +1,72 @@
 .mainLink {
-  text-decoration: none;
-  z-index: 1000;
+    text-decoration: none;
+    z-index: 1000;
 }
 
 .naviTwo {
-  position: absolute;
-  top: 0;
-  left: 0;
-  text-align: justify;
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  width: calc(100% - 280px); // Add this line
-  color: black;
-  background-color: white;
-  font-weight: 600;
-  font-size: 14px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    text-align: justify;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    width: calc(100% - 280px); // Add this line
+    color: black;
+    background-color: white;
+    font-weight: 600;
+    font-size: 14px;
 
-  margin-top: 35px;
-  height: 40px;
-  padding-left: 10px;
+    margin-top: 35px;
+    height: 40px;
+    padding-left: 10px;
 }
 .svg {
-  margin-top: 10px;
+    margin-top: 10px;
 }
 .st0 {
-  fill: #ac1d3b;
+    fill: #ac1d3b;
 }
 
 .st1 {
-  fill: #bf6020;
+    fill: #bf6020;
 }
 
 .st2 {
-  fill: #1da36b;
+    fill: #1da36b;
 }
 
 .st3 {
-  fill: #1e96d1;
+    fill: #1e96d1;
+}
+
+:global {
+    .certain-category-search-dropdown {
+        .ant-select-dropdown-menu-item-group-title {
+            color: #333; // 텍스트 색상 변경
+            font-weight: bold; // 텍스트 굵기 유지
+            font-size: 16px; // 글씨 크기 조정
+        }
+
+        .ant-select-dropdown-menu-item-group {
+            border-bottom: 1px dashed #ccc; // 하단 경계선을 변경
+        }
+
+        .ant-select-dropdown-menu-item {
+            padding-inline-start: 20px; // 패딩 값 조정
+            font-size: 14px; // 글씨 크기 조정
+            color: #444; // 글씨 색상 변경
+
+            &.show-all {
+                text-align: center;
+                cursor: pointer; // `default` 대신 `pointer`로 변경
+                font-style: italic; // 기울임 추가
+            }
+        }
+
+        .ant-select-dropdown-menu {
+            max-height: 400px; // 높이 조정
+            overflow-y: auto; // 스크롤 추가
+        }
+    }
 }
