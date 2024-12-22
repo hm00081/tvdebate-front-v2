@@ -9,6 +9,7 @@ $slider-label-font-size: 10px;
   margin-left: 5px;
   width: 100%;
   max-width: 500px;
+  margin-bottom: 25px;
 }
 
 .slider-track {
@@ -47,9 +48,9 @@ $slider-label-font-size: 10px;
   }
 }
 
-.slider-labels {
-  display: flex;
-  justify-content: space-between;
+.slider-value {
+  position: absolute;
+  top: 5px;
   margin-top: 10px;
   font-size: $slider-label-font-size;
   user-select:none

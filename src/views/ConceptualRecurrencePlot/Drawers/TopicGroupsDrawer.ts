@@ -5,7 +5,6 @@ import { DebateDataSet } from "../../../interfaces/DebateDataInterface";
 import { SimilarityBlock } from "../interfaces";
 
 import store from "../../../redux/store";
-import highlightReducer, { setHighlightedGroup } from "../../../redux/reducers/highlightReducer";
 
 import * as d3 from "d3";
 import _ from "lodash";
@@ -106,9 +105,13 @@ export class TopicGroupsDrawer {
       .each(function () {
         // 현재 rect 요소의 idx 속성을 가져오기
         const idx = d3.select(this).attr("idx"); 
-  
+        // if(highlightedGroup === `g${idx}`){
+        //   console.log('applyHighlightEffect:', idx);
+        // }
         // idx와 highlightedGroup 비교하여 opacity 설정
         d3.select(this).style("opacity", highlightedGroup && highlightedGroup !== `g${idx}` ? 0.2 : 1);
+        
+        // SimilarityBlockDrawer
         //@ts-ignore
         d3.selectAll<SVGRectElement>("g > rect")
           .filter(function () {
@@ -147,16 +150,18 @@ export class TopicGroupsDrawer {
             return 0.2; // Dim the element
           });
 
+        // ParticipantBlockDrawer
         //@ts-ignore
         d3.selectAll<SVGRectElement>("g > rect")
           .filter(function () {
-            // Filter rect elements that have rowIdx and colIdx attributes
             //@ts-ignore
             const insistence = d3.select(this).attr("insistence");
-            return insistence !== null; // Keep only elements with these attributes
+
+            return insistence !== null;
           })
           .style("opacity", function () {
-            const x = parseInt(d3.select(this).attr("x") || "-1", 10);
+            const x = parseInt(d3.select(this).attr("x") || "0", 10);
+            const filter = store.getState().matrixFilter.filter;
         
             // Define the ranges for each group
             const groupRanges: Record<string, { range: [number, number] }> = {
@@ -169,64 +174,69 @@ export class TopicGroupsDrawer {
               g7: { range: [604, 758] },
             };
             if (!highlightedGroup) {
-              return "initial" || 1; // Default to 1 if no initial opacity found
+              if(filter[1] < 100){
+                return 0.2;
+              }
+              return "initial" || 1;
             }
             //@ts-ignore
             if (highlightedGroup in groupRanges) {
               //@ts-ignore
               const { range } = groupRanges[highlightedGroup];
               if (x >= range[0] && x <= range[1]) {
-                return 1; // Highlight the element
+                if(filter[1] < 100){
+                  return 0.2;
+                }
+                return 1;
               }
             }
-        
-            return 0.2; // Dim the element
+            return 0.2;
           });
         
-        //@ts-ignore
-        d3.selectAll<SVGRectElement>("g > rect")
-          .filter(function () {
-            // Filter rect elements that have rowIdx and colIdx attributes
-            //@ts-ignore
-            const attClass = d3.select(this).attr("class");
-            return attClass !== null; // Keep only elements with these attributes
-          })
-          .style("opacity", function () {
-            const x = parseInt(d3.select(this).attr("x") || "-1", 10);
-            const y = parseInt(d3.select(this).attr("y") || "-1", 10);
-            const groupRanges: Record<string, { range: [number, number] }> = {
-              g1: { range: [80, 90] },
-              g2: { range: [260, 270] },
-              g3: { range: [405, 415] },
-              g4: { range: [585, 595] },
-              g5: { range: [780, 790] },
-              g6: { range: [960, 970] },
-              g7: { range: [1360, 1370] },
-            };
-        
-            if (!highlightedGroup) {
-              // @ts-ignore
-              // return stt !== 'stt9' ? 1 : "initial";
-              return "initial" || 1;
-            }
-            
-            //@ts-ignore
-            if(x === 33) {
-              return 0.2;
-            } 
-            //@ts-ignore
-            else if (highlightedGroup in groupRanges) {
-              const { range } = groupRanges[highlightedGroup];
-              if (x >= range[0] && x <= range[1]) {
-                return 1; // Highlight the element
+          // 바 차트
+          //@ts-ignore
+          d3.selectAll<SVGRectElement>("g > rect")
+            .filter(function () {
+              // Filter rect elements that have rowIdx and colIdx attributes
+              //@ts-ignore
+              const attClass = d3.select(this).attr("class");
+              return attClass !== null; // Keep only elements with these attributes
+            })
+            .style("opacity", function () {
+              const x = parseInt(d3.select(this).attr("x") || "-1", 10);
+              const y = parseInt(d3.select(this).attr("y") || "-1", 10);
+              const groupRanges: Record<string, { range: [number, number] }> = {
+                g1: { range: [80, 90] },
+                g2: { range: [260, 270] },
+                g3: { range: [405, 415] },
+                g4: { range: [585, 595] },
+                g5: { range: [780, 790] },
+                g6: { range: [960, 970] },
+                g7: { range: [1360, 1370] },
+              };
+          
+              if (!highlightedGroup) {
+                // @ts-ignore
+                return "initial" || 1;
               }
-            }
+              
+              //@ts-ignore
+              if(x === 33) {
+                return 0.2;
+              } 
+              //@ts-ignore
+              else if (highlightedGroup in groupRanges) {
+                const { range } = groupRanges[highlightedGroup];
+                if (x >= range[0] && x <= range[1]) {
+                  return 1; // Highlight the element
+                }
+              }
 
-            if (y===17 || y===40 || y===63 || y===86) {
-              return 1;
-            }
-            return 0.2; // Dim the element
-          });
+              if (y===17 || y===40 || y===63 || y===86) {
+                return 1;
+              }
+              return 0.2; // Dim the element
+            });
 
           const classRanges: Record<string, string[]> = {
             g1: ["이준석-1", "이준석-2", "이준석-3", "장경태-1", "장경태-2", "박휘락-1", "박휘락-2", "김종대-1", "김종대-2"],
@@ -237,7 +247,7 @@ export class TopicGroupsDrawer {
             g6: ["이준석-7", "장경태-5", "장경태-6", "박휘락-5"],
             g7: ["이준석-8", "이준석-9", "장경태-7", "장경태-8", "박휘락-6", "박휘락-7", "김종대-7", "김종대-8", "김종대-9"],
           };
-
+          // 각 사람 별 주장
           //@ts-ignore
           d3.selectAll<SVGGElement>("g")
             .filter(function () {
@@ -266,7 +276,7 @@ export class TopicGroupsDrawer {
                   return 1; // 강조
                 }
               }
-          
+
               return 0.2; // 나머지는 흐리게
             });
       });

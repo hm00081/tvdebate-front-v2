@@ -27,7 +27,7 @@ export class SimilarityBlocksDrawer {
   private _coloringRebuttal: boolean = true; // 논쟁이 나타나는 곳 색상 부여
   private _standardHighPointOfSimilarityScore!: number;
   private _selectedBlockIndices: Array<[number, number]> = [];
-  private unsubscribe: () => void; 
+  // private unsubscribe: () => void; 
 
   // argumentScore
   private calculateArgumentScore(d: SimilarityBlock) {
@@ -53,13 +53,11 @@ export class SimilarityBlocksDrawer {
   ) {
     //
     this.conceptSimilarityRectGSelection = svgSelection.append("g");
-    this.unsubscribe = store.subscribe(() => {
+
+    store.subscribe(() => {
+      const { filter } = store.getState().matrixFilter;
       this.update();
     });
-  }
-  public destroy() {
-    // Cleanup subscription when the object is destroyed
-    this.unsubscribe();
   }
 
   public set standardHighPointOfSimilarityScore(
@@ -96,7 +94,7 @@ export class SimilarityBlocksDrawer {
   public update() {
     const { filter } = store.getState().matrixFilter;
     const [minOpacity, maxOpacity] = [filter[0]/100, filter[1]/100];
-    console.log(minOpacity, maxOpacity);
+    // console.log('similarity blocks drawer update');
 
     const similarityRectGSelectionDataBound =
       this.conceptSimilarityRectGSelection
@@ -655,6 +653,47 @@ export class SimilarityBlocksDrawer {
     this.conceptSimilarityRectGSelection
       .selectAll<SVGRectElement, SimilarityBlock>("rect")
       .style("stroke", (d) => {
+        if (this._selectedBlockIndices.some(
+          (indices) =>
+            indices[0] === d.rowUtteranceIndex &&
+            indices[1] === d.columnUtteranceIndex
+        )){ 
+          const groupRanges: Record<string, { row: [number, number]; col: [number, number] }> = {
+            g1: { row: [0, 18], col: [0, 19] },
+            g2: { row: [14, 37], col: [15, 38] },
+            g3: { row: [23, 58], col: [24, 59] },
+            g4: { row: [42, 79], col: [43, 80] },
+            g5: { row: [72, 106], col: [73, 107] },
+            g6: { row: [93, 126], col: [94, 127] },
+            g7: { row: [145, 183], col: [146, 184] },
+          };
+          
+          console.log(d.rowUtteranceIndex);
+          console.log(d.rowUtteranceName);
+          console.log(d.columnUtteranceIndex);
+          console.log(d.colUtteranceName);
+
+          let groupIds: string[] = [];
+
+          for (const [key, { row, col }] of Object.entries(groupRanges)) {
+            if (
+              d.rowUtteranceIndex >= row[0] &&
+              d.rowUtteranceIndex <= row[1] &&
+              d.columnUtteranceIndex >= col[0] &&
+              d.columnUtteranceIndex <= col[1]
+            ) {
+              groupIds.push(key);  // 매칭되는 모든 그룹의 키 저장
+            }
+          }
+
+          if (groupIds.length > 0) {
+            console.log('Matched Group IDs:', groupIds);
+          } else {
+            console.log('No matching group found.');
+          }
+
+        }
+        
         return this._selectedBlockIndices.some(
           (indices) =>
             indices[0] === d.rowUtteranceIndex &&

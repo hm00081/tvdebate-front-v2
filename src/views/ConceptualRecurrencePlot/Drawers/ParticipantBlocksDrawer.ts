@@ -5,6 +5,8 @@ import { Participant } from "../../../common_functions/makeParticipants";
 import _ from "lodash";
 import { KeytermObject } from "../../../interfaces/DebateDataInterface";
 import { findTopValueIndexes } from "../../../common_functions/findTopValueIndexes";
+import store from "../../../redux/store";
+import * as d3 from "d3";
 
 export class ParticipantBlocksDrawer {
   private readonly participantRectGSlection!: d3.Selection<
@@ -87,7 +89,7 @@ export class ParticipantBlocksDrawer {
         },
         (exit) => exit.remove()
       );
-
+    // console.log('ParticipantBlockDrawer update');
     this.setAttributes(
       participantRectGSlectionDataBound,
       this.participantDict,
@@ -119,7 +121,42 @@ export class ParticipantBlocksDrawer {
       .attr("width", (d) => d.width) // 노드 두께
       .attr("height", (d) => d.width) // 노드 높이
       .attr("insistence", (d) => d.insistence)
-      .style("fill", (d) => participantDict[d.name].color);
+      .style("fill", (d) => participantDict[d.name].color)
+      .style("opacity", function () {
+        const highlightedGroup = store.getState().highlight.highlightedGroup;
+        const filter = store.getState().matrixFilter.filter;
+        
+        // 현재 opacity 값을 읽어와 유지
+        const x = parseInt(d3.select(this).attr("x") || "0", 10);
+        
+        // Define the ranges for each group
+        const groupRanges: Record<string, { range: [number, number] }> = {
+          g1: { range: [0, 108] },
+          g2: { range: [84, 206] },
+          g3: { range: [132, 280] },
+          g4: { range: [229, 366] },
+          g5: { range: [324, 470] },
+          g6: { range: [427, 549] },
+          g7: { range: [604, 758] },
+        };
+        if (!highlightedGroup) {
+          return "initial" || 1;
+        }
+        //@ts-ignore
+        if (highlightedGroup in groupRanges) {
+          //@ts-ignore
+          const { range } = groupRanges[highlightedGroup];
+          if (x >= range[0] && x <= range[1]) {
+            if(filter[1] < 100){
+              return 0.2;
+            }
+            return 1;
+          }
+        }
+
+
+        return 0.2;
+      });
 
     selection
       .selectAll("title")

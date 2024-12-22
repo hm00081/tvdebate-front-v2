@@ -12,10 +12,13 @@ const BidirectionalSlider: React.FC = () => {
   const [minValue, maxValue] = filter;
   const [tempMinValue, setTempMinValue] = useState(minValue);
   const [tempMaxValue, setTempMaxValue] = useState(maxValue);
+  let min = minValue;
+  let max = maxValue;
 
   const handleMouseDown = (thumb: "min" | "max") => {
     isDragging.current.thumb = thumb;
     document.addEventListener("mousemove", handleMouseMove);
+    console.log('mouse down');
     document.addEventListener("mouseup", handleMouseUp);
   };
 
@@ -26,11 +29,12 @@ const BidirectionalSlider: React.FC = () => {
     const rect = slider.getBoundingClientRect();
     const offsetX = e.clientX - rect.left;
     const value = Math.round((offsetX / rect.width) * 100);
-
     if (isDragging.current.thumb === "min") {
-      setTempMinValue(Math.min(Math.max(value, 0), tempMaxValue - 1));
+      min = Math.min(Math.max(value, 0), tempMaxValue - 1)
+      setTempMinValue(min);
     } else {
-      setTempMaxValue(Math.max(Math.min(value, 100), tempMinValue + 1));
+      max = Math.max(Math.min(value, 100), tempMinValue + 1)
+      setTempMaxValue(max);
     }
   };
 
@@ -38,7 +42,7 @@ const BidirectionalSlider: React.FC = () => {
     isDragging.current.thumb = null;
     document.removeEventListener("mousemove", handleMouseMove);
     document.removeEventListener("mouseup", handleMouseUp);
-    dispatch(updateFilter([tempMinValue, tempMaxValue]));
+    dispatch(updateFilter([min, max]));
   };
 
   return (
@@ -53,18 +57,17 @@ const BidirectionalSlider: React.FC = () => {
           className="slider-thumb slider-thumb-min"
           style={{ left: `${tempMinValue}%` }}
           onMouseDown={() => handleMouseDown("min")}
-        ></div>
+        >
+          <span className="slider-value">{tempMinValue}</span>
+        </div>
 
         <div
           className="slider-thumb slider-thumb-max"
           style={{ left: `${tempMaxValue}%` }}
           onMouseDown={() => handleMouseDown("max")}
-        ></div>
-      </div>
-
-      <div className="slider-labels">
-        <span>{tempMinValue}</span>
-        <span>{tempMaxValue}</span>
+        >
+          <span className="slider-value">{tempMaxValue}</span>
+        </div>
       </div>
     </div>
   );
