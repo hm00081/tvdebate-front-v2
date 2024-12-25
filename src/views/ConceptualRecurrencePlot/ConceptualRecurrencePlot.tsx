@@ -130,6 +130,9 @@ function ConceptualRecurrencePlot() {
       const manualMiddleEGTitles = datasetOfManualEGs.manualMiddleEGTitles;
       const manualSmallEGs = datasetOfManualEGs.manualSmallEGs;
       const manualSmallEGTitles = datasetOfManualEGs.manualSmallEGTitles;
+      
+      d3.select(svgGRef.current).selectAll("*").remove();
+      
       // settings of d3Drawer
       const d3Drawer = new D3Drawer(
         debateDataset,
