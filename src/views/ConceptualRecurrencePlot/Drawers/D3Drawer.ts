@@ -156,7 +156,8 @@ export class D3Drawer {
         d.columnUtteranceIndex
       );
 
-      this.similarityBlocksDrawer.updateSelectedBlock();
+      // setSingleBlockIndices에서 updateSelectedBlock()을 해주므로 중복되는 코드
+      // this.similarityBlocksDrawer.updateSelectedBlock();
     };
   }
 

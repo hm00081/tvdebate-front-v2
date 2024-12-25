@@ -3,6 +3,7 @@
 import React from "react";
 import store from "../../../../redux/store";
 import highlightReducer, { setHighlightedGroup } from "../../../../redux/reducers/highlightReducer";
+import { clearSelectedBlock, setSelectedBlock } from "../../../../redux/reducers/similarityBlockSelectReducer";
 import { DataStructureSet } from "../../DataStructureMaker/DataStructureManager";
 import { SimilarityBlock } from "../../interfaces";
 import _ from "lodash";
@@ -83,13 +84,22 @@ export class CPDrawer {
 
     //@ts-ignore
     if (currentHighlight === groupId) {
-      // 같은 groupId가 이미 Redux 상태에 저장되어 있다면 해제
-      store.dispatch(setHighlightedGroup(null));
-      console.log("Group deselected: ", groupId);
+      if(store.getState().similarityBlockSelect.selectedBlock.length !== 0){
+        store.dispatch(setHighlightedGroup(groupId));
+        store.dispatch(clearSelectedBlock());  
+      } else {
+        // 같은 groupId가 이미 Redux 상태에 저장되어 있다면 해제
+        store.dispatch(setHighlightedGroup(null));
+        store.dispatch(clearSelectedBlock());
+      }
     } else {
-      // 다른 groupId로 Redux 상태 변경
-      store.dispatch(setHighlightedGroup(groupId));
-      console.log("Group selected: ", groupId);
+      if(store.getState().similarityBlockSelect.selectedBlock.length !== 0){
+        store.dispatch(clearSelectedBlock());
+        store.dispatch(setHighlightedGroup(groupId));
+      } else {
+        // 같은 groupId가 이미 Redux 상태에 저장되어 있다면 해제
+        store.dispatch(setHighlightedGroup(groupId));
+      }
     }
 
     const utterance = this.dataStructureSet.utteranceObjectsForDrawingManager
@@ -112,6 +122,7 @@ export class CPDrawer {
     index: number,
     event: React.MouseEvent<SVGPathElement, MouseEvent>
   ) {
+    // console.log('handleClick', index, event);
     if(!index){
       if(index !== 0)
         return;

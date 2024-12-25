@@ -5,6 +5,8 @@ import { ParticipantDict } from "../../../common_functions/makeParticipants";
 import { SentenceObject } from "../../../interfaces/DebateDataInterface";
 import { UtteranceObjectForDrawing } from "../interfaces";
 import { SimilarityBlock } from "../interfaces";
+import { setSelectedBlock, clearSelectedBlock } from "../../../redux/reducers/similarityBlockSelectReducer";
+import highlightReducer, { clearHighlightedGroup, setHighlightedGroup } from "../../../redux/reducers/highlightReducer";
 import store from "../../../redux/store";
 import * as fs from "fs";
 import * as d3 from "d3";
@@ -94,7 +96,6 @@ export class SimilarityBlocksDrawer {
   public update() {
     const { filter } = store.getState().matrixFilter;
     const [minOpacity, maxOpacity] = [filter[0]/100, filter[1]/100];
-    // console.log('similarity blocks drawer update');
 
     const similarityRectGSelectionDataBound =
       this.conceptSimilarityRectGSelection
@@ -149,7 +150,7 @@ export class SimilarityBlocksDrawer {
         ]);
 
         // 하이라이팅 업데이트
-        this.updateSelectedBlock();
+        // this.updateSelectedBlock();
 
         // 이벤트 전파 중단
         mouseEvent.stopPropagation();
@@ -631,9 +632,14 @@ export class SimilarityBlocksDrawer {
   }
 
   setSingleBlockIndices(rowIndex: number, colIndex: number) {
-    this._selectedBlockIndices = [[rowIndex, colIndex]];
-    //console.log(this._selectedBlockIndices);
-    this.updateSelectedBlock();
+    if(this._selectedBlockIndices[0][0] === rowIndex && this._selectedBlockIndices[0][1] === colIndex){
+      store.dispatch(clearSelectedBlock());
+      store.dispatch(clearHighlightedGroup());
+      this.clearSelectedBlocks();
+    } else{
+      this._selectedBlockIndices = [[rowIndex, colIndex]];
+      this.updateSelectedBlock();
+    }
   }
 
   setMultipleBlockIndices(indices: [number, number][]) {
@@ -649,7 +655,6 @@ export class SimilarityBlocksDrawer {
   }
   // no error
   updateSelectedBlock() {
-    console.log("updateSelectedBlock start a");
     this.conceptSimilarityRectGSelection
       .selectAll<SVGRectElement, SimilarityBlock>("rect")
       .style("stroke", (d) => {
@@ -667,11 +672,6 @@ export class SimilarityBlocksDrawer {
             g6: { row: [93, 126], col: [94, 127] },
             g7: { row: [145, 183], col: [146, 184] },
           };
-          
-          console.log(d.rowUtteranceIndex);
-          console.log(d.rowUtteranceName);
-          console.log(d.columnUtteranceIndex);
-          console.log(d.colUtteranceName);
 
           let groupIds: string[] = [];
 
@@ -686,12 +686,9 @@ export class SimilarityBlocksDrawer {
             }
           }
 
-          if (groupIds.length > 0) {
-            console.log('Matched Group IDs:', groupIds);
-          } else {
-            console.log('No matching group found.');
-          }
-
+          store.dispatch(setSelectedBlock([[d.rowUtteranceName, d.colUtteranceName], [d.rowUtteranceIndex, d.columnUtteranceIndex]]));
+          store.dispatch(setHighlightedGroup(groupIds[0]));
+          console.log([d.rowUtteranceName, d.colUtteranceName, d.rowUtteranceIndex, d.columnUtteranceIndex]);
         }
         
         return this._selectedBlockIndices.some(
