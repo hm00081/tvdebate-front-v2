@@ -16,12 +16,14 @@ const options = [
     },
 ];
 
+
 interface HeaderProps {
     isOpen: boolean;
     setIsOpen: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
 export default function Header({ isOpen, setIsOpen }: HeaderProps) {
+
     const [selectedItem, setSelectedItem] = useState<string | null>(null);
     // const [selectedItems, setSelectedItems] = useState<string[]>([]);
     const handleMouseEnter = (className: string) => {

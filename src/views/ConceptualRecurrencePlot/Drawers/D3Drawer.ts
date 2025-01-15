@@ -25,8 +25,6 @@ import { InsistenceIconDrawerTwo } from "./InsistenceIconDrawerTwo";
 import { RefutationIconDrawerTwo } from "./RefutationIconDrawerTwo";
 import { TranscriptViewerMethods } from "../TranscriptViewer/TranscriptViewer";
 import { SentenceObject } from "./../../../interfaces/DebateDataInterface";
-import { PanZoom } from "panzoom";
-import { fillColorOfSimilarityBlock } from "./utils/SimilarityBlock";
 
 export class D3Drawer {
   private readonly conceptRecurrencePlotDiv!: d3.Selection<
@@ -160,7 +158,8 @@ export class D3Drawer {
         d.columnUtteranceIndex
       );
 
-      this.similarityBlocksDrawer.updateSelectedBlock();
+      // setSingleBlockIndices에서 updateSelectedBlock()을 해주므로 중복되는 코드
+      // this.similarityBlocksDrawer.updateSelectedBlock();
     };
   }
 

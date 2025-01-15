@@ -3,12 +3,15 @@ $slider-track-color: #ddd;
 $slider-range-color: #007bff;
 $slider-thumb-color: #007bff;
 $slider-label-font-size: 10px;
+
 .slider-container {
   position: relative;
   margin-left: 5px;
   width: 100%;
   max-width: 500px;
+  margin-bottom: 25px;
 }
+
 .slider-track {
   position: absolute;
   margin-left: 5px;
@@ -17,12 +20,14 @@ $slider-label-font-size: 10px;
   background: $slider-track-color;
   border-radius: 4px;
 }
+
 .slider-range {
   position: absolute;
   height: 100%;
   background: $slider-range-color;
   border-radius: 2px;
 }
+
 .slider-thumb {
   position: absolute;
   top: 50%;
@@ -33,17 +38,20 @@ $slider-label-font-size: 10px;
   border-radius: 50%;
   cursor: pointer;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+
   &-min {
     z-index: 2;
   }
+
   &-max {
     z-index: 3;
   }
 }
-.slider-labels {
-  display: flex;
-  justify-content: space-between;
+
+.slider-value {
+  position: absolute;
+  top: 5px;
   margin-top: 10px;
   font-size: $slider-label-font-size;
-  user-select: none;
+  user-select:none
 }

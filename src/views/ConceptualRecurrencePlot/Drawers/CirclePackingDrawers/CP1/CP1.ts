@@ -15,6 +15,7 @@ export class CP1Drawer extends CPDrawer {
 
     private previousHighlightedGroup: string | null = null;
     private previousHighlightedClass: string | null = null;
+    private previousSelectedBlock: [] | null = null;
 
     public constructor(svgSelection: d3.Selection<SVGGElement, MouseEvent, HTMLElement, any>, dataStructureSet: DataStructureSet, transcriptViewerRef: React.RefObject<TranscriptViewerMethods>) {
         super(dataStructureSet, transcriptViewerRef);
@@ -24,6 +25,7 @@ export class CP1Drawer extends CPDrawer {
         store.subscribe(() => {
             const currentHighlightedGroup = store.getState().highlight.highlightedGroup;
             const currentHighlightedClassName = store.getState().classHighLight.highlightedClassName;
+            const currentSelectedBlock = store.getState().similarityBlockSelect.selectedBlock;
             if (this.previousHighlightedGroup !== currentHighlightedGroup) {
                 this.previousHighlightedGroup = currentHighlightedGroup;
                 this.update();
@@ -32,12 +34,19 @@ export class CP1Drawer extends CPDrawer {
                 this.previousHighlightedClass = currentHighlightedClassName;
                 this.update();
             }
+            if (this.previousSelectedBlock !== currentSelectedBlock || this.previousHighlightedGroup !== currentHighlightedGroup){
+              // @ts-ignore
+              this.previousSelectedBlock = currentSelectedBlock;
+              this.previousHighlightedGroup = currentHighlightedGroup;
+              this.update();
+            }
         });
     }
 
     public update() {
         const { highlightedGroup } = store.getState().highlight;
         const { highlightedClassName } = store.getState().classHighLight;
+        const selectedBlock = store.getState().similarityBlockSelect.selectedBlock;
 
         const classMapping: { [key: string]: string } = {
             st16: 'P',
@@ -45,6 +54,38 @@ export class CP1Drawer extends CPDrawer {
             st19: 'K',
             st20: 'J',
         };
+
+        let name1 = '', name2 = '', selected1 = '', selected2 = '', index1 = -1, index2 = -1;
+        if (highlightedGroup === "g1" && selectedBlock.length !== 0){
+          index1 = selectedBlock[1][0];
+          index2 = selectedBlock[1][1];
+          if(selectedBlock[0][0] === '이준석'){
+            name1 = 'LJS';
+            selected1 = 'st21';
+          } else if(selectedBlock[0][0] === '박휘락'){
+            name1 = 'PHR';
+            selected1 = 'st22';
+          } else if(selectedBlock[0][0] === '김종대'){
+            name1 = 'KJD';
+            selected1 = 'st19';
+          } else if(selectedBlock[0][0] === '장경태'){
+            name1 = 'JKT';
+            selected1 = 'st20';
+          }
+          if(selectedBlock[0][1] === '이준석'){
+            name2 = 'LJS';
+            selected2 = 'st21';
+          } else if(selectedBlock[0][1] === '박휘락'){
+            name2 = 'PHR';
+            selected2 = 'st22';
+          } else if(selectedBlock[0][1] === '김종대'){
+            name2 = 'KJD';
+            selected2 = 'st19';
+          } else if(selectedBlock[0][1] === '장경태'){
+            name2 = 'JKT';
+            selected2 = 'st20';
+          }
+        }
 
         this.topicGuideCP1GSelection.selectAll('circle, path, ellipse, text, tspan, line').style(
             'opacity',
@@ -55,7 +96,7 @@ export class CP1Drawer extends CPDrawer {
                           this.dataStructureSet?.utteranceObjectsForDrawingManager?.utteranceObjectsForDrawing[d.scriptIndex]?.name
                         : null;
 
-                if (highlightedGroup && highlightedGroup !== 'g1') {
+                if (highlightedGroup && highlightedGroup !== "g1") {
                     return 0.3;
                 }
 
@@ -118,7 +159,7 @@ export class CP1Drawer extends CPDrawer {
                     update
                         .selectAll('path, line')
                         .style('opacity', () => {
-                            if (highlightedGroup && highlightedGroup !== 'g1') {
+                            if (highlightedGroup && highlightedGroup !== "g1") {
                                 return 0.3;
                             }
                             return 1;
@@ -144,6 +185,23 @@ export class CP1Drawer extends CPDrawer {
             return `translate(${x},${y}) scale(-0.67, 0.67) rotate(${r})`;
         });
 
+        const filteredPaths = groups.selectAll("path")
+        .style("opacity", (d) => {
+          //@ts-ignore
+          if (selectedBlock.length !== 0 && (index1 === d.scriptIndex || index2 === d.scriptIndex)){
+            return 1;
+          } else if(selectedBlock.length === 0){
+            if(highlightedGroup && highlightedGroup === "g1"){
+              return 1;
+            } else if (highlightedGroup && highlightedGroup !== "g1") {
+              return 0.3;
+            } else if (!highlightedGroup){
+              return 1;
+            }
+          }
+          return 0.3;
+        });
+
         CP1Data.forEach((groupData, i) => {
             const groupClass = groupData.class;
             const groupType = groupClass.match(/-(\D+)/)?.[1]; // 숫자 제외 접두사 추출
@@ -159,7 +217,7 @@ export class CP1Drawer extends CPDrawer {
                 });
 
             group.selectAll('*').style('opacity', () => {
-                if (highlightedGroup && highlightedGroup !== 'g1') {
+                if (highlightedGroup && highlightedGroup !== "g1") {
                     return 0.3;
                 }
                 return 1;
@@ -168,7 +226,7 @@ export class CP1Drawer extends CPDrawer {
             const isHighlighted = highlightedClassName && highlightedClassName === groupType;
             // console.log("isHighlighted", isHighlighted);
             const opacityValue = isHighlighted ? 1 : 0.3;
-
+            // 'circle' 요소 처리
             groupData.elements.forEach((element) => {
                 if (element.type === 'circle') {
                     group
@@ -183,7 +241,7 @@ export class CP1Drawer extends CPDrawer {
                         //@ts-ignore
                         .on('click', (e) => this.handleClick(element.onClick, e))
                         .style('opacity', () => {
-                            if (highlightedGroup && highlightedGroup !== 'g1') {
+                            if (highlightedGroup && highlightedGroup !== "g1") {
                                 return 0.3;
                             }
                             return 1;
@@ -193,7 +251,6 @@ export class CP1Drawer extends CPDrawer {
 
                 // 'path' 요소 처리
                 if (element.type === 'path') {
-                    // console.log("path className", element.className);
                     group
                         .append('path')
                         //@ts-ignore
@@ -202,10 +259,23 @@ export class CP1Drawer extends CPDrawer {
                         //@ts-ignore
                         .on('click', (e) => this.handleClick(element.onClick, e))
                         .style('opacity', () => {
-                            if (highlightedGroup && highlightedGroup !== 'g1') {
-                                return 0.3;
-                            }
+                          if (!highlightedGroup){
                             return 1;
+                          } 
+                          // 주제문 또는 similarity block이 선택되었지만, 해당 서클패킹이 아닌 경우
+                        if (highlightedGroup && highlightedGroup !== "g1") {
+                          return 0.3;
+                        } else if (highlightedGroup && highlightedGroup === "g1"){
+                          if(selectedBlock.length === 0){
+                            return 1;
+                          }
+                          // 선택된 상태에서 similarity block이 선택된 경우면서 화자가 일치하는 경우
+                          if(element.className === name1 || element.className === name2){
+                            return 1;
+                          }
+                          return 0.3;
+                        }
+                          return 1;
                         })
                         .style('opacity', highlightedClassName ? opacityValue : 1);
                 }
@@ -229,10 +299,22 @@ export class CP1Drawer extends CPDrawer {
                         //@ts-ignore
                         .on('click', (e) => this.handleClick(element.onClick, e))
                         .style('opacity', () => {
-                            if (highlightedGroup && highlightedGroup !== 'g1') {
-                                return 0.3;
-                            }
+                          if (!highlightedGroup){
                             return 1;
+                          } if (highlightedGroup && highlightedGroup !== "g1") {
+                            return 0.3;
+                          } else if (highlightedGroup && highlightedGroup === "g1"){
+                            if(selectedBlock.length === 0){
+                              return 1;
+                            }
+                            // 선택된 상태에서 similarity block이 선택된 경우면서 화자가 일치하는 경우
+                            if(element.className === name1 || element.className === name2){
+                              return 1;
+                            }
+                            return 0.3;
+                          }
+                          
+                          return 1;
                         })
                         .style('opacity', highlightedClassName ? opacityValue : 1);
                 }
@@ -248,12 +330,12 @@ export class CP1Drawer extends CPDrawer {
 
                     // 마우스 오버 이벤트 추가
                     text
-                        //@ts-ignore
-                        .on('mouseenter', (e) => this.handleMouseEnter(element.onHover, e))
-                        //@ts-ignore
-                        .on('mouseleave', (e) => this.handleMouseLeave(element.onHover, e))
+                        // //@ts-ignore
+                        // .on('mouseenter', (e) => this.handleMouseEnter(element.onHover, e))
+                        // //@ts-ignore
+                        // .on('mouseleave', (e) => this.handleMouseLeave(element.onHover, e))
                         .style('opacity', () => {
-                            if (highlightedGroup && highlightedGroup !== 'g1') {
+                            if (highlightedGroup && highlightedGroup !== "g1") {
                                 return 0.3;
                             }
                             return 1;
@@ -282,7 +364,7 @@ export class CP1Drawer extends CPDrawer {
                                 //@ts-ignore
                                 .text(content.text)
                                 .style('opacity', () => {
-                                    if (highlightedGroup && highlightedGroup !== 'g1') {
+                                    if (highlightedGroup && highlightedGroup !== "g1") {
                                         return 0.3;
                                     }
                                     return 1;
