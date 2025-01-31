@@ -25,24 +25,23 @@ import { InsistenceIconDrawerTwo } from "./InsistenceIconDrawerTwo";
 import { RefutationIconDrawerTwo } from "./RefutationIconDrawerTwo";
 import { TranscriptViewerMethods } from "../TranscriptViewer/TranscriptViewer";
 import { SentenceObject } from "./../../../interfaces/DebateDataInterface";
-
 export class D3Drawer {
   private readonly conceptRecurrencePlotDiv!: d3.Selection<
     HTMLDivElement,
     any,
-    HTMLCanvasElement,
+    HTMLElement,
     any
   >;
   private readonly svgSelection!: d3.Selection<
     SVGSVGElement,
     MouseEvent,
-    HTMLCanvasElement,
+    HTMLElement,
     any
   >;
   private readonly svgGSelection!: d3.Selection<
     SVGGElement,
     MouseEvent,
-    HTMLCanvasElement,
+    HTMLElement,
     any
   >;
 
@@ -75,7 +74,6 @@ export class D3Drawer {
     null;
   private readonly svgWidth: number;
   private readonly svgHeight: number;
-
   private _zoomListener: ((transform: d3.ZoomTransform) => void) | null = null;
   public setupZoom(): void {
     const zoom = d3
@@ -91,14 +89,13 @@ export class D3Drawer {
       console.error("svgSelection is not defined");
       return;
     }
-
     this.svgSelection.call(zoom);
   }
 
   setupClickListener(
     transcriptViewerRef: React.RefObject<TranscriptViewerMethods>
   ) {
-    this.similarityBlocksDrawer._clickListener = (
+    this.similarityBlocksDrawer.clickListener = (
       e: MouseEvent,
       d: SimilarityBlock
     ) => {
@@ -169,43 +166,51 @@ export class D3Drawer {
     private readonly termType: TermType,
     private readonly transcriptViewerRefs: React.RefObject<TranscriptViewerMethods>
   ) {
-    D3Drawer.allDrawers.push(this);
 
+    D3Drawer.allDrawers.push(this);
+    
     // declare variables
-    //@ts-ignore
     this.conceptRecurrencePlotDiv = d3.select(".concept-recurrence-plot");
     //this.setupZoom();
     this.svgWidth = window.innerWidth - 330;
     this.svgHeight = window.innerHeight * 2;
-    // this.svgWidth = this.conceptRecurrencePlotDiv.node()!.clientWidth;
-    // this.svgHeight = this.conceptRecurrencePlotDiv.node()!.clientHeight;
 
     this.svgSelection = this.conceptRecurrencePlotDiv
       .select<SVGSVGElement>("svg")
       .attr("width", this.svgWidth)
       .attr("height", this.svgHeight)
       // 전체 svg 영역
-      .attr("transform", "scale(1, -1) rotate(0)")
+      .attr("transform", "scale(1, -1) rotate(-45)")
       .call(
         d3
           .zoom<SVGSVGElement, D3ZoomEvent<SVGSVGElement, any>>()
-          .scaleExtent([0.8, 2.5])
+          .scaleExtent([0.8, 2.5]) // 예를 들어 최소 0.5배 축소부터 최대 2배 확대까지만 허용하도록 설정
           .on("zoom", (event) => {
             //@ts-ignore
-            const { x, y, k } = event.transform;
-            const rotationAngle = -45;
-
-            this.svgGSelection.attr(
-              "transform",
-              `translate(${x}, ${y}) scale(${k}) rotate(${rotationAngle})`
-            );
-
+            this.svgGSelection.attr("transform", () => event.transform);
             if (this._zoomListener) {
               this._zoomListener(event.transform);
             }
           })
       );
+    
+    setTimeout(() => {
+      const initialTransform = d3.zoomIdentity.translate(280, -10).scale(0.82);
 
+      this.svgSelection.call(
+        //@ts-ignore
+        (selection) => d3.zoom<SVGSVGElement, D3ZoomEvent<SVGSVGElement, any>>().transform(selection, initialTransform)
+      );
+
+      this.svgGSelection.attr("transform", initialTransform.toString());
+  
+      // 초기 zoomListener 호출
+      if (this._zoomListener) {
+        this._zoomListener(initialTransform);
+      }
+    }, 0);
+
+    // 동시발생행렬 그려지는 구간
     this.svgGSelection = this.svgSelection.select(".svgG");
 
     this.participantBlocksDrawer = new ParticipantBlocksDrawer(
@@ -393,7 +398,7 @@ export class D3Drawer {
           similarityBlock.visible = true;
         }
       );
-      // this.similarityBlocksDrawer.update();
+      this.similarityBlocksDrawer.update();
       this.participantBlocksDrawer.update();
       this.insistenceIconDrawer.similarityBlock = null;
       this.insistenceIconDrawer.update();
@@ -435,9 +440,7 @@ export class D3Drawer {
         "transform",
         `translate(${adjustedWidth}, ${adjustedHeight})`
       );
-
       if (this._zoomListener) {
-        //concept-recurrence-plot
         const element = document.createElement("div");
         const transform = zoomTransform(element);
         this._zoomListener(transform.translate(adjustedWidth, adjustedHeight));
@@ -454,12 +457,7 @@ export class D3Drawer {
 
   public setupHoverHighlight() {
     d3.selectAll("text")
-      .on(
-        "mouseover",
-        (event, data) => (
-          this.handleMouseOver(event), console.log(d3.selectAll("text"))
-        )
-      )
+      .on("mouseover", (event, data) => (this.handleMouseOver(event), console.log(d3.selectAll("text"))))
       .on("mouseout", () => this.handleMouseOut());
   }
 

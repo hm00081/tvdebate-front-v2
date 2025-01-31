@@ -12,7 +12,6 @@ import { useLocation } from "react-router-dom";
 import TranscriptViewer, {
   TranscriptViewerMethods,
 } from "./TranscriptViewer/TranscriptViewer";
-// import { CombinedState } from "redux";
 import { RootState } from "../../redux/selectors";
 import { useDispatch, useSelector } from "react-redux";
 import { StandardSimilarityScoreState } from "../../redux/reducers/standardSimilarityScoreReducer";
@@ -28,7 +27,7 @@ import DataImporter, { DebateName, TermType } from "./DataImporter";
 import { CHANGE_STANDARD_SIMILARITY_SCORE } from "../../redux/actionTypes";
 import CombinedEGsMaker from "./DataStructureMaker/CombinedEGsMaker";
 import Header from "./../Header/Header";
-import HeaderTwoKor from "../Header/HeaderTwoKor";
+import HeaderTwoKor from "./../Header/HeaderTwoKor";
 import * as d3 from "d3";
 // TODO: 상태관리 Redux 사용하여 한곳에 관리하도록 추후 변경하기
 function ConceptualRecurrencePlot() {
@@ -52,16 +51,10 @@ function ConceptualRecurrencePlot() {
   const [d3Drawer, setD3Drawer] = useState<D3Drawer | null>(null);
 
   const conceptualMapModalRef = React.useRef<ConceptualMapModalRef>(null);
-  // const standardSimilarityScore = useSelector<
-  //   RootState<{
-  //     standardSimilarityScoreReducer: StandardSimilarityScoreState;
-  //   }>,
-  //   number
-  // >((state) => state.standardSimilarityScoreReducer.standardSimilarityScore);
-  const standardSimilarityScore = useSelector(
-    (state: RootState) =>
-      state.standardSimilarityScoreReducer.standardSimilarityScore
-  );
+  const standardSimilarityScore = useSelector<
+    RootState,
+    number
+  >((state) => state.standardSimilarityScoreReducer.standardSimilarityScore);
   const dispatch = useDispatch();
   const d3Container = useRef<SVGSVGElement>(null);
   // variables for tooltip
@@ -211,7 +204,7 @@ function ConceptualRecurrencePlot() {
       d3Drawer.insistenceMarkersDrawer.update();
       d3Drawer!.similarityBlocksDrawer.standardHighPointOfSimilarityScore =
         standardSimilarityScore;
-      d3Drawer.similarityBlocksDrawer.update(); // 얘가 문제
+      d3Drawer.similarityBlocksDrawer.update();
       d3Drawer.CP1Drawer.update();
       d3Drawer.CP2Drawer.update();
       d3Drawer.CP3Drawer.update();
@@ -256,18 +249,22 @@ function ConceptualRecurrencePlot() {
             }}
           ></div>
           <svg
-          // className="fullSvg"
-          // ref={d3Container}
-          // style={{ overflow: "visible" }}
+            className="fullSvg"
+            ref={d3Container}
+            style={{ 
+              overflow: "visible"
+            }}
           >
-            {/* <g
-            
+            <g
               className="zoomable"
-               transform={transform ? transform.toString() : undefined}
-             > */}
-            {/* <g className="svgG" ref={svgGRef}></g> */}
-            <g className="svgG"></g>
-            {/* </g> */}
+              transform={transform ? transform.toString() : undefined}
+            >
+              <g 
+                className="svgG" 
+                ref={svgGRef}
+              >  
+              </g>
+            </g>
           </svg>
         </div>
       </div>
