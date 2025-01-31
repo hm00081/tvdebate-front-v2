@@ -111,7 +111,7 @@ export const CP3Data = [
       },
       {
         type: "text",
-        transform: "matrix(1 0 0 1 574.4023 147.3257)",
+        transform: "matrix(1 0 0 1 570.4023 147.3257)",
         className: "st7",
         onClick: "None",
         style: "7px",
@@ -150,12 +150,20 @@ export const CP3Data = [
   {
     class: "T3-1-J1",
     elements: [
-      { type: "circle", cx: "555.6", cy: "138.5", r: "10.7", className: "JKT" },
+      {
+        type: "ellipse",
+        className: "JKT",
+        onClick: 31,
+        cx: "555.6",
+        cy: "138.5",
+        rx: "10.7",
+        ry: "10.7",
+      },
       {
         type: "text",
-        transform: "matrix(1 0 0 1 549.8735 135.3394)",
+        transform: "matrix(1 0 0 1 548.5735 135.3394)",
         className: "st7",
-        onClick: 31,
+        onClick: "None",
         style: "5.6px",
         content: [
           {
@@ -201,7 +209,7 @@ export const CP3Data = [
       },
       {
         type: "text",
-        transform: "matrix(1 0 0 1 576.1318 187.6772)",
+        transform: "matrix(1 0 0 1 574.8318 187.6772)",
         className: "st7",
         onClick: "None",
         style: "7.5px",
@@ -240,17 +248,25 @@ export const CP3Data = [
   {
     class: "T3-1-J2",
     elements: [
-      { type: "circle", cx: "537.7", cy: "157.3", r: "14.7", className: "JKT" },
+      {
+        type: "ellipse",
+        onClick: 31,
+        className: "JKT",
+        cx: "537.7",
+        cy: "157.3",
+        rx: "14.7",
+        ry: "14.7",
+      },
       {
         type: "text",
-        transform: "matrix(1 0 0 1 525.8018 154.6792)",
+        transform: "matrix(1 0 0 1 522.3018 154.6792)",
         className: "st7",
-        onClick: 31,
+        onClick: "None",
         style: "6px",
         content: [
           {
             type: "tspan",
-            x: "13",
+            x: "15",
             y: "-3",
             className: "st24 st1",
             onClick: "None",
@@ -259,7 +275,7 @@ export const CP3Data = [
           },
           {
             type: "tspan",
-            x: "15",
+            x: "17",
             y: "4",
             className: "st24 st1",
             onClick: "None",
@@ -282,12 +298,20 @@ export const CP3Data = [
   {
     class: "T3-1-J3",
     elements: [
-      { type: "circle", cx: "529.5", cy: "180.3", r: "9.6", className: "JKT" },
+      {
+        type: "ellipse",
+        className: "JKT",
+        onClick: 31,
+        cx: "529.5",
+        cy: "180.3",
+        rx: "9.6",
+        ry: "9.6",
+      },
       {
         type: "text",
-        transform: "matrix(1 0 0 1 521.2036 179.5581)",
+        transform: "matrix(1 0 0 1 518.9036 179.5581)",
         className: "st7",
-        onClick: 31,
+        onClick: "None",
         style: "5px",
         content: [
           {
@@ -301,7 +325,7 @@ export const CP3Data = [
           },
           {
             type: "tspan",
-            x: "10",
+            x: "11.5",
             y: "5",
             className: "st24 st1",
             onClick: "None",
@@ -315,12 +339,20 @@ export const CP3Data = [
   {
     class: "T3-1-J4",
     elements: [
-      { type: "circle", cx: "550.6", cy: "197.7", r: "17.1", className: "JKT" },
+      {
+        type: "ellipse",
+        className: "JKT",
+        onClick: 31,
+        cx: "550.6",
+        cy: "197.7",
+        rx: "17.1",
+        ry: "17.1",
+      },
       {
         type: "text",
-        transform: "matrix(1 0 0 1 537.1704 191.1675)",
+        transform: "matrix(1 0 0 1 534.4704 191.1675)",
         className: "st7",
-        onClick: 31,
+        onClick: "None",
         style: "6.4px",
         content: [
           {
@@ -334,7 +366,7 @@ export const CP3Data = [
           },
           {
             type: "tspan",
-            x: "16.3",
+            x: "17",
             y: "8",
             className: "st24 st1 ",
             onClick: "None",
@@ -399,14 +431,14 @@ export const CP3Data = [
       },
       {
         type: "text",
-        transform: "matrix(0.9857 0 0 1 694.3354 136.2767)",
+        transform: "matrix(0.9857 0 0 1 692.3354 136.2767)",
         className: "st7",
         onClick: "None",
         style: "6px",
         content: [
           {
             type: "tspan",
-            x: "16.5",
+            x: "17",
             y: "2",
             className: "st24 st1 ",
             onClick: "None",
@@ -450,7 +482,7 @@ export const CP3Data = [
       },
       {
         type: "text",
-        transform: "matrix(1 0 0 1 621.5742 171.0032)",
+        transform: "matrix(1 0 0 1 618.5742 172.0032)",
         className: "st7",
         onClick: "None",
         style: "6.2px",
@@ -466,7 +498,7 @@ export const CP3Data = [
           },
           {
             type: "tspan",
-            x: "10.2",
+            x: "11",
             y: "7",
             className: "st24 st1 ",
             onClick: "None",
@@ -491,7 +523,6 @@ export const CP3Data = [
     elements: [
       {
         type: "ellipse",
-        //transform: "matrix(0.3847 -0.9231 0.9231 0.3847 223.3512 688.9498)",
         className: "JKT",
         onClick: 56,
         cx: "673.1",
@@ -501,7 +532,7 @@ export const CP3Data = [
       },
       {
         type: "text",
-        transform: "matrix(0.9897 0 0 1 664.2944 121.5696)",
+        transform: "matrix(0.9897 0 0 1 661.7944 122.5696)",
         className: "st7",
         onClick: "None",
         style: "7.1px",
@@ -542,7 +573,6 @@ export const CP3Data = [
     elements: [
       {
         type: "ellipse",
-        //transform: "matrix(0.3847 -0.9231 0.9231 0.3847 223.3512 688.9498)",
         className: "JKT",
         onClick: 56,
         cx: "639.8",
@@ -552,7 +582,7 @@ export const CP3Data = [
       },
       {
         type: "text",
-        transform: "matrix(0.9897 0 0 1 633.1079 142.5726)",
+        transform: "matrix(0.9897 0 0 1 632.1079 143.5726)",
         className: "st7",
         onClick: "None",
         style: "7.2px",
@@ -568,7 +598,7 @@ export const CP3Data = [
           },
           {
             type: "tspan",
-            x: "7",
+            x: "8",
             y: "9",
             className: "st24 st1",
             onClick: "None",
@@ -591,7 +621,7 @@ export const CP3Data = [
       },
       {
         type: "text",
-        transform: "matrix(1 0 0 1 658.2773 165.0125)",
+        transform: "matrix(1 0 0 1 657.2773 165.0125)",
         className: "st7",
         onClick: "None",
         style: "11px",
@@ -607,7 +637,7 @@ export const CP3Data = [
           },
           {
             type: "tspan",
-            x: "17",
+            x: "16",
             y: "15",
             className: "st24 st1",
             onClick: "None",
@@ -616,7 +646,7 @@ export const CP3Data = [
           },
           {
             type: "tspan",
-            x: "10",
+            x: "11",
             y: "28",
             className: "st24 st1",
             onClick: "None",
@@ -639,7 +669,7 @@ export const CP3Data = [
       },
       {
         type: "text",
-        transform: "matrix(1.0067 0 0 1 708.9961 171.3006)",
+        transform: "matrix(1.0067 0 0 1 706.3961 171.3006)",
         className: "st7",
         onClick: "None",
         style: "7.3px",
@@ -680,7 +710,6 @@ export const CP3Data = [
     elements: [
       {
         type: "ellipse",
-        //transform: "matrix(0.3847 -0.9231 0.9231 0.3847 223.3512 688.9498)",
         className: "JKT",
         onClick: 58,
         cx: "645.2",
@@ -690,14 +719,14 @@ export const CP3Data = [
       },
       {
         type: "text",
-        transform: "matrix(0.9931 0 0 1 637.5508 209.2518)",
+        transform: "matrix(0.9931 0 0 1 635.3508 209.2518)",
         className: "st7",
         onClick: "None",
         style: "7.5px",
         content: [
           {
             type: "tspan",
-            x: "10",
+            x: "10.5",
             y: "-4",
             className: "st24 st1",
             onClick: "None",
@@ -738,7 +767,7 @@ export const CP3Data = [
       },
       {
         type: "text",
-        transform: "matrix(1 0 0 1 689.9937 213.5838)",
+        transform: "matrix(1 0 0 1 686.3937 214.6838)",
         className: "st7",
         onClick: "None",
         style: "6.3px",

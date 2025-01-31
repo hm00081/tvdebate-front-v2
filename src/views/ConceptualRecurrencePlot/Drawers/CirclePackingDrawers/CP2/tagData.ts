@@ -635,7 +635,7 @@ export const CP2Data = [
         elements: [
             {
                 type: 'circle',
-                className: 'KJD',
+                className: 'JKT',
                 onClick: 31,
                 cx: '388.6',
                 cy: '184.5',

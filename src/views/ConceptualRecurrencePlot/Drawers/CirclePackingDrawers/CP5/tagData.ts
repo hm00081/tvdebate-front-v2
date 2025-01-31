@@ -453,8 +453,8 @@ export const CP5Data = [
       {
         type: "ellipse",
         transform: "matrix(0.2298 -0.9732 0.9732 0.2298 685.8254 1234.0736)",
-        className: "KJD",
-        onClick: 84,
+        className: "JKT",
+        onClick: 94,
         cx: "1122.6",
         cy: "183.7",
         rx: "18.5",

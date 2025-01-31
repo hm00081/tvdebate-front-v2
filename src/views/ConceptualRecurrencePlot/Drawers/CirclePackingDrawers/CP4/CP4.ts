@@ -182,8 +182,8 @@ export class CP4Drawer extends CPDrawer {
 
         groups.attr('transform', (d, i) => {
           const x = -821;
-      const y = 87;
-      const r = 135; // 회전 각도 (도)
+          const y = 47;
+          const r = 135; // 회전 각도 (도)
             //rotate(-135) scale(-1, 1)
             return `translate(${x},${y}) scale(-1.1, 1.1) rotate(${r})`;
         });

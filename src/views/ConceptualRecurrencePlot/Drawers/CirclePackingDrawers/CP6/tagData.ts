@@ -106,12 +106,13 @@ export const CP6Data = [
         cy: "158.9",
         r: "13.4",
         className: "KJD",
+        onClick: 123,
       },
       {
         type: "text",
         transform: "matrix(1 0 0 1 1283.0957 154.0176)",
         className: "st7",
-        onClick: 123,
+        onClick: "None",
         style: "6px ",
         content: [
           {
@@ -473,12 +474,12 @@ export const CP6Data = [
     ],
   },
   {
-    class: "T6-2-J3",
+    class: "T6-2-L3",
     elements: [
       {
         type: "path",
-        className: "JKT",
-        onClick: 113,
+        className: "LJS",
+        onClick: 126,
         d:
           "M1416.1,211.4l1.2-1.2c1.3-1.3,1.3-3.2,0-4.5l-2.6-2.6c-1.3-1.3-3.2-1.3-4.5,0l-1.2,1.2l-1.2-1.2 c-1.3-1.3-3.2-1.3-4.5,0l-2.6,2.6c-1.3,1.3-1.3,3.2,0,4.5l1.2,1.2l-1.2,1.2c-1.3,1.3-1.3,3.2,0,4.5l2.6,2.6c1.3,1.3,3.2,1.3,4.5,0 l1.2-1.2l1.2,1.2c1.3,1.3,3.2,1.3,4.5,0l2.6-2.6c1.3-1.3,1.3-3.2,0-4.5L1416.1,211.4z",
       },
