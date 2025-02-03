@@ -228,7 +228,7 @@ function ConceptualRecurrencePlot() {
   return (
     <div className="root-div" style={{ overflow: "hidden" }}>
       <Header isOpen={isOpen} setIsOpen={setIsOpen} />
-      <HeaderTwoKor isOpen={isOpen} setIsOpen={setIsOpen} />
+      {/* <HeaderTwoKor isOpen={isOpen} setIsOpen={setIsOpen} /> */}
       <div className="vis-area">
         <div
           className="concept-recurrence-plot"
