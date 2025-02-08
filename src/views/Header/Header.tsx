@@ -1,5 +1,6 @@
 import style from "./Header.module.scss";
 import React from "react";
+import { D3Drawer } from "../ConceptualRecurrencePlot/Drawers/D3Drawer";
 import LJS from "./image/LJS.svg";
 import PHR from "./image/PHR.svg";
 import JKT from "./image/JKT.svg";
@@ -14,6 +15,14 @@ interface HeaderProps {
 }
 
 export default function Header({ isOpen, setIsOpen }: HeaderProps) {
+  const handleReset = () => {
+    if (D3Drawer.allDrawers.length > 0) {
+      D3Drawer.allDrawers[0].resetView();
+    } else {
+      console.warn("No D3Drawer instances found!");
+    }
+  };
+
   return (
     <div className={style.mainLink}>
       <div className={style.navi}>
@@ -28,7 +37,9 @@ export default function Header({ isOpen, setIsOpen }: HeaderProps) {
             Initialize Location
           </div>
           <div className={style.resetButton}>
-
+            <button onClick={handleReset} className={style.button}>
+              RESET
+            </button>
           </div>
         </div>
 

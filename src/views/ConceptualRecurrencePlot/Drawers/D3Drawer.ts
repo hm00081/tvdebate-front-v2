@@ -75,6 +75,7 @@ export class D3Drawer {
   private readonly svgWidth: number;
   private readonly svgHeight: number;
   private _zoomListener: ((transform: d3.ZoomTransform) => void) | null = null;
+  private initialTransform: d3.ZoomTransform = d3.zoomIdentity.translate(270, -30).scale(0.85);
   public setupZoom(): void {
     const zoom = d3
       .zoom<SVGSVGElement, any>()
@@ -158,6 +159,25 @@ export class D3Drawer {
       // setSingleBlockIndices에서 updateSelectedBlock()을 해주므로 중복되는 코드
       // this.similarityBlocksDrawer.updateSelectedBlock();
     };
+  }
+
+  public resetView(): void {
+    if (!this.svgSelection) {
+      console.error("svgSelection is not defined");
+      return;
+    }
+
+    this.svgSelection.transition().duration(750).call(
+      //@ts-ignore
+      d3.zoom<SVGSVGElement, any>().transform,
+      this.initialTransform
+    );
+
+    this.svgGSelection.attr("transform", this.initialTransform.toString());
+
+    if (this._zoomListener) {
+      this._zoomListener(this.initialTransform);
+    }
   }
 
   public constructor(

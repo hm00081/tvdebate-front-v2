@@ -29,11 +29,24 @@ $navi: #9c27b0;
 
 .initializeLocation {
   flex: 1.6;
-  // background-color: blue;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin-right: 10px;
+  margin-left: -20px;
 }
 
 .resetButton {
+  font-size: 11px;  
+  color: #333333;
+}
 
+.button {
+  background-color: #74c562;
+  width: 50px;
+  height: 20px;
+  border-radius: 5px;
+  border-width: 0px;
 }
 
 .participantsFilter {
