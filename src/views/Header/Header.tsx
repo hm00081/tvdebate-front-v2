@@ -1,5 +1,7 @@
 import style from "./Header.module.scss";
 import React from "react";
+import store from '../../redux/store';
+import { setHighlightedClass, clearHighlightedClass } from '../../redux/reducers/classHighlightReducer';
 import { D3Drawer } from "../ConceptualRecurrencePlot/Drawers/D3Drawer";
 import LJS from "./image/LJS.svg";
 import PHR from "./image/PHR.svg";
@@ -21,6 +23,16 @@ export default function Header({ isOpen, setIsOpen }: HeaderProps) {
     } else {
       console.warn("No D3Drawer instances found!");
     }
+  };
+
+  const handleMouseEnter = (className: string) => {
+    store.dispatch(setHighlightedClass({ className })); // Redux 상태 업데이트
+
+    const state = store.getState();
+  };
+
+  const handleMouseLeave = () => {
+    store.dispatch(clearHighlightedClass()); // Redux 상태 초기화
   };
 
   return (
@@ -51,7 +63,7 @@ export default function Header({ isOpen, setIsOpen }: HeaderProps) {
           <div className={style.pkGroup}>
             <div className={style.pkSpace}>
               <div className={style.pkImage}>
-                <img src={LJS} alt="LJS" width="35" height="35" />
+                <img src={LJS} alt="LJS" width="35" height="35" onMouseEnter={() => handleMouseEnter('L')} onMouseLeave={handleMouseLeave} />
               </div>
               <div className={style.pkName}>
                 이준석
@@ -59,7 +71,7 @@ export default function Header({ isOpen, setIsOpen }: HeaderProps) {
             </div>
             <div className={style.pkSpace}>
               <div className={style.pkImage}>
-                <img src={PHR} alt="PHR" width="35" height="35" />
+                <img src={PHR} alt="PHR" width="35" height="35" onMouseEnter={() => handleMouseEnter('P')} onMouseLeave={handleMouseLeave} />
               </div>
               <div className={style.pkName}>
                 박휘락
@@ -67,7 +79,7 @@ export default function Header({ isOpen, setIsOpen }: HeaderProps) {
             </div>
             <div className={style.pkSpace}>
               <div className={style.pkImage}>
-                <img src={JKT} alt="JKT" width="35" height="35" />
+                <img src={JKT} alt="JKT" width="35" height="35" onMouseEnter={() => handleMouseEnter('J')} onMouseLeave={handleMouseLeave} />
               </div>
               <div className={style.pkName}>
                 장경태
@@ -75,7 +87,7 @@ export default function Header({ isOpen, setIsOpen }: HeaderProps) {
             </div>
             <div className={style.pkSpace}>
               <div className={style.pkImage}>
-                <img src={KJD} alt="KJD" width="35" height="35" />
+                <img src={KJD} alt="KJD" width="35" height="35" onMouseEnter={() => handleMouseEnter('K')} onMouseLeave={handleMouseLeave} />
               </div>
               <div className={style.pkName}>
                 김종대
