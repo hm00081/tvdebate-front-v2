@@ -1,5 +1,5 @@
 import style from "./Header.module.scss";
-import React from "react";
+import React, { useState } from "react";
 import store from '../../redux/store';
 import { setHighlightedClass, clearHighlightedClass } from '../../redux/reducers/classHighlightReducer';
 import { D3Drawer } from "../ConceptualRecurrencePlot/Drawers/D3Drawer";
@@ -11,12 +11,21 @@ import JHJ from "./image/JHJ.svg";
 import pros from "./image/pros.svg";
 import cons from "./image/cons.svg";
 
+const participants = [
+  { id: "L", name: "이준석", img: LJS },
+  { id: "P", name: "박휘락", img: PHR },
+  { id: "J", name: "장경태", img: JKT },
+  { id: "K", name: "김종대", img: KJD },
+];
+
 interface HeaderProps {
   isOpen: boolean;
   setIsOpen: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
 export default function Header({ isOpen, setIsOpen }: HeaderProps) {
+  const [selectedParticipant, setSelectedParticipant] = useState<string | null>(null);
+
   const handleReset = () => {
     if (D3Drawer.allDrawers.length > 0) {
       D3Drawer.allDrawers[0].resetView();
@@ -25,14 +34,14 @@ export default function Header({ isOpen, setIsOpen }: HeaderProps) {
     }
   };
 
-  const handleMouseEnter = (className: string) => {
-    store.dispatch(setHighlightedClass({ className })); // Redux 상태 업데이트
-
-    const state = store.getState();
-  };
-
-  const handleMouseLeave = () => {
-    store.dispatch(clearHighlightedClass()); // Redux 상태 초기화
+  const handleParticipantClick = (className: string) => {
+    if (selectedParticipant === className) {
+      setSelectedParticipant(null);
+      store.dispatch(clearHighlightedClass());
+    } else {
+      setSelectedParticipant(className);
+      store.dispatch(setHighlightedClass({ className }));
+    }
   };
 
   return (
@@ -61,40 +70,23 @@ export default function Header({ isOpen, setIsOpen }: HeaderProps) {
             Participants Filter
           </div>
           <div className={style.pkGroup}>
+          {participants.map(({ id, name, img }) => (
+              <div key={id} className={`${style.pkSpace} ${selectedParticipant && selectedParticipant !== id ? style.grayscale : ""}`}>
+                <div className={style.pkImage}>
+                  <img
+                    src={img}
+                    alt={id}
+                    width="35"
+                    height="35"
+                    onClick={() => handleParticipantClick(id)}
+                    className={selectedParticipant === id ? style.selected : ""}
+                  />
+                </div>
+                <div className={style.pkName}>{name}</div>
+              </div>
+            ))}
             <div className={style.pkSpace}>
-              <div className={style.pkImage}>
-                <img src={LJS} alt="LJS" width="35" height="35" onMouseEnter={() => handleMouseEnter('L')} onMouseLeave={handleMouseLeave} />
-              </div>
-              <div className={style.pkName}>
-                이준석
-              </div>
-            </div>
-            <div className={style.pkSpace}>
-              <div className={style.pkImage}>
-                <img src={PHR} alt="PHR" width="35" height="35" onMouseEnter={() => handleMouseEnter('P')} onMouseLeave={handleMouseLeave} />
-              </div>
-              <div className={style.pkName}>
-                박휘락
-              </div>
-            </div>
-            <div className={style.pkSpace}>
-              <div className={style.pkImage}>
-                <img src={JKT} alt="JKT" width="35" height="35" onMouseEnter={() => handleMouseEnter('J')} onMouseLeave={handleMouseLeave} />
-              </div>
-              <div className={style.pkName}>
-                장경태
-              </div>
-            </div>
-            <div className={style.pkSpace}>
-              <div className={style.pkImage}>
-                <img src={KJD} alt="KJD" width="35" height="35" onMouseEnter={() => handleMouseEnter('K')} onMouseLeave={handleMouseLeave} />
-              </div>
-              <div className={style.pkName}>
-                김종대
-              </div>
-            </div>
-            <div className={style.pkSpace}>
-              <div className={style.pkImage}>
+              <div className={`${style.pkImage} ${selectedParticipant ? style.grayscale : ""}`}>
                 <img src={JHJ} alt="JHJ" width="35" height="35" />
               </div>
               <div className={style.pkName}>

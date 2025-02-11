@@ -129,3 +129,9 @@ $navi: #9c27b0;
 .svg {
   margin-top: 10px;
 }
+
+.grayscale {
+  filter: grayscale(100%);
+  opacity: 0.5; // 선택된 요소보다 덜 눈에 띄도록 설정
+  transition: filter 0.3s ease, opacity 0.3s ease;
+}
