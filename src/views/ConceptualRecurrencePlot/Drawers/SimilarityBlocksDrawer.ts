@@ -382,6 +382,8 @@ export class SimilarityBlocksDrawer {
     public update() {
         const { filter } = store.getState().matrixFilter;
         const [minOpacity, maxOpacity] = [filter[0]/100, filter[1]/100];
+
+        this.conceptSimilarityRectGSelection.selectAll("rect").remove();
         
         const similarityRectGSelectionDataBound = this.conceptSimilarityRectGSelection.selectAll<SVGRectElement, SimilarityBlock>('rect').data(this.similarityBlocks);
         // console.log("Binding data to rects:", this.similarityBlocks); // 잘나옴
