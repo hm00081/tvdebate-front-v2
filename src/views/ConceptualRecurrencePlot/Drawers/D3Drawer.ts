@@ -25,7 +25,7 @@ import { InsistenceIconDrawerTwo } from "./InsistenceIconDrawerTwo";
 import { RefutationIconDrawerTwo } from "./RefutationIconDrawerTwo";
 import { TranscriptViewerMethods } from "../TranscriptViewer/TranscriptViewer";
 import { SentenceObject } from "./../../../interfaces/DebateDataInterface";
-import { PanZoom } from "panzoom";
+// import { PanZoom } from "panzoom";
 import { fillColorOfSimilarityBlock } from "./utils/SimilarityBlock";
 
 export class D3Drawer {
