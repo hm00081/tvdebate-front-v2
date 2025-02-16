@@ -9,9 +9,15 @@ const highlightSlice = createSlice({
     },
     reducers: {
         setHighlightedGroup(state, action) {
-            const { group, name } = action.payload || {};
-            state.highlightedGroup = group || null;
-            state.highlightedName = name || null;
+            if (typeof action.payload === "string") {
+                //@ts-ignore
+                state.highlightedGroup = action.payload;
+                state.highlightedName = null;
+            } else {
+                const { group, name } = action.payload || {};
+                state.highlightedGroup = group || null;
+                state.highlightedName = name || null;
+            }
         },
         clearHighlightedGroup(state) {
             state.highlightedGroup = null;

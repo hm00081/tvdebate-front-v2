@@ -121,6 +121,7 @@ export class ParticipantBlocksDrawer {
       .attr("width", (d) => d.width) // 노드 두께
       .attr("height", (d) => d.width) // 노드 높이
       .attr("insistence", (d) => d.insistence)
+      .attr("name", (d) => d.name)
       .style("fill", (d) => participantDict[d.name].color)
       .style("opacity", function () {
         const highlightedGroup = store.getState().highlight.highlightedGroup;
