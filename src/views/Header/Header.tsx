@@ -18,6 +18,11 @@ const participants = [
   { id: "K", name: "김종대", img: KJD },
 ];
 
+const prosNcons = [
+  { id: "PROS", name: "찬성", img: pros },
+  { id: "CONS", name: "반대", img: cons },
+]
+
 interface HeaderProps {
   isOpen: boolean;
   setIsOpen: React.Dispatch<React.SetStateAction<boolean>>;
@@ -102,22 +107,21 @@ export default function Header({ isOpen, setIsOpen }: HeaderProps) {
             Keyword Filter
           </div>
           <div className={style.pkGroup}>
-            <div className={style.pkSpace}>
-              <div className={style.pkImage}>
-                <img src={pros} alt="pros" width="33" height="33" />
+          {prosNcons.map(({ id, name, img }) => (
+              <div key={id} className={`${style.pkSpace} ${selectedParticipant && selectedParticipant !== id ? style.grayscale : ""}`}>
+                <div className={style.pkImage}>
+                  <img
+                    src={img}
+                    alt={id}
+                    width="35"
+                    height="35"
+                    onClick={() => handleParticipantClick(id)}
+                    className={selectedParticipant === id ? style.selected : ""}
+                  />
+                </div>
+                <div className={style.pkName}>{name}</div>
               </div>
-              <div className={style.pkName}>
-                찬성
-              </div>
-            </div>
-            <div className={style.pkSpace}>
-              <div className={style.pkImage}>
-                <img src={cons} alt="cons" width="33" height="33" />
-              </div>
-              <div className={style.pkName}>
-                반대
-              </div>
-            </div>
+            ))}
           </div>
         </div>
 
