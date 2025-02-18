@@ -129,7 +129,7 @@ export class TopicGroupsDrawer {
             const colName = d3.select(this).attr("colName");
             const rowName = d3.select(this).attr("rowName");
 
-            if (!highlightedClassName) {
+            if (!highlightedClassName || highlightedClassName === "PROS" || highlightedClassName === "CONS") {
               return "initial" || 1; // Default to 1 if no initial opacity found
             }
             //@ts-ignore
@@ -162,6 +162,11 @@ export class TopicGroupsDrawer {
               K: '김종대',
             };
 
+            const keywords: Record<string, string[]> = {
+              PROS: ['장경태', '김종대'],
+              CONS: ['이준석', '박휘락'],
+            }
+
             if (!highlightedClassName) {
               return "initial" || 1; // Default to 1 if no initial opacity found
             }
@@ -173,7 +178,13 @@ export class TopicGroupsDrawer {
               if(pName === participantsName) {
                 return 1;
               }
+            } else if (highlightedClassName in keywords) {
+              const relevantNames = keywords[highlightedClassName];
+              if (relevantNames.includes(pName)) {
+                return 1;
+              }
             }
+
             return 0.2;
           });
         
@@ -202,7 +213,7 @@ export class TopicGroupsDrawer {
                 K: { range1: [145, 155], range2: [190, 200] },
               };
           
-              if (!highlightedClassName) {
+              if (!highlightedClassName || highlightedClassName === "PROS" || highlightedClassName === "CONS") {
                 // @ts-ignore
                 return "initial" || 1;
               }
@@ -244,6 +255,11 @@ export class TopicGroupsDrawer {
             .style("opacity", function () {
               const attClass = d3.select(this).attr("class");
 
+              const keywords: Record<string, string[]> = {
+                PROS: ['J', 'K'],
+                CONS: ['L', 'P'],
+              };
+
               // highlightedGroup가 없으면 초기 opacity 복원
               if (!highlightedClassName) {
                 return 1;
@@ -253,6 +269,14 @@ export class TopicGroupsDrawer {
               if (highlightedClassName in participantRange) {
                 const validClasses = participantRange[highlightedClassName];
                 if (validClasses.includes(attClass)) {
+                  return 1; // 강조
+                }
+              } else if (highlightedClassName in keywords) {
+                const validClasses = keywords[highlightedClassName];
+                const validC1 = participantRange[validClasses[0]];
+                const validC2 = participantRange[validClasses[1]];
+                
+                if (validC1.includes(attClass) || validC2.includes(attClass)) {
                   return 1; // 강조
                 }
               }

@@ -55,6 +55,11 @@ export class CP1Drawer extends CPDrawer {
             st20: 'J',
         };
 
+        const keywords: Record<string, string[]> = {
+          'PROS': ['K', 'J'],
+          'CONS': ['L', 'P'],
+        }
+        
         let name1 = '', name2 = '', selected1 = '', selected2 = '', index1 = -1, index2 = -1;
         if (highlightedGroup === "g1" && selectedBlock.length !== 0){
           index1 = selectedBlock[1][0];
@@ -141,11 +146,21 @@ export class CP1Drawer extends CPDrawer {
                         .attr('class', (d) => d.className)
                         .attr('d', (d) => d.d)
                         .style('opacity', (d) => {
-                            const mappedClass = classMapping[d.className];
-                            if (highlightedClassName && mappedClass !== highlightedClassName) {
-                                return 0.3;
+                          const mappedClass = classMapping[d.className];
+                          if (highlightedClassName === 'L' || highlightedClassName === 'P' || highlightedClassName === 'K' || highlightedClassName === 'J'){
+                            if (mappedClass !== highlightedClassName) {
+                              return 0.3;
+                            } else {
+                              return 1;
                             }
-                            return 1;
+                          } else if (highlightedClassName === 'PROS' || highlightedClassName === 'CONS'){
+                            const mappedKey1 = keywords[highlightedClassName][0];
+                            const mappedKey2 = keywords[highlightedClassName][1];
+                            if (mappedClass === mappedKey1 || mappedClass === mappedKey2){
+                              return 1;
+                            }
+                          }
+                          return 0.3;
                         });
                     enterGroups.append('title').text((d) => {
                         const name = this.dataStructureSet?.utteranceObjectsForDrawingManager?.utteranceObjectsForDrawing[d.scriptIndex]?.name;
@@ -167,9 +182,20 @@ export class CP1Drawer extends CPDrawer {
                         .style('opacity', (d) => {
                             //@ts-ignore
                             const mappedClass = classMapping[d.className];
-                            if (highlightedClassName && mappedClass !== highlightedClassName) {
+                            if (highlightedClassName === 'L' || highlightedClassName === 'P' || highlightedClassName === 'K' || highlightedClassName === 'J'){
+                              if (mappedClass !== highlightedClassName) {
                                 return 0.3;
+                              } else {
+                                return 1;
+                              }
+                            } else if (highlightedClassName === 'PROS' || highlightedClassName === 'CONS'){
+                              const mappedKey1 = keywords[highlightedClassName][0];
+                              const mappedKey2 = keywords[highlightedClassName][1];
+                              if (mappedClass === mappedKey1 || mappedClass === mappedKey2){
+                                return 1;
+                              }
                             }
+                            // return 0.3;
                             return 1;
                         });
                     return update;
@@ -199,7 +225,7 @@ export class CP1Drawer extends CPDrawer {
               return 1;
             }
           }
-          return 0.3;
+          return 1;
         });
 
         CP1Data.forEach((groupData, i) => {
@@ -223,7 +249,13 @@ export class CP1Drawer extends CPDrawer {
                 return 1;
             });
 
-            const isHighlighted = highlightedClassName && highlightedClassName === groupType;
+            let isHighlighted = 0;
+            if (highlightedClassName === 'L' || highlightedClassName === 'P' || highlightedClassName === 'K' || highlightedClassName === 'J'){
+              isHighlighted = highlightedClassName && highlightedClassName === groupType;
+            } else if (highlightedClassName === 'PROS' || highlightedClassName === 'CONS'){
+              //@ts-ignore
+              isHighlighted = (keywords[highlightedClassName][0] === groupType || keywords[highlightedClassName][1] === groupType);
+            }
             // console.log("isHighlighted", isHighlighted);
             const opacityValue = isHighlighted ? 1 : 0.3;
             // 'circle' 요소 처리
