@@ -1,7 +1,10 @@
 import style from "./Header.module.scss";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import { useSelector } from "react-redux";
 import store from '../../redux/store';
 import { setHighlightedClass, clearHighlightedClass } from '../../redux/reducers/classHighlightReducer';
+import { clearHighlightedGroup } from '../../redux/reducers/highlightReducer';
+import { clearSelectedBlock } from "../../redux/reducers/similarityBlockSelectReducer";
 import { D3Drawer } from "../ConceptualRecurrencePlot/Drawers/D3Drawer";
 import LJS from "./image/LJS.svg";
 import PHR from "./image/PHR.svg";
@@ -30,10 +33,26 @@ interface HeaderProps {
 
 export default function Header({ isOpen, setIsOpen }: HeaderProps) {
   const [selectedParticipant, setSelectedParticipant] = useState<string | null>(null);
+  const highlightedClass = useSelector((state: any) => state.classHighLight.highlightedClassName);
+
+  useEffect(() => {
+    // Redux store 구독하여 highlightedClass 변경 감지
+    const unsubscribe = store.subscribe(() => {
+      const state = store.getState();
+      setSelectedParticipant(state.classHighLight.highlightedClassName);
+    });
+
+    return () => {
+      unsubscribe(); // 컴포넌트 언마운트 시 구독 해제
+    };
+  }, []);
 
   const handleReset = () => {
     if (D3Drawer.allDrawers.length > 0) {
       D3Drawer.allDrawers[0].resetView();
+      store.dispatch(clearSelectedBlock());
+      store.dispatch(clearHighlightedClass());
+      store.dispatch(clearHighlightedGroup());
     } else {
       console.warn("No D3Drawer instances found!");
     }
@@ -46,6 +65,7 @@ export default function Header({ isOpen, setIsOpen }: HeaderProps) {
     } else {
       setSelectedParticipant(className);
       store.dispatch(setHighlightedClass({ className }));
+      store.dispatch(clearHighlightedGroup());
     }
   };
 
@@ -76,7 +96,7 @@ export default function Header({ isOpen, setIsOpen }: HeaderProps) {
           </div>
           <div className={style.pkGroup}>
           {participants.map(({ id, name, img }) => (
-              <div key={id} className={`${style.pkSpace} ${selectedParticipant && selectedParticipant !== id ? style.grayscale : ""}`}>
+              <div key={id} className={`${style.pkSpace} ${highlightedClass && highlightedClass !== id ? style.grayscale : ""}`}>
                 <div className={style.pkImage}>
                   <img
                     src={img}
@@ -84,19 +104,17 @@ export default function Header({ isOpen, setIsOpen }: HeaderProps) {
                     width="35"
                     height="35"
                     onClick={() => handleParticipantClick(id)}
-                    className={selectedParticipant === id ? style.selected : ""}
+                    className={highlightedClass === id ? style.selected : ""}
                   />
                 </div>
                 <div className={style.pkName}>{name}</div>
               </div>
             ))}
-            <div className={style.pkSpace}>
-              <div className={`${style.pkImage} ${selectedParticipant ? style.grayscale : ""}`}>
+            <div className={`${style.pkSpace} ${highlightedClass ? style.grayscale : ""}`}>
+              <div className={`${style.pkImage} ${highlightedClass ? style.grayscale : ""}`}>
                 <img src={JHJ} alt="JHJ" width="35" height="35" />
               </div>
-              <div className={style.pkName}>
-                진행자
-              </div>
+              <div className={style.pkName}>진행자</div>
             </div>
           </div>
         </div>

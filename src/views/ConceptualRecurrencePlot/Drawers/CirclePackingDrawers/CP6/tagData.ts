@@ -101,10 +101,11 @@ export const CP6Data = [
     class: "T6-1-K1",
     elements: [
       {
-        type: "circle",
+        type: "ellipse",
         cx: "1290.6",
         cy: "158.9",
-        r: "13.4",
+        rx: "13.4",
+        ry: "13.4",
         className: "KJD",
         onClick: 123,
       },

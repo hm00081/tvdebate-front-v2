@@ -2,15 +2,15 @@
 /* eslint-disable no-unused-vars */
 import React from "react";
 import store from "../../../../redux/store";
-import highlightReducer, {
-  setHighlightedGroup,
-} from "../../../../redux/reducers/highlightReducer";
-import { setHighlightedClass } from "../../../../redux/reducers/classHighlightReducer";
+import { setHighlightedGroup } from "../../../../redux/reducers/highlightReducer";
+import { clearHighlightedClass } from '../../../../redux/reducers/classHighlightReducer';
+import { clearSelectedBlock } from "../../../../redux/reducers/similarityBlockSelectReducer";
 import { DataStructureSet } from "../../DataStructureMaker/DataStructureManager";
 import { SimilarityBlock } from "../../interfaces";
 import _ from "lodash";
 import { SentenceObject } from "../../../../interfaces/DebateDataInterface";
 import { TranscriptViewerMethods } from "../../TranscriptViewer/TranscriptViewer";
+import { current } from "@reduxjs/toolkit";
 
 export class CPDrawer {
   public onTitleClicked:
@@ -47,8 +47,10 @@ export class CPDrawer {
   }
 
   public handleClickText(index: number) {
-    if (!index) {
-      if (index !== 0) return;
+    // console.log('Click');
+    if(!index){
+      if(index !== 0)
+        return;
     }
 
     if (!this.dataStructureSet) {
@@ -61,11 +63,52 @@ export class CPDrawer {
       return;
     }
 
-    console.log(index);
+    let groupId: string | null = null;
+    if (index >= 0 && index < 17) {
+      groupId = "g1";
+    } else if (index >= 17 && index < 36) {
+      groupId = "g2";
+    } else if (index >= 36 && index < 55) {
+      groupId = "g3";
+    } else if (index >= 55 && index < 78) {
+      groupId = "g4";
+    } else if (index >= 78 && index < 108) {
+      groupId = "g5";
+    } else if (index >= 108 && index < 175) {
+      groupId = "g6";
+    } else if (index >= 175) {
+      groupId = "g7";
+    }
 
-    const utterance =
-      this.dataStructureSet.utteranceObjectsForDrawingManager
-        .utteranceObjectsForDrawing[index];
+    // 현재 Redux 상태 확인
+    const currentHighlight = store.getState().highlight.highlightedGroup;
+
+    //@ts-ignore
+    if (currentHighlight === groupId) {
+      if(store.getState().similarityBlockSelect.selectedBlock.length !== 0){
+        store.dispatch(setHighlightedGroup(groupId));
+        store.dispatch(clearSelectedBlock());  
+        store.dispatch(clearHighlightedClass());
+      } else {
+        // 같은 groupId가 이미 Redux 상태에 저장되어 있다면 해제
+        store.dispatch(setHighlightedGroup(null));
+        store.dispatch(clearSelectedBlock());
+        store.dispatch(clearHighlightedClass());
+      }
+    } else {
+      if(store.getState().similarityBlockSelect.selectedBlock.length !== 0){
+        store.dispatch(clearSelectedBlock());
+        store.dispatch(setHighlightedGroup(groupId));
+        store.dispatch(clearHighlightedClass());
+      } else {
+        // 같은 groupId가 이미 Redux 상태에 저장되어 있다면 해제
+        store.dispatch(setHighlightedGroup(groupId));
+        store.dispatch(clearHighlightedClass());
+      }
+    }
+
+    const utterance = this.dataStructureSet.utteranceObjectsForDrawingManager
+      .utteranceObjectsForDrawing[index];
     const compoundTerms = this.countCompoundTerms(utterance.sentenceObjects);
     const topTerms = this.getTopCompoundTerms(compoundTerms, 30);
 
@@ -84,8 +127,10 @@ export class CPDrawer {
     index: number,
     event: React.MouseEvent<SVGPathElement, MouseEvent>
   ) {
-    if (!index) {
-      if (index !== 0) return;
+    // console.log('handleClick', index, event);
+    if(!index){
+      if(index !== 0)
+        return;
     }
 
     if (!this.dataStructureSet) {
@@ -107,12 +152,11 @@ export class CPDrawer {
     // 클릭된 요소의 스타일 변경
     const clickedElement = event.currentTarget;
     clickedElement.style.stroke = "#fc2c34";
-    clickedElement.style.strokeWidth = "1.45";
+    clickedElement.style.strokeWidth = "1.5";
     clickedElement.classList.add("highlighted");
 
-    const utterance =
-      this.dataStructureSet.utteranceObjectsForDrawingManager
-        .utteranceObjectsForDrawing[index];
+    const utterance = this.dataStructureSet.utteranceObjectsForDrawingManager
+      .utteranceObjectsForDrawing[index];
     // console.log("utterance", utterance); 잘 나옴
     const compoundTerms = this.countCompoundTerms(utterance.sentenceObjects);
     const topTerms = this.getTopCompoundTerms(compoundTerms, 30);
@@ -126,98 +170,5 @@ export class CPDrawer {
         -1
       );
     }
-  }
-
-  public handleMouseEnter(
-    index: number,
-    event: React.MouseEvent<SVGPathElement, MouseEvent>
-  ) {
-    if (!index) {
-      if (index !== 0) return;
-    }
-
-    if (!this.dataStructureSet) {
-      console.error("dataStructureSet is not provided to CPK component");
-      return;
-    }
-
-    if (!this.transcriptViewerRef.current) {
-      console.error("transcriptViewerRef is not set");
-      return;
-    }
-
-    console.log("enter");
-    console.log(index);
-
-    const groupId = this.getGroupIdByIndex(index);
-    const utterance =
-      this.dataStructureSet.utteranceObjectsForDrawingManager
-        .utteranceObjectsForDrawing[index];
-    const name = utterance.name;
-    // Redux 상태 업데이트
-    if (groupId) {
-      store.dispatch(setHighlightedGroup({ group: groupId, name })); // Redux에 그룹 ID와 이름 저장
-      console.log(store.getState().highlight);
-    }
-
-    const elementClass = event.currentTarget.getAttribute("class");
-    console.log("elementClass", elementClass);
-    if (elementClass) {
-      store.dispatch(setHighlightedClass(elementClass)); // 클래스 설정
-    }
-    const compoundTerms = this.countCompoundTerms(utterance.sentenceObjects);
-    const topTerms = this.getTopCompoundTerms(compoundTerms, 30);
-
-    if (this.transcriptViewerRef && this.transcriptViewerRef.current) {
-      this.transcriptViewerRef.current.scrollToIndex(index);
-      this.transcriptViewerRef.current.highlightKeywords(
-        topTerms,
-        [],
-        index,
-        -1
-      );
-    }
-  }
-
-  public handleMouseLeave(
-    index: number,
-    event: React.MouseEvent<SVGPathElement, MouseEvent>
-  ) {
-    if (!index) {
-      if (index !== 0) return;
-    }
-
-    if (!this.dataStructureSet) {
-      console.error("dataStructureSet is not provided to CPK component");
-      return;
-    }
-
-    if (!this.transcriptViewerRef.current) {
-      console.error("transcriptViewerRef is not set");
-      return;
-    }
-    store.dispatch(setHighlightedGroup(null));
-    store.dispatch(setHighlightedClass(null));
-    console.log(store.getState().highlight);
-    console.log("leave");
-  }
-
-  public getGroupIdByIndex(index: number): string | null {
-    if (index >= 0 && index < 17) {
-      return "g1";
-    } else if (index >= 17 && index < 36) {
-      return "g2";
-    } else if (index >= 36 && index < 55) {
-      return "g3";
-    } else if (index >= 55 && index < 78) {
-      return "g4";
-    } else if (index >= 78 && index < 108) {
-      return "g5";
-    } else if (index >= 108 && index < 175) {
-      return "g6";
-    } else if (index >= 175) {
-      return "g7";
-    }
-    return null;
   }
 }

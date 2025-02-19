@@ -59,7 +59,7 @@ export class CP1Drawer extends CPDrawer {
           'PROS': ['K', 'J'],
           'CONS': ['L', 'P'],
         }
-        
+
         let name1 = '', name2 = '', selected1 = '', selected2 = '', index1 = -1, index2 = -1;
         if (highlightedGroup === "g1" && selectedBlock.length !== 0){
           index1 = selectedBlock[1][0];
@@ -146,6 +146,7 @@ export class CP1Drawer extends CPDrawer {
                         .attr('class', (d) => d.className)
                         .attr('d', (d) => d.d)
                         .style('opacity', (d) => {
+                          //@ts-ignore
                           const mappedClass = classMapping[d.className];
                           if (highlightedClassName === 'L' || highlightedClassName === 'P' || highlightedClassName === 'K' || highlightedClassName === 'J'){
                             if (mappedClass !== highlightedClassName) {
@@ -161,7 +162,7 @@ export class CP1Drawer extends CPDrawer {
                             }
                           }
                           return 0.3;
-                        });
+                      });
                     enterGroups.append('title').text((d) => {
                         const name = this.dataStructureSet?.utteranceObjectsForDrawingManager?.utteranceObjectsForDrawing[d.scriptIndex]?.name;
                         const utterance = this.dataStructureSet?.utteranceObjectsForDrawingManager?.utteranceObjectsForDrawing[d.scriptIndex]?.utterance;
@@ -195,8 +196,7 @@ export class CP1Drawer extends CPDrawer {
                                 return 1;
                               }
                             }
-                            // return 0.3;
-                            return 1;
+                            return 0.3;
                         });
                     return update;
                 },
@@ -225,7 +225,7 @@ export class CP1Drawer extends CPDrawer {
               return 1;
             }
           }
-          return 1;
+          return 0.3;
         });
 
         CP1Data.forEach((groupData, i) => {
@@ -248,7 +248,7 @@ export class CP1Drawer extends CPDrawer {
                 }
                 return 1;
             });
-
+            
             let isHighlighted = 0;
             if (highlightedClassName === 'L' || highlightedClassName === 'P' || highlightedClassName === 'K' || highlightedClassName === 'J'){
               isHighlighted = highlightedClassName && highlightedClassName === groupType;
@@ -256,6 +256,7 @@ export class CP1Drawer extends CPDrawer {
               //@ts-ignore
               isHighlighted = (keywords[highlightedClassName][0] === groupType || keywords[highlightedClassName][1] === groupType);
             }
+            
             // console.log("isHighlighted", isHighlighted);
             const opacityValue = isHighlighted ? 1 : 0.3;
             // 'circle' 요소 처리
@@ -291,25 +292,29 @@ export class CP1Drawer extends CPDrawer {
                         //@ts-ignore
                         .on('click', (e) => this.handleClick(element.onClick, e))
                         .style('opacity', () => {
-                          if (!highlightedGroup){
+                          if (!highlightedGroup && !highlightedClassName){
                             return 1;
                           } 
                           // 주제문 또는 similarity block이 선택되었지만, 해당 서클패킹이 아닌 경우
-                        if (highlightedGroup && highlightedGroup !== "g1") {
-                          return 0.3;
-                        } else if (highlightedGroup && highlightedGroup === "g1"){
-                          if(selectedBlock.length === 0){
-                            return 1;
+                          if(highlightedGroup) {
+                            if (highlightedGroup && highlightedGroup !== "g1") {
+                              return 0.3;
+                            } else if (highlightedGroup && highlightedGroup === "g1"){
+                              if(selectedBlock.length === 0){
+                                return 1;
+                              }
+                              // 선택된 상태에서 similarity block이 선택된 경우면서 화자가 일치하는 경우
+                              if(element.className === name1 || element.className === name2){
+                                return 1;
+                              }
+                              return 0.3;
+                            }
+                              return 1;
+                          } else if (highlightedClassName) {
+                            return highlightedClassName ? opacityValue : 1;
                           }
-                          // 선택된 상태에서 similarity block이 선택된 경우면서 화자가 일치하는 경우
-                          if(element.className === name1 || element.className === name2){
-                            return 1;
-                          }
                           return 0.3;
-                        }
-                          return 1;
-                        })
-                        .style('opacity', highlightedClassName ? opacityValue : 1);
+                        });
                 }
 
                 // 'ellipse' 요소 처리
@@ -331,24 +336,29 @@ export class CP1Drawer extends CPDrawer {
                         //@ts-ignore
                         .on('click', (e) => this.handleClick(element.onClick, e))
                         .style('opacity', () => {
-                          if (!highlightedGroup){
+                          if (!highlightedGroup && !highlightedClassName){
                             return 1;
-                          } if (highlightedGroup && highlightedGroup !== "g1") {
-                            return 0.3;
-                          } else if (highlightedGroup && highlightedGroup === "g1"){
-                            if(selectedBlock.length === 0){
-                              return 1;
+                          } 
+                          // 주제문 또는 similarity block이 선택되었지만, 해당 서클패킹이 아닌 경우
+                          if(highlightedGroup) {
+                            if (highlightedGroup && highlightedGroup !== "g1") {
+                              return 0.3;
+                            } else if (highlightedGroup && highlightedGroup === "g1"){
+                              if(selectedBlock.length === 0){
+                                return 1;
+                              }
+                              // 선택된 상태에서 similarity block이 선택된 경우면서 화자가 일치하는 경우
+                              if(element.className === name1 || element.className === name2){
+                                return 1;
+                              }
+                              return 0.3;
                             }
-                            // 선택된 상태에서 similarity block이 선택된 경우면서 화자가 일치하는 경우
-                            if(element.className === name1 || element.className === name2){
                               return 1;
-                            }
-                            return 0.3;
+                          } else if (highlightedClassName) {
+                            return highlightedClassName ? opacityValue : 1;
                           }
-                          
-                          return 1;
-                        })
-                        .style('opacity', highlightedClassName ? opacityValue : 1);
+                          return 0.3;
+                        });
                 }
 
                 // 'text' 요소와 'tspan' 요소 처리
@@ -367,12 +377,16 @@ export class CP1Drawer extends CPDrawer {
                         // //@ts-ignore
                         // .on('mouseleave', (e) => this.handleMouseLeave(element.onHover, e))
                         .style('opacity', () => {
+                          if (highlightedGroup) {
                             if (highlightedGroup && highlightedGroup !== "g1") {
-                                return 0.3;
+                              return 0.3;
                             }
                             return 1;
-                        })
-                        .style('opacity', highlightedClassName ? opacityValue : 1);
+                          } else if (highlightedClassName) {
+                            return highlightedClassName ? opacityValue : 1;
+                          }
+                          return 1;
+                        });
                     if (element.style && element.style !== 'None') {
                         text.style('font-size', element.style);
                     }

@@ -191,7 +191,7 @@ export const CP7Data = [
   {
     class: "T7-1-J1",
     elements: [
-      { type: "circle", cx: "1551", cy: "208.8", r: "15.2", onClick: 166, className: "JKT" },
+      { type: "ellipse", cx: "1551", cy: "208.8", rx: "15.2", ry: "15.2", onClick: 166, className: "JKT" },
       {
         type: "text",
         transform: "matrix(1 0 0 1 1540.4971 204.3011)",
@@ -342,10 +342,11 @@ export const CP7Data = [
     class: "T7-1-K2",
     elements: [
       {
-        type: "circle",
+        type: "ellipse",
         cx: "1524.8",
         cy: "190.6",
-        r: "16.2",
+        rx: "16.2",
+        ry: "16.2",
         className: "KJD",
         onClick: 161,
       },

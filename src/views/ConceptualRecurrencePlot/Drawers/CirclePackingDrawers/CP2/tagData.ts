@@ -241,12 +241,13 @@ export const CP2Data = [
         class: 'T2-1-K2',
         elements: [
             {
-                type: 'circle',
+                type: 'ellipse',
                 className: 'KJD',
                 onClick: 37,
                 cx: '294.1',
                 cy: '173.5',
-                r: '13.5',
+                rx: '13.5',
+                ry: '13.5',
             },
             {
                 type: 'text',
@@ -489,12 +490,13 @@ export const CP2Data = [
         class: 'T2-2-J1',
         elements: [
             {
-                type: 'circle',
+                type: 'ellipse',
                 className: 'JKT',
                 onClick: 31,
                 cx: '415.9',
                 cy: '140.7',
-                r: '11.2',
+                rx: '11.2',
+                ry: '11.2',
             },
             {
                 type: 'text',
@@ -585,12 +587,13 @@ export const CP2Data = [
         class: 'T2-2-J2',
         elements: [
             {
-                type: 'circle',
+                type: 'ellipse',
                 className: 'JKT',
                 onClick: 34,
                 cx: '397.1',
                 cy: '160.4',
-                r: '15.4',
+                rx: '15.4',
+                ry: '15.4',
             },
             {
                 type: 'text',
@@ -634,12 +637,13 @@ export const CP2Data = [
         class: 'T2-2-J3',
         elements: [
             {
-                type: 'circle',
+                type: 'ellipse',
                 className: 'JKT',
                 onClick: 31,
                 cx: '388.6',
                 cy: '184.5',
-                r: '10.1',
+                rx: '10.1',
+                ry: '10.1',
             },
             {
                 type: 'text',
@@ -674,12 +678,13 @@ export const CP2Data = [
         class: 'T2-2-J4',
         elements: [
             {
-                type: 'circle',
+                type: 'ellipse',
                 className: 'JKT',
                 onClick: 31,
                 cx: '410.6',
                 cy: '202.8',
-                r: '18',
+                rx: '18',
+                ry: '18',
             },
             {
                 type: 'text',

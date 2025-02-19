@@ -380,6 +380,7 @@ export class SimilarityBlocksDrawer {
     }
 
     public update() {
+        const { highlightedGroup } = store.getState().highlight;
         const { filter } = store.getState().matrixFilter;
         const [minOpacity, maxOpacity] = [filter[0]/100, filter[1]/100];
 
@@ -419,6 +420,33 @@ export class SimilarityBlocksDrawer {
                       )
                     : 'none';
             })
+            .style("opacity", function () {
+                const rowIdx = parseInt(d3.select(this).attr("rowIdx") || "-1", 10);
+                const colIdx = parseInt(d3.select(this).attr("colIdx") || "-1", 10);
+            
+                // Define the ranges for each group
+                const groupRanges: Record<string, { row: [number, number]; col: [number, number] }> = {
+                  g1: { row: [0, 18], col: [0, 19] },
+                  g2: { row: [14, 37], col: [15, 38] },
+                  g3: { row: [23, 58], col: [24, 59] },
+                  g4: { row: [42, 79], col: [43, 80] },
+                  g5: { row: [72, 106], col: [73, 107] },
+                  g6: { row: [93, 126], col: [94, 127] },
+                  g7: { row: [145, 183], col: [146, 184] },
+                };
+                if (!highlightedGroup) {
+                  return "initial" || 1; // Default to 1 if no initial opacity found
+                }
+                //@ts-ignore
+                if (highlightedGroup in groupRanges) {
+                  //@ts-ignore
+                  const { row, col } = groupRanges[highlightedGroup];
+                  if (rowIdx >= row[0] && rowIdx <= row[1] && colIdx >= col[0] && colIdx <= col[1]) {
+                    return 1; // Highlight the element
+                  }
+                }
+                return 0.2; // Dim the element
+              })
             .style('stroke-width', 3)
             .style('stroke', (d) => (this._showEngagementPoint && d.engagementPoint ? 'rgb(97, 64, 65)' : null))
             //@ts-ignore
@@ -493,60 +521,57 @@ export class SimilarityBlocksDrawer {
     }
     // no error
     updateSelectedBlock() {
-        const groupRanges: Record<string, { row: [number, number]; col: [number, number] }> = {
-            g1: { row: [0, 18], col: [0, 19] },
-            g2: { row: [14, 37], col: [15, 38] },
-            g3: { row: [23, 58], col: [24, 59] },
-            g4: { row: [42, 79], col: [43, 80] },
-            g5: { row: [72, 106], col: [73, 107] },
-            g6: { row: [93, 126], col: [94, 127] },
-            g7: { row: [145, 183], col: [146, 184] },
-        };
-    
         this.conceptSimilarityRectGSelection
             .selectAll<SVGRectElement, SimilarityBlock>('rect')
-            .style('stroke-width', (d) => {
-                return this._selectedBlockIndices.some(
-                    (indices) => indices[0] === d.rowUtteranceIndex && indices[1] === d.columnUtteranceIndex
-                ) ? 1.45 : 0;
-            })
-            .style('stroke', (d) => {
-                const isSelected = this._selectedBlockIndices.some(
-                    (indices) => indices[0] === d.rowUtteranceIndex && indices[1] === d.columnUtteranceIndex
-                );
-    
-                if (isSelected) {
-                    let groupIds: string[] = [];
-    
-                    for (const [key, { row, col }] of Object.entries(groupRanges)) {
-                        if (
-                            d.rowUtteranceIndex >= row[0] &&
-                            d.rowUtteranceIndex <= row[1] &&
-                            d.columnUtteranceIndex >= col[0] &&
-                            d.columnUtteranceIndex <= col[1]
-                        ) {
-                            groupIds.push(key); 
-                        }
+            .style("stroke", (d) => {
+                if (this._selectedBlockIndices.some(
+                  (indices) =>
+                    indices[0] === d.rowUtteranceIndex &&
+                    indices[1] === d.columnUtteranceIndex
+                )){ 
+                  const groupRanges: Record<string, { row: [number, number]; col: [number, number] }> = {
+                    g1: { row: [0, 18], col: [0, 19] },
+                    g2: { row: [14, 37], col: [15, 38] },
+                    g3: { row: [23, 58], col: [24, 59] },
+                    g4: { row: [42, 79], col: [43, 80] },
+                    g5: { row: [72, 106], col: [73, 107] },
+                    g6: { row: [93, 126], col: [94, 127] },
+                    g7: { row: [145, 183], col: [146, 184] },
+                  };
+        
+                  let groupIds: string[] = [];
+        
+                  for (const [key, { row, col }] of Object.entries(groupRanges)) {
+                    if (
+                      d.rowUtteranceIndex >= row[0] &&
+                      d.rowUtteranceIndex <= row[1] &&
+                      d.columnUtteranceIndex >= col[0] &&
+                      d.columnUtteranceIndex <= col[1]
+                    ) {
+                      groupIds.push(key);  // 매칭되는 모든 그룹의 키 저장
                     }
-    
-                    // 효율성 저하 코드
-                    // store.dispatch(setSelectedBlock([[d.rowUtteranceName, d.colUtteranceName], [d.rowUtteranceIndex, d.columnUtteranceIndex]]));
-                    
-                    // if (groupIds.length > 0) {
-                    //     store.dispatch(setHighlightedGroup(groupIds[0]));
-                    // }
-    
-                    console.log([d.rowUtteranceName, d.colUtteranceName, d.rowUtteranceIndex, d.columnUtteranceIndex]);
-                    return '#fc2c34'; // 선택된 블록 색상
+                  }
+        
+                  store.dispatch(setSelectedBlock([[d.rowUtteranceName, d.colUtteranceName], [d.rowUtteranceIndex, d.columnUtteranceIndex]]));
+                  store.dispatch(setHighlightedGroup(groupIds[0]));
+                  console.log([d.rowUtteranceName, d.colUtteranceName, d.rowUtteranceIndex, d.columnUtteranceIndex]);
                 }
-    
-                return null;
-            })
+                
+                return this._selectedBlockIndices.some(
+                  (indices) =>
+                    indices[0] === d.rowUtteranceIndex &&
+                    indices[1] === d.columnUtteranceIndex
+                )
+                  ? "#fc2c34"
+                  : null;
+              })
             .style('fill', (d) => {
-                const isSelected = this._selectedBlockIndices.some(
-                    (indices) => indices[0] === d.rowUtteranceIndex && indices[1] === d.columnUtteranceIndex
-                );
-                return isSelected ? '#578ae3' : this.fillColorOfSimilarityBlock(
+                // 선택된 블록이면 노란색으로 설정
+                if (this._selectedBlockIndices.some((indices) => indices[0] === d.rowUtteranceIndex && indices[1] === d.columnUtteranceIndex)) {
+                    return '#578ae3';
+                }
+                // 선택되지 않은 블록은 기존 색상 유지
+                return this.fillColorOfSimilarityBlock(
                     d,
                     this.utteranceObjectsForDrawing,
                     this.similarityBlockGroup,
@@ -556,6 +581,9 @@ export class SimilarityBlocksDrawer {
                     this._coloringRebuttal
                 );
             })
+            .style('stroke-width', (d) => {
+                return this._selectedBlockIndices.some((indices) => indices[0] === d.rowUtteranceIndex && indices[1] === d.columnUtteranceIndex) ? 1.45 : 0;
+            });
     }
 
     public set mouseoverListener(mouseoverListener: (mouseEvent: MouseEvent, similarityBlock: SimilarityBlock) => void) {
