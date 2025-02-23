@@ -10,6 +10,7 @@ import highlightReducer, { clearHighlightedGroup, setHighlightedGroup } from "..
 import store from '../../../redux/store';
 import * as fs from 'fs';
 import * as d3 from 'd3';
+import { clearHighlightedClass } from '../../../redux/reducers/classHighlightReducer';
 
 export type ColoringSelfSimilarities = 'none' | 'oneColor' | 'participantColors';
 
@@ -512,12 +513,12 @@ export class SimilarityBlocksDrawer {
         this._selectedBlockIndices = [...this._selectedBlockIndices, ...indices];
 
         console.log(this._selectedBlockIndices);
-        this.updateSelectedBlock();
+        // this.updateSelectedBlock();
     }
 
     clearSelectedBlocks() {
         this._selectedBlockIndices = [];
-        this.updateSelectedBlock();
+        // this.updateSelectedBlock();
     }
     // no error
     updateSelectedBlock() {
@@ -551,9 +552,11 @@ export class SimilarityBlocksDrawer {
                       groupIds.push(key);  // 매칭되는 모든 그룹의 키 저장
                     }
                   }
-        
+                  
                   store.dispatch(setSelectedBlock([[d.rowUtteranceName, d.colUtteranceName], [d.rowUtteranceIndex, d.columnUtteranceIndex]]));
                   store.dispatch(setHighlightedGroup(groupIds[0]));
+                  store.dispatch(clearHighlightedClass());
+                  console.log("Update");
                   console.log([d.rowUtteranceName, d.colUtteranceName, d.rowUtteranceIndex, d.columnUtteranceIndex]);
                 }
                 

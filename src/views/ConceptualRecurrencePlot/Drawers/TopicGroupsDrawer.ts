@@ -54,7 +54,7 @@ export class TopicGroupsDrawer {
       const { highlightedGroup } = store.getState().highlight; // Redux 상태에서 highlightedGroup 추출
       const { highlightedClassName } = store.getState().classHighLight;
       const { selectedBlock } = store.getState().similarityBlockSelect;
-      this.applyHighlightEffect(highlightedClassName, highlightedGroup);
+      this.applyHighlightEffect(highlightedClassName, highlightedGroup, selectedBlock);
 
       // console.log('highlightedGroup', highlightedGroup);
       // console.log('highlightedClassName', highlightedClassName);
@@ -104,7 +104,7 @@ export class TopicGroupsDrawer {
     });
   }
 
-  private applyHighlightEffect(highlightedClassName: string | null, highlightedGroup: string | null) {
+  private applyHighlightEffect(highlightedClassName: string | null, highlightedGroup: string | null, selectedBlock: never[] | null) {
     /* ## 참여자 선택 ## */
     // SVG 내부에서 모든 rect 요소를 선택
     this.topicGuideRectGSelection
@@ -129,9 +129,22 @@ export class TopicGroupsDrawer {
               K: '김종대',
             };
 
-            const colName = d3.select(this).attr("colName");
-            const rowName = d3.select(this).attr("rowName");
+            const rowIdx = d3.select(this).attr("rowIdx");
+            const colIdx = d3.select(this).attr("colIdx");
 
+            const rowName = d3.select(this).attr("rowName");
+            const colName = d3.select(this).attr("colName");
+
+            if(selectedBlock){
+              if (selectedBlock && Array.isArray(selectedBlock[1]) && 
+                  selectedBlock[1][0] == rowIdx && 
+                  selectedBlock[1][1] == colIdx) {
+                  return 1;
+              } else {
+                  return 0.1;
+              }
+            }
+            
             if (!highlightedClassName || highlightedClassName === "PROS" || highlightedClassName === "CONS") {
               return "initial" || 1; // Default to 1 if no initial opacity found
             }
