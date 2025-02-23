@@ -308,6 +308,7 @@ export class TopicGroupsDrawer {
                     return true; // 이 g는 유효함
                   }
                 }
+                return false;
               } else if (highlightedClassName) {
                 // 클래스가 participantRange 내의 값들과 일치하는 경우에만 선택
                 for (const key in participantRange) {
@@ -315,8 +316,9 @@ export class TopicGroupsDrawer {
                     return true; // 이 g는 유효함
                   }
                 }
+                return false;
               }
-              return false; // 유효하지 않은 g는 제외
+              return true; // 유효하지 않은 g는 제외
             })
             .style("opacity", function () {
               const attClass = d3.select(this).attr("class");
