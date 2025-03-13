@@ -26,16 +26,18 @@ export class CP3Drawer extends CPDrawer {
             const currentHighlightedGroup = store.getState().highlight.highlightedGroup;
             const currentHighlightedClassName = store.getState().classHighLight.highlightedClassName;
             const currentSelectedBlock = store.getState().similarityBlockSelect.selectedBlock;
-            if (this.previousHighlightedGroup !== currentHighlightedGroup) {
-                this.previousHighlightedGroup = currentHighlightedGroup;
-                this.update();
+            //@ts-ignore
+            if (!_.isEqual(this.previousHighlightedGroup, currentHighlightedGroup)) {
+              this.previousHighlightedGroup = currentHighlightedGroup;
+              this.update();
             }
             if (this.previousHighlightedClass !== currentHighlightedClassName) {
-                this.previousHighlightedClass = currentHighlightedClassName;
-                this.update();
+              this.previousHighlightedClass = currentHighlightedClassName;
+              this.update();
             }
-            if (this.previousSelectedBlock !== currentSelectedBlock || this.previousHighlightedGroup !== currentHighlightedGroup){
-              // @ts-ignore
+            //@ts-ignore
+            if (!_.isEqual(this.previousSelectedBlock, currentSelectedBlock) || !_.isEqual(this.previousHighlightedGroup, currentHighlightedGroup)) {
+              //@ts-ignore
               this.previousSelectedBlock = currentSelectedBlock;
               this.previousHighlightedGroup = currentHighlightedGroup;
               this.update();
@@ -49,48 +51,43 @@ export class CP3Drawer extends CPDrawer {
         const selectedBlock = store.getState().similarityBlockSelect.selectedBlock;
 
         const classMapping: { [key: string]: string } = {
-            st16: 'P',
-            st18: 'L',
-            st19: 'K',
-            st20: 'J',
-        };
+          st16: 'PHR',
+          st18: 'LJS',
+          st19: 'KJD',
+          st20: 'JKT',
+      };
 
-        const keywords: Record<string, string[]> = {
-          'PROS': ['K', 'J'],
-          'CONS': ['L', 'P'],
-        }
+      const keywords: Record<string, string[]> = {
+        'PROS': ['KJD', 'JKT'],
+        'CONS': ['LJS', 'PHR'],
+      }
 
         let name1 = '', name2 = '', selected1 = '', selected2 = '', index1 = -1, index2 = -1;
-        if (highlightedGroup === 'g3' && selectedBlock.length !== 0){
-          index1 = selectedBlock[1][0];
-          index2 = selectedBlock[1][1];
-          if(selectedBlock[0][0] === '이준석'){
-            name1 = 'LJS';
-            selected1 = 'st21';
-          } else if(selectedBlock[0][0] === '박휘락'){
-            name1 = 'PHR';
-            selected1 = 'st22';
-          } else if(selectedBlock[0][0] === '김종대'){
-            name1 = 'KJD';
-            selected1 = 'st19';
-          } else if(selectedBlock[0][0] === '장경태'){
-            name1 = 'JKT';
-            selected1 = 'st20';
+        // @ts-ignore
+        if ((Array.isArray(highlightedGroup) && highlightedGroup.includes("g3")) ||
+          highlightedGroup === "g3") {
+          
+          if (selectedBlock.length !== 0) {
+              index1 = selectedBlock[1][0];
+              index2 = selectedBlock[1][1];
+
+              // 🔹 객체 매핑 방식으로 최적화 (반복되는 if-else 제거)
+              const nameMapping: Record<string, { name: string; selected: string }> = {
+                  '이준석': { name: 'LJS', selected: 'st21' },
+                  '박휘락': { name: 'PHR', selected: 'st22' },
+                  '김종대': { name: 'KJD', selected: 'st19' },
+                  '장경태': { name: 'JKT', selected: 'st20' },
+              };
+
+              if (selectedBlock[0][0] in nameMapping) {
+                  ({ name: name1, selected: selected1 } = nameMapping[selectedBlock[0][0]]);
+              }
+
+              if (selectedBlock[0][1] in nameMapping) {
+                  ({ name: name2, selected: selected2 } = nameMapping[selectedBlock[0][1]]);
+              }
           }
-          if(selectedBlock[0][1] === '이준석'){
-            name2 = 'LJS';
-            selected2 = 'st21';
-          } else if(selectedBlock[0][1] === '박휘락'){
-            name2 = 'PHR';
-            selected2 = 'st22';
-          } else if(selectedBlock[0][1] === '김종대'){
-            name2 = 'KJD';
-            selected2 = 'st19';
-          } else if(selectedBlock[0][1] === '장경태'){
-            name2 = 'JKT';
-            selected2 = 'st20';
-          }
-        }
+      }
 
         this.topicGuideCP3GSelection.selectAll('circle, path, ellipse, text, tspan, line').style(
             'opacity',
@@ -101,10 +98,14 @@ export class CP3Drawer extends CPDrawer {
                           this.dataStructureSet?.utteranceObjectsForDrawingManager?.utteranceObjectsForDrawing[d.scriptIndex]?.name
                         : null;
 
-                if (highlightedGroup && highlightedGroup !== 'g3') {
+                if (Array.isArray(highlightedGroup)) {
+                  //@ts-ignore
+                  if (!highlightedGroup.includes("g3")) {
+                      return 0.3;
+                  }
+                } else if (highlightedGroup && highlightedGroup !== "g3") {
                     return 0.3;
                 }
-
                 return 1;
             }.bind(this)
         );
@@ -151,7 +152,7 @@ export class CP3Drawer extends CPDrawer {
                         .style('opacity', (d) => {
                           //@ts-ignore
                           const mappedClass = classMapping[d.className];
-                          if (highlightedClassName === 'L' || highlightedClassName === 'P' || highlightedClassName === 'K' || highlightedClassName === 'J'){
+                          if (highlightedClassName === 'LJS' || highlightedClassName === 'PHR' || highlightedClassName === 'KJD' || highlightedClassName === 'JKT'){
                             if (mappedClass !== highlightedClassName) {
                               return 0.3;
                             } else {
@@ -178,15 +179,20 @@ export class CP3Drawer extends CPDrawer {
                     update
                         .selectAll('path, line')
                         .style('opacity', () => {
-                            if (highlightedGroup && highlightedGroup !== 'g3') {
+                          if (Array.isArray(highlightedGroup)) {
+                            //@ts-ignore
+                            if (!highlightedGroup.includes("g3")) {
                                 return 0.3;
                             }
-                            return 1;
-                        })
+                          } else if (highlightedGroup && highlightedGroup !== "g3") {
+                              return 0.3;
+                          }
+                          return 1;
+                      })
                         .style('opacity', (d) => {
                           //@ts-ignore
                           const mappedClass = classMapping[d.className];
-                          if (highlightedClassName === 'L' || highlightedClassName === 'P' || highlightedClassName === 'K' || highlightedClassName === 'J'){
+                          if (highlightedClassName === 'LJS' || highlightedClassName === 'PHR' || highlightedClassName === 'KJD' || highlightedClassName === 'JKT'){
                             if (mappedClass !== highlightedClassName) {
                               return 0.3;
                             } else {
@@ -216,26 +222,45 @@ export class CP3Drawer extends CPDrawer {
         });
 
         const filteredPaths = groups.selectAll("path")
-        .style("opacity", (d) => {
-          //@ts-ignore
-          if (selectedBlock.length !== 0 && (index1 === d.scriptIndex || index2 === d.scriptIndex)){
-            return 1;
-          } else if(selectedBlock.length === 0){
-            if(highlightedGroup && highlightedGroup === 'g3'){
-              return 1;
-            } else if (highlightedGroup && highlightedGroup !== 'g3') {
-              return 0.3;
-            } else if (!highlightedGroup){
-              return 1;
+          .style("opacity", (d) => {
+            //@ts-ignore
+            if (selectedBlock.length !== 0 && (index1 === d.scriptIndex || index2 === d.scriptIndex)) {
+                return 1;
+            } 
+            
+            else if (selectedBlock.length === 0) {
+                if (Array.isArray(highlightedGroup)) {
+                    //@ts-ignore
+                    if (highlightedGroup.includes("g3")) {
+                        return 1;
+                    } else {
+                        return 0.3;
+                    }
+                } 
+                else if (highlightedGroup && highlightedGroup === "g3") {
+                    return 1;
+                } 
+                else if (highlightedGroup && highlightedGroup !== "g3") {
+                    return 0.3;
+                } 
+                else if (!highlightedGroup) {
+                    return 1;
+                }
             }
-          }
-          return 0.3;
+            return 0.3;
         });
 
         CP3Data.forEach((groupData, i) => {
             const groupClass = groupData.class;
-            const groupType = groupClass.match(/-(\D+)/)?.[1]; // 숫자 제외 접두사 추출
-
+            const classType = groupClass.match(/-(\D+)/)?.[1]; // 숫자 제외 접두사 추출
+            const mapType: { [key: string]: string } = {
+              'L': 'LJS',
+              'J': 'JKT',
+              'K': 'KJD',
+              'P': 'PHR'
+            }
+            //@ts-ignore
+            const groupType = mapType[classType];
             const group = this.topicGuideCP3GSelection
                 .append('g')
                 .attr('class', groupData.class) // 클래스별로 그리도록!, 그리고 여기서 타입별로 또 그리게하면 됨.
@@ -247,14 +272,19 @@ export class CP3Drawer extends CPDrawer {
                 });
 
             group.selectAll('*').style('opacity', () => {
-                if (highlightedGroup && highlightedGroup !== 'g3') {
+              if (Array.isArray(highlightedGroup)) {
+                //@ts-ignore
+                if (!highlightedGroup.includes("g3")) {
                     return 0.3;
                 }
+              } else if (highlightedGroup && highlightedGroup !== "g3") {
+                  return 0.3;
+              }
                 return 1;
             });
 
             let isHighlighted = 0;
-            if (highlightedClassName === 'L' || highlightedClassName === 'P' || highlightedClassName === 'K' || highlightedClassName === 'J'){
+            if (highlightedClassName === 'LJS' || highlightedClassName === 'PHR' || highlightedClassName === 'KJD' || highlightedClassName === 'JKT'){
               isHighlighted = highlightedClassName && highlightedClassName === groupType;
             } else if (highlightedClassName === 'PROS' || highlightedClassName === 'CONS'){
               //@ts-ignore
@@ -278,10 +308,15 @@ export class CP3Drawer extends CPDrawer {
                         //@ts-ignore
                         .on('click', (e) => this.handleClick(element.onClick, e))
                         .style('opacity', () => {
-                            if (highlightedGroup && highlightedGroup !== 'g3') {
+                          if (Array.isArray(highlightedGroup)) {
+                            //@ts-ignore
+                            if (!highlightedGroup.includes("g3")) {
                                 return 0.3;
                             }
-                            return 1;
+                          } else if (highlightedGroup && highlightedGroup !== "g3") {
+                              return 0.3;
+                          }
+                          return 1;
                         })
                         .style('opacity', highlightedClassName ? opacityValue : 1);
                 }
@@ -296,36 +331,55 @@ export class CP3Drawer extends CPDrawer {
                         //@ts-ignore
                         .on('click', (e) => this.handleClick(element.onClick, e))
                         .style('opacity', () => {
-                          if (!highlightedGroup && !highlightedClassName){
-                            return 1;
-                          } 
-                          if(selectedBlock && selectedBlock[1][0] === selectedBlock[1][1]) {
-                            if(selectedBlock[1][0] === element.onClick){
+                          // 🔹 `highlightedGroup`과 `highlightedClassName`이 없을 경우 기본값 1 반환
+                          if (!highlightedGroup && !highlightedClassName) {
                               return 1;
-                            } else {
-                              return 0.3;
-                            }
                           }
-                          // 주제문 또는 similarity block이 선택되었지만, 해당 서클패킹이 아닌 경우
-                          if(highlightedGroup) {
-                            if (highlightedGroup && highlightedGroup !== "g3") {
+                      
+                          // 🔹 `selectedBlock`이 유효한지 확인 후 비교
+                          //@ts-ignore
+                          if (Array.isArray(selectedBlock) && selectedBlock.length > 1 && Array.isArray(selectedBlock[1]) && selectedBlock[1].length > 1) {
+                            if (Array.isArray(selectedBlock) && selectedBlock.length > 1 && Array.isArray(selectedBlock[1])) {
+                              //@ts-ignore
+                              if (selectedBlock[1].length > 1 && 
+                                  (selectedBlock[1][0] === element.onClick || selectedBlock[1][1] === element.onClick)) {
+                                  return 1;
+                              }
+                            }
                               return 0.3;
-                            } else if (highlightedGroup && highlightedGroup === "g3"){
-                              if(selectedBlock[1][0] === element.onClick || selectedBlock[1][1] === element.onClick){
-                                return 1;
+                          }
+                          // 🔹 `highlightedGroup`이 배열이면 `includes("g3")`로 체크
+                          if (Array.isArray(highlightedGroup)) {
+                            //@ts-ignore
+                              if (!highlightedGroup.includes("g3")) {
+                                  return 0.3;
+                              }
+                          } else if (highlightedGroup && highlightedGroup !== "g3") {
+                              return 0.3;
+                          }
+                          // 🔹 `highlightedGroup`이 "g3"일 경우 처리
+                          //@ts-ignore
+                          if ((Array.isArray(highlightedGroup) && highlightedGroup.includes("g3")) ||
+                              highlightedGroup === "g3") {
+                              if (Array.isArray(selectedBlock) && selectedBlock.length > 1 && Array.isArray(selectedBlock[1])) {
+                                //@ts-ignore
+                                if (selectedBlock[1].length > 1 && 
+                                    (selectedBlock[1][0] === element.onClick || selectedBlock[1][1] === element.onClick)) {
+                                    return 1;
+                                }
                               }
                               // 선택된 상태에서 similarity block이 선택된 경우면서 화자가 일치하는 경우
-                              if(element.className === name1 || element.className === name2){
-                                return 1;
+                              if (element.className === name1 || element.className === name2) {
+                                  return 1;
                               }
                               return 0.3;
-                            }
-                              return 1;
-                          } else if (highlightedClassName) {
-                            return highlightedClassName ? opacityValue : 1;
+                          }
+                          // 🔹 `highlightedClassName`이 있을 경우 `opacityValue` 반환
+                          if (highlightedClassName) {
+                              return opacityValue;
                           }
                           return 0.3;
-                        });
+                      });       
                 }
 
                 // 'ellipse' 요소 처리
@@ -347,36 +401,57 @@ export class CP3Drawer extends CPDrawer {
                         //@ts-ignore
                         .on('click', (e) => this.handleClick(element.onClick, e))
                         .style('opacity', () => {
-                          if (!highlightedGroup && !highlightedClassName){
-                            return 1;
-                          } 
-                          if(selectedBlock && selectedBlock[1][0] === selectedBlock[1][1]) {
-                            if(selectedBlock[1][0] === element.onClick){
+                          if (!highlightedGroup && !highlightedClassName) {
                               return 1;
-                            } else {
-                              return 0.3;
-                            }
                           }
-                          // 주제문 또는 similarity block이 선택되었지만, 해당 서클패킹이 아닌 경우
-                          if(highlightedGroup) {
-                            if (highlightedGroup && highlightedGroup !== "g3") {
+                      
+                          // 🔹 selectedBlock이 배열인지 확인 후 비교
+                          //@ts-ignore
+                          if (Array.isArray(selectedBlock) && selectedBlock.length > 1 && Array.isArray(selectedBlock[1]) && selectedBlock[1].length > 1) {
+                            if (Array.isArray(selectedBlock) && selectedBlock.length > 1 && Array.isArray(selectedBlock[1])) {
+                              //@ts-ignore
+                              if (selectedBlock[1].length > 1 && 
+                                  (selectedBlock[1][0] === element.onClick || selectedBlock[1][1] === element.onClick)) {
+                                  return 1;
+                              }
+                            }
                               return 0.3;
-                            } else if (highlightedGroup && highlightedGroup === "g3"){
-                              if(selectedBlock[1][0] === element.onClick || selectedBlock[1][1] === element.onClick){
-                                return 1;
+                          }
+                      
+                          // 🔹 highlightedGroup이 배열일 경우 "g3"이 포함되어 있는지 확인
+                          if (Array.isArray(highlightedGroup)) {
+                            //@ts-ignore
+                              if (!highlightedGroup.includes("g3")) {
+                                  return 0.3;
+                              }
+                          } else if (highlightedGroup && highlightedGroup !== "g3") {
+                              return 0.3;
+                          }
+                      
+                          // 🔹 highlightedGroup이 "g3"일 경우 처리
+                          //@ts-ignore
+                          if ((Array.isArray(highlightedGroup) && highlightedGroup.includes("g3")) || 
+                              highlightedGroup === "g3") {
+                              if (Array.isArray(selectedBlock) && selectedBlock.length > 1 && Array.isArray(selectedBlock[1])) {
+                                //@ts-ignore
+                                if (selectedBlock[1].length > 1 && 
+                                    (selectedBlock[1][0] === element.onClick || selectedBlock[1][1] === element.onClick)) {
+                                    return 1;
+                                }
                               }
                               // 선택된 상태에서 similarity block이 선택된 경우면서 화자가 일치하는 경우
-                              if(element.className === name1 || element.className === name2){
-                                return 1;
+                              if (element.className === name1 || element.className === name2) {
+                                  return 1;
                               }
                               return 0.3;
-                            }
-                              return 1;
-                          } else if (highlightedClassName) {
-                            return highlightedClassName ? opacityValue : 1;
+                          }
+                      
+                          // 🔹 highlightedClassName이 있을 경우 opacityValue 반환
+                          if (highlightedClassName) {
+                              return opacityValue;
                           }
                           return 0.3;
-                        });
+                      });      
                 }
 
                 // 'text' 요소와 'tspan' 요소 처리
@@ -396,8 +471,13 @@ export class CP3Drawer extends CPDrawer {
                         // .on('mouseleave', (e) => this.handleMouseLeave(element.onHover, e))
                         .style('opacity', () => {
                           if (highlightedGroup) {
-                            if (highlightedGroup && highlightedGroup !== "g3") {
-                              return 0.3;
+                            if (Array.isArray(highlightedGroup)) {
+                              //@ts-ignore
+                              if (!highlightedGroup.includes("g3")) {
+                                  return 0.3;
+                              }
+                            } else if (highlightedGroup && highlightedGroup !== "g3") {
+                                return 0.3;
                             }
                             return 1;
                           } else if (highlightedClassName) {
@@ -428,9 +508,14 @@ export class CP3Drawer extends CPDrawer {
                                 //@ts-ignore
                                 .text(content.text)
                                 .style('opacity', () => {
-                                    if (highlightedGroup && highlightedGroup !== 'g3') {
+                                  if (Array.isArray(highlightedGroup)) {
+                                    //@ts-ignore
+                                    if (!highlightedGroup.includes("g3")) {
                                         return 0.3;
                                     }
+                                  } else if (highlightedGroup && highlightedGroup !== "g3") {
+                                      return 0.3;
+                                  }
                                     return 1;
                                 })
                                 .style('opacity', highlightedClassName ? opacityValue : 1);

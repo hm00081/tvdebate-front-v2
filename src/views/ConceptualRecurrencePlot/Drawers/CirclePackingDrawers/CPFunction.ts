@@ -3,8 +3,8 @@
 import React from "react";
 import store from "../../../../redux/store";
 import { setHighlightedGroup } from "../../../../redux/reducers/highlightReducer";
-import { clearHighlightedClass } from '../../../../redux/reducers/classHighlightReducer';
-import { clearSelectedBlock } from "../../../../redux/reducers/similarityBlockSelectReducer";
+import { setHighlightedClass, clearHighlightedClass } from '../../../../redux/reducers/classHighlightReducer';
+import { clearSelectedBlock, setSelectedBlock } from "../../../../redux/reducers/similarityBlockSelectReducer";
 import { DataStructureSet } from "../../DataStructureMaker/DataStructureManager";
 import { SimilarityBlock } from "../../interfaces";
 import _ from "lodash";
@@ -86,7 +86,7 @@ export class CPDrawer {
     //@ts-ignore
     if (currentHighlight === groupId) {
       if(store.getState().similarityBlockSelect.selectedBlock.length !== 0){
-        store.dispatch(setHighlightedGroup(groupId));
+        store.dispatch(setHighlightedGroup([groupId, groupId]));
         store.dispatch(clearSelectedBlock());  
         store.dispatch(clearHighlightedClass());
       } else {
@@ -98,11 +98,11 @@ export class CPDrawer {
     } else {
       if(store.getState().similarityBlockSelect.selectedBlock.length !== 0){
         store.dispatch(clearSelectedBlock());
-        store.dispatch(setHighlightedGroup(groupId));
+        store.dispatch(setHighlightedGroup([groupId, groupId]));
         store.dispatch(clearHighlightedClass());
       } else {
         // 같은 groupId가 이미 Redux 상태에 저장되어 있다면 해제
-        store.dispatch(setHighlightedGroup(groupId));
+        store.dispatch(setHighlightedGroup([groupId, groupId]));
         store.dispatch(clearHighlightedClass());
       }
     }
@@ -127,7 +127,7 @@ export class CPDrawer {
     index: number,
     event: React.MouseEvent<SVGPathElement, MouseEvent>
   ) {
-    // console.log('handleClick', index, event);
+    console.log('handleClick', index, event);
     if(!index){
       if(index !== 0)
         return;
@@ -157,10 +157,54 @@ export class CPDrawer {
 
     const utterance = this.dataStructureSet.utteranceObjectsForDrawingManager
       .utteranceObjectsForDrawing[index];
-    // console.log("utterance", utterance); 잘 나옴
+    console.log("utterance", utterance); 
     const compoundTerms = this.countCompoundTerms(utterance.sentenceObjects);
     const topTerms = this.getTopCompoundTerms(compoundTerms, 30);
 
+    const participants = {
+      '이준석': 'LJS',
+      '장경태': 'JKT',
+      '박휘락': 'PHR',
+      '김종대': 'KJD',
+    }
+
+    const groupRange = {
+      g1: [1, 18],
+      g2: [15, 35],
+      g3: [28, 56],
+      g4: [43, 79],
+      g5: [74, 106],
+      g6: [94, 146],
+      g7: [146, 190],
+    }
+        
+    let groupIds: string[] = [];
+
+    for (const [key, range] of Object.entries(groupRange)) {
+      console.log("Key:", key, ", Range:", range, ", Index:", index);
+      if (
+        index >= range[0] &&
+        index <= range[1]
+      ) {
+        groupIds.push(key);  // 매칭되는 모든 그룹의 키 저장
+      }
+    }
+    console.log("GroupIds", groupIds);
+
+    const target = event.target as HTMLElement; // EventTarget → HTMLElement로 변환
+    const className = target.getAttribute("class"); // 클래스 가져오기
+    const prefix = className ? className.split(" ")[0] : "";
+    console.log(prefix);
+    
+    store.dispatch(setSelectedBlock([[prefix, prefix], [index, index]]));
+    if(groupIds.length === 1) {
+      store.dispatch(setHighlightedGroup([groupIds[0], groupIds[0]]));  
+    } else {
+      store.dispatch(setHighlightedGroup([groupIds[0], groupIds[1]]));
+    }
+    //@ts-ignore
+    store.dispatch(setHighlightedClass(participants[utterance.name]))
+    
     if (this.transcriptViewerRef.current) {
       this.transcriptViewerRef.current.scrollToIndex(index);
       this.transcriptViewerRef.current.highlightKeywords(

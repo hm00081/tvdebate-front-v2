@@ -144,16 +144,20 @@ export class ParticipantBlocksDrawer {
           return "initial" || 1;
         }
         //@ts-ignore
-        if (highlightedGroup in groupRanges) {
-          //@ts-ignore
-          const { range } = groupRanges[highlightedGroup];
-          if (x >= range[0] && x <= range[1]) {
-            if(filter[1] < 100){
-              return 0.2;
-            }
-            return 1;
+        if (Array.isArray(highlightedGroup)) {
+          // @ts-ignore
+          const isHighlighted = highlightedGroup.some(group => {
+              if (group in groupRanges) {
+                  const { range } = groupRanges[group];
+                  return x >= range[0] && x <= range[1];
+              }
+              return false;
+          });
+      
+          if (isHighlighted) {
+              return filter[1] < 100 ? 0.2 : 1;
           }
-        }
+      }
 
 
         return 0.2;

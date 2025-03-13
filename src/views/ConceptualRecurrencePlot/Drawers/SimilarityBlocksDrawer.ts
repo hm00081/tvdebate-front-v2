@@ -439,12 +439,27 @@ export class SimilarityBlocksDrawer {
                   return "initial" || 1; // Default to 1 if no initial opacity found
                 }
                 //@ts-ignore
+                if (Array.isArray(highlightedGroup)) {
+                    //@ts-ignore
+                    const isHighlighted = highlightedGroup.some(group => {
+                        if (group in groupRanges) {
+                            const { row, col } = groupRanges[group];
+                            return rowIdx >= row[0] && rowIdx <= row[1] && colIdx >= col[0] && colIdx <= col[1];
+                        }
+                        return false;
+                    });
+                
+                    if (isHighlighted) {
+                        return 1; // Highlight the element
+                    }
+                }
+                
+                // 🔹 기존 단일 값 처리 (배열이 아닐 때)
                 if (highlightedGroup in groupRanges) {
-                  //@ts-ignore
-                  const { row, col } = groupRanges[highlightedGroup];
-                  if (rowIdx >= row[0] && rowIdx <= row[1] && colIdx >= col[0] && colIdx <= col[1]) {
-                    return 1; // Highlight the element
-                  }
+                    const { row, col } = groupRanges[highlightedGroup];
+                    if (rowIdx >= row[0] && rowIdx <= row[1] && colIdx >= col[0] && colIdx <= col[1]) {
+                        return 1;
+                    }
                 }
                 return 0.2; // Dim the element
               })
@@ -539,6 +554,13 @@ export class SimilarityBlocksDrawer {
                     g6: { row: [93, 126], col: [94, 127] },
                     g7: { row: [145, 183], col: [146, 184] },
                   };
+
+                  const participants: Record<string, string> = {
+                    이준석: 'LJS',
+                    박휘락: 'PHR',
+                    장경태: 'JKT',
+                    김종대: 'KJD',
+                  };
         
                   let groupIds: string[] = [];
         
@@ -552,9 +574,15 @@ export class SimilarityBlocksDrawer {
                       groupIds.push(key);  // 매칭되는 모든 그룹의 키 저장
                     }
                   }
-                  
-                  store.dispatch(setSelectedBlock([[d.rowUtteranceName, d.colUtteranceName], [d.rowUtteranceIndex, d.columnUtteranceIndex]]));
-                  store.dispatch(setHighlightedGroup(groupIds[0]));
+
+                  const participant1 = participants[d.rowUtteranceName]
+                  const participant2 = participants[d.colUtteranceName]
+                  store.dispatch(setSelectedBlock([[participant1, participant2], [d.rowUtteranceIndex, d.columnUtteranceIndex]]));
+                  if(groupIds.length === 1) {
+                    store.dispatch(setHighlightedGroup([groupIds[0], groupIds[0]]));  
+                  } else {
+                    store.dispatch(setHighlightedGroup([groupIds[0], groupIds[1]]));
+                  }
                   store.dispatch(clearHighlightedClass());
                   console.log("Update");
                   console.log([d.rowUtteranceName, d.colUtteranceName, d.rowUtteranceIndex, d.columnUtteranceIndex]);

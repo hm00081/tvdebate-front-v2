@@ -10,7 +10,11 @@ const highlightSlice = createSlice({
     reducers: {
         setHighlightedGroup(state, action) {
             if (typeof action.payload === "string") {
-                //@ts-ignore
+                // @ts-ignore
+                state.highlightedGroup = action.payload;
+                state.highlightedName = null;
+            } else if (Array.isArray(action.payload)) {
+                // @ts-ignore
                 state.highlightedGroup = action.payload;
                 state.highlightedName = null;
             } else {

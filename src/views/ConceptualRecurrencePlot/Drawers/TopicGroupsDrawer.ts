@@ -55,10 +55,9 @@ export class TopicGroupsDrawer {
       const { highlightedClassName } = store.getState().classHighLight;
       const { selectedBlock } = store.getState().similarityBlockSelect;
       this.applyHighlightEffect(highlightedClassName, highlightedGroup, selectedBlock);
-
-      // console.log('highlightedGroup', highlightedGroup);
-      // console.log('highlightedClassName', highlightedClassName);
-      // console.log('selectedBlock', selectedBlock);
+      console.log('highlightedGroup', highlightedGroup);
+      console.log('highlightedClassName', highlightedClassName);
+      console.log('selectedBlock', selectedBlock);
     });
   }
 
@@ -123,10 +122,10 @@ export class TopicGroupsDrawer {
           })
           .style("opacity", function () {
             const participants: Record<string, string> = {
-              L: '이준석',
-              P: '박휘락',
-              J: '장경태',
-              K: '김종대',
+              LJS: '이준석',
+              PHR: '박휘락',
+              JKT: '장경태',
+              KJD: '김종대',
             };
 
             const rowIdx = d3.select(this).attr("rowIdx");
@@ -155,6 +154,7 @@ export class TopicGroupsDrawer {
                 return 1;
               }
             }
+            
         
             return 0.05; // Dim the element
           });
@@ -172,10 +172,10 @@ export class TopicGroupsDrawer {
             const filter = store.getState().matrixFilter.filter;
         
             const participants: Record<string, string> = {
-              L: '이준석',
-              P: '박휘락',
-              J: '장경태',
-              K: '김종대',
+              LJS: '이준석',
+              PHR: '박휘락',
+              JKT: '장경태',
+              KJD: '김종대',
             };
 
             const keywords: Record<string, string[]> = {
@@ -214,7 +214,10 @@ export class TopicGroupsDrawer {
         // 현재 rect 요소의 idx 속성을 가져오기
         const idx = d3.select(this).attr("idx"); 
         // idx와 highlightedGroup 비교하여 opacity 설정
-        d3.select(this).style("opacity", highlightedGroup && highlightedGroup !== `g${idx}` ? 0.2 : 1);
+        d3.select(this).style(
+          "opacity",
+          highlightedGroup && !highlightedGroup.includes(`g${idx}`) ? 0.2 : 1
+        );
 
           // 바 차트
           //@ts-ignore
@@ -233,8 +236,7 @@ export class TopicGroupsDrawer {
                 return "initial" || 1;
               }
 
-              if(highlightedGroup){
-                const groupRanges: Record<string, { range: [number, number] }> = {
+              const groupRanges: Record<string, { range: [number, number] }> = {
                   g1: { range: [80, 90] },
                   g2: { range: [260, 270] },
                   g3: { range: [405, 415] },
@@ -242,33 +244,77 @@ export class TopicGroupsDrawer {
                   g5: { range: [780, 790] },
                   g6: { range: [960, 970] },
                   g7: { range: [1360, 1370] },
-                };
-                
-                //@ts-ignore
-                if(x === 33) {
-                  return 0.2;
-                }
-  
-                //@ts-ignore
-                else if (highlightedGroup in groupRanges) {
-                  const { range } = groupRanges[highlightedGroup];
-                  if (x >= range[0] && x <= range[1]) {
-                    return 1; // Highlight the element
-                  }
-                }
-  
-                if ((y>=15 && y<= 20) || (y>=38 && y<=42) || (y>=60 && y<= 65) || (y>=84 && y<= 87)) {
-                  return 1;
-                }
+              };
 
-              } else if (highlightedClassName){
-                const pRanges: Record<string, { range1: [number, number], range2: [number, number] }> = {
-                  L: { range1: [125, 135], range2: [145, 155] },
-                  P: { range1: [170, 180], range2: [190, 200] },
-                  J: { range1: [125, 135], range2: [170, 180] },
-                  K: { range1: [145, 155], range2: [190, 200] },
-                };
+              const pRanges: Record<string, { range1: [number, number], range2: [number, number] }> = {
+                  LJS: { range1: [125, 135], range2: [145, 155] },
+                  PHR: { range1: [170, 180], range2: [190, 200] },
+                  JKT: { range1: [125, 135], range2: [170, 180] },
+                  KJD: { range1: [145, 155], range2: [190, 200] },
+              };
+
+              // 🔹 selectedBlock이 존재하면서 highlightedGroup도 있는 경우
+              //@ts-ignore
+              if (highlightedGroup && Array.isArray(selectedBlock) && selectedBlock.length > 0 && selectedBlock[0].length > 1) {
+                  const selected1 = selectedBlock[0][0]; // 첫 번째 선택된 인물
+                  const selected2 = selectedBlock[0][1]; // 두 번째 선택된 인물
+
+                  const groupArray = Array.isArray(highlightedGroup) ? highlightedGroup : highlightedGroup ? [highlightedGroup] : [];
+
+                  const isInGroup = groupArray.length > 0 && groupArray.some(group => {
+                      const range = groupRanges[group]?.range;
+                      return range && x >= range[0] && x <= range[1];
+                  });
+
+                  if (isInGroup) {
+                      // 🔹 selectedBlock[0][0]과 selectedBlock[0][1]이 같을 경우
+                      if (selected1 === selected2) {
+                          const participantRange = pRanges[selected1]; // 하나의 참가자 범위만 사용
+                          if (participantRange &&
+                              ((y >= participantRange.range1[0] && y <= participantRange.range1[1]) ||
+                              (y >= participantRange.range2[0] && y <= participantRange.range2[1]))) {
+                              return 1; // ✅ 그룹 범위 안에 있으면서, 참가자 범위 안에도 포함
+                          }
+                      } else {
+                          // 🔹 selectedBlock[0][0]과 selectedBlock[0][1]이 다를 경우
+                          const range1 = pRanges[selected1];
+                          const range2 = pRanges[selected2];
+
+                          if ((range1 && ((y >= range1.range1[0] && y <= range1.range1[1]) || (y >= range1.range2[0] && y <= range1.range2[1])))
+                          && (range2 && ((y >= range2.range1[0] && y <= range2.range1[1]) || (y >= range2.range2[0] && y <= range2.range2[1])))) {
+                              return 1; // ✅ 그룹 범위 & 두 참가자 범위 안에 포함
+                          }
+                      }
+
+                      return 0.2; // 🔹 그룹 범위 안에 있지만, 참가자 범위에 포함되지 않음
+                  }
+              }
+
+              if (highlightedGroup) {
+                //@ts-ignore
+                if (x === 33) {
+                    return 0.2;
+                }
             
+                if (Array.isArray(highlightedGroup)) {
+                    const isInGroup = highlightedGroup.some(group => group in groupRanges);
+            
+                    if (isInGroup) {
+                        const isHighlighted = highlightedGroup.some(group => {
+                            const range = groupRanges[group]?.range;
+                            return range && x >= range[0] && x <= range[1];
+                        });
+            
+                        if (isHighlighted) {
+                            return 1; // Highlight the element
+                        }
+                    }
+                }
+            
+                if ((y >= 15 && y <= 20) || (y >= 38 && y <= 42) || (y >= 60 && y <= 65) || (y >= 84 && y <= 87)) {
+                    return 1;
+                }
+            } else if (highlightedClassName){
                 if (!highlightedClassName || highlightedClassName === "PROS" || highlightedClassName === "CONS") {
                   // @ts-ignore
                   return "initial" || 1;
@@ -293,10 +339,10 @@ export class TopicGroupsDrawer {
 
 
           const participantRange: Record<string, string[]> = {
-            L: ["이준석-1", "이준석-2", "이준석-3", "이준석-4", "이준석-5", "이준석-6", "이준석-7", "이준석-8", "이준석-9"],
-            P: ["박휘락-1", "박휘락-2", "박휘락-3", "박휘락-4", "박휘락-5", "박휘락-6", "박휘락-7"],
-            J: ["장경태-1", "장경태-2", "장경태-3", "장경태-4", "장경태-5", "장경태-6", "장경태-7", "장경태-8"],
-            K: ["김종대-1", "김종대-2", "김종대-3", "김종대-4", "김종대-5", "김종대-6", "김종대-7", "김종대-8", "김종대-9"]
+            LJS: ["이준석-1", "이준석-2", "이준석-3", "이준석-4", "이준석-5", "이준석-6", "이준석-7", "이준석-8", "이준석-9"],
+            PHR: ["박휘락-1", "박휘락-2", "박휘락-3", "박휘락-4", "박휘락-5", "박휘락-6", "박휘락-7"],
+            JKT: ["장경태-1", "장경태-2", "장경태-3", "장경태-4", "장경태-5", "장경태-6", "장경태-7", "장경태-8"],
+            KJD: ["김종대-1", "김종대-2", "김종대-3", "김종대-4", "김종대-5", "김종대-6", "김종대-7", "김종대-8", "김종대-9"]
           };
 
           const classRanges: Record<string, string[]> = {
@@ -312,72 +358,71 @@ export class TopicGroupsDrawer {
           // 각 사람 별 주장
           //@ts-ignore
           d3.selectAll<SVGGElement>("g")
-            .filter(function () {
-              const attClass = d3.select(this).attr("class");
-              if(highlightedGroup) {
-                // 클래스가 classRanges 내의 값들과 일치하는 경우에만 선택
-                for (const key in classRanges) {
-                  if (classRanges[key].includes(attClass || "")) {
-                    return true; // 이 g는 유효함
-                  }
-                }
-                return false;
-              } else if (highlightedClassName) {
-                // 클래스가 participantRange 내의 값들과 일치하는 경우에만 선택
-                for (const key in participantRange) {
-                  if (participantRange[key].includes(attClass || "")) {
-                    return true; // 이 g는 유효함
-                  }
-                }
-                return false;
+          .filter(function () {
+            //@ts-ignore
+            const attClass = d3.select(this).attr("class") || "";
+
+            if (highlightedGroup) {
+              if (Array.isArray(highlightedGroup)) {
+                return highlightedGroup.some(group => 
+                  (classRanges[group] || []).includes(attClass)
+                );
               }
-              return true; // 유효하지 않은 g는 제외
-            })
-            .style("opacity", function () {
-              const attClass = d3.select(this).attr("class");
-          
-              // highlightedGroup가 없으면 초기 opacity 복원
-              if (!highlightedGroup && !highlightedClassName) {
-                return 1; // null을 반환하면 초기 CSS 값으로 복원
+              return (classRanges[highlightedGroup] || []).includes(attClass);
+            } 
+            
+            else if (highlightedClassName) {
+              for (const key in participantRange) {
+                if ((participantRange[key] || []).includes(attClass)) {
+                  return true;
+                }
+              }
+              return false;
+            }
+            
+            return true;
+          })
+          .style("opacity", function () {
+            //@ts-ignore
+            const attClass = d3.select(this).attr("class") || "";
+
+            if (!highlightedGroup && !highlightedClassName) {
+              return 1;
+            }
+
+            if (highlightedGroup) {
+              if (Array.isArray(highlightedGroup)) {
+                const isHighlighted = highlightedGroup.some(group => 
+                  (classRanges[group] || []).includes(attClass)
+                );
+                return isHighlighted ? 1 : 0.2;
+              }
+              return (classRanges[highlightedGroup] || []).includes(attClass) ? 1 : 0.2;
+            }
+
+            else if (highlightedClassName) {
+              const keywords: Record<string, string[]> = {
+                PROS: ['JKT', 'KJD'],
+                CONS: ['LJS', 'PHR'],
+              };
+
+              if (highlightedClassName in participantRange) {
+                return (participantRange[highlightedClassName] || []).includes(attClass) ? 1 : 0.2;
               }
 
-              if (highlightedGroup) {
-                // highlightedGroup에 해당하는 클래스만 강조
-                if (highlightedGroup in classRanges) {
-                  const validClasses = classRanges[highlightedGroup];
-                  if (validClasses.includes(attClass)) {
-                    return 1; // 강조
-                  }
-                }
-              } else if (highlightedClassName) {
-                const keywords: Record<string, string[]> = {
-                  PROS: ['J', 'K'],
-                  CONS: ['L', 'P'],
-                };
-  
-                // highlightedGroup가 없으면 초기 opacity 복원
-                if (!highlightedClassName) {
-                  return 1;
-                }
-            
-                // highlightedGroup에 해당하는 클래스만 강조
-                if (highlightedClassName in participantRange) {
-                  const validClasses = participantRange[highlightedClassName];
-                  if (validClasses.includes(attClass)) {
-                    return 1; // 강조
-                  }
-                } else if (highlightedClassName in keywords) {
-                  const validClasses = keywords[highlightedClassName];
-                  const validC1 = participantRange[validClasses[0]];
-                  const validC2 = participantRange[validClasses[1]];
-                  
-                  if (validC1.includes(attClass) || validC2.includes(attClass)) {
-                    return 1; // 강조
-                  }
-                }
+              if (Object.keys(keywords).includes(highlightedClassName)) {
+                const validClasses = keywords[highlightedClassName];
+                const validC1 = participantRange[validClasses[0]] || [];
+                const validC2 = participantRange[validClasses[1]] || [];
+
+                return (validC1.includes(attClass) || validC2.includes(attClass)) ? 1 : 0.2;
               }
-              return 0.2; // 나머지는 흐리게
-            });
+            }
+
+            return 0.2;
+          });
+
+
     });
   }
 

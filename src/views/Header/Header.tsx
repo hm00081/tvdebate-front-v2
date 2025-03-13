@@ -15,10 +15,10 @@ import pros from "./image/pros.svg";
 import cons from "./image/cons.svg";
 
 const participants = [
-  { id: "L", name: "이준석", img: LJS },
-  { id: "P", name: "박휘락", img: PHR },
-  { id: "J", name: "장경태", img: JKT },
-  { id: "K", name: "김종대", img: KJD },
+  { id: "LJS", name: "이준석", img: LJS },
+  { id: "PHR", name: "박휘락", img: PHR },
+  { id: "JKT", name: "장경태", img: JKT },
+  { id: "KJD", name: "김종대", img: KJD },
 ];
 
 const prosNcons = [
@@ -61,10 +61,13 @@ export default function Header({ isOpen, setIsOpen }: HeaderProps) {
   const handleParticipantClick = (className: string) => {
     if (selectedParticipant === className) {
       setSelectedParticipant(null);
+      store.dispatch(clearSelectedBlock());
       store.dispatch(clearHighlightedClass());
+      store.dispatch(clearHighlightedGroup());
     } else {
       setSelectedParticipant(className);
       store.dispatch(setHighlightedClass({ className }));
+      store.dispatch(clearSelectedBlock());
       store.dispatch(clearHighlightedGroup());
     }
   };
