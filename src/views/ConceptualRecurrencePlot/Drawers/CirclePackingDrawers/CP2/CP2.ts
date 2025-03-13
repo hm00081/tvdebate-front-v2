@@ -355,6 +355,8 @@ export class CP2Drawer extends CPDrawer {
                             //@ts-ignore
                               if (!highlightedGroup.includes("g2")) {
                                   return 0.3;
+                              } else {
+                                return 1;
                               }
                           } else if (highlightedGroup && highlightedGroup !== "g2") {
                               return 0.3;
@@ -425,6 +427,8 @@ export class CP2Drawer extends CPDrawer {
                             //@ts-ignore
                               if (!highlightedGroup.includes("g2")) {
                                   return 0.3;
+                              } else {
+                                return 1;
                               }
                           } else if (highlightedGroup && highlightedGroup !== "g2") {
                               return 0.3;

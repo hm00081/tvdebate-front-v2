@@ -369,6 +369,8 @@ export class CP4Drawer extends CPDrawer {
                 //@ts-ignore
                   if (!highlightedGroup.includes("g4")) {
                       return 0.3;
+                  } else {
+                    return 1;
                   }
               } else if (highlightedGroup && highlightedGroup !== "g4") {
                   return 0.3;
@@ -439,6 +441,8 @@ export class CP4Drawer extends CPDrawer {
                 //@ts-ignore
                   if (!highlightedGroup.includes("g4")) {
                       return 0.3;
+                  } else {
+                    return 1;
                   }
               } else if (highlightedGroup && highlightedGroup !== "g4") {
                   return 0.3;

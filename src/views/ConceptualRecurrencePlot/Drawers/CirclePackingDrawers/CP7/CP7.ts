@@ -354,6 +354,8 @@ export class CP7Drawer extends CPDrawer {
                             //@ts-ignore
                               if (!highlightedGroup.includes("g7")) {
                                   return 0.3;
+                              } else {
+                                return 1;
                               }
                           } else if (highlightedGroup && highlightedGroup !== "g7") {
                               return 0.3;
@@ -424,6 +426,8 @@ export class CP7Drawer extends CPDrawer {
                             //@ts-ignore
                               if (!highlightedGroup.includes("g7")) {
                                   return 0.3;
+                              } else {
+                                return 1;
                               }
                           } else if (highlightedGroup && highlightedGroup !== "g7") {
                               return 0.3;

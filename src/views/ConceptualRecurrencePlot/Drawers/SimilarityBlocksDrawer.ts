@@ -382,6 +382,7 @@ export class SimilarityBlocksDrawer {
 
     public update() {
         const { highlightedGroup } = store.getState().highlight;
+        const { highlightedClassName } = store.getState().classHighLight;
         const { filter } = store.getState().matrixFilter;
         const [minOpacity, maxOpacity] = [filter[0]/100, filter[1]/100];
 
@@ -435,9 +436,11 @@ export class SimilarityBlocksDrawer {
                   g6: { row: [93, 126], col: [94, 127] },
                   g7: { row: [145, 183], col: [146, 184] },
                 };
-                if (!highlightedGroup) {
+
+                if (!highlightedGroup && !highlightedClassName) {
                   return "initial" || 1; // Default to 1 if no initial opacity found
                 }
+
                 //@ts-ignore
                 if (Array.isArray(highlightedGroup)) {
                     //@ts-ignore
@@ -455,7 +458,7 @@ export class SimilarityBlocksDrawer {
                 }
                 
                 // 🔹 기존 단일 값 처리 (배열이 아닐 때)
-                if (highlightedGroup in groupRanges) {
+                if (highlightedGroup && highlightedGroup in groupRanges) {
                     const { row, col } = groupRanges[highlightedGroup];
                     if (rowIdx >= row[0] && rowIdx <= row[1] && colIdx >= col[0] && colIdx <= col[1]) {
                         return 1;

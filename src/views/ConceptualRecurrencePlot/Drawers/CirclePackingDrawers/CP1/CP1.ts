@@ -348,6 +348,8 @@ export class CP1Drawer extends CPDrawer {
                             //@ts-ignore
                               if (!highlightedGroup.includes("g1")) {
                                   return 0.3;
+                              } else {
+                                return 1;
                               }
                           } else if (highlightedGroup && highlightedGroup !== "g1") {
                               return 0.3;
@@ -418,6 +420,8 @@ export class CP1Drawer extends CPDrawer {
                             //@ts-ignore
                               if (!highlightedGroup.includes("g1")) {
                                   return 0.3;
+                              } else {
+                                return 1;
                               }
                           } else if (highlightedGroup && highlightedGroup !== "g1") {
                               return 0.3;
