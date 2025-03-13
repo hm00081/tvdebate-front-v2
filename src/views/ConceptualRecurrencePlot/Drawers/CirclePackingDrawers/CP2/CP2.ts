@@ -304,12 +304,19 @@ export class CP2Drawer extends CPDrawer {
                           if (!highlightedGroup && !highlightedClassName){
                             return 1;
                           } 
+                          if(selectedBlock && selectedBlock[1][0] === selectedBlock[1][1]) {
+                            if(selectedBlock[1][0] === element.onClick){
+                              return 1;
+                            } else {
+                              return 0.3;
+                            }
+                          }
                           // 주제문 또는 similarity block이 선택되었지만, 해당 서클패킹이 아닌 경우
                           if(highlightedGroup) {
                             if (highlightedGroup && highlightedGroup !== "g2") {
                               return 0.3;
                             } else if (highlightedGroup && highlightedGroup === "g2"){
-                              if(selectedBlock.length === 0){
+                              if(selectedBlock[1][0] === element.onClick || selectedBlock[1][1] === element.onClick){
                                 return 1;
                               }
                               // 선택된 상태에서 similarity block이 선택된 경우면서 화자가 일치하는 경우
@@ -348,12 +355,19 @@ export class CP2Drawer extends CPDrawer {
                           if (!highlightedGroup && !highlightedClassName){
                             return 1;
                           } 
+                          if(selectedBlock && selectedBlock[1][0] === selectedBlock[1][1]) {
+                            if(selectedBlock[1][0] === element.onClick){
+                              return 1;
+                            } else {
+                              return 0.3;
+                            }
+                          }
                           // 주제문 또는 similarity block이 선택되었지만, 해당 서클패킹이 아닌 경우
                           if(highlightedGroup) {
                             if (highlightedGroup && highlightedGroup !== "g2") {
                               return 0.3;
                             } else if (highlightedGroup && highlightedGroup === "g2"){
-                              if(selectedBlock.length === 0){
+                              if(selectedBlock[1][0] === element.onClick || selectedBlock[1][1] === element.onClick){
                                 return 1;
                               }
                               // 선택된 상태에서 similarity block이 선택된 경우면서 화자가 일치하는 경우
