@@ -3,9 +3,12 @@
   height: 100vh;
   display: flex;
   flex-direction: row;
+  position: relative;
+  
   .vis-area {
     flex-grow: 1;
     height: 100%;
+    width: 100%;
     // width: calc(100% - 330px);
   }
 

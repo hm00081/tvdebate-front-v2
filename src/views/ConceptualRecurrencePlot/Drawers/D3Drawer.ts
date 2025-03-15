@@ -215,7 +215,7 @@ export class D3Drawer {
       );
     
     setTimeout(() => {
-      const initialTransform = d3.zoomIdentity.translate(230, -55).scale(0.95);
+      const initialTransform = d3.zoomIdentity.translate(260, -90).scale(0.95);
 
       this.svgSelection.call(
         //@ts-ignore

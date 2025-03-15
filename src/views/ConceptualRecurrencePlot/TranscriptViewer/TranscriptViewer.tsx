@@ -86,7 +86,7 @@ const TranscriptViewer = forwardRef<TranscriptViewerMethods, ComponentProps>(
     }));
     if (!props.isOpen) return null;
     return (
-      <div className={styles.transcriptViewer}>
+      <div className={`${styles.transcriptViewer} ${isOpen ? styles.open : ''}`}>
         {props.dataStructureMaker ? (
           _.map(
             props.dataStructureMaker.dataStructureSet

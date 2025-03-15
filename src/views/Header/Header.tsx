@@ -33,6 +33,7 @@ interface HeaderProps {
 
 export default function Header({ isOpen, setIsOpen }: HeaderProps) {
   const [selectedParticipant, setSelectedParticipant] = useState<string | null>(null);
+  const [isScriptVisible, setIsScriptVisible] = useState(true);
   const highlightedClass = useSelector((state: any) => state.classHighLight.highlightedClassName);
 
   useEffect(() => {
@@ -46,6 +47,15 @@ export default function Header({ isOpen, setIsOpen }: HeaderProps) {
       unsubscribe(); // 컴포넌트 언마운트 시 구독 해제
     };
   }, []);
+
+  useEffect(() => {
+    setIsScriptVisible(isOpen);
+  }, [isOpen]);
+
+  // isScriptVisible이 변경될 때 isOpen도 변경하도록 동기화
+  useEffect(() => {
+    setIsOpen(isScriptVisible);
+  }, [isScriptVisible, setIsOpen]);
 
   const handleReset = () => {
     if (D3Drawer.allDrawers.length > 0) {
@@ -161,8 +171,14 @@ export default function Header({ isOpen, setIsOpen }: HeaderProps) {
           <div className={style.subtitle}>
             Script Option
           </div>
-          <div className={style.toggle}>
-
+          <div 
+            className={`${style.toggle} ${isScriptVisible ? style.active : ''}`}
+            onClick={() => setIsScriptVisible(!isScriptVisible)}
+          >
+            <span className={style.text}>
+              {isScriptVisible ? "SHOW" : "HIDE"}
+            </span>
+            <div className={style.circle}></div>
           </div>
         </div>
       </div>

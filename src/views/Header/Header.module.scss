@@ -102,17 +102,66 @@ $navi: #9c27b0;
   // background-color: red;
 }
 
-.slider {
-
+.scriptOption {
+  display: flex;
+  align-items: center;
+  gap: 10px;
 }
 
-.scriptOption {
-  flex: 1.6;
-  // background-color: blue;
+.subtitle {
+  font-weight: bold;
 }
 
 .toggle {
+  display: flex;
+  align-items: center;
+  width: 70px;
+  height: 30px;
+  padding: 5px;
+  border-radius: 20px;
+  cursor: pointer;
+  background-color: gray;
+  transition: background-color 0.3s ease-in-out;
+  position: relative;
+}
 
+/* 기본 상태(HIDE) - 텍스트 오른쪽 */
+.toggle {
+  justify-content: flex-end;
+}
+
+/* 활성화 상태(SHOW) */
+.active {
+  background-color: #3498db;
+  justify-content: flex-start;
+}
+
+.text {
+  font-size: 10px;
+  font-weight: bold;
+  color: white;
+  transition: color 0.3s;
+  padding: 0 5px;
+  z-index: 1;
+}
+
+.circle {
+  width: 20px;
+  height: 20px;
+  background-color: white;
+  border-radius: 50%;
+  transition: transform 0.3s ease-in-out;
+  position: absolute;
+}
+
+/* 기본 상태(HIDE) - 원 왼쪽 */
+.circle {
+  left: 5px;
+}
+
+/* 활성화 상태(SHOW) - 원 오른쪽 */
+.active .circle {
+  left: calc(100% - 25px);
 }
 
 .subtitle {
