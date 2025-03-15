@@ -75,7 +75,7 @@ export class D3Drawer {
   private readonly svgWidth: number;
   private readonly svgHeight: number;
   private _zoomListener: ((transform: d3.ZoomTransform) => void) | null = null;
-  private initialTransform: d3.ZoomTransform = d3.zoomIdentity.translate(230, -55).scale(0.95);
+  private initialTransform: d3.ZoomTransform = d3.zoomIdentity.translate(260, -90).scale(0.95);
   public setupZoom(): void {
     const zoom = d3
       .zoom<SVGSVGElement, any>()

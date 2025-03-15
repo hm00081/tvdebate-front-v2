@@ -1,6 +1,7 @@
 import style from "./Header.module.scss";
 import React, { useState, useEffect } from "react";
 import { useSelector } from "react-redux";
+import { RootState } from "../../redux/store"; 
 import store from '../../redux/store';
 import { setHighlightedClass, clearHighlightedClass } from '../../redux/reducers/classHighlightReducer';
 import { clearHighlightedGroup } from '../../redux/reducers/highlightReducer';
@@ -32,27 +33,19 @@ interface HeaderProps {
 }
 
 export default function Header({ isOpen, setIsOpen }: HeaderProps) {
-  const [selectedParticipant, setSelectedParticipant] = useState<string | null>(null);
   const [isScriptVisible, setIsScriptVisible] = useState(true);
-  const highlightedClass = useSelector((state: any) => state.classHighLight.highlightedClassName);
+  const highlightedClasses = useSelector(
+    (state: RootState) => state.classHighLight.highlightedClasses || []
+  );
 
   useEffect(() => {
-    // Redux store 구독하여 highlightedClass 변경 감지
-    const unsubscribe = store.subscribe(() => {
-      const state = store.getState();
-      setSelectedParticipant(state.classHighLight.highlightedClassName);
-    });
-
-    return () => {
-      unsubscribe(); // 컴포넌트 언마운트 시 구독 해제
-    };
+    console.log("Redux State:", store.getState());
   }, []);
 
   useEffect(() => {
     setIsScriptVisible(isOpen);
   }, [isOpen]);
 
-  // isScriptVisible이 변경될 때 isOpen도 변경하도록 동기화
   useEffect(() => {
     setIsOpen(isScriptVisible);
   }, [isScriptVisible, setIsOpen]);
@@ -69,18 +62,10 @@ export default function Header({ isOpen, setIsOpen }: HeaderProps) {
   };
 
   const handleParticipantClick = (className: string) => {
-    if (selectedParticipant === className) {
-      setSelectedParticipant(null);
-      store.dispatch(clearSelectedBlock());
-      store.dispatch(clearHighlightedClass());
-      store.dispatch(clearHighlightedGroup());
-    } else {
-      setSelectedParticipant(className);
-      store.dispatch(setHighlightedClass({ className }));
-      store.dispatch(clearSelectedBlock());
-      store.dispatch(clearHighlightedGroup());
-    }
+    store.dispatch(setHighlightedClass({ className }));
+    console.log("highlightedClasses after update:", store.getState().classHighLight.highlightedClasses);
   };
+  
 
   return (
     <div className={style.mainLink}>
@@ -108,8 +93,15 @@ export default function Header({ isOpen, setIsOpen }: HeaderProps) {
             Participants Filter
           </div>
           <div className={style.pkGroup}>
-          {participants.map(({ id, name, img }) => (
-              <div key={id} className={`${style.pkSpace} ${highlightedClass && highlightedClass !== id ? style.grayscale : ""}`}>
+            {participants.map(({ id, name, img }) => (
+              <div
+                key={id}
+                className={`${style.pkSpace} ${
+                  highlightedClasses.length === 0 || highlightedClasses.includes(id) 
+                    ? style.selected 
+                    : style.grayscale
+                }`}
+              >
                 <div className={style.pkImage}>
                   <img
                     src={img}
@@ -117,14 +109,13 @@ export default function Header({ isOpen, setIsOpen }: HeaderProps) {
                     width="35"
                     height="35"
                     onClick={() => handleParticipantClick(id)}
-                    className={highlightedClass === id ? style.selected : ""}
                   />
                 </div>
                 <div className={style.pkName}>{name}</div>
               </div>
             ))}
-            <div className={`${style.pkSpace} ${highlightedClass ? style.grayscale : ""}`}>
-              <div className={`${style.pkImage} ${highlightedClass ? style.grayscale : ""}`}>
+            <div className={`${style.pkSpace} ${highlightedClasses.length > 0 ? style.grayscale : ""}`}>
+              <div className={`${style.pkImage} ${highlightedClasses.length > 0 ? style.grayscale : ""}`}>
                 <img src={JHJ} alt="JHJ" width="35" height="35" />
               </div>
               <div className={style.pkName}>진행자</div>
@@ -138,8 +129,15 @@ export default function Header({ isOpen, setIsOpen }: HeaderProps) {
             Keyword Filter
           </div>
           <div className={style.pkGroup}>
-          {prosNcons.map(({ id, name, img }) => (
-              <div key={id} className={`${style.pkSpace} ${selectedParticipant && selectedParticipant !== id ? style.grayscale : ""}`}>
+            {prosNcons.map(({ id, name, img }) => (
+              <div
+                key={id}
+                className={`${style.pkSpace} ${
+                  highlightedClasses.length === 0 || highlightedClasses.includes(id) 
+                    ? style.selected 
+                    : style.grayscale
+                }`}
+              >
                 <div className={style.pkImage}>
                   <img
                     src={img}
@@ -147,7 +145,6 @@ export default function Header({ isOpen, setIsOpen }: HeaderProps) {
                     width="35"
                     height="35"
                     onClick={() => handleParticipantClick(id)}
-                    className={selectedParticipant === id ? style.selected : ""}
                   />
                 </div>
                 <div className={style.pkName}>{name}</div>

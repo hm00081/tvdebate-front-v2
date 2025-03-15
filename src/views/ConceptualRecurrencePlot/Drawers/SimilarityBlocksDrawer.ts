@@ -382,7 +382,7 @@ export class SimilarityBlocksDrawer {
 
     public update() {
         const { highlightedGroup } = store.getState().highlight;
-        const { highlightedClassName } = store.getState().classHighLight;
+        const { highlightedClasses } = store.getState().classHighLight;
         const { filter } = store.getState().matrixFilter;
         const [minOpacity, maxOpacity] = [filter[0]/100, filter[1]/100];
 
@@ -392,6 +392,16 @@ export class SimilarityBlocksDrawer {
         // console.log("Binding data to rects:", this.similarityBlocks); // 잘나옴
 
         const enter = similarityRectGSelectionDataBound.enter().append('rect');
+
+        const groupRanges: Record<string, { row: [number, number]; col: [number, number] }> = {
+            g1: { row: [0, 18], col: [0, 19] },
+            g2: { row: [14, 37], col: [15, 38] },
+            g3: { row: [23, 58], col: [24, 59] },
+            g4: { row: [42, 79], col: [43, 80] },
+            g5: { row: [72, 106], col: [73, 107] },
+            g6: { row: [93, 126], col: [94, 127] },
+            g7: { row: [145, 183], col: [146, 184] },
+        };
 
         // 피라미드 내부 작은 사각형들
         similarityRectGSelectionDataBound
@@ -425,20 +435,24 @@ export class SimilarityBlocksDrawer {
             .style("opacity", function () {
                 const rowIdx = parseInt(d3.select(this).attr("rowIdx") || "-1", 10);
                 const colIdx = parseInt(d3.select(this).attr("colIdx") || "-1", 10);
-            
-                // Define the ranges for each group
-                const groupRanges: Record<string, { row: [number, number]; col: [number, number] }> = {
-                  g1: { row: [0, 18], col: [0, 19] },
-                  g2: { row: [14, 37], col: [15, 38] },
-                  g3: { row: [23, 58], col: [24, 59] },
-                  g4: { row: [42, 79], col: [43, 80] },
-                  g5: { row: [72, 106], col: [73, 107] },
-                  g6: { row: [93, 126], col: [94, 127] },
-                  g7: { row: [145, 183], col: [146, 184] },
-                };
 
-                if (!highlightedGroup && !highlightedClassName) {
-                  return "initial" || 1; // Default to 1 if no initial opacity found
+                if (highlightedClasses && highlightedClasses.length > 0) {
+                    const participants: Record<string, string> = {
+                        LJS: "이준석",
+                        PHR: "박휘락",
+                        JKT: "장경태",
+                        KJD: "김종대",
+                    };
+    
+                    const rowName = d3.select(this).attr("rowName");
+                    const colName = d3.select(this).attr("colName");
+    
+                    const isHighlighted = highlightedClasses.some(cls => {
+                        const participantName = participants[cls];
+                        return participantName && (rowName === participantName || colName === participantName);
+                    });
+    
+                    return isHighlighted ? maxOpacity : minOpacity;
                 }
 
                 //@ts-ignore

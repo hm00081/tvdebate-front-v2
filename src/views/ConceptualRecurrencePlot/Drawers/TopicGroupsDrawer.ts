@@ -52,13 +52,16 @@ export class TopicGroupsDrawer {
 
     store.subscribe(() => {
       const { highlightedGroup } = store.getState().highlight; // Redux 상태에서 highlightedGroup 추출
-      const { highlightedClassName } = store.getState().classHighLight;
+      const { highlightedClasses } = store.getState().classHighLight; // ✅ 배열 형태로 변경
       const { selectedBlock } = store.getState().similarityBlockSelect;
-      this.applyHighlightEffect(highlightedClassName, highlightedGroup, selectedBlock);
+      
+      this.applyHighlightEffect(highlightedClasses, highlightedGroup, selectedBlock); // ✅ 수정된 값 전달
+    
       console.log('highlightedGroup', highlightedGroup);
-      console.log('highlightedClassName', highlightedClassName);
+      console.log('highlightedClasses', highlightedClasses); // ✅ 배열 형태로 변경
       console.log('selectedBlock', selectedBlock);
     });
+    
   }
 
   public set topicGroups(topicGroups: SimilarityBlock[][][]) {
@@ -103,14 +106,13 @@ export class TopicGroupsDrawer {
     });
   }
 
-  private applyHighlightEffect(highlightedClassName: string | null, highlightedGroup: string | null, selectedBlock: never[] | null) {
+  private applyHighlightEffect(highlightedClasses: string[] | null, highlightedGroup: string | null, selectedBlock: never[] | null) {
     /* ## 참여자 선택 ## */
-    // SVG 내부에서 모든 rect 요소를 선택
     this.topicGuideRectGSelection
-      // @ts-ignore
-      .selectAll<SVGRectElement>("rect") // rect 요소 모두 선택
+    //@ts-ignore
+      .selectAll<SVGRectElement>("rect") // 모든 rect 요소 선택
       .each(function () {
-        
+
         // SimilarityBlockDrawer
         //@ts-ignore
         d3.selectAll<SVGRectElement>("g > rect")
@@ -118,7 +120,7 @@ export class TopicGroupsDrawer {
             //@ts-ignore
             const rowIdx = d3.select(this).attr("rowIdx");
             const colIdx = d3.select(this).attr("colIdx");
-            return rowIdx !== null && colIdx !== null; // Keep only elements with these attributes
+            return rowIdx !== null && colIdx !== null;
           })
           .style("opacity", function () {
             const participants: Record<string, string> = {
@@ -134,43 +136,39 @@ export class TopicGroupsDrawer {
             const rowName = d3.select(this).attr("rowName");
             const colName = d3.select(this).attr("colName");
 
-            if(selectedBlock){
-              if (selectedBlock && Array.isArray(selectedBlock[1]) && 
-                  selectedBlock[1][0] == rowIdx && 
-                  selectedBlock[1][1] == colIdx) {
-                  return 1;
-              } else {
-                  return 0.1;
+            // ✅ 선택된 블록 반영
+            if (selectedBlock && selectedBlock.length > 1 && Array.isArray(selectedBlock[1])) {
+              if (selectedBlock[1][0] == rowIdx && selectedBlock[1][1] == colIdx) {
+                return 1;
               }
+              return 0.1;
             }
             
-            if (!highlightedClassName || highlightedClassName === "PROS" || highlightedClassName === "CONS") {
-              return "initial" || 1; // Default to 1 if no initial opacity found
+            // ✅ 다중 선택 반영
+            if (!highlightedClasses || highlightedClasses.length === 0 || highlightedClasses.includes("PROS") || highlightedClasses.includes("CONS")) {
+              return 1; // 기본값
             }
-            //@ts-ignore
-            if (highlightedClassName in participants) {
-              const participantsName = participants[highlightedClassName];
-              if(colName === participantsName || rowName === participantsName) {
+
+            const selectedParticipants = highlightedClasses.filter(cls => cls in participants);
+            if (selectedParticipants.length > 0) {
+              const validNames = selectedParticipants.map(cls => participants[cls]);
+              if (validNames.includes(colName) || validNames.includes(rowName)) {
                 return 1;
               }
             }
             
-        
-            return 0.05; // Dim the element
+            return 0.05;
           });
 
         // ParticipantBlockDrawer
-        // @ts-ignore
+        //@ts-ignore
         d3.selectAll<SVGRectElement>("g > rect")
           .filter(function () {
-            //@ts-ignore
-            const insistence = d3.select(this).attr("insistence");
-            return insistence !== null;
+            return d3.select(this).attr("insistence") !== null;
           })
           .style("opacity", function () {
             const pName = d3.select(this).attr("name");
-            const filter = store.getState().matrixFilter.filter;
-        
+
             const participants: Record<string, string> = {
               LJS: '이준석',
               PHR: '박휘락',
@@ -183,20 +181,23 @@ export class TopicGroupsDrawer {
               CONS: ['이준석', '박휘락'],
             }
 
-            if (!highlightedClassName) {
-              return "initial" || 1; // Default to 1 if no initial opacity found
+            // ✅ 다중 선택 반영
+            if (!highlightedClasses || highlightedClasses.length === 0) {
+              return 1;
             }
 
-            //@ts-ignore
-            if (highlightedClassName in participants) {
-              //@ts-ignore
-              const participantsName = participants[highlightedClassName];
-              if(pName === participantsName) {
+            const selectedParticipants = highlightedClasses.filter(cls => cls in participants);
+            if (selectedParticipants.length > 0) {
+              const validNames = selectedParticipants.map(cls => participants[cls]);
+              if (validNames.includes(pName)) {
                 return 1;
               }
-            } else if (highlightedClassName in keywords) {
-              const relevantNames = keywords[highlightedClassName];
-              if (relevantNames.includes(pName)) {
+            } 
+
+            const selectedGroups = highlightedClasses.filter(cls => cls in keywords);
+            if (selectedGroups.length > 0) {
+              const validNames = selectedGroups.flatMap(group => keywords[group]);
+              if (validNames.includes(pName)) {
                 return 1;
               }
             }
@@ -205,226 +206,131 @@ export class TopicGroupsDrawer {
           });
       });
 
-      /* ## 그룹 선택 ## */
-      // SVG 내부에서 모든 rect 요소를 선택
-      this.topicGuideRectGSelection
-      // @ts-ignore
-      .selectAll<SVGRectElement>("rect") // rect 요소 모두 선택
+    /* ## 그룹 선택 ## */
+    this.topicGuideRectGSelection
+    //@ts-ignore
+      .selectAll<SVGRectElement>("rect")
       .each(function () {
-        // 현재 rect 요소의 idx 속성을 가져오기
-        const idx = d3.select(this).attr("idx"); 
-        // idx와 highlightedGroup 비교하여 opacity 설정
+        const idx = d3.select(this).attr("idx");
+
         d3.select(this).style(
           "opacity",
           highlightedGroup && !highlightedGroup.includes(`g${idx}`) ? 0.2 : 1
         );
 
-          // 바 차트
-          //@ts-ignore
-          d3.selectAll<SVGRectElement>("g > rect")
-            .filter(function () {
-              //@ts-ignore
-              const attClass = d3.select(this).attr("class");
-              return attClass !== null; // Keep only elements with these attributes
-            })
-            .style("opacity", function () {
-              const x = parseInt(d3.select(this).attr("x") || "-1", 10);
-              const y = parseInt(d3.select(this).attr("y") || "-1", 10);
-
-              if (!highlightedGroup && !highlightedClassName) {
-                // @ts-ignore
-                return "initial" || 1;
-              }
-
-              const groupRanges: Record<string, { range: [number, number] }> = {
-                  g1: { range: [80, 90] },
-                  g2: { range: [260, 270] },
-                  g3: { range: [405, 415] },
-                  g4: { range: [585, 595] },
-                  g5: { range: [780, 790] },
-                  g6: { range: [960, 970] },
-                  g7: { range: [1360, 1370] },
-              };
-
-              const pRanges: Record<string, { range1: [number, number], range2: [number, number] }> = {
-                  LJS: { range1: [125, 135], range2: [145, 155] },
-                  PHR: { range1: [170, 180], range2: [190, 200] },
-                  JKT: { range1: [125, 135], range2: [170, 180] },
-                  KJD: { range1: [145, 155], range2: [190, 200] },
-              };
-
-              // 🔹 selectedBlock이 존재하면서 highlightedGroup도 있는 경우
-              //@ts-ignore
-              if (highlightedGroup && Array.isArray(selectedBlock) && selectedBlock.length > 0 && selectedBlock[0].length > 1) {
-                  const selected1 = selectedBlock[0][0]; // 첫 번째 선택된 인물
-                  const selected2 = selectedBlock[0][1]; // 두 번째 선택된 인물
-
-                  const groupArray = Array.isArray(highlightedGroup) ? highlightedGroup : highlightedGroup ? [highlightedGroup] : [];
-
-                  const isInGroup = groupArray.length > 0 && groupArray.some(group => {
-                      const range = groupRanges[group]?.range;
-                      return range && x >= range[0] && x <= range[1];
-                  });
-
-                  if (isInGroup) {
-                      // 🔹 selectedBlock[0][0]과 selectedBlock[0][1]이 같을 경우
-                      if (selected1 === selected2) {
-                          const participantRange = pRanges[selected1]; // 하나의 참가자 범위만 사용
-                          if (participantRange &&
-                              ((y >= participantRange.range1[0] && y <= participantRange.range1[1]) ||
-                              (y >= participantRange.range2[0] && y <= participantRange.range2[1]))) {
-                              return 1; // ✅ 그룹 범위 안에 있으면서, 참가자 범위 안에도 포함
-                          }
-                      } else {
-                          // 🔹 selectedBlock[0][0]과 selectedBlock[0][1]이 다를 경우
-                          const range1 = pRanges[selected1];
-                          const range2 = pRanges[selected2];
-
-                          if ((range1 && ((y >= range1.range1[0] && y <= range1.range1[1]) || (y >= range1.range2[0] && y <= range1.range2[1])))
-                          && (range2 && ((y >= range2.range1[0] && y <= range2.range1[1]) || (y >= range2.range2[0] && y <= range2.range2[1])))) {
-                              return 1; // ✅ 그룹 범위 & 두 참가자 범위 안에 포함
-                          }
-                      }
-
-                      return 0.2; // 🔹 그룹 범위 안에 있지만, 참가자 범위에 포함되지 않음
-                  }
-              }
-
-              if (highlightedGroup) {
-                //@ts-ignore
-                if (x === 33) {
-                    return 0.2;
-                }
-            
-                if (Array.isArray(highlightedGroup)) {
-                    const isInGroup = highlightedGroup.some(group => group in groupRanges);
-            
-                    if (isInGroup) {
-                        const isHighlighted = highlightedGroup.some(group => {
-                            const range = groupRanges[group]?.range;
-                            return range && x >= range[0] && x <= range[1];
-                        });
-            
-                        if (isHighlighted) {
-                            return 1; // Highlight the element
-                        }
-                    }
-                }
-            
-                if ((y >= 15 && y <= 20) || (y >= 38 && y <= 42) || (y >= 60 && y <= 65) || (y >= 84 && y <= 87)) {
-                    return 1;
-                }
-            } else if (highlightedClassName){
-                if (!highlightedClassName || highlightedClassName === "PROS" || highlightedClassName === "CONS") {
-                  // @ts-ignore
-                  return "initial" || 1;
-                }  
-
-                //@ts-ignore
-                else if (highlightedClassName in pRanges) {
-                  const { range1, range2 } = pRanges[highlightedClassName];
-                  if ((y >= range1[0] && y <= range1[1]) || (y >= range2[0] && y <= range2[1])) {
-                    return 1; // Highlight the element
-                  }
-                }
-
-                if ((y>=15 && y<= 20) || (y>=38 && y<=42) || (y>=60 && y<= 65) || (y>=84 && y<= 87)) {
-                  return 1;
-                }
-              }
-              
-              return 0.2; // Dim the element
-            });
-
-
-
-          const participantRange: Record<string, string[]> = {
-            LJS: ["이준석-1", "이준석-2", "이준석-3", "이준석-4", "이준석-5", "이준석-6", "이준석-7", "이준석-8", "이준석-9"],
-            PHR: ["박휘락-1", "박휘락-2", "박휘락-3", "박휘락-4", "박휘락-5", "박휘락-6", "박휘락-7"],
-            JKT: ["장경태-1", "장경태-2", "장경태-3", "장경태-4", "장경태-5", "장경태-6", "장경태-7", "장경태-8"],
-            KJD: ["김종대-1", "김종대-2", "김종대-3", "김종대-4", "김종대-5", "김종대-6", "김종대-7", "김종대-8", "김종대-9"]
-          };
-
-          const classRanges: Record<string, string[]> = {
-            g1: ["이준석-1", "이준석-2", "이준석-3", "장경태-1", "장경태-2", "박휘락-1", "박휘락-2", "김종대-1", "김종대-2"],
-            g2: ["이준석-2", "이준석-3", "이준석-4", "장경태-2", "장경태-3", "박휘락-2", "박휘락-3", "김종대-2", "김종대-3", "김종대-4"],
-            g3: ["이준석-4", "이준석-5", "장경태-3", "장경태-4", "박휘락-3", "김종대-3", "김종대-4"],
-            g4: ["이준석-5", "이준석-6", "장경태-4", "박휘락-4", "김종대-5", "김종대-6"],
-            g5: ["이준석-6", "이준석-7", "장경태-5", "장경태-6", "박휘락-4", "박휘락-5", "김종대-5", "김종대-6"],
-            g6: ["이준석-7", "장경태-5", "장경태-6", "박휘락-5"],
-            g7: ["이준석-8", "이준석-9", "장경태-7", "장경태-8", "박휘락-6", "박휘락-7", "김종대-7", "김종대-8", "김종대-9"],
-          };
-
-          // 각 사람 별 주장
-          //@ts-ignore
-          d3.selectAll<SVGGElement>("g")
+        // ✅ 바 차트 다중 선택 반영
+        //@ts-ignore
+        d3.selectAll<SVGRectElement>("g > rect")
           .filter(function () {
-            //@ts-ignore
-            const attClass = d3.select(this).attr("class") || "";
-
-            if (highlightedGroup) {
-              if (Array.isArray(highlightedGroup)) {
-                return highlightedGroup.some(group => 
-                  (classRanges[group] || []).includes(attClass)
-                );
-              }
-              return (classRanges[highlightedGroup] || []).includes(attClass);
-            } 
-            
-            else if (highlightedClassName) {
-              for (const key in participantRange) {
-                if ((participantRange[key] || []).includes(attClass)) {
-                  return true;
-                }
-              }
-              return false;
-            }
-            
-            return true;
+            return d3.select(this).attr("class") !== null;
           })
           .style("opacity", function () {
-            //@ts-ignore
-            const attClass = d3.select(this).attr("class") || "";
+            const x = parseInt(d3.select(this).attr("x") || "-1", 10);
+            const y = parseInt(d3.select(this).attr("y") || "-1", 10);
 
-            if (!highlightedGroup && !highlightedClassName) {
+            if (!highlightedGroup && (!highlightedClasses || highlightedClasses.length === 0)) {
               return 1;
             }
 
+            const groupRanges: Record<string, { range: [number, number] }> = {
+              g1: { range: [80, 90] },
+              g2: { range: [260, 270] },
+              g3: { range: [405, 415] },
+              g4: { range: [585, 595] },
+              g5: { range: [780, 790] },
+              g6: { range: [960, 970] },
+              g7: { range: [1360, 1370] },
+            };
+
+            const pRanges: Record<string, { range1: [number, number], range2: [number, number] }> = {
+              LJS: { range1: [125, 135], range2: [145, 155] },
+              PHR: { range1: [170, 180], range2: [190, 200] },
+              JKT: { range1: [125, 135], range2: [170, 180] },
+              KJD: { range1: [145, 155], range2: [190, 200] },
+            };
+
             if (highlightedGroup) {
               if (Array.isArray(highlightedGroup)) {
-                const isHighlighted = highlightedGroup.some(group => 
-                  (classRanges[group] || []).includes(attClass)
-                );
-                return isHighlighted ? 1 : 0.2;
+                return highlightedGroup.some(group => group in groupRanges) ? 1 : 0.2;
               }
-              return (classRanges[highlightedGroup] || []).includes(attClass) ? 1 : 0.2;
+              return highlightedGroup in groupRanges ? 1 : 0.2;
             }
 
-            else if (highlightedClassName) {
-              const keywords: Record<string, string[]> = {
-                PROS: ['JKT', 'KJD'],
-                CONS: ['LJS', 'PHR'],
-              };
-
-              if (highlightedClassName in participantRange) {
-                return (participantRange[highlightedClassName] || []).includes(attClass) ? 1 : 0.2;
-              }
-
-              if (Object.keys(keywords).includes(highlightedClassName)) {
-                const validClasses = keywords[highlightedClassName];
-                const validC1 = participantRange[validClasses[0]] || [];
-                const validC2 = participantRange[validClasses[1]] || [];
-
-                return (validC1.includes(attClass) || validC2.includes(attClass)) ? 1 : 0.2;
+            if (highlightedClasses && highlightedClasses.length > 0) {
+              const selectedParticipants = highlightedClasses.filter(cls => cls in pRanges);
+              if (selectedParticipants.length > 0) {
+                return selectedParticipants.some(cls => {
+                  const { range1, range2 } = pRanges[cls];
+                  return (y >= range1[0] && y <= range1[1]) || (y >= range2[0] && y <= range2[1]);
+                }) ? 1 : 0.2;
               }
             }
 
             return 0.2;
           });
+      });
 
+      const participantRange: Record<string, string[]> = {
+        LJS: ["이준석-1", "이준석-2", "이준석-3", "이준석-4", "이준석-5", "이준석-6", "이준석-7", "이준석-8", "이준석-9"],
+        PHR: ["박휘락-1", "박휘락-2", "박휘락-3", "박휘락-4", "박휘락-5", "박휘락-6", "박휘락-7"],
+        JKT: ["장경태-1", "장경태-2", "장경태-3", "장경태-4", "장경태-5", "장경태-6", "장경태-7", "장경태-8"],
+        KJD: ["김종대-1", "김종대-2", "김종대-3", "김종대-4", "김종대-5", "김종대-6", "김종대-7", "김종대-8", "김종대-9"]
+      };
 
-    });
+      const classRanges: Record<string, string[]> = {
+        g1: ["이준석-1", "이준석-2", "이준석-3", "장경태-1", "장경태-2", "박휘락-1", "박휘락-2", "김종대-1", "김종대-2"],
+        g2: ["이준석-2", "이준석-3", "이준석-4", "장경태-2", "장경태-3", "박휘락-2", "박휘락-3", "김종대-2", "김종대-3", "김종대-4"],
+        g3: ["이준석-4", "이준석-5", "장경태-3", "장경태-4", "박휘락-3", "김종대-3", "김종대-4"],
+        g4: ["이준석-5", "이준석-6", "장경태-4", "박휘락-4", "김종대-5", "김종대-6"],
+        g5: ["이준석-6", "이준석-7", "장경태-5", "장경태-6", "박휘락-4", "박휘락-5", "김종대-5", "김종대-6"],
+        g6: ["이준석-7", "장경태-5", "장경태-6", "박휘락-5"],
+        g7: ["이준석-8", "이준석-9", "장경태-7", "장경태-8", "박휘락-6", "박휘락-7", "김종대-7", "김종대-8", "김종대-9"],
+      };
+
+    /* ## 주장 선택 ## */
+    //@ts-ignore
+    d3.selectAll<SVGGElement>("g")
+      .filter(function () {
+        //@ts-ignore
+        const attClass = d3.select(this).attr("class") || "";
+
+        if (highlightedGroup) {
+          if (Array.isArray(highlightedGroup)) {
+            return highlightedGroup.some(group => classRanges[group]?.includes(attClass));
+          }
+          return classRanges[highlightedGroup]?.includes(attClass);
+        } 
+
+        if (highlightedClasses && highlightedClasses.length > 0) {
+          return highlightedClasses.some(cls => participantRange[cls]?.includes(attClass));
+        }
+
+        return true;
+      })
+      .style("opacity", function () {
+        //@ts-ignore
+        const attClass = d3.select(this).attr("class") || "";
+
+        if (!highlightedGroup && (!highlightedClasses || highlightedClasses.length === 0)) {
+          return 1;
+        }
+
+        if (highlightedGroup) {
+          if (Array.isArray(highlightedGroup)) {
+            return highlightedGroup.some(group => classRanges[group]?.includes(attClass)) ? 1 : 0.2;
+          }
+          return classRanges[highlightedGroup]?.includes(attClass) ? 1 : 0.2;
+        }
+
+        if (highlightedClasses && highlightedClasses.length > 0) {
+          const validClasses = highlightedClasses.flatMap(cls => participantRange[cls] || []);
+          return validClasses.includes(attClass) ? 1 : 0.2;
+        }
+
+        return 0.2;
+      });
   }
+
 
   public update() {
     const excludedIndex = [1, 3, 5];
