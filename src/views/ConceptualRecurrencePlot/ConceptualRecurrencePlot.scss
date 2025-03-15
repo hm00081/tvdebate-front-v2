@@ -41,3 +41,24 @@
     }
   }
 }
+
+.debateLegend {
+  position: fixed;
+  top: 60px;
+  transition: right 0.3s ease-in-out;
+  z-index: 10;
+  width: 200px;
+}
+
+.debateLegend img {
+  width: 100%;
+  height: auto;
+}
+
+.debateLegend.open {
+  right: 260px;
+}
+
+.debateLegend.closed {
+  right: 0;
+}

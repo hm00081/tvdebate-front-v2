@@ -28,6 +28,7 @@ import { CHANGE_STANDARD_SIMILARITY_SCORE } from "../../redux/actionTypes";
 import CombinedEGsMaker from "./DataStructureMaker/CombinedEGsMaker";
 import Header from "./../Header/Header";
 import HeaderTwoKor from "./../Header/HeaderTwoKor";
+import debateLegendSvg from '../Header/image/debateLegend.svg';
 import * as d3 from "d3";
 // TODO: 상태관리 Redux 사용하여 한곳에 관리하도록 추후 변경하기
 function ConceptualRecurrencePlot() {
@@ -267,6 +268,9 @@ function ConceptualRecurrencePlot() {
             </g>
           </svg>
         </div>
+      </div>
+      <div className={`debateLegend ${isOpen ? 'open' : 'closed'}`}>
+        <img src={debateLegendSvg} alt="Debate Legend" />
       </div>
       <TranscriptViewer
         isOpen={isOpen}
