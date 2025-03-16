@@ -10,7 +10,7 @@ import highlightReducer, { clearHighlightedGroup, setHighlightedGroup } from "..
 import store from '../../../redux/store';
 import * as fs from 'fs';
 import * as d3 from 'd3';
-import { clearHighlightedClass } from '../../../redux/reducers/classHighlightReducer';
+import { clearHighlightedClass, setHighlightedClass } from '../../../redux/reducers/classHighlightReducer';
 
 export type ColoringSelfSimilarities = 'none' | 'oneColor' | 'participantColors';
 
@@ -601,7 +601,10 @@ export class SimilarityBlocksDrawer {
                     store.dispatch(setHighlightedGroup([groupIds[0], groupIds[1]]));
                   }
                   store.dispatch(clearHighlightedClass());
+                  store.dispatch(setHighlightedClass({ className: participant1 }));
+                  store.dispatch(setHighlightedClass({ className: participant2 }));
                   console.log("Update");
+                  console.log(participant1, participant2)
                   console.log([d.rowUtteranceName, d.colUtteranceName, d.rowUtteranceIndex, d.columnUtteranceIndex]);
                 }
                 

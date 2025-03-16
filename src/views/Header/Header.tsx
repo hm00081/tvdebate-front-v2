@@ -62,6 +62,12 @@ export default function Header({ isOpen, setIsOpen }: HeaderProps) {
   };
 
   const handleParticipantClick = (className: string) => {
+    //@ts-ignore
+    if((Array.isArray(store.getState().highlight.highlightedGroup) && store.getState().highlight.highlightedGroup.length > 0) || store.getState().similarityBlockSelect.selectedBlock.length > 0){
+      store.dispatch(clearHighlightedClass());
+    }
+    store.dispatch(clearHighlightedGroup());
+    store.dispatch(clearSelectedBlock());
     store.dispatch(setHighlightedClass({ className }));
     console.log("highlightedClasses after update:", store.getState().classHighLight.highlightedClasses);
   };

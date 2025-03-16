@@ -52,7 +52,6 @@ export class CP1Drawer extends CPDrawer {
             }
         });
     }
-  
 
     public update() {
         const { highlightedGroup } = store.getState().highlight;
@@ -229,19 +228,48 @@ export class CP1Drawer extends CPDrawer {
 
         const filteredPaths = groups.selectAll("path")
             .style("opacity", (d) => {
+                const stParticipants: Record<string, string> = {
+                    st16: 'PHR',
+                    st17: 'JHJ',
+                    st18: 'LJS', 
+                    st19: 'KJD',
+                    st20: 'JKT'
+                };
+
+                // 1. 특정 블록이 선택된 경우 (selectedBlock이 비어있지 않고, 특정 scriptIndex와 일치하는 경우)
                 //@ts-ignore
-                if (selectedBlock.length > 0 && (index1 === d.scriptIndex || index2 === d.scriptIndex)) {
+                if (selectedBlock.length !== 0 && (index1 === d.scriptIndex || index2 === d.scriptIndex)) {
                     return 1;
                 }
-                
+
+                // 2. 선택된 블록이 없을 경우 기본 로직 처리
                 if (selectedBlock.length === 0) {
-                    if (Array.isArray(highlightedGroup)) {
+                    // (1) 특정 클래스가 강조된 경우
+                    if (highlightedClasses.length !== 0) {
+                        if (highlightedClasses.includes('PROS')) {
+                            //@ts-ignore
+                            return ['st19', 'st20'].includes(d.className) ? 1 : 0.3; // KJD, JKT
+                        }
+                        if (highlightedClasses.includes('CONS')) {
+                            //@ts-ignore
+                            return ['st16', 'st18'].includes(d.className) ? 1 : 0.3; // PHR, LJS
+                        }
+                        // (2) 개별 참가자가 강조된 경우
                         //@ts-ignore
-                        return highlightedGroup.includes("g1") ? 1 : 0.3;
+                        return stParticipants[d.className] && highlightedClasses.includes(stParticipants[d.className]) ? 1 : 0.3;
                     }
-                    return highlightedGroup === "g1" || !highlightedGroup ? 1 : 0.3;
+
+                    // (3) 그룹 강조 여부 처리
+                    //@ts-ignore
+                    if (Array.isArray(highlightedGroup) && highlightedGroup.includes("g1")) {
+                        return 1;
+                    } 
+                    if (highlightedGroup === "g1" || !highlightedGroup) {
+                        return 1;
+                    }
+                    return 0.3;
                 }
-                
+
                 return 0.3;
             });
 
@@ -383,8 +411,21 @@ export class CP1Drawer extends CPDrawer {
                                 return 0.3;
                             }
                         
-                            // 🔹 `highlightedClasses`가 배열로 들어왔을 경우 `includes`로 체크
                             if (Array.isArray(highlightedClasses) && highlightedClasses.length > 0) {
+                                // PROS/CONS 처리
+                                if (highlightedClasses.includes('PROS')) {
+                                    if (element.className === 'JKT' || element.className === 'KJD') {
+                                        return 1;
+                                    }
+                                    return 0.3;
+                                }
+                                if (highlightedClasses.includes('CONS')) {
+                                    if (element.className === 'LJS' || element.className === 'PHR') {
+                                        return 1;
+                                    }
+                                    return 0.3;
+                                }
+                                // 개별 클래스 처리
                                 if (highlightedClasses.includes(element.className)) {
                                     return opacityValue;
                                 }
@@ -466,6 +507,26 @@ export class CP1Drawer extends CPDrawer {
                                     return opacityValue;
                                 }
                             }
+
+                            if (Array.isArray(highlightedClasses) && highlightedClasses.length > 0) {
+                                // PROS/CONS 처리
+                                if (highlightedClasses.includes('PROS')) {
+                                    if (element.className === 'JKT' || element.className === 'KJD') {
+                                        return 1;
+                                    }
+                                    return 0.3;
+                                }
+                                if (highlightedClasses.includes('CONS')) {
+                                    if (element.className === 'LJS' || element.className === 'PHR') {
+                                        return 1;
+                                    }
+                                    return 0.3;
+                                }
+                                // 개별 클래스 처리
+                                if (highlightedClasses.includes(element.className)) {
+                                    return opacityValue;
+                                }
+                            }
                         
                             return 0.3;
                         });
@@ -485,6 +546,13 @@ export class CP1Drawer extends CPDrawer {
                       //@ts-ignore
                       .style('opacity', () => {
                         if (highlightedGroup) {
+                            //@ts-ignore
+                            if(element.content[0].text !== "토론 시작 및" && element.content[0].text !== "모병제 도입"
+                                //@ts-ignore
+                                && element.content[0].text !== "현 사회상황" && element.content[0].text !== "현 군상황"
+                            ){
+                                return 1;
+                            }
                           if (Array.isArray(highlightedGroup)) {
                             //@ts-ignore
                             if (!highlightedGroup.includes("g1")) {
@@ -494,9 +562,6 @@ export class CP1Drawer extends CPDrawer {
                             return 0.3;
                           }
                           return 1;
-                        }
-                        if (Array.isArray(highlightedClasses) && highlightedClasses.length > 0) {
-                          return opacityValue;
                         }
                         return 1;
                       });
@@ -526,18 +591,16 @@ export class CP1Drawer extends CPDrawer {
                               //@ts-ignore
                               .style('opacity', () => {
                                 if (Array.isArray(highlightedGroup)) {
-                                  //@ts-ignore
-                                  if (!highlightedGroup.includes("g1")) {
-                                    return 0.3;
-                                  }
+                                    if(selectedBlock){
+                                        return 1;
+                                    }
+                                    //@ts-ignore
+                                    if (!highlightedGroup.includes("g1")) {
+                                        return 0.3;
+                                    }
                                 } else if (highlightedGroup && highlightedGroup !== "g1") {
-                                  return 0.3;
+                                    return 0.3;
                                 }
-                              
-                                if (Array.isArray(highlightedClasses) && highlightedClasses.length > 0) {
-                                  return opacityValue;
-                                }
-                              
                                 return 1;
                               });                              
                   
