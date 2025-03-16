@@ -138,7 +138,7 @@ export class TopicGroupsDrawer {
 
             // ✅ 선택된 블록 반영
             if (selectedBlock && selectedBlock.length > 1 && Array.isArray(selectedBlock[1])) {
-              if (selectedBlock[1][0] == rowIdx && selectedBlock[1][1] == colIdx) {
+              if (selectedBlock[1][0] === rowIdx && selectedBlock[1][1] === colIdx) {
                 return 1;
               }
               return 0.1;
@@ -623,7 +623,7 @@ export class TopicGroupsDrawer {
               const textLines = splitTextToLines(arg.topicGroupTitles[i] || "");
 
               // return `Show Topic Modal` || "";
-              return "" || "";
+              return "";
             } else {
               const highFrequencyTerms = extractFrequencyTermsFromEG(
                 eg,

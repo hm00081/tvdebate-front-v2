@@ -2,7 +2,7 @@
 /* eslint-disable no-unused-vars */
 import React from "react";
 import store from "../../../../redux/store";
-import { setHighlightedGroup } from "../../../../redux/reducers/highlightReducer";
+import { clearHighlightedGroup, setHighlightedGroup } from "../../../../redux/reducers/highlightReducer";
 import { setHighlightedClass, clearHighlightedClass } from '../../../../redux/reducers/classHighlightReducer';
 import { clearSelectedBlock, setSelectedBlock } from "../../../../redux/reducers/similarityBlockSelectReducer";
 import { DataStructureSet } from "../../DataStructureMaker/DataStructureManager";
@@ -91,7 +91,7 @@ export class CPDrawer {
         store.dispatch(clearHighlightedClass());
       } else {
         // 같은 groupId가 이미 Redux 상태에 저장되어 있다면 해제
-        store.dispatch(setHighlightedGroup(null));
+        store.dispatch(clearHighlightedGroup());
         store.dispatch(clearSelectedBlock());
         store.dispatch(clearHighlightedClass());
       }
@@ -161,11 +161,11 @@ export class CPDrawer {
     const compoundTerms = this.countCompoundTerms(utterance.sentenceObjects);
     const topTerms = this.getTopCompoundTerms(compoundTerms, 30);
 
-    const participants = {
-      '이준석': 'LJS',
-      '장경태': 'JKT',
-      '박휘락': 'PHR',
-      '김종대': 'KJD',
+    const participants: Record<string, string> = {
+      이준석: 'LJS',
+      장경태: 'JKT',
+      박휘락: 'PHR',
+      김종대: 'KJD',
     }
 
     const groupRange = {
@@ -202,8 +202,9 @@ export class CPDrawer {
     } else {
       store.dispatch(setHighlightedGroup([groupIds[0], groupIds[1]]));
     }
-    //@ts-ignore
-    store.dispatch(setHighlightedClass(participants[utterance.name]))
+    
+    store.dispatch(clearHighlightedClass());
+    store.dispatch(setHighlightedClass({ className: participants[utterance.name] }));
     
     if (this.transcriptViewerRef.current) {
       this.transcriptViewerRef.current.scrollToIndex(index);

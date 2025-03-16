@@ -141,7 +141,7 @@ export class ParticipantBlocksDrawer {
           g7: { range: [604, 758] },
         };
         if (!highlightedGroup) {
-          return "initial" || 1;
+          return "initial";
         }
         //@ts-ignore
         if (Array.isArray(highlightedGroup)) {

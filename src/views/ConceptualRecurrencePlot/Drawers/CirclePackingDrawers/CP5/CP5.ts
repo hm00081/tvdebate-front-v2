@@ -160,19 +160,20 @@ export class CP5Drawer extends CPDrawer {
                         .style('opacity', (d) => {
                           //@ts-ignore
                           const mappedClass = classMapping[d.className];
-                          if (highlightedClasses.length > 0) {
-                            if (!highlightedClasses.includes(mappedClass)) {
-                              return 0.3;
-                            } else {
-                              return 1;
-                            }
-                          } 
-                          const selectedGroups = highlightedClasses.filter(cls => cls === 'PROS' || cls === 'CONS');
-                          if (selectedGroups.length > 0) {
-                            const validClasses = selectedGroups.flatMap(group => keywords[group]);
-                            if (validClasses.includes(mappedClass)) {
-                              return 1;
-                            }
+                          if (highlightedClasses.includes('LJS') || highlightedClasses.includes('PHR') || 
+                              highlightedClasses.includes('KJD') || highlightedClasses.includes('JKT')) {
+                              if (!highlightedClasses.includes(mappedClass)) {
+                                  return 0.3;
+                              } else {
+                                  return 1;
+                              }
+                          } else if (highlightedClasses.includes('PROS') || highlightedClasses.includes('CONS')) {
+                              const mappedKey1 = keywords['PROS'][0];
+                              const mappedKey2 = keywords['CONS'][1];
+                              
+                              if (highlightedClasses.includes(mappedKey1) || highlightedClasses.includes(mappedKey2)) {
+                                  return 1;
+                              }
                           }
                           return 0.3;
                         });
@@ -187,37 +188,34 @@ export class CP5Drawer extends CPDrawer {
                     // 기존 요소 업데이트
                     update
                         .selectAll('path, line')
-                        .style('opacity', () => {
+                        .style('opacity', (d) => {
                             if (Array.isArray(highlightedGroup)) {
-                              //@ts-ignore
-                              if (!highlightedGroup.includes("g5")) {
-                                  return 0.3;
-                              }
+                                //@ts-ignore
+                                if (!highlightedGroup.includes("g5")) {
+                                    return 0.3;
+                                }
                             } else if (highlightedGroup && highlightedGroup !== "g5") {
                                 return 0.3;
                             }
-                            return 1;
-                        })
-                        .style('opacity', (d) => {
-                          //@ts-ignore
-                          const mappedClass = classMapping[d.className];
-                      
-                          if (highlightedClasses.length > 0) {
-                              if (highlightedClasses.includes(mappedClass)) {
-                                  return 1;
-                              }
-                          }
 
-                          const selectedGroups = highlightedClasses.filter(cls => cls === 'PROS' || cls === 'CONS');
-                          if (selectedGroups.length > 0) {
-                              const validClasses = selectedGroups.flatMap(group => keywords[group]); // 선택된 찬반 그룹의 관련 참가자 추출
-                              if (validClasses.includes(mappedClass)) {
-                                  return 1;
-                              }
-                          }
+                            //@ts-ignore
+                            const mappedClass = classMapping[d.className];
 
-                          return 0.3;
-                      });
+                            if (highlightedClasses.some(cls => ['LJS', 'PHR', 'KJD', 'JKT'].includes(cls))) {
+                                if (!highlightedClasses.includes(mappedClass)) {
+                                    return 0.3;
+                                } else {
+                                    return 1;
+                                }
+                            } else if (highlightedClasses.some(cls => ['PROS', 'CONS'].includes(cls))) {
+                                const mappedKey1 = keywords['PROS'][0];
+                                const mappedKey2 = keywords['CONS'][1];
+                                if (highlightedClasses.includes(mappedKey1) || highlightedClasses.includes(mappedKey2)) {
+                                    return 1;
+                                }
+                            }
+                            return 0.3;
+                        });
                     return update;
                 },
                 (exit) => exit.remove() // 필요시 제거
@@ -231,34 +229,23 @@ export class CP5Drawer extends CPDrawer {
                 return `translate(${x},${y}) scale(-0.875, 0.875) rotate(${r})`;
             });
 
-        const filteredPaths = groups.selectAll("path")
-          .style("opacity", (d) => {
-              //@ts-ignore
-              if (selectedBlock.length !== 0 && (index1 === d.scriptIndex || index2 === d.scriptIndex)) {
-                  return 1;
-              } 
-              
-              else if (selectedBlock.length === 0) {
-                  if (Array.isArray(highlightedGroup)) {
-                      //@ts-ignore
-                      if (highlightedGroup.includes("g5")) {
-                          return 1;
-                      } else {
-                          return 0.3;
-                      }
-                  } 
-                  else if (highlightedGroup && highlightedGroup === "g5") {
-                      return 1;
-                  } 
-                  else if (highlightedGroup && highlightedGroup !== "g5") {
-                      return 0.3;
-                  } 
-                  else if (!highlightedGroup) {
-                      return 1;
-                  }
-              }
-              return 0.3;
-          });
+            const filteredPaths = groups.selectAll("path")
+            .style("opacity", (d) => {
+                //@ts-ignore
+                if (selectedBlock.length > 0 && (index1 === d.scriptIndex || index2 === d.scriptIndex)) {
+                    return 1;
+                }
+                
+                if (selectedBlock.length === 0) {
+                    if (Array.isArray(highlightedGroup)) {
+                        //@ts-ignore
+                        return highlightedGroup.includes("g5") ? 1 : 0.3;
+                    }
+                    return highlightedGroup === "g5" || !highlightedGroup ? 1 : 0.3;
+                }
+                
+                return 0.3;
+            });
 
         CP5Data.forEach((groupData, i) => {
             const groupClass = groupData.class;
@@ -282,17 +269,13 @@ export class CP5Drawer extends CPDrawer {
                 });
 
 
-            group.selectAll('*').style('opacity', () => {
-                if (Array.isArray(highlightedGroup)) {
-                  //@ts-ignore
-                  if (!highlightedGroup.includes("g5")) {
-                      return 0.3;
-                  }
-                } else if (highlightedGroup && highlightedGroup !== "g5") {
-                    return 0.3;
-                }
-                return 1;
-            });
+                group.selectAll('*').style('opacity', () => {
+                    if (Array.isArray(highlightedGroup)) {
+                        //@ts-ignore
+                        return highlightedGroup.includes("g5") ? 1 : 0.3;
+                    }
+                    return highlightedGroup === "g5" || !highlightedGroup ? 1 : 0.3;
+                });
             
             let isHighlighted = 0;
 
@@ -313,43 +296,6 @@ export class CP5Drawer extends CPDrawer {
             // console.log("isHighlighted", isHighlighted);
             const opacityValue = isHighlighted ? 1 : 0.3;
 
-            const getOpacity = (className: string, elementOnClick: string) => {
-              // 🔹 `selectedBlock`이 선택되었을 경우 처리
-              const isSelectedBlock = Array.isArray(selectedBlock) && selectedBlock.length > 1 && Array.isArray(selectedBlock[1]) &&
-              //@ts-ignore
-                  selectedBlock[1].length > 1 && (selectedBlock[1][0] === elementOnClick || selectedBlock[1][1] === elementOnClick);
-          
-              if (isSelectedBlock) {
-                  return 1;
-              }
-          
-              // 🔹 `highlightedGroup`이 배열이면 `includes("g5")`로 체크
-              if (Array.isArray(highlightedGroup)) {
-                  //@ts-ignore
-                  if (!highlightedGroup.includes("g5")) {
-                      return 0.3;
-                  }
-                  return 1;
-              } else if (highlightedGroup && highlightedGroup !== "g5") {
-                  return 0.3;
-              }
-          
-              // 🔹 `highlightedClasses`가 있을 경우 처리
-              if (highlightedClasses.length > 0) {
-                  const isHighlighted = highlightedClasses.includes(className);
-                  // 🔹 `PROS` 또는 `CONS`가 선택된 경우 해당 className이 포함되는지 확인
-                  const selectedGroups = highlightedClasses.filter(cls => cls === 'PROS' || cls === 'CONS');
-                  if (selectedGroups.length > 0) {
-                      const validClasses = selectedGroups.flatMap(group => keywords[group]);
-                      if (validClasses.includes(className)) {
-                          return opacityValue;
-                      }
-                  }
-                  return isHighlighted ? opacityValue : 0.3;
-              }
-              return 1;
-            };
-          
             // 'circle' 요소 처리
             groupData.elements.forEach((element) => {
                 if (element.type === 'circle') {
@@ -365,7 +311,22 @@ export class CP5Drawer extends CPDrawer {
                         //@ts-ignore
                         .on('click', (e) => this.handleClick(element.onClick, e))
                         //@ts-ignore
-                        .style('opacity', () => getOpacity(element.className, element.onClick));
+                        .style('opacity', () => {
+                            if (Array.isArray(highlightedGroup)) {
+                              //@ts-ignore
+                              if (!highlightedGroup.includes("g5")) {
+                                return 0.3;
+                              }
+                            } else if (highlightedGroup && highlightedGroup !== "g5") {
+                              return 0.3;
+                            }
+                            
+                            if (Array.isArray(highlightedClasses) && highlightedClasses.length > 0) {
+                              return opacityValue;
+                            }
+                            
+                            return 1;
+                          });
                 }
 
                 // 'path' 요소 처리
@@ -378,7 +339,63 @@ export class CP5Drawer extends CPDrawer {
                         //@ts-ignore
                         .on('click', (e) => this.handleClick(element.onClick, e))
                         //@ts-ignore
-                        .style('opacity', () => getOpacity(element.className, element.onClick));
+                        .style('opacity', () => {
+                            // 🔹 `highlightedGroup`과 `highlightedClasses`이 없을 경우 기본값 1 반환
+                            if (!highlightedGroup && (!highlightedClasses || highlightedClasses.length === 0)) {
+                                return 1;
+                            }
+                        
+                            // 🔹 `selectedBlock`이 유효한지 확인 후 비교
+                            //@ts-ignore
+                            if (Array.isArray(selectedBlock) && selectedBlock.length > 1 && Array.isArray(selectedBlock[1]) && selectedBlock[1].length > 1) {
+                                if (Array.isArray(selectedBlock) && selectedBlock.length > 1 && Array.isArray(selectedBlock[1])) {
+                                    //@ts-ignore
+                                    if (selectedBlock[1].length > 1 && 
+                                        (selectedBlock[1][0] === element.onClick || selectedBlock[1][1] === element.onClick)) {
+                                        return 1;
+                                    }
+                                }
+                                return 0.3;
+                            }
+                        
+                            // 🔹 `highlightedGroup`이 배열이면 `includes("g5")`로 체크
+                            if (Array.isArray(highlightedGroup)) {
+                                //@ts-ignore
+                                if (!highlightedGroup.includes("g5")) {
+                                    return 0.3;
+                                } else {
+                                    return 1;
+                                }
+                            } else if (highlightedGroup && highlightedGroup !== "g5") {
+                                return 0.3;
+                            }
+                        
+                            // 🔹 `highlightedGroup`이 "g5"일 경우 처리
+                            //@ts-ignore
+                            if ((Array.isArray(highlightedGroup) && highlightedGroup.includes("g5")) || highlightedGroup === "g5") {
+                                if (Array.isArray(selectedBlock) && selectedBlock.length > 1 && Array.isArray(selectedBlock[1])) {
+                                    //@ts-ignore
+                                    if (selectedBlock[1].length > 1 && 
+                                        (selectedBlock[1][0] === element.onClick || selectedBlock[1][1] === element.onClick)) {
+                                        return 1;
+                                    }
+                                }
+                                // 선택된 상태에서 similarity block이 선택된 경우면서 화자가 일치하는 경우
+                                if (element.className === name1 || element.className === name2) {
+                                    return 1;
+                                }
+                                return 0.3;
+                            }
+                        
+                            // 🔹 `highlightedClasses`가 배열로 들어왔을 경우 `includes`로 체크
+                            if (Array.isArray(highlightedClasses) && highlightedClasses.length > 0) {
+                                if (highlightedClasses.includes(element.className)) {
+                                    return opacityValue;
+                                }
+                            }
+                        
+                            return 0.3;
+                        });
                 }
 
                 // 'ellipse' 요소 처리
@@ -400,7 +417,63 @@ export class CP5Drawer extends CPDrawer {
                         //@ts-ignore
                         .on('click', (e) => this.handleClick(element.onClick, e))
                         //@ts-ignore
-                        .style('opacity', () => getOpacity(element.className, element.onClick));
+                        .style('opacity', () => {
+                            if (!highlightedGroup && (!highlightedClasses || highlightedClasses.length === 0)) {
+                                return 1;
+                            }
+                        
+                            // 🔹 selectedBlock이 배열인지 확인 후 비교
+                            //@ts-ignore
+                            if (Array.isArray(selectedBlock) && selectedBlock.length > 1 && Array.isArray(selectedBlock[1]) && selectedBlock[1].length > 1) {
+                                if (Array.isArray(selectedBlock) && selectedBlock.length > 1 && Array.isArray(selectedBlock[1])) {
+                                    //@ts-ignore
+                                    if (selectedBlock[1].length > 1 && 
+                                        (selectedBlock[1][0] === element.onClick || selectedBlock[1][1] === element.onClick)) {
+                                        return 1;
+                                    }
+                                }
+                                return 0.3;
+                            }
+                        
+                            // 🔹 highlightedGroup이 배열일 경우 "g5"이 포함되어 있는지 확인
+                            if (Array.isArray(highlightedGroup)) {
+                                //@ts-ignore
+                                if (!highlightedGroup.includes("g5")) {
+                                    return 0.3;
+                                } else {
+                                    return 1;
+                                }
+                            } else if (highlightedGroup && highlightedGroup !== "g5") {
+                                return 0.3;
+                            }
+                        
+                            // 🔹 highlightedGroup이 "g5"일 경우 처리
+                            //@ts-ignore
+                            if ((Array.isArray(highlightedGroup) && highlightedGroup.includes("g5")) || 
+                                highlightedGroup === "g5") {
+                                if (Array.isArray(selectedBlock) && selectedBlock.length > 1 && Array.isArray(selectedBlock[1])) {
+                                    //@ts-ignore
+                                    if (selectedBlock[1].length > 1 && 
+                                        (selectedBlock[1][0] === element.onClick || selectedBlock[1][1] === element.onClick)) {
+                                        return 1;
+                                    }
+                                }
+                                // 선택된 상태에서 similarity block이 선택된 경우면서 화자가 일치하는 경우
+                                if (element.className === name1 || element.className === name2) {
+                                    return 1;
+                                }
+                                return 0.3;
+                            }
+                        
+                            // 🔹 highlightedClasses가 배열로 들어왔을 경우 `includes`로 체크
+                            if (Array.isArray(highlightedClasses) && highlightedClasses.length > 0) {
+                                if (highlightedClasses.includes(element.className)) {
+                                    return opacityValue;
+                                }
+                            }
+                        
+                            return 0.3;
+                        });
                 }
 
                 // 'text' 요소와 'tspan' 요소 처리
@@ -415,7 +488,23 @@ export class CP5Drawer extends CPDrawer {
                     // 마우스 오버 이벤트 추가
                     text
                       //@ts-ignore
-                      .style('opacity', () => getOpacity(element.className, element.onClick));
+                      .style('opacity', () => {
+                        if (highlightedGroup) {
+                          if (Array.isArray(highlightedGroup)) {
+                            //@ts-ignore
+                            if (!highlightedGroup.includes("g5")) {
+                              return 0.3;
+                            }
+                          } else if (highlightedGroup !== "g5") {
+                            return 0.3;
+                          }
+                          return 1;
+                        }
+                        if (Array.isArray(highlightedClasses) && highlightedClasses.length > 0) {
+                          return opacityValue;
+                        }
+                        return 1;
+                      });
                       
                     if (element.style && element.style !== 'None') {
                         text.style('font-size', element.style);
@@ -440,7 +529,22 @@ export class CP5Drawer extends CPDrawer {
                               //@ts-ignore
                               .text(content.text)
                               //@ts-ignore
-                              .style('opacity', () => getOpacity(element.className, element.onClick));
+                              .style('opacity', () => {
+                                if (Array.isArray(highlightedGroup)) {
+                                  //@ts-ignore
+                                  if (!highlightedGroup.includes("g5")) {
+                                    return 0.3;
+                                  }
+                                } else if (highlightedGroup && highlightedGroup !== "g5") {
+                                  return 0.3;
+                                }
+                              
+                                if (Array.isArray(highlightedClasses) && highlightedClasses.length > 0) {
+                                  return opacityValue;
+                                }
+                              
+                                return 1;
+                              });      
                   
                           // 스타일이 정의되어 있으면 적용
                           //@ts-ignore
