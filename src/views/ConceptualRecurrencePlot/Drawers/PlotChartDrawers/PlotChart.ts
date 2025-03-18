@@ -478,6 +478,16 @@ export class PlotChartDrawer {
     }
 
     public update() {
+        const classRanges: Record<string, string[]> = {
+            g1: ["이준석-1", "이준석-2", "이준석-3", "장경태-1", "장경태-2", "박휘락-1", "박휘락-2", "김종대-1", "김종대-2"],
+            g2: ["이준석-2", "이준석-3", "이준석-4", "장경태-2", "장경태-3", "박휘락-2", "박휘락-3", "김종대-2", "김종대-3", "김종대-4"],
+            g3: ["이준석-4", "이준석-5", "장경태-3", "장경태-4", "박휘락-3", "김종대-3", "김종대-4"],
+            g4: ["이준석-5", "이준석-6", "장경태-4", "박휘락-4", "김종대-5", "김종대-6"],
+            g5: ["이준석-6", "이준석-7", "장경태-5", "장경태-6", "박휘락-4", "박휘락-5", "김종대-5", "김종대-6"],
+            g6: ["이준석-7", "장경태-5", "장경태-6", "박휘락-5"],
+            g7: ["이준석-8", "이준석-9", "장경태-7", "장경태-8", "박휘락-6", "박휘락-7", "김종대-7", "김종대-8", "김종대-9"],
+        };
+        
         store.subscribe(() => {
             const highlightedClasses = store.getState().classHighLight.highlightedClasses;
             const highlightedGroup = store.getState().highlight.highlightedGroup;
@@ -486,7 +496,7 @@ export class PlotChartDrawer {
             this.topicGuidePCGSelection
                 .selectAll('rect')
                 .filter(function (d) {
-                    // console.log("d", d);
+                    console.log("d", d);
                     //@ts-ignore
                     return (d && d.attributes && d.attributes.className) || (d && d.class);
                 })
@@ -535,9 +545,34 @@ export class PlotChartDrawer {
                         return 1;
                     }
 
+                    // 화자 별 주제
                     //@ts-ignore
                     if(d && d.class) {
-                        console.log("안녕하세요", d);
+                        // console.log("안녕하세요", d);
+                        //@ts-ignore
+                        if (highlightedGroup && Array.isArray(highlightedGroup) && highlightedGroup.length > 0) {
+                            // highlightedGroup에 있는 각 그룹(g1~g7)에 대해
+                            //@ts-ignore
+                            for (const group of highlightedGroup) {
+                                // classRanges에서 해당 그룹의 문자열 배열을 가져옴
+                                const validClasses = classRanges[group];
+                                // d.class가 해당 그룹의 유효한 클래스 중 하나와 일치하면 1을 반환
+                                //@ts-ignore
+                                if (validClasses && validClasses.includes(d.class)) {
+                                    if(highlightedClasses && highlightedClasses.length > 0) {
+                                        //@ts-ignore
+                                        if (highlightedClasses.some(className => nameMap[className] === d.class.split('-')[0])) {
+                                            return 1;
+                                        }
+                                        return 0.2; // 선택된 화자가 아니면 흐리게 처리
+                                    }
+                                    return 1; // highlightedClasses가 없으면 그대로 표시
+                                }
+                            }
+                            // 일치하는 클래스가 없으면 0.2를 반환
+                            return 0.2;
+                        }
+
                         if (highlightedClasses && highlightedClasses.length > 0) {
                             if (highlightedClasses.includes("PROS") || highlightedClasses.includes("CONS")) {
                                 //@ts-ignore
@@ -545,10 +580,6 @@ export class PlotChartDrawer {
                                     return 1;
                                 }
                             }
-
-                            //@ts-ignore
-                            console.log("d.class.split('-')[0]", d.class.split('-')[0]);
-                            console.log("highlightedClasses", highlightedClasses);
                             // @ts-ignore
                             if (highlightedClasses.some(className => nameMap[className] === d.class.split('-')[0])) {
                                 return 1;
@@ -558,7 +589,111 @@ export class PlotChartDrawer {
                         return 1;
                     }
 
+                    // 바 차트
+                    //@ts-ignore
+                    if(d && d.type && d.type === "rect") {
+                        const x = parseInt(d3.select(this).attr("x") || "-1", 10);
+                        const y = parseInt(d3.select(this).attr("y") || "-1", 10);
+
+                        if (!highlightedGroup && (!highlightedClasses || highlightedClasses.length === 0)) {
+                        return 1;
+                        }
+
+                        const groupRanges: Record<string, { range: [number, number] }> = {
+                        g1: { range: [80, 90] },
+                        g2: { range: [260, 270] },
+                        g3: { range: [405, 415] },
+                        g4: { range: [585, 595] },
+                        g5: { range: [780, 790] },
+                        g6: { range: [960, 970] },
+                        g7: { range: [1360, 1370] },
+                        };
+
+                        const pRanges: Record<string, { range1: [number, number], range2: [number, number] }> = {
+                        LJS: { range1: [125, 135], range2: [145, 155] },
+                        PHR: { range1: [170, 180], range2: [190, 200] },
+                        JKT: { range1: [125, 135], range2: [170, 180] },
+                        KJD: { range1: [145, 155], range2: [190, 200] },
+                        };
+
+                        // 🔹 selectedBlock이 존재하면서 highlightedGroup도 있는 경우
+                        //@ts-ignore
+                        if (highlightedGroup && Array.isArray(selectedBlock) && selectedBlock.length > 0 && selectedBlock[0].length > 1) {
+                        const selected1 = selectedBlock[0][0]; // 첫 번째 선택된 인물
+                        const selected2 = selectedBlock[0][1]; // 두 번째 선택된 인물
+
+                        const groupArray = Array.isArray(highlightedGroup) ? highlightedGroup : highlightedGroup ? [highlightedGroup] : [];
+
+                        const isInGroup = groupArray.length > 0 && groupArray.some(group => {
+                            const range = groupRanges[group]?.range;
+                            return range && x >= range[0] && x <= range[1];
+                        });
+
+                        if (isInGroup) {
+                            // 🔹 selectedBlock[0][0]과 selectedBlock[0][1]이 같을 경우
+                            if (selected1 === selected2) {
+                                const participantRange = pRanges[selected1]; // 하나의 참가자 범위만 사용
+                                if (participantRange &&
+                                    ((y >= participantRange.range1[0] && y <= participantRange.range1[1]) ||
+                                    (y >= participantRange.range2[0] && y <= participantRange.range2[1]))) {
+                                    return 1; // ✅ 그룹 범위 안에 있으면서, 참가자 범위 안에도 포함
+                                }
+                            } else {
+                                // 🔹 selectedBlock[0][0]과 selectedBlock[0][1]이 다를 경우
+                                const range1 = pRanges[selected1];
+                                const range2 = pRanges[selected2];
+
+                                if ((range1 && ((y >= range1.range1[0] && y <= range1.range1[1]) || (y >= range1.range2[0] && y <= range1.range2[1])))
+                                && (range2 && ((y >= range2.range1[0] && y <= range2.range1[1]) || (y >= range2.range2[0] && y <= range2.range2[1])))) {
+                                    return 1; // ✅ 그룹 범위 & 두 참가자 범위 안에 포함
+                                }
+                            }
+
+                            return 0.2; // 🔹 그룹 범위 안에 있지만, 참가자 범위에 포함되지 않음
+                        }
+                        }
+
+                        if (highlightedGroup) {
+                        //@ts-ignore
+                        if (x === 33) {
+                            return 0.2;
+                        }
                     
+                        if (Array.isArray(highlightedGroup)) {
+                            //@ts-ignore
+                            const isInGroup = highlightedGroup.some(group => group in groupRanges);
+                    
+                            if (isInGroup) {
+                                //@ts-ignore
+                                const isHighlighted = highlightedGroup.some(group => {
+                                    const range = groupRanges[group]?.range;
+                                    return range && x >= range[0] && x <= range[1];
+                                });
+                    
+                                if (isHighlighted) {
+                                    return 1; // Highlight the element
+                                }
+                            }
+                        }
+                    
+                        if ((y >= 15 && y <= 20) || (y >= 38 && y <= 42) || (y >= 60 && y <= 65) || (y >= 84 && y <= 87)) {
+                            return 1;
+                        }
+                    } else if (highlightedClasses && highlightedClasses.length > 0) {
+                        if(highlightedClasses.includes("PROS") || highlightedClasses.includes("CONS")) {
+                            return 1;
+                        }
+                        const selectedParticipants = highlightedClasses.filter(cls => cls in pRanges);
+                        if (selectedParticipants.length > 0) {
+                            return selectedParticipants.some(cls => {
+                            const { range1, range2 } = pRanges[cls];
+                            return (y >= range1[0] && y <= range1[1]) || (y >= range2[0] && y <= range2[1]);
+                            }) ? 1 : 0.2;
+                        }
+                        }
+
+                        return 0.2;
+                    }
                     return 1;
                 });
         });
