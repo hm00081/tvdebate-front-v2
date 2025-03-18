@@ -184,10 +184,9 @@ export class ParticipantBlocksDrawer {
       .attr("index", (d) => d.index)
       .style("fill", (d) => participantDict[d.name].color)
       .style("opacity", function (d) {
-        const storeState = store.getState();
-        const highlightedGroup = storeState.highlight.highlightedGroup;
-        const selectedBlock = storeState.similarityBlockSelect.selectedBlock;
-        const highlightedClasses = storeState.classHighLight.highlightedClasses;
+        const highlightedGroup = store.getState().highlight.highlightedGroup;
+        const selectedBlock = store.getState().similarityBlockSelect.selectedBlock;
+        const highlightedClasses = store.getState().classHighLight.highlightedClasses;
     
         const participants: Record<string, string> = {
             LJS: "이준석",

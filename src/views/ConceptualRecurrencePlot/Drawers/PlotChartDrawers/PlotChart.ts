@@ -11,6 +11,7 @@ import { D3Drawer } from '../D3Drawer';
 import { TranscriptViewerMethods } from '../../TranscriptViewer/TranscriptViewer';
 import { styleText } from './StyleText';
 import { name, allRectData, personData, rectData, personPCData, pathsData } from './PCData';
+import store from '../../../../redux/store';
 
 interface Rect {
     type: string;
@@ -477,6 +478,91 @@ export class PlotChartDrawer {
     }
 
     public update() {
+        store.subscribe(() => {
+            const highlightedClasses = store.getState().classHighLight.highlightedClasses;
+            const highlightedGroup = store.getState().highlight.highlightedGroup;
+            const selectedBlock = store.getState().similarityBlockSelect.selectedBlock;
+
+            this.topicGuidePCGSelection
+                .selectAll('rect')
+                .filter(function (d) {
+                    // console.log("d", d);
+                    //@ts-ignore
+                    return (d && d.attributes && d.attributes.className) || (d && d.class);
+                })
+                .style('opacity', function (d) {
+                    const map: Record<string, string> = {
+                        stt3: "LJS",
+                        stt4: "JKT",
+                        stt5: "PHR",
+                        stt6: "KJD",
+                    };
+
+                    const nameMap: Record<string, string> = {
+                        LJS: "이준석",
+                        JKT: "장경태",
+                        PHR: "박휘락",
+                        KJD: "김종대",
+                    };
+            
+                    const keywords: Record<string, string[]> = {
+                        PROS: ['장경태', '김종대'],
+                        CONS: ['이준석', '박휘락'],
+                    };
+
+                    //@ts-ignore
+                    if(highlightedClasses?.length === 0 && highlightedGroup?.length === 0 && selectedBlock?.length === 0) {
+                        return 1;
+                    }
+
+                    // 가로줄
+                    //@ts-ignore
+                    if(d && d.attributes && d.attributes.className && (d.attributes.className === "stt3" || d.attributes.className === "stt4" || d.attributes.className === "stt5" || d.attributes.className === "stt6")) {
+                        console.log("d", d);
+                        if (highlightedClasses && highlightedClasses.length > 0) {
+                            if (highlightedClasses.includes("PROS") || highlightedClasses.includes("CONS")) {
+                                //@ts-ignore
+                                if (keywords[highlightedClasses[0]].includes(nameMap[map[d.attributes.className]])) {    
+                                    return 1;
+                                }
+                            }
+                            //@ts-ignore
+                            if (highlightedClasses.includes(map[d.attributes.className])) {
+                                return 1;
+                            }
+                            return 0.2;
+                        }
+                        return 1;
+                    }
+
+                    //@ts-ignore
+                    if(d && d.class) {
+                        console.log("안녕하세요", d);
+                        if (highlightedClasses && highlightedClasses.length > 0) {
+                            if (highlightedClasses.includes("PROS") || highlightedClasses.includes("CONS")) {
+                                //@ts-ignore
+                                if (keywords[highlightedClasses[0]].includes(d.class.split('-')[0])) {
+                                    return 1;
+                                }
+                            }
+
+                            //@ts-ignore
+                            console.log("d.class.split('-')[0]", d.class.split('-')[0]);
+                            console.log("highlightedClasses", highlightedClasses);
+                            // @ts-ignore
+                            if (highlightedClasses.some(className => nameMap[className] === d.class.split('-')[0])) {
+                                return 1;
+                            }
+                            return 0.2;
+                        }
+                        return 1;
+                    }
+
+                    
+                    return 1;
+                });
+        });
+
         // `svg` 클릭 이벤트 추가
         this.topicGuidePCGSelection.on('click', () => {
             // 빈 영역 클릭 시 이전 rect 스타일 초기화
@@ -486,6 +572,7 @@ export class PlotChartDrawer {
             }
         });
 
+        // 화자 별 주제 가로줄
         const group = this.topicGuidePCGSelection.selectAll('g').data(allRectData).enter().append('g').attr('transform', `translate(0,0) scale(-0.67, 0.67) rotate(135)`);
         group.append('style').text(styleText);
         group
@@ -543,6 +630,7 @@ export class PlotChartDrawer {
                 }
             });
 
+        // 화자 별 주제 그룹(열) 네모
         const pathGroups = this.topicGuidePCGSelection
             .selectAll('.pathGroup')
             .data(pathsData)
@@ -556,6 +644,7 @@ export class PlotChartDrawer {
             .attr('class', (d) => d.className)
             .attr('d', (d) => d.d);
 
+        // 화자 별 주제 그룹
         const pcGroups = this.topicGuidePCGSelection
             .selectAll('.pcGroup')
             .data(personPCData)
@@ -614,6 +703,7 @@ export class PlotChartDrawer {
             });
         });
 
+        // 화자 별 주제 맨 왼쪽의 화자 이름
         const nameGroups = this.topicGuidePCGSelection
             .selectAll('.nameGroup')
             .data(name) // 제공된 name 데이터를 바인딩합니다.
@@ -645,6 +735,7 @@ export class PlotChartDrawer {
             }
         });
 
+        // 바 차트에 텍스트 그룹
         const textGroups = this.topicGuidePCGSelection
             .selectAll('.textGroup')
             .data(personData)
