@@ -110,6 +110,64 @@ export class ParticipantBlocksDrawer {
     conceptMatrixTransposed: number[][],
     keytermObjects: KeytermObject[]
   ) {
+      store.subscribe(() => {
+        const storeState = store.getState();
+        const highlightedClasses = storeState.classHighLight.highlightedClasses;
+        const selectedBlock = storeState.similarityBlockSelect.selectedBlock;
+
+        // D3 opacity 다시 설정
+        d3.selectAll("g > rect")
+          .filter(function () {
+            return d3.select(this).attr("insistence") !== null;
+          })
+          .style("opacity", function (d) {
+            const pName = d3.select(this).attr("name");
+    
+            const participants: Record<string, string> = {
+              LJS: '이준석',
+              PHR: '박휘락',
+              JKT: '장경태',
+              KJD: '김종대',
+            };
+    
+            const keywords: Record<string, string[]> = {
+              PROS: ["장경태", "김종대"],
+              CONS: ["이준석", "박휘락"],
+            };
+
+            if (selectedBlock && selectedBlock.length > 0) {
+              //@ts-ignore
+              if (Array.isArray(selectedBlock[1]) && selectedBlock[1].includes(d.index)) {
+                  return 1;
+              } else {
+                  return 0.1;
+              }
+          }
+    
+            if (!highlightedClasses || highlightedClasses.length === 0) {
+              return 1;
+            }
+    
+            const selectedParticipants = highlightedClasses.filter(cls => cls in participants);
+            if (selectedParticipants.length > 0) {
+              const validNames = selectedParticipants.map(cls => participants[cls]);
+              if (validNames.includes(pName)) {
+                return 1;
+              }
+            }
+    
+            const selectedGroups = highlightedClasses.filter(cls => cls in keywords);
+            if (selectedGroups.length > 0) {
+              const validNames = selectedGroups.flatMap(group => keywords[group]);
+              if (validNames.includes(pName)) {
+                return 1;
+              }
+            }
+    
+            return 0.2;
+          });
+    });
+  
     selection // utterance_objects 데이터 적용
       // .transition()
       // .duration(750)
@@ -122,46 +180,103 @@ export class ParticipantBlocksDrawer {
       .attr("height", (d) => d.width) // 노드 높이
       .attr("insistence", (d) => d.insistence)
       .attr("name", (d) => d.name)
+      //@ts-ignore
+      .attr("index", (d) => d.index)
       .style("fill", (d) => participantDict[d.name].color)
-      .style("opacity", function () {
-        const highlightedGroup = store.getState().highlight.highlightedGroup;
-        const filter = store.getState().matrixFilter.filter;
-        
-        // 현재 opacity 값을 읽어와 유지
-        const x = parseInt(d3.select(this).attr("x") || "0", 10);
-        
-        // Define the ranges for each group
-        const groupRanges: Record<string, { range: [number, number] }> = {
-          g1: { range: [0, 108] },
-          g2: { range: [84, 206] },
-          g3: { range: [132, 280] },
-          g4: { range: [229, 366] },
-          g5: { range: [324, 470] },
-          g6: { range: [427, 549] },
-          g7: { range: [604, 758] },
+      .style("opacity", function (d) {
+        const storeState = store.getState();
+        const highlightedGroup = storeState.highlight.highlightedGroup;
+        const selectedBlock = storeState.similarityBlockSelect.selectedBlock;
+        const highlightedClasses = storeState.classHighLight.highlightedClasses;
+    
+        const participants: Record<string, string> = {
+            LJS: "이준석",
+            PHR: "박휘락",
+            JKT: "장경태",
+            KJD: "김종대",
         };
-        if (!highlightedGroup) {
-          return "initial";
+    
+        const keywords: Record<string, string[]> = {
+            PROS: ["장경태", "김종대"],
+            CONS: ["이준석", "박휘락"],
+        };
+    
+        const rowName = d3.select(this).attr("rowName");
+        const colName = d3.select(this).attr("colName");
+        const pName = d3.select(this).attr("name");
+        const x = parseInt(d3.select(this).attr("x") || "0", 10);
+    
+        // ✅ 1. 아무것도 선택되지 않았다면 기본값 (전체 보이기)
+        if ((!selectedBlock || selectedBlock.length === 0) &&
+            //@ts-ignore
+            (!highlightedGroup || highlightedGroup.length === 0) &&
+            (!highlightedClasses || highlightedClasses.length === 0)) {
+            return 1;
         }
-        //@ts-ignore
-        if (Array.isArray(highlightedGroup)) {
-          // @ts-ignore
-          const isHighlighted = highlightedGroup.some(group => {
-              if (group in groupRanges) {
-                  const { range } = groupRanges[group];
-                  return x >= range[0] && x <= range[1];
-              }
-              return false;
-          });
-      
-          if (isHighlighted) {
-              return filter[1] < 100 ? 0.2 : 1;
-          }
-      }
-
-
+    
+        // ✅ 2. 특정 블록이 선택된 경우 → 해당 블록만 보이고 나머지는 희미하게
+        if (selectedBlock && selectedBlock.length > 0) {
+            //@ts-ignore
+            if (Array.isArray(selectedBlock[1]) && selectedBlock[1].includes(d.index)) {
+                return 1;
+            } else {
+                return 0.1;
+            }
+        }
+    
+        // ✅ 3. 특정 참여자가 강조된 경우 → 해당하는 사람만 보이도록
+        if (highlightedClasses && highlightedClasses.length > 0) {
+            // (1) 참여자 코드가 포함된 경우
+            const selectedParticipants = highlightedClasses.filter(cls => cls in participants);
+            if (selectedParticipants.length > 0) {
+                const validNames = selectedParticipants.map(cls => participants[cls]);
+                if (validNames.includes(pName)) {
+                    return 1;
+                }
+            }
+    
+            // (2) PROS / CONS 키워드가 포함된 경우
+            const selectedGroups = highlightedClasses.filter(cls => cls in keywords);
+            if (selectedGroups.length > 0) {
+                const validNames = selectedGroups.flatMap(group => keywords[group]);
+                if (validNames.includes(pName)) {
+                    return 0.3;
+                }
+            }
+        }
+    
+        // ✅ 4. 특정 그룹이 강조된 경우 → 범위 내에 있는 블록만 강조
+        const groupRanges: Record<string, { range: [number, number] }> = {
+            g1: { range: [0, 108] },
+            g2: { range: [84, 206] },
+            g3: { range: [132, 280] },
+            g4: { range: [229, 366] },
+            g5: { range: [324, 470] },
+            g6: { range: [427, 549] },
+            g7: { range: [604, 758] },
+        };
+    
+        if (highlightedGroup && Array.isArray(highlightedGroup)) {
+          //@ts-ignore
+            const isHighlighted = highlightedGroup.some(group => {
+                if (group in groupRanges) {
+                    const { range } = groupRanges[group];
+                    return x >= range[0] && x <= range[1];
+                }
+                return false;
+            });
+    
+            if (isHighlighted) {
+                return 1;
+            } else {
+                return 0.2;
+            }
+        }
+    
+        // ✅ 5. 기본값 → 나머지는 희미하게 처리
         return 0.2;
-      });
+    });
+    
 
     selection
       .selectAll("title")

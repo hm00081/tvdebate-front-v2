@@ -22,6 +22,9 @@ const classHighlightSlice = createSlice({
           state.highlightedClasses = state.highlightedClasses.filter(
             (item) => item !== className
           );
+          if (state.highlightedClasses.length === 0) {
+            clearHighlightedClass();
+          }
         } else {
           // 선택되지 않은 경우 해당 값만 저장
           state.highlightedClasses = [className];
@@ -38,6 +41,9 @@ const classHighlightSlice = createSlice({
           state.highlightedClasses = state.highlightedClasses.filter(
             (item) => item !== className
           );
+          if (state.highlightedClasses.length === 0) {
+            clearHighlightedClass();
+          }
         } else {
           state.highlightedClasses.push(className);
         }

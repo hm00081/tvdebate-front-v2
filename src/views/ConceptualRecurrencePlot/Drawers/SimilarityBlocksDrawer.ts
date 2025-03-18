@@ -354,7 +354,17 @@ export class SimilarityBlocksDrawer {
         //
         this.conceptSimilarityRectGSelection = svgSelection.append('g');
         this.unsubscribe = store.subscribe(() => {
-            this.update();
+            //@ts-ignore
+            const prevState = this._previousState || {}; 
+            const newState = store.getState();
+        
+            if (prevState.highlight !== newState.highlight || 
+                prevState.classHighLight !== newState.classHighLight ||
+                prevState.matrixFilter !== newState.matrixFilter) {
+                this.update();
+            }
+            //@ts-ignore
+            this._previousState = newState;
         });
     }
     public destroy() {
@@ -383,13 +393,15 @@ export class SimilarityBlocksDrawer {
     public update() {
         const { highlightedGroup } = store.getState().highlight;
         const { highlightedClasses } = store.getState().classHighLight;
+        const { selectedBlock } = store.getState().similarityBlockSelect;
         const { filter } = store.getState().matrixFilter;
         const [minOpacity, maxOpacity] = [filter[0]/100, filter[1]/100];
 
         this.conceptSimilarityRectGSelection.selectAll("rect").remove();
         
-        const similarityRectGSelectionDataBound = this.conceptSimilarityRectGSelection.selectAll<SVGRectElement, SimilarityBlock>('rect').data(this.similarityBlocks);
-        // console.log("Binding data to rects:", this.similarityBlocks); // 잘나옴
+        const similarityRectGSelectionDataBound = this.conceptSimilarityRectGSelection
+            .selectAll<SVGRectElement, SimilarityBlock>('rect')
+            .data(this.similarityBlocks, d => `${d.rowUtteranceIndex}-${d.columnUtteranceIndex}`);
 
         const enter = similarityRectGSelectionDataBound.enter().append('rect');
 
@@ -435,6 +447,26 @@ export class SimilarityBlocksDrawer {
             .style("opacity", function () {
                 const rowIdx = parseInt(d3.select(this).attr("rowIdx") || "-1", 10);
                 const colIdx = parseInt(d3.select(this).attr("colIdx") || "-1", 10);
+                
+                if (selectedBlock && selectedBlock.length > 1 && Array.isArray(selectedBlock[1])) {
+                    // 논쟁 마름모 선택 시, 선택된 마름모만 강조하고자 하면 이 코드 사용
+                    // if (highlightedClasses.length === 1) {
+                    //     if (selectedBlock[1][0] === rowIdx || selectedBlock[1][1] === colIdx) {
+                    //         return 1;
+                    //     }
+                    // }
+                    // if (highlightedClasses.length === 2) {
+                    //     if (selectedBlock[1][0] === rowIdx && selectedBlock[1][1] === colIdx) {
+                    //         return 1;
+                    //     }
+                    // }
+
+                    // OX 선택과 논쟁 마름모 선택 시 결과가 같다면 아래 코드 사용
+                    if (selectedBlock[1][0] === rowIdx || selectedBlock[1][1] === colIdx) {
+                        return 1;
+                    }
+                    return 0.05;
+                }
 
                 if (highlightedClasses && highlightedClasses.length > 0) {
                     const participants: Record<string, string> = {
@@ -443,16 +475,40 @@ export class SimilarityBlocksDrawer {
                         JKT: "장경태",
                         KJD: "김종대",
                     };
-    
+                
                     const rowName = d3.select(this).attr("rowName");
                     const colName = d3.select(this).attr("colName");
-    
-                    const isHighlighted = highlightedClasses.some(cls => {
-                        const participantName = participants[cls];
-                        return participantName && (rowName === participantName || colName === participantName);
-                    });
-    
-                    return isHighlighted ? maxOpacity : minOpacity;
+                
+                    // 특정 값이 포함된 경우 return 0.3
+                    if (highlightedClasses.includes("PROS") || highlightedClasses.includes("CONS")) {
+                        // return minOpacity;
+                        return 0.1;
+                    }
+                
+                    if (highlightedClasses.length === 1) {
+                        // 기존 로직 그대로 유지
+                        const isHighlighted = highlightedClasses.some(cls => {
+                            const participantName = participants[cls];
+                            return participantName && (rowName === participantName || colName === participantName);
+                        });
+                        // return isHighlighted ? maxOpacity : minOpacity;
+                        return isHighlighted ? maxOpacity : 0.05;
+                    } else if (highlightedClasses.length >= 2 && highlightedClasses.length <= 4) {
+                        // rowName과 colName이 모두 highlightedClasses에 있어야 함
+                        const highlightedNames = highlightedClasses.map(cls => participants[cls]).filter(Boolean);
+                        
+                        if (highlightedNames.includes(rowName) && highlightedNames.includes(colName)) {
+                            return maxOpacity;
+                        } else {
+                            // return minOpacity;
+                            return 0.05;
+                        }
+                    }
+                }
+
+                //@ts-ignore
+                if (!highlightedGroup || highlightedGroup.length === 0) {
+                    return maxOpacity;
                 }
 
                 //@ts-ignore

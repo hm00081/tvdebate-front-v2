@@ -52,14 +52,14 @@ export class TopicGroupsDrawer {
 
     store.subscribe(() => {
       const { highlightedGroup } = store.getState().highlight; // Redux 상태에서 highlightedGroup 추출
-      const { highlightedClasses } = store.getState().classHighLight; // ✅ 배열 형태로 변경
+      const { highlightedClasses } = store.getState().classHighLight;
       const { selectedBlock } = store.getState().similarityBlockSelect;
       
-      this.applyHighlightEffect(highlightedClasses, highlightedGroup, selectedBlock); // ✅ 수정된 값 전달
+      this.applyHighlightEffect(highlightedClasses, highlightedGroup, selectedBlock);
     
-      console.log('highlightedGroup', highlightedGroup);
-      console.log('highlightedClasses', highlightedClasses); // ✅ 배열 형태로 변경
-      console.log('selectedBlock', selectedBlock);
+      // console.log('highlightedGroup', highlightedGroup);
+      // console.log('highlightedClasses', highlightedClasses);
+      // console.log('selectedBlock', selectedBlock);
     });
     
   }
@@ -107,104 +107,15 @@ export class TopicGroupsDrawer {
   }
 
   private applyHighlightEffect(highlightedClasses: string[] | null, highlightedGroup: string | null, selectedBlock: never[] | null) {
-    /* ## 참여자 선택 ## */
-    this.topicGuideRectGSelection
-    //@ts-ignore
-      .selectAll<SVGRectElement>("rect") // 모든 rect 요소 선택
-      .each(function () {
-
-        // SimilarityBlockDrawer
-        //@ts-ignore
-        d3.selectAll<SVGRectElement>("g > rect")
-          .filter(function () {
-            //@ts-ignore
-            const rowIdx = d3.select(this).attr("rowIdx");
-            const colIdx = d3.select(this).attr("colIdx");
-            return rowIdx !== null && colIdx !== null;
-          })
-          .style("opacity", function () {
-            const participants: Record<string, string> = {
-              LJS: '이준석',
-              PHR: '박휘락',
-              JKT: '장경태',
-              KJD: '김종대',
-            };
-
-            const rowIdx = d3.select(this).attr("rowIdx");
-            const colIdx = d3.select(this).attr("colIdx");
-
-            const rowName = d3.select(this).attr("rowName");
-            const colName = d3.select(this).attr("colName");
-
-            // ✅ 선택된 블록 반영
-            if (selectedBlock && selectedBlock.length > 1 && Array.isArray(selectedBlock[1])) {
-              if (selectedBlock[1][0] === rowIdx && selectedBlock[1][1] === colIdx) {
-                return 1;
-              }
-              return 0.1;
-            }
-            
-            // ✅ 다중 선택 반영
-            if (!highlightedClasses || highlightedClasses.length === 0 || highlightedClasses.includes("PROS") || highlightedClasses.includes("CONS")) {
-              return 1; // 기본값
-            }
-
-            const selectedParticipants = highlightedClasses.filter(cls => cls in participants);
-            if (selectedParticipants.length > 0) {
-              const validNames = selectedParticipants.map(cls => participants[cls]);
-              if (validNames.includes(colName) || validNames.includes(rowName)) {
-                return 1;
-              }
-            }
-            
-            return 0.05;
-          });
-
-        // ParticipantBlockDrawer
-        //@ts-ignore
-        d3.selectAll<SVGRectElement>("g > rect")
-          .filter(function () {
-            return d3.select(this).attr("insistence") !== null;
-          })
-          .style("opacity", function () {
-            const pName = d3.select(this).attr("name");
-
-            const participants: Record<string, string> = {
-              LJS: '이준석',
-              PHR: '박휘락',
-              JKT: '장경태',
-              KJD: '김종대',
-            };
-
-            const keywords: Record<string, string[]> = {
-              PROS: ['장경태', '김종대'],
-              CONS: ['이준석', '박휘락'],
-            }
-
-            // ✅ 다중 선택 반영
-            if (!highlightedClasses || highlightedClasses.length === 0) {
-              return 1;
-            }
-
-            const selectedParticipants = highlightedClasses.filter(cls => cls in participants);
-            if (selectedParticipants.length > 0) {
-              const validNames = selectedParticipants.map(cls => participants[cls]);
-              if (validNames.includes(pName)) {
-                return 1;
-              }
-            } 
-
-            const selectedGroups = highlightedClasses.filter(cls => cls in keywords);
-            if (selectedGroups.length > 0) {
-              const validNames = selectedGroups.flatMap(group => keywords[group]);
-              if (validNames.includes(pName)) {
-                return 1;
-              }
-            }
-
-            return 0.2;
-          });
-      });
+    // const groupRanges: Record<string, { row: [number, number]; col: [number, number] }> = {
+    //   g1: { row: [0, 18], col: [0, 19] },
+    //   g2: { row: [14, 37], col: [15, 38] },
+    //   g3: { row: [23, 58], col: [24, 59] },
+    //   g4: { row: [42, 79], col: [43, 80] },
+    //   g5: { row: [72, 106], col: [73, 107] },
+    //   g6: { row: [93, 126], col: [94, 127] },
+    //   g7: { row: [145, 183], col: [146, 184] },
+    // };
 
     /* ## 그룹 선택 ## */
     this.topicGuideRectGSelection
