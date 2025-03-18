@@ -12,6 +12,9 @@ import { TranscriptViewerMethods } from '../../TranscriptViewer/TranscriptViewer
 import { styleText } from './StyleText';
 import { name, allRectData, personData, rectData, personPCData, pathsData } from './PCData';
 import store from '../../../../redux/store';
+import { setHighlightedClass, clearHighlightedClass } from '../../../../redux/reducers/classHighlightReducer';
+import { setHighlightedGroup } from '../../../../redux/reducers/highlightReducer';
+import { clearSelectedBlock, setSelectedBlock } from '../../../../redux/reducers/similarityBlockSelectReducer';
 
 interface Rect {
     type: string;
@@ -71,6 +74,22 @@ export class PlotChartDrawer {
         }
     }
 
+    private setState(block: SimilarityBlock, group: string) {
+        const nameMap: Record<string, string> = {
+            이준석: "LJS",
+            장경태: "JKT",
+            김종대: "KJD",
+            박휘락: "PHR",
+        }
+
+        store.dispatch(clearSelectedBlock());
+        store.dispatch(setSelectedBlock([[nameMap[block.colUtteranceName], nameMap[block.rowUtteranceName]], []]));
+        store.dispatch(setHighlightedGroup([group, group]));
+        store.dispatch(clearHighlightedClass());
+        store.dispatch(setHighlightedClass({ className: nameMap[block.colUtteranceName] }));
+        store.dispatch(setHighlightedClass({ className: nameMap[block.rowUtteranceName] }));
+    }
+
     public handleBarClickOne(barIndex: number) {
         const similarityBlocks = this.dataStructureSet.similarityBlockManager.similarityBlocks;
         this.d3Drawer.similarityBlocksDrawer.clearSelectedBlocks();
@@ -90,16 +109,21 @@ export class PlotChartDrawer {
                         block.columnUtteranceIndex >= 0 &&
                         block.columnUtteranceIndex <= 18;
                     if (block.columnUtteranceIndex === 12 && block.rowUtteranceIndex === 13) {
+                        this.setState(block, "g1");
                         return true;
                     }
                     break;
-                case 1: // 이준석, 장경태
+                case 1: // 이준석, 김종대
                     condition =
                         ((block.colUtteranceName === '이준석' && block.rowUtteranceName === '김종대') || (block.colUtteranceName === '김종대' && block.rowUtteranceName === '이준석')) &&
                         block.rowUtteranceIndex >= 0 &&
                         block.rowUtteranceIndex <= 18 &&
                         block.columnUtteranceIndex >= 0 &&
                         block.columnUtteranceIndex <= 18;
+                    if (block.columnUtteranceIndex === 1 && block.rowUtteranceIndex === 16) {
+                        this.setState(block, "g1");
+                        return true;
+                    }
                     break;
                 case 2: // 박휘락, 장경태
                     condition =
@@ -108,6 +132,10 @@ export class PlotChartDrawer {
                         block.rowUtteranceIndex <= 18 &&
                         block.columnUtteranceIndex >= 0 &&
                         block.columnUtteranceIndex <= 18;
+                    if (block.columnUtteranceIndex === 3 && block.rowUtteranceIndex === 5) {
+                        this.setState(block, "g1");
+                        return true;
+                    }
                     break;
                 case 3: // 박휘락, 김종대
                     condition =
@@ -116,8 +144,13 @@ export class PlotChartDrawer {
                         block.rowUtteranceIndex <= 18 &&
                         block.columnUtteranceIndex >= 0 &&
                         block.columnUtteranceIndex <= 18;
+                    if (block.columnUtteranceIndex === 1 && block.rowUtteranceIndex === 3) {
+                        this.setState(block, "g1");
+                        return true;
+                    }
                     break;
             }
+
             return isHighScore && condition;
         });
 
@@ -134,6 +167,7 @@ export class PlotChartDrawer {
         const filteredBlocks = similarityBlocks.filter((block) => {
             const argumentScore = (block.similarity * block.weight) / Math.sqrt(Math.abs(block.columnUtteranceIndex - block.rowUtteranceIndex));
             const isHighScore = argumentScore >= 0.25;
+            // console.log("block", block);    
 
             let condition = false;
             switch (barIndex) {
@@ -144,6 +178,10 @@ export class PlotChartDrawer {
                         block.rowUtteranceIndex <= 37 &&
                         block.columnUtteranceIndex >= 15 &&
                         block.columnUtteranceIndex <= 37;
+                    if (block.columnUtteranceIndex === 16 && block.rowUtteranceIndex === 31) {
+                        this.setState(block, "g2");
+                        return true;
+                    }
                     break;
 
                 case 1: // 이준석, 장경태
@@ -153,6 +191,10 @@ export class PlotChartDrawer {
                         block.rowUtteranceIndex <= 37 &&
                         block.columnUtteranceIndex >= 15 &&
                         block.columnUtteranceIndex <= 37;
+                    if (block.columnUtteranceIndex === 15 && block.rowUtteranceIndex === 16) {
+                        this.setState(block, "g2");
+                        return true;
+                    }
                     break;
                 case 2: // 박휘락, 장경태
                     condition =
@@ -161,6 +203,10 @@ export class PlotChartDrawer {
                         block.rowUtteranceIndex <= 37 &&
                         block.columnUtteranceIndex >= 15 &&
                         block.columnUtteranceIndex <= 37;
+                    if (block.columnUtteranceIndex === 18 && block.rowUtteranceIndex === 31) {
+                        this.setState(block, "g2");
+                        return true;
+                    }
                     break;
                 case 3: // 박휘락, 김종대
                     condition =
@@ -169,6 +215,10 @@ export class PlotChartDrawer {
                         block.rowUtteranceIndex <= 37 &&
                         block.columnUtteranceIndex >= 15 &&
                         block.columnUtteranceIndex <= 37;
+                    if (block.columnUtteranceIndex === 15 && block.rowUtteranceIndex === 18) {
+                        this.setState(block, "g2");
+                        return true;
+                    }
                     break;
             }
             return isHighScore && condition;
@@ -199,6 +249,10 @@ export class PlotChartDrawer {
                         block.columnUtteranceIndex >= 24 &&
                         block.columnUtteranceIndex <= 58 &&
                         !((block.columnUtteranceIndex === 28 && block.rowUtteranceIndex === 56) || (block.columnUtteranceIndex === 28 && block.rowUtteranceIndex === 58));
+                    if (block.columnUtteranceIndex === 28 && block.rowUtteranceIndex === 31) {
+                        this.setState(block, "g3");
+                        return true;
+                    }
                     break;
 
                 case 1: // 이준석, 장경태
@@ -208,6 +262,10 @@ export class PlotChartDrawer {
                         block.rowUtteranceIndex <= 58 &&
                         block.columnUtteranceIndex >= 24 &&
                         block.columnUtteranceIndex <= 58;
+                    if (block.columnUtteranceIndex === 24 && block.rowUtteranceIndex === 28) {
+                        this.setState(block, "g3");
+                        return true;
+                    }
                     break;
                 case 2: // 박휘락, 장경태
                     condition =
@@ -216,6 +274,10 @@ export class PlotChartDrawer {
                         block.rowUtteranceIndex <= 58 &&
                         block.columnUtteranceIndex >= 24 &&
                         block.columnUtteranceIndex <= 58;
+                    if (block.columnUtteranceIndex === 31 && block.rowUtteranceIndex === 35) {
+                        this.setState(block, "g3");
+                        return true;
+                    }
                     break;
                 case 3: // 박휘락, 김종대
                     condition =
@@ -224,6 +286,10 @@ export class PlotChartDrawer {
                         block.rowUtteranceIndex <= 58 &&
                         block.columnUtteranceIndex >= 24 &&
                         block.columnUtteranceIndex <= 58;
+                    if (block.columnUtteranceIndex === 24 && block.rowUtteranceIndex === 35) {
+                        this.setState(block, "g3");
+                        return true;
+                    }
                     break;
             }
             return isHighScore && condition;
@@ -253,6 +319,10 @@ export class PlotChartDrawer {
                         block.rowUtteranceIndex <= 79 &&
                         block.columnUtteranceIndex >= 43 &&
                         block.columnUtteranceIndex <= 79;
+                    if (block.columnUtteranceIndex === 43 && block.rowUtteranceIndex === 56) {
+                        this.setState(block, "g4");
+                        return true;
+                    }
                     break;
 
                 case 1: // 이준석, 장경태
@@ -267,6 +337,10 @@ export class PlotChartDrawer {
                             (block.columnUtteranceIndex === 43 && block.rowUtteranceIndex === 51) ||
                             (block.columnUtteranceIndex === 43 && block.rowUtteranceIndex === 76)
                         );
+                    if (block.columnUtteranceIndex === 76 && block.rowUtteranceIndex === 79) {
+                        this.setState(block, "g4");
+                        return true;
+                    }
                     break;
                 case 2: // 박휘락, 장경태
                     condition =
@@ -275,6 +349,10 @@ export class PlotChartDrawer {
                         block.rowUtteranceIndex <= 79 &&
                         block.columnUtteranceIndex >= 43 &&
                         block.columnUtteranceIndex <= 79;
+                    if (block.columnUtteranceIndex === 63 && block.rowUtteranceIndex === 70) {
+                        this.setState(block, "g4");
+                        return true;
+                    }
                     break;
                 case 3: // 박휘락, 김종대
                     condition =
@@ -283,6 +361,10 @@ export class PlotChartDrawer {
                         block.rowUtteranceIndex <= 79 &&
                         block.columnUtteranceIndex >= 43 &&
                         block.columnUtteranceIndex <= 79;
+                    if (block.columnUtteranceIndex === 70 && block.rowUtteranceIndex === 76) {
+                        this.setState(block, "g4");
+                        return true;
+                    }
                     break;
             }
             return isHighScore && condition;
@@ -302,7 +384,7 @@ export class PlotChartDrawer {
         const filteredBlocks = similarityBlocks.filter((block) => {
             const argumentScore = (block.similarity * block.weight) / Math.sqrt(Math.abs(block.columnUtteranceIndex - block.rowUtteranceIndex));
             const isHighScore = argumentScore >= 0.25;
-
+            // console.log("block", block);
             let condition = false;
             switch (barIndex) {
                 case 0: // 이준석, 장경태
@@ -312,6 +394,10 @@ export class PlotChartDrawer {
                         block.rowUtteranceIndex <= 106 &&
                         block.columnUtteranceIndex >= 73 &&
                         block.columnUtteranceIndex <= 106;
+                    if (block.columnUtteranceIndex === 73 && block.rowUtteranceIndex === 79) {
+                        this.setState(block, "g5");
+                        return true;
+                    }
                     break;
 
                 case 1: // 이준석, 장경태
@@ -322,6 +408,7 @@ export class PlotChartDrawer {
                         block.columnUtteranceIndex >= 73 &&
                         block.columnUtteranceIndex <= 106;
                     if ((block.columnUtteranceIndex === 80 && block.rowUtteranceIndex === 85) || (block.columnUtteranceIndex === 84 && block.rowUtteranceIndex === 85)) {
+                        this.setState(block, "g5");
                         return true;
                     }
                     break;
@@ -333,6 +420,7 @@ export class PlotChartDrawer {
                         block.columnUtteranceIndex >= 73 &&
                         block.columnUtteranceIndex <= 106;
                     if (block.columnUtteranceIndex === 94 && block.rowUtteranceIndex === 104) {
+                        this.setState(block, "g5");
                         return true;
                     }
                     break;
@@ -343,6 +431,10 @@ export class PlotChartDrawer {
                         block.rowUtteranceIndex <= 106 &&
                         block.columnUtteranceIndex >= 73 &&
                         block.columnUtteranceIndex <= 106;
+                    if (block.columnUtteranceIndex === 74 && block.rowUtteranceIndex === 76) {
+                        this.setState(block, "g5");
+                        return true;
+                    }
                     break;
             }
             return isHighScore && condition;
@@ -373,6 +465,7 @@ export class PlotChartDrawer {
                         block.columnUtteranceIndex >= 94 &&
                         block.columnUtteranceIndex <= 126;
                     if ((block.columnUtteranceIndex === 109 && block.rowUtteranceIndex === 111) || (block.columnUtteranceIndex === 111 && block.rowUtteranceIndex === 115)) {
+                        this.setState(block, "g6");
                         return true;
                     }
                     break;
@@ -385,6 +478,7 @@ export class PlotChartDrawer {
                         block.columnUtteranceIndex >= 94 &&
                         block.columnUtteranceIndex <= 126;
                     if ((block.columnUtteranceIndex === 121 && block.rowUtteranceIndex === 126) || (block.columnUtteranceIndex === 123 && block.rowUtteranceIndex === 126)) {
+                        this.setState(block, "g6");
                         return true;
                     }
                     break;
@@ -395,6 +489,10 @@ export class PlotChartDrawer {
                         block.rowUtteranceIndex <= 126 &&
                         block.columnUtteranceIndex >= 94 &&
                         block.columnUtteranceIndex <= 126;
+                    if (block.columnUtteranceIndex === 106 && block.rowUtteranceIndex === 113) {
+                        this.setState(block, "g6");
+                        return true;
+                    }
                     break;
                 case 3: // 박휘락, 김종대
                     condition =
@@ -433,6 +531,7 @@ export class PlotChartDrawer {
                         block.columnUtteranceIndex >= 146 &&
                         block.columnUtteranceIndex <= 183;
                     if (block.columnUtteranceIndex === 176 && block.rowUtteranceIndex === 178) {
+                        this.setState(block, "g7");
                         return true;
                     }
                     break;
@@ -444,6 +543,10 @@ export class PlotChartDrawer {
                         block.rowUtteranceIndex <= 183 &&
                         block.columnUtteranceIndex >= 146 &&
                         block.columnUtteranceIndex <= 183;
+                    if ((block.columnUtteranceIndex === 176 && block.rowUtteranceIndex === 182) || (block.columnUtteranceIndex === 178 && block.rowUtteranceIndex === 180)) {
+                        this.setState(block, "g7");
+                        return true;
+                    }
                     break;
                 case 2: // 박휘락, 장경태
                     condition =
@@ -453,6 +556,7 @@ export class PlotChartDrawer {
                         block.columnUtteranceIndex >= 146 &&
                         block.columnUtteranceIndex <= 183;
                     if ((block.columnUtteranceIndex === 172 && block.rowUtteranceIndex === 173) || (block.columnUtteranceIndex === 178 && block.rowUtteranceIndex === 180)) {
+                        this.setState(block, "g7");
                         return true;
                     }
                     break;
@@ -465,6 +569,7 @@ export class PlotChartDrawer {
                         block.columnUtteranceIndex >= 146 &&
                         block.columnUtteranceIndex <= 183;
                     if (block.columnUtteranceIndex === 161 && block.rowUtteranceIndex === 163) {
+                        this.setState(block, "g7");
                         return true;
                     }
                     break;
@@ -496,7 +601,7 @@ export class PlotChartDrawer {
             this.topicGuidePCGSelection
                 .selectAll('rect')
                 .filter(function (d) {
-                    console.log("d", d);
+                    // console.log("d", d);
                     //@ts-ignore
                     return (d && d.attributes && d.attributes.className) || (d && d.class);
                 })
@@ -528,7 +633,7 @@ export class PlotChartDrawer {
                     // 가로줄
                     //@ts-ignore
                     if(d && d.attributes && d.attributes.className && (d.attributes.className === "stt3" || d.attributes.className === "stt4" || d.attributes.className === "stt5" || d.attributes.className === "stt6")) {
-                        console.log("d", d);
+                        // console.log("d", d);
                         if (highlightedClasses && highlightedClasses.length > 0) {
                             if (highlightedClasses.includes("PROS") || highlightedClasses.includes("CONS")) {
                                 //@ts-ignore
@@ -741,7 +846,7 @@ export class PlotChartDrawer {
                 }
 
                 // 현재 클릭된 rect 스타일 변경
-                d3.select(event.target).style('stroke', '#fc2c34').style('stroke-width', '1.5');
+                // d3.select(event.target).style('stroke', '#fc2c34').style('stroke-width', '1.5');
 
                 // 현재 클릭된 rect를 상태 변수에 저장
                 this.previousClickedRect = event.target;
