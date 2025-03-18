@@ -160,14 +160,71 @@ export class TopicGroupsDrawer {
               KJD: { range1: [145, 155], range2: [190, 200] },
             };
 
-            if (highlightedGroup) {
-              if (Array.isArray(highlightedGroup)) {
-                return highlightedGroup.some(group => group in groupRanges) ? 1 : 0.2;
+            // 🔹 selectedBlock이 존재하면서 highlightedGroup도 있는 경우
+            //@ts-ignore
+            if (highlightedGroup && Array.isArray(selectedBlock) && selectedBlock.length > 0 && selectedBlock[0].length > 1) {
+              const selected1 = selectedBlock[0][0]; // 첫 번째 선택된 인물
+              const selected2 = selectedBlock[0][1]; // 두 번째 선택된 인물
+
+              const groupArray = Array.isArray(highlightedGroup) ? highlightedGroup : highlightedGroup ? [highlightedGroup] : [];
+
+              const isInGroup = groupArray.length > 0 && groupArray.some(group => {
+                  const range = groupRanges[group]?.range;
+                  return range && x >= range[0] && x <= range[1];
+              });
+
+              if (isInGroup) {
+                  // 🔹 selectedBlock[0][0]과 selectedBlock[0][1]이 같을 경우
+                  if (selected1 === selected2) {
+                      const participantRange = pRanges[selected1]; // 하나의 참가자 범위만 사용
+                      if (participantRange &&
+                          ((y >= participantRange.range1[0] && y <= participantRange.range1[1]) ||
+                          (y >= participantRange.range2[0] && y <= participantRange.range2[1]))) {
+                          return 1; // ✅ 그룹 범위 안에 있으면서, 참가자 범위 안에도 포함
+                      }
+                  } else {
+                      // 🔹 selectedBlock[0][0]과 selectedBlock[0][1]이 다를 경우
+                      const range1 = pRanges[selected1];
+                      const range2 = pRanges[selected2];
+
+                      if ((range1 && ((y >= range1.range1[0] && y <= range1.range1[1]) || (y >= range1.range2[0] && y <= range1.range2[1])))
+                      && (range2 && ((y >= range2.range1[0] && y <= range2.range1[1]) || (y >= range2.range2[0] && y <= range2.range2[1])))) {
+                          return 1; // ✅ 그룹 범위 & 두 참가자 범위 안에 포함
+                      }
+                  }
+
+                  return 0.2; // 🔹 그룹 범위 안에 있지만, 참가자 범위에 포함되지 않음
               }
-              return highlightedGroup in groupRanges ? 1 : 0.2;
             }
 
-            if (highlightedClasses && highlightedClasses.length > 0) {
+            if (highlightedGroup) {
+              //@ts-ignore
+              if (x === 33) {
+                  return 0.2;
+              }
+          
+              if (Array.isArray(highlightedGroup)) {
+                  const isInGroup = highlightedGroup.some(group => group in groupRanges);
+          
+                  if (isInGroup) {
+                      const isHighlighted = highlightedGroup.some(group => {
+                          const range = groupRanges[group]?.range;
+                          return range && x >= range[0] && x <= range[1];
+                      });
+          
+                      if (isHighlighted) {
+                          return 1; // Highlight the element
+                      }
+                  }
+              }
+          
+              if ((y >= 15 && y <= 20) || (y >= 38 && y <= 42) || (y >= 60 && y <= 65) || (y >= 84 && y <= 87)) {
+                  return 1;
+              }
+          } else if (highlightedClasses && highlightedClasses.length > 0) {
+              if(highlightedClasses.includes("PROS") || highlightedClasses.includes("CONS")) {
+                return 1;
+              }
               const selectedParticipants = highlightedClasses.filter(cls => cls in pRanges);
               if (selectedParticipants.length > 0) {
                 return selectedParticipants.some(cls => {
@@ -228,17 +285,17 @@ export class TopicGroupsDrawer {
 
         if (highlightedGroup) {
           if (Array.isArray(highlightedGroup)) {
-            return highlightedGroup.some(group => classRanges[group]?.includes(attClass)) ? 1 : 0.2;
+            return highlightedGroup.some(group => classRanges[group]?.includes(attClass)) ? 1 : 1;
           }
-          return classRanges[highlightedGroup]?.includes(attClass) ? 1 : 0.2;
-        }
+          return classRanges[highlightedGroup]?.includes(attClass) ? 1 : 1;
+        } 
 
         if (highlightedClasses && highlightedClasses.length > 0) {
           const validClasses = highlightedClasses.flatMap(cls => participantRange[cls] || []);
-          return validClasses.includes(attClass) ? 1 : 0.2;
+          return validClasses.includes(attClass) ? 1 : 1;
         }
 
-        return 0.2;
+        return 1;
       });
   }
 
