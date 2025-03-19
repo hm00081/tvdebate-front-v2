@@ -37,6 +37,12 @@ export default function Header({ isOpen, setIsOpen }: HeaderProps) {
   const highlightedClasses = useSelector(
     (state: RootState) => state.classHighLight.highlightedClasses || []
   );
+  const highlightedGroup = useSelector(
+    (state: RootState) => state.highlight.highlightedGroup || []
+  );
+  const selectedBlock = useSelector(
+    (state: RootState) => state.similarityBlockSelect.selectedBlock || []
+  );
 
   useEffect(() => {
     console.log("Redux State:", store.getState());
@@ -103,8 +109,9 @@ export default function Header({ isOpen, setIsOpen }: HeaderProps) {
               <div
                 key={id}
                 className={`${style.pkSpace} ${
-                  highlightedClasses.length === 0 || highlightedClasses.includes(id) 
-                    ? style.selected 
+                  (highlightedGroup.length > 0 || selectedBlock.length > 0) ||
+                  (highlightedClasses.length === 0 || highlightedClasses.includes(id))
+                    ? style.selected
                     : style.grayscale
                 }`}
               >
@@ -120,8 +127,17 @@ export default function Header({ isOpen, setIsOpen }: HeaderProps) {
                 <div className={style.pkName}>{name}</div>
               </div>
             ))}
-            <div className={`${style.pkSpace} ${highlightedClasses.length > 0 ? style.grayscale : ""}`}>
-              <div className={`${style.pkImage} ${highlightedClasses.length > 0 ? style.grayscale : ""}`}>
+            <div className={`${style.pkSpace} ${
+              (highlightedClasses.length > 0 && highlightedGroup.length === 0 && selectedBlock.length === 0)
+                ? style.grayscale
+                : ""
+            }`}
+            >
+              <div className={`${style.pkImage} ${
+                (highlightedClasses.length > 0 && highlightedGroup.length === 0 && selectedBlock.length === 0)
+                  ? style.grayscale
+                  : ""
+              }`}>
                 <img src={JHJ} alt="JHJ" width="35" height="35" />
               </div>
               <div className={style.pkName}>진행자</div>
@@ -139,8 +155,9 @@ export default function Header({ isOpen, setIsOpen }: HeaderProps) {
               <div
                 key={id}
                 className={`${style.pkSpace} ${
-                  highlightedClasses.length === 0 || highlightedClasses.includes(id) 
-                    ? style.selected 
+                  (highlightedGroup.length > 0 || selectedBlock.length > 0) ||
+                  (highlightedClasses.length === 0 || highlightedClasses.includes(id))
+                    ? style.selected
                     : style.grayscale
                 }`}
               >
