@@ -244,10 +244,18 @@ export class CP3Drawer extends CPDrawer {
                     return 1;
                 }
 
-                //@ts-ignore
-                if (Array.isArray(selectedBlock) && selectedBlock[1]?.length === 0 && Array.isArray(highlightedGroup) && highlightedGroup.includes("g3")) {
+                if(Array.isArray(selectedBlock) && selectedBlock.length > 1){
                     //@ts-ignore
-                    if (highlightedClasses.includes(stParticipants[d.className])) {
+                    if (selectedBlock[1]?.length === 0 && Array.isArray(highlightedGroup) && highlightedGroup.includes("g3")) {
+                        //@ts-ignore
+                        if (highlightedClasses.includes(stParticipants[d.className])) {
+                            return 1;
+                        }
+                        return 0.3;
+                    }
+
+                    //@ts-ignore
+                    if (selectedBlock[1][0] === d.scriptIndex || selectedBlock[1][1] === d.scriptIndex) {
                         return 1;
                     }
                     return 0.3;
