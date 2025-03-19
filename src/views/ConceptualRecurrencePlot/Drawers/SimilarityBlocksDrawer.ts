@@ -447,8 +447,35 @@ export class SimilarityBlocksDrawer {
             .style("opacity", function () {
                 const rowIdx = parseInt(d3.select(this).attr("rowIdx") || "-1", 10);
                 const colIdx = parseInt(d3.select(this).attr("colIdx") || "-1", 10);
+                const rowName = d3.select(this).attr("rowName");
+                const colName = d3.select(this).attr("colName");
+
+                const participants: Record<string, string> = {
+                    LJS: "이준석",
+                    PHR: "박휘락",
+                    JKT: "장경태",
+                    KJD: "김종대",
+                };
+            
                 
                 if (selectedBlock && selectedBlock.length > 1 && Array.isArray(selectedBlock[1])) {
+                    //@ts-ignore
+                    if(selectedBlock[1].length === 0) {
+                        const highlightedNames = highlightedClasses.map(cls => participants[cls]).filter(Boolean);
+                        
+                        if (highlightedNames.includes(rowName) && highlightedNames.includes(colName)) {
+                            //@ts-ignore
+                            if(groupRanges[highlightedGroup[0]].row[0] <= rowIdx && groupRanges[highlightedGroup[0]].row[1] >= rowIdx && groupRanges[highlightedGroup[1]].col[0] <= colIdx && groupRanges[highlightedGroup[1]].col[1] >= colIdx) {
+                                return maxOpacity;
+                            } else {
+                                return 0.05;
+                            }
+                        } else {
+                            // return minOpacity;
+                            return 0.05;
+                        }
+                    }
+
                     // 논쟁 마름모 선택 시, 선택된 마름모만 강조하고자 하면 이 코드 사용
                     // if (highlightedClasses.length === 1) {
                     //     if (selectedBlock[1][0] === rowIdx || selectedBlock[1][1] === colIdx) {
@@ -465,20 +492,10 @@ export class SimilarityBlocksDrawer {
                     if (selectedBlock[1][0] === rowIdx || selectedBlock[1][1] === colIdx) {
                         return 1;
                     }
-                    return 0.05;
+                    return 0.01;
                 }
 
                 if (highlightedClasses && highlightedClasses.length > 0) {
-                    const participants: Record<string, string> = {
-                        LJS: "이준석",
-                        PHR: "박휘락",
-                        JKT: "장경태",
-                        KJD: "김종대",
-                    };
-                
-                    const rowName = d3.select(this).attr("rowName");
-                    const colName = d3.select(this).attr("colName");
-                
                     // 특정 값이 포함된 경우 return 0.3
                     if (highlightedClasses.includes("PROS") || highlightedClasses.includes("CONS")) {
                         // return minOpacity;

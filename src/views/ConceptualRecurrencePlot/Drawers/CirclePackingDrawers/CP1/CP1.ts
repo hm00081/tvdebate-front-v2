@@ -242,6 +242,15 @@ export class CP1Drawer extends CPDrawer {
                     return 1;
                 }
 
+                //@ts-ignore
+                if (Array.isArray(selectedBlock) && selectedBlock[1]?.length === 0 && Array.isArray(highlightedGroup) && highlightedGroup.includes("g1")) {
+                    //@ts-ignore
+                    if (highlightedClasses.includes(stParticipants[d.className])) {
+                        return 1;
+                    }
+                    return 0.3;
+                }
+
                 // 2. 선택된 블록이 없을 경우 기본 로직 처리
                 if (selectedBlock.length === 0) {
                     // (1) 특정 클래스가 강조된 경우
@@ -371,17 +380,28 @@ export class CP1Drawer extends CPDrawer {
                         
                             // 🔹 `selectedBlock`이 유효한지 확인 후 비교
                             //@ts-ignore
-                            if (Array.isArray(selectedBlock) && selectedBlock.length > 1 && Array.isArray(selectedBlock[1]) && selectedBlock[1].length > 1) {
-                                if (Array.isArray(selectedBlock) && selectedBlock.length > 1 && Array.isArray(selectedBlock[1])) {
-                                    //@ts-ignore
-                                    if (selectedBlock[1].length > 1 && 
-                                        (selectedBlock[1][0] === element.onClick || selectedBlock[1][1] === element.onClick)) {
+                            if (Array.isArray(selectedBlock) && selectedBlock.length > 1) {
+                                //@ts-ignore
+                                if(Array.isArray(selectedBlock[1]) && selectedBlock[1].length === 0 && highlightedGroup.includes("g1")){
+                                    if (highlightedClasses.includes(element.className)) {
                                         return 1;
+                                    }
+                                    return 0.3;
+                                }
+
+                                //@ts-ignore
+                                if(Array.isArray(selectedBlock[1]) && selectedBlock[1].length > 1){
+                                    if (Array.isArray(selectedBlock) && selectedBlock.length > 1 && Array.isArray(selectedBlock[1])) {
+                                        //@ts-ignore
+                                        if (selectedBlock[1].length > 1 && 
+                                            (selectedBlock[1][0] === element.onClick || selectedBlock[1][1] === element.onClick)) {
+                                            return 1;
+                                        }
                                     }
                                 }
                                 return 0.3;
                             }
-                        
+
                             // 🔹 `highlightedGroup`이 배열이면 `includes("g1")`로 체크
                             if (Array.isArray(highlightedGroup)) {
                                 //@ts-ignore
@@ -460,12 +480,23 @@ export class CP1Drawer extends CPDrawer {
                         
                             // 🔹 selectedBlock이 배열인지 확인 후 비교
                             //@ts-ignore
-                            if (Array.isArray(selectedBlock) && selectedBlock.length > 1 && Array.isArray(selectedBlock[1]) && selectedBlock[1].length > 1) {
-                                if (Array.isArray(selectedBlock) && selectedBlock.length > 1 && Array.isArray(selectedBlock[1])) {
-                                    //@ts-ignore
-                                    if (selectedBlock[1].length > 1 && 
-                                        (selectedBlock[1][0] === element.onClick || selectedBlock[1][1] === element.onClick)) {
+                            if (Array.isArray(selectedBlock) && selectedBlock.length > 1) {
+                                //@ts-ignore
+                                if(Array.isArray(selectedBlock[1]) && selectedBlock[1].length === 0 && highlightedGroup.includes("g1")){
+                                    if (highlightedClasses.includes(element.className)) {
                                         return 1;
+                                    }
+                                    return 0.3;
+                                }
+
+                                //@ts-ignore
+                                if(Array.isArray(selectedBlock[1]) && selectedBlock[1].length > 1){
+                                    if (Array.isArray(selectedBlock) && selectedBlock.length > 1 && Array.isArray(selectedBlock[1])) {
+                                        //@ts-ignore
+                                        if (selectedBlock[1].length > 1 && 
+                                            (selectedBlock[1][0] === element.onClick || selectedBlock[1][1] === element.onClick)) {
+                                            return 1;
+                                        }
                                     }
                                 }
                                 return 0.3;
