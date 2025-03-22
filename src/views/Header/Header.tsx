@@ -1,11 +1,12 @@
 import style from "./Header.module.scss";
 import React, { useState, useEffect } from "react";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../../redux/store"; 
 import store from '../../redux/store';
 import { setHighlightedClass, clearHighlightedClass } from '../../redux/reducers/classHighlightReducer';
 import { clearHighlightedGroup } from '../../redux/reducers/highlightReducer';
 import { clearSelectedBlock } from "../../redux/reducers/similarityBlockSelectReducer";
+import { updateFilter } from "../../redux/reducers/matrixFilterReducer";
 import { D3Drawer } from "../ConceptualRecurrencePlot/Drawers/D3Drawer";
 import LJS from "./image/LJS.svg";
 import PHR from "./image/PHR.svg";
@@ -33,9 +34,11 @@ interface HeaderProps {
 }
 
 export default function Header({ isOpen, setIsOpen }: HeaderProps) {
+  const [isScriptVisible, setIsScriptVisible] = useState(true);
+  const [tempRange, setTempRange] = useState<[number, number]>([0, 100]);
   const [range, setRange] = useState<[number, number]>([0, 100]);
   const sliderMarks = [0, 25, 50, 75, 100];
-  const [isScriptVisible, setIsScriptVisible] = useState(true);
+  const dispatch = useDispatch();
   const highlightedClasses = useSelector(
     (state: RootState) => state.classHighLight.highlightedClasses || []
   );
@@ -45,6 +48,11 @@ export default function Header({ isOpen, setIsOpen }: HeaderProps) {
   const selectedBlock = useSelector(
     (state: RootState) => state.similarityBlockSelect.selectedBlock || []
   );
+  const matrixFilter = useSelector((state: RootState) => state.matrixFilter.filter);
+
+  useEffect(() => {
+    console.log("matrixFilter changed:", matrixFilter);
+  }, [matrixFilter]);
 
   useEffect(() => {
     console.log("Redux State:", store.getState());
@@ -194,10 +202,16 @@ export default function Header({ isOpen, setIsOpen }: HeaderProps) {
                 min="0"
                 max="100"
                 step="25"
-                value={range[0]}
+                value={tempRange[0]}
                 onChange={(e) =>
-                  setRange([Math.min(Number(e.target.value), range[1]), range[1]])
+                  setTempRange([Math.min(Number(e.target.value), tempRange[1]), tempRange[1]])
                 }
+                onMouseUp={() => {
+                  const updated = [Math.min(tempRange[0], tempRange[1]), Math.max(tempRange[0], tempRange[1])] as [number, number];
+                  setRange(updated);
+                  dispatch(updateFilter(updated));
+                  console.log("Updated filter:", updated);
+                }}
                 className={`${style.customSlider} ${style.thumbLeft}`}
               />
 
@@ -206,10 +220,16 @@ export default function Header({ isOpen, setIsOpen }: HeaderProps) {
                 min="0"
                 max="100"
                 step="25"
-                value={range[1]}
+                value={tempRange[1]}
                 onChange={(e) =>
-                  setRange([range[0], Math.max(Number(e.target.value), range[0])])
+                  setTempRange([tempRange[0], Math.max(Number(e.target.value), tempRange[0])])
                 }
+                onMouseUp={() => {
+                  const updated = [Math.min(tempRange[0], tempRange[1]), Math.max(tempRange[0], tempRange[1])] as [number, number];
+                  setRange(updated);
+                  dispatch(updateFilter(updated));
+                  console.log("Updated filter:", updated);
+                }}
                 className={`${style.customSlider} ${style.thumbRight}`}
               />
 
