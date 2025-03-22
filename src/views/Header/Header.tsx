@@ -33,6 +33,8 @@ interface HeaderProps {
 }
 
 export default function Header({ isOpen, setIsOpen }: HeaderProps) {
+  const [range, setRange] = useState<[number, number]>([0, 100]);
+  const sliderMarks = [0, 25, 50, 75, 100];
   const [isScriptVisible, setIsScriptVisible] = useState(true);
   const highlightedClasses = useSelector(
     (state: RootState) => state.classHighLight.highlightedClasses || []
@@ -182,7 +184,64 @@ export default function Header({ isOpen, setIsOpen }: HeaderProps) {
             Frequency of Debate
           </div>
           <div className={style.slider}>
+            <div className={style.customSliderWrapper}>
+              {/* 그라데이션 바 */}
+              <div className={style.sliderRange} />
 
+              {/* 핸들 */}
+              <input
+                type="range"
+                min="0"
+                max="100"
+                step="25"
+                value={range[0]}
+                onChange={(e) =>
+                  setRange([Math.min(Number(e.target.value), range[1]), range[1]])
+                }
+                className={`${style.customSlider} ${style.thumbLeft}`}
+              />
+
+              <input
+                type="range"
+                min="0"
+                max="100"
+                step="25"
+                value={range[1]}
+                onChange={(e) =>
+                  setRange([range[0], Math.max(Number(e.target.value), range[0])])
+                }
+                className={`${style.customSlider} ${style.thumbRight}`}
+              />
+
+              {/* 마커 + 삼각형 포인터 */}
+              <div className={style.sliderMarks}>
+                {sliderMarks.map((mark) => {
+                  const isSelected = mark === range[0] || mark === range[1];
+                  return (
+                    <div
+                      key={mark}
+                      className={style.sliderMark}
+                      style={{ left: `${mark}%` }}
+                      onClick={() => {
+                        const middle = (range[0] + range[1]) / 2;
+                        // 가까운 쪽의 핸들을 이동
+                        if (Math.abs(mark - range[0]) < Math.abs(mark - range[1])) {
+                          setRange([mark, range[1]]);
+                        } else {
+                          setRange([range[0], mark]);
+                        }
+                      }}
+                    >
+                      {isSelected && <div className={style.triangle} />}
+                      <div
+                        className={`${style.markCircle} ${isSelected ? style.active : ""}`}
+                      />
+                      <div className={style.markLabel}>{mark}</div>
+                    </div>
+                  );
+                })}
+              </div>
+            </div>
           </div>
         </div>
 
