@@ -38,7 +38,7 @@ export class ParticipantBlocksDrawer {
     this.utteranceObjectsForDrawing.sort((a, b) => {
       return a.findDisagreeScale - b.findDisagreeScale;
     });
-    console.log("After sorting: ", this.utteranceObjectsForDrawing);
+    // console.log("After sorting: ", this.utteranceObjectsForDrawing);
     this.update();
   }
 
@@ -59,14 +59,42 @@ export class ParticipantBlocksDrawer {
     svgSelection: d3.Selection<SVGGElement, MouseEvent, HTMLElement, any>
   ) {
     this.participantRectGSlection = svgSelection.append("g");
+    store.subscribe(() => {
+      this.update();
+    });
   }
 
   public update() {
-    //@ts-ignore
-    const participantRectGSlectionDataBound = this.participantRectGSlection
+    const storeState = store.getState();
+    const highlightedClasses = storeState.classHighLight.highlightedClasses;
+    const selectedBlock = storeState.similarityBlockSelect.selectedBlock;
+    const highlightedGroup = storeState.highlight.highlightedGroup;
+  
+    const participants: Record<string, string> = {
+      LJS: '이준석',
+      PHR: '박휘락',
+      JKT: '장경태',
+      KJD: '김종대',
+    };
+  
+    const keywords: Record<string, string[]> = {
+      PROS: ["장경태", "김종대"],
+      CONS: ["이준석", "박휘락"],
+    };
+  
+    const groupRanges: Record<string, [number, number]> = {
+      g1: [0, 108],
+      g2: [84, 206],
+      g3: [132, 280],
+      g4: [229, 366],
+      g5: [324, 470],
+      g6: [427, 549],
+      g7: [604, 758],
+    };
+  
+    const selection = this.participantRectGSlection
       .selectAll<SVGRectElement, UtteranceObjectForDrawing>("rect")
-      //@ts-ignore
-      .data(this.utteranceObjectsForDrawing, (d) => d)
+      .data(this.utteranceObjectsForDrawing, (d: any) => d)
       .join(
         (enter) => {
           const newEnter = enter.append("rect");
@@ -89,14 +117,76 @@ export class ParticipantBlocksDrawer {
         },
         (exit) => exit.remove()
       );
-    // console.log('ParticipantBlockDrawer update');
-    this.setAttributes(
-      participantRectGSlectionDataBound,
-      this.participantDict,
-      this.conceptMatrixTransposed,
-      this.keytermObjects
-    );
-  }
+  
+    // ✅ opacity 처리: store 상태 기준
+    selection
+      .style("opacity", function (d: any) {
+        const pName = d3.select(this).attr("name");
+        const x = parseInt(d3.select(this).attr("x") || "0", 10);
+  
+        const selectedParticipants = highlightedClasses.filter(cls => cls in participants);
+        const selectedGroups = highlightedClasses.filter(cls => cls in keywords);
+  
+        if (selectedBlock && selectedBlock.length > 0) {
+          //@ts-ignore
+          if (selectedBlock[1].length === 0) {
+            if (selectedParticipants.length > 0) {
+              const validNames = selectedParticipants.map(cls => participants[cls]);
+              if (validNames.includes(pName)) {
+                //@ts-ignore
+                if (x >= groupRanges[highlightedGroup[0]][0] && x <= groupRanges[highlightedGroup[0]][1]) {
+                  return 1;
+                } else {
+                  return 0.2;
+                }
+              }
+            }
+            return 0.2;
+          }
+  
+          //@ts-ignore
+          if (Array.isArray(selectedBlock[1]) && selectedBlock[1].includes(d.index)) {
+            return 1;
+          } else {
+            return 0.1;
+          }
+        }
+
+        //@ts-ignore
+        if (highlightedGroup && Array.isArray(highlightedGroup) && highlightedGroup.length > 0) {
+          //@ts-ignore
+          const isHighlighted = highlightedGroup.some(group => {
+            const rangeEntry = groupRanges[group];
+            if (!rangeEntry) return false;
+            const [start, end] = rangeEntry;
+            return x >= start && x <= end;
+          });
+          return isHighlighted ? 1 : 0.2;
+        }
+  
+        if (!highlightedClasses || highlightedClasses.length === 0) {
+          return 1;
+        }
+  
+        if (selectedParticipants.length > 0) {
+          const validNames = selectedParticipants.map(cls => participants[cls]);
+          if (validNames.includes(pName)) {
+            return 1;
+          }
+        }
+  
+        if (selectedGroups.length > 0) {
+          const validNames = selectedGroups.flatMap(group => keywords[group]);
+          if (validNames.includes(pName)) {
+            return 1;
+          }
+        }
+  
+        
+  
+        return 0.2;
+      });
+    }
 
   private setAttributes(
     this: ParticipantBlocksDrawer,
@@ -109,93 +199,7 @@ export class ParticipantBlocksDrawer {
     participantDict: { [participant: string]: Participant },
     conceptMatrixTransposed: number[][],
     keytermObjects: KeytermObject[]
-  ) {
-      store.subscribe(() => {
-        const storeState = store.getState();
-        const highlightedClasses = storeState.classHighLight.highlightedClasses;
-        const selectedBlock = storeState.similarityBlockSelect.selectedBlock;
-        const highlightedGroup = storeState.highlight.highlightedGroup;
-
-        // D3 opacity 다시 설정
-        d3.selectAll("g > rect")
-          .filter(function () {
-            return d3.select(this).attr("insistence") !== null;
-          })
-          .style("opacity", function (d) {
-            const pName = d3.select(this).attr("name");
-            const x = parseInt(d3.select(this).attr("x") || "0", 10);
-    
-            const participants: Record<string, string> = {
-              LJS: '이준석',
-              PHR: '박휘락',
-              JKT: '장경태',
-              KJD: '김종대',
-            };
-    
-            const keywords: Record<string, string[]> = {
-              PROS: ["장경태", "김종대"],
-              CONS: ["이준석", "박휘락"],
-            };
-
-            const groupRanges: Record<string, [number, number] > = {
-              g1: [0, 108],
-              g2: [84, 206],
-              g3: [132, 280],
-              g4: [229, 366],
-              g5: [324, 470],
-              g6: [427, 549],
-              g7: [604, 758],
-          };
-
-            const selectedParticipants = highlightedClasses.filter(cls => cls in participants);
-            const selectedGroups = highlightedClasses.filter(cls => cls in keywords);
-
-            if (selectedBlock && selectedBlock.length > 0) {
-              //@ts-ignore
-              if(selectedBlock[1].length === 0) {
-                if (selectedParticipants.length > 0) {
-                  const validNames = selectedParticipants.map(cls => participants[cls]);
-                  if (validNames.includes(pName)) {
-                    //@ts-ignore
-                    if(x >= groupRanges[highlightedGroup[0]][0] && x <= groupRanges[highlightedGroup[0]][1]){
-                      return 1;
-                    } else {
-                      return 0.2;
-                    }
-                  }
-                }
-                return 0.2;
-              }
-              //@ts-ignore
-              if (Array.isArray(selectedBlock[1]) && selectedBlock[1].includes(d.index)) {
-                return 1;
-              } else {
-                return 0.1;
-              }
-            }
-    
-            if (!highlightedClasses || highlightedClasses.length === 0) {
-              return 1;
-            }
-    
-            if (selectedParticipants.length > 0) {
-              const validNames = selectedParticipants.map(cls => participants[cls]);
-              if (validNames.includes(pName)) {
-                return 1;
-              }
-            }
-    
-            if (selectedGroups.length > 0) {
-              const validNames = selectedGroups.flatMap(group => keywords[group]);
-              if (validNames.includes(pName)) {
-                return 1;
-              }
-            }
-    
-            return 0.2;
-          });
-    });
-  
+  ) {  
     selection // utterance_objects 데이터 적용
       // .transition()
       // .duration(750)
@@ -228,15 +232,15 @@ export class ParticipantBlocksDrawer {
             CONS: ["이준석", "박휘락"],
         };
         
-        const groupRanges: Record<string, { range: [number, number] }> = {
-          g1: { range: [0, 108] },
-          g2: { range: [84, 206] },
-          g3: { range: [132, 280] },
-          g4: { range: [229, 366] },
-          g5: { range: [324, 470] },
-          g6: { range: [427, 549] },
-          g7: { range: [604, 758] },
-      };
+        const groupRanges: Record<string, [number, number]> = {
+          g1: [0, 108],
+          g2: [84, 206],
+          g3: [132, 280],
+          g4: [229, 366],
+          g5: [324, 470],
+          g6: [427, 549],
+          g7: [604, 758],
+        };
     
         const rowName = d3.select(this).attr("rowName");
         const colName = d3.select(this).attr("colName");
@@ -283,21 +287,17 @@ export class ParticipantBlocksDrawer {
         }
     
         // ✅ 4. 특정 그룹이 강조된 경우 → 범위 내에 있는 블록만 강조
-        if (highlightedGroup && Array.isArray(highlightedGroup)) {
+        //@ts-ignore
+        if (Array.isArray(highlightedGroup) && highlightedGroup.length > 0) {
           //@ts-ignore
-          const isHighlighted = highlightedGroup.some(group => {
-              if (group in groupRanges) {
-                  const { range } = groupRanges[group];
-                  return x >= range[0] && x <= range[1];
-              }
-              return false;
+          const isHighlighted = highlightedGroup.some((group: string) => {
+            const rangeEntry = groupRanges[group];
+            if (!rangeEntry) return false;
+            const [start, end] = rangeEntry;
+            return x >= start && x <= end;
           });
-  
-          if (isHighlighted) {
-              return 1;
-          } else {
-              return 0.2;
-          }
+        
+          return isHighlighted ? 1 : 0.2;
         }
     
         // ✅ 5. 기본값 → 나머지는 희미하게 처리

@@ -617,7 +617,7 @@ export class SimilarityBlocksDrawer {
     setMultipleBlockIndices(indices: [number, number][]) {
         this._selectedBlockIndices = [...this._selectedBlockIndices, ...indices];
 
-        console.log(this._selectedBlockIndices);
+        // console.log(this._selectedBlockIndices);
         // this.updateSelectedBlock();
     }
 
@@ -676,9 +676,9 @@ export class SimilarityBlocksDrawer {
                   store.dispatch(clearHighlightedClass());
                   store.dispatch(setHighlightedClass({ className: participant1 }));
                   store.dispatch(setHighlightedClass({ className: participant2 }));
-                  console.log("Update");
-                  console.log(participant1, participant2)
-                  console.log([d.rowUtteranceName, d.colUtteranceName, d.rowUtteranceIndex, d.columnUtteranceIndex]);
+                //   console.log("Update");
+                //   console.log(participant1, participant2)
+                //   console.log([d.rowUtteranceName, d.colUtteranceName, d.rowUtteranceIndex, d.columnUtteranceIndex]);
                 }
                 
                 return this._selectedBlockIndices.some(

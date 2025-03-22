@@ -127,7 +127,7 @@ export class CPDrawer {
     index: number,
     event: React.MouseEvent<SVGPathElement, MouseEvent>
   ) {
-    console.log('handleClick', index, event);
+    // console.log('handleClick', index, event);
     if(!index){
       if(index !== 0)
         return;
@@ -157,7 +157,7 @@ export class CPDrawer {
 
     const utterance = this.dataStructureSet.utteranceObjectsForDrawingManager
       .utteranceObjectsForDrawing[index];
-    console.log("utterance", utterance); 
+    // console.log("utterance", utterance); 
     const compoundTerms = this.countCompoundTerms(utterance.sentenceObjects);
     const topTerms = this.getTopCompoundTerms(compoundTerms, 30);
 
@@ -181,7 +181,7 @@ export class CPDrawer {
     let groupIds: string[] = [];
 
     for (const [key, range] of Object.entries(groupRange)) {
-      console.log("Key:", key, ", Range:", range, ", Index:", index);
+      // console.log("Key:", key, ", Range:", range, ", Index:", index);
       if (
         index >= range[0] &&
         index <= range[1]
@@ -189,12 +189,12 @@ export class CPDrawer {
         groupIds.push(key);  // 매칭되는 모든 그룹의 키 저장
       }
     }
-    console.log("GroupIds", groupIds);
+    // console.log("GroupIds", groupIds);
 
     const target = event.target as HTMLElement; // EventTarget → HTMLElement로 변환
     const className = target.getAttribute("class"); // 클래스 가져오기
     const prefix = className ? className.split(" ")[0] : "";
-    console.log(prefix);
+    // console.log(prefix);
     
     store.dispatch(setSelectedBlock([[prefix, prefix], [index, index]]));
     if(groupIds.length === 1) {

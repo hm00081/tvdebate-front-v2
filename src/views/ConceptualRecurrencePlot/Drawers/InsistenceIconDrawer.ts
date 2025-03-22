@@ -73,7 +73,7 @@ export class InsistenceIconDrawer {
         colUtteranceObject.name === "장경태" ||
         colUtteranceObject.name === "김종대"
       ) {
-        console.log(this.insistenceIconGSlection);
+        // console.log(this.insistenceIconGSlection);
         // Draw Agree Icon
         const iconXOffset = 7; // 원하는 고정된 X 오프셋 값을 설정
         const iconYOffset = -8; // 원하는 고정된 Y 오프셋 값을 설정

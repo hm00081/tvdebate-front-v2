@@ -6,7 +6,7 @@ import store from '../../redux/store';
 import { setHighlightedClass, clearHighlightedClass } from '../../redux/reducers/classHighlightReducer';
 import { clearHighlightedGroup } from '../../redux/reducers/highlightReducer';
 import { clearSelectedBlock } from "../../redux/reducers/similarityBlockSelectReducer";
-import { updateFilter } from "../../redux/reducers/matrixFilterReducer";
+import { updateFilter, clearFilter } from "../../redux/reducers/matrixFilterReducer";
 import { D3Drawer } from "../ConceptualRecurrencePlot/Drawers/D3Drawer";
 import LJS from "./image/LJS.svg";
 import PHR from "./image/PHR.svg";
@@ -39,6 +39,7 @@ export default function Header({ isOpen, setIsOpen }: HeaderProps) {
   const [range, setRange] = useState<[number, number]>([0, 100]);
   const sliderMarks = [0, 25, 50, 75, 100];
   const dispatch = useDispatch();
+  const matrixFilter = useSelector((state: RootState) => state.matrixFilter.filter);
   const highlightedClasses = useSelector(
     (state: RootState) => state.classHighLight.highlightedClasses || []
   );
@@ -48,15 +49,13 @@ export default function Header({ isOpen, setIsOpen }: HeaderProps) {
   const selectedBlock = useSelector(
     (state: RootState) => state.similarityBlockSelect.selectedBlock || []
   );
-  const matrixFilter = useSelector((state: RootState) => state.matrixFilter.filter);
 
   useEffect(() => {
-    console.log("matrixFilter changed:", matrixFilter);
+    //@ts-ignore
+    setRange(matrixFilter);
+    //@ts-ignore
+    setTempRange(matrixFilter);
   }, [matrixFilter]);
-
-  useEffect(() => {
-    console.log("Redux State:", store.getState());
-  }, []);
 
   useEffect(() => {
     setIsScriptVisible(isOpen);
@@ -72,8 +71,9 @@ export default function Header({ isOpen, setIsOpen }: HeaderProps) {
       store.dispatch(clearSelectedBlock());
       store.dispatch(clearHighlightedClass());
       store.dispatch(clearHighlightedGroup());
+      store.dispatch(clearFilter());
     } else {
-      console.warn("No D3Drawer instances found!");
+      // console.warn("No D3Drawer instances found!");
     }
   };
 
@@ -85,7 +85,7 @@ export default function Header({ isOpen, setIsOpen }: HeaderProps) {
     store.dispatch(clearHighlightedGroup());
     store.dispatch(clearSelectedBlock());
     store.dispatch(setHighlightedClass({ className }));
-    console.log("highlightedClasses after update:", store.getState().classHighLight.highlightedClasses);
+    // console.log("highlightedClasses after update:", store.getState().classHighLight.highlightedClasses);
   };
   
 
@@ -210,7 +210,7 @@ export default function Header({ isOpen, setIsOpen }: HeaderProps) {
                   const updated = [Math.min(tempRange[0], tempRange[1]), Math.max(tempRange[0], tempRange[1])] as [number, number];
                   setRange(updated);
                   dispatch(updateFilter(updated));
-                  console.log("Updated filter:", updated);
+                  // console.log("Updated filter:", updated);
                 }}
                 className={`${style.customSlider} ${style.thumbLeft}`}
               />
@@ -228,7 +228,7 @@ export default function Header({ isOpen, setIsOpen }: HeaderProps) {
                   const updated = [Math.min(tempRange[0], tempRange[1]), Math.max(tempRange[0], tempRange[1])] as [number, number];
                   setRange(updated);
                   dispatch(updateFilter(updated));
-                  console.log("Updated filter:", updated);
+                  // console.log("Updated filter:", updated);
                 }}
                 className={`${style.customSlider} ${style.thumbRight}`}
               />
