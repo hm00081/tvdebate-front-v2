@@ -75,23 +75,8 @@ export class D3Drawer {
   private readonly svgWidth: number;
   private readonly svgHeight: number;
   private _zoomListener: ((transform: d3.ZoomTransform) => void) | null = null;
-  private initialTransform: d3.ZoomTransform = d3.zoomIdentity.translate(260, -90).scale(0.95);
-  public setupZoom(): void {
-    const zoom = d3
-      .zoom<SVGSVGElement, any>()
-      .scaleExtent([0.8, 2.5])
-      .on("zoom", (event) => {
-        if (this._zoomListener) {
-          this._zoomListener(event.transform);
-        }
-      });
-
-    if (!this.svgSelection) {
-      console.error("svgSelection is not defined");
-      return;
-    }
-    this.svgSelection.call(zoom);
-  }
+  private initialTransform: d3.ZoomTransform = d3.zoomIdentity.translate(0, 0).scale(1);
+  
 
   setupClickListener(
     transcriptViewerRef: React.RefObject<TranscriptViewerMethods>
@@ -166,20 +151,62 @@ export class D3Drawer {
       console.error("svgSelection is not defined");
       return;
     }
-
+  
     this.svgSelection.transition().duration(750).call(
       //@ts-ignore
       d3.zoom<SVGSVGElement, any>().transform,
       this.initialTransform
     );
-
+  
     this.svgGSelection.attr("transform", this.initialTransform.toString());
-
+  
     if (this._zoomListener) {
       this._zoomListener(this.initialTransform);
     }
   }
 
+  private updateInitialTransform() {
+    const rect = this.svgGSelection.node()?.getBoundingClientRect();
+    if (!rect) return;
+  
+    const scaleFactor = Math.SQRT2 / 2;
+    const adjustedWidth = rect.width * scaleFactor;
+    const adjustedHeight = rect.height * scaleFactor;
+  
+    const container = document.querySelector(".concept-recurrence-plot");
+    if (!container) return;
+    const containerRect = container.getBoundingClientRect();
+    const containerWidth = containerRect.width - 330;
+    const containerHeight = containerRect.height - 60;
+  
+    const scaleX = containerWidth / adjustedWidth;
+    const scaleY = containerHeight / adjustedHeight;
+    const scale = Math.min(scaleX, scaleY, 2.5);
+  
+    const translateX = (containerWidth - adjustedWidth * scale) / 2;
+    const translateY = (containerHeight - adjustedHeight * scale) / 2;
+  
+    console.log("scale:", scale, "translateX:", translateX, "translateY:", translateY);
+  
+    this.initialTransform = d3.zoomIdentity.translate(translateX, translateY).scale(scale);
+  
+    this.svgGSelection.attr(
+      "transform",
+      `translate(${translateX * scaleFactor}, ${translateY * scaleFactor}) scale(${scale})`
+    );
+  
+    this.svgSelection.call(
+      //@ts-ignore
+      d3.zoom<SVGSVGElement, D3ZoomEvent<SVGSVGElement, any>>().transform,
+      this.initialTransform
+    );
+  
+    if (this._zoomListener) {
+      this._zoomListener(this.initialTransform);
+    }
+  }
+  
+  
   public constructor(
     private readonly debateDataSet: DebateDataSet,
     private readonly dataStructureSet: DataStructureSet,
@@ -196,42 +223,28 @@ export class D3Drawer {
     this.svgHeight = window.innerHeight * 2;
 
     this.svgSelection = this.conceptRecurrencePlotDiv
-      .select<SVGSVGElement>("svg")
-      .attr("width", this.svgWidth)
-      .attr("height", this.svgHeight)
-      // 전체 svg 영역
-      .attr("transform", "scale(1, -1) rotate(-45)")
-      .call(
-        d3
-          .zoom<SVGSVGElement, D3ZoomEvent<SVGSVGElement, any>>()
-          .scaleExtent([0.8, 2.5]) // 예를 들어 최소 0.5배 축소부터 최대 2배 확대까지만 허용하도록 설정
-          .on("zoom", (event) => {
-            //@ts-ignore
-            this.svgGSelection.attr("transform", () => event.transform);
-            if (this._zoomListener) {
-              this._zoomListener(event.transform);
-            }
-          })
-      );
+    .select<SVGSVGElement>("svg")
+    .attr("width", this.svgWidth)
+    .attr("height", this.svgHeight)
+    .attr("transform", "scale(1, -1) rotate(-45)")
+    .call(
+      d3
+        .zoom<SVGSVGElement, D3ZoomEvent<SVGSVGElement, any>>()
+        .scaleExtent([0.8, 2])
+        .wheelDelta((event) => -event.deltaY * 0.0005) 
+        .on("zoom", (event) => {
+          this.svgGSelection.attr("transform", () => event.transform);
+          if (this._zoomListener) {
+            this._zoomListener(event.transform);
+          }
+        })
+    )
     
-    setTimeout(() => {
-      const initialTransform = d3.zoomIdentity.translate(260, -90).scale(0.95);
-
-      this.svgSelection.call(
-        //@ts-ignore
-        (selection) => d3.zoom<SVGSVGElement, D3ZoomEvent<SVGSVGElement, any>>().transform(selection, initialTransform)
-      );
-
-      this.svgGSelection.attr("transform", initialTransform.toString());
-  
-      // 초기 zoomListener 호출
-      if (this._zoomListener) {
-        this._zoomListener(initialTransform);
-      }
-    }, 0);
-
-    // 동시발생행렬 그려지는 구간
     this.svgGSelection = this.svgSelection.select(".svgG");
+
+    setTimeout(() => {
+      this.updateInitialTransform();
+    }, 0);
 
     this.participantBlocksDrawer = new ParticipantBlocksDrawer(
       dataStructureSet.utteranceObjectsForDrawingManager.utteranceObjectsForDrawing,
