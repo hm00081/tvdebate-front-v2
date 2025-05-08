@@ -49,6 +49,17 @@ $navi: #9c27b0;
   border-width: 0px;
 }
 
+.resetButton button {
+  background-color: #74c562;
+  font-size: 10px;
+  font-weight: bold;
+  color: white;
+  width: 60px;
+  height: 25px;
+  border-radius: 20px;
+  border-width: 0px;
+}
+
 .participantsFilter {
   flex: 3.5;
   display: flex;

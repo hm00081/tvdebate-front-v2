@@ -57,9 +57,9 @@ export class TopicGroupsDrawer {
       
       this.applyHighlightEffect(highlightedClasses, highlightedGroup, selectedBlock);
     
-      // console.log('highlightedGroup', highlightedGroup);
-      // console.log('highlightedClasses', highlightedClasses);
-      // console.log('selectedBlock', selectedBlock);
+      console.log('highlightedGroup', highlightedGroup);
+      console.log('highlightedClasses', highlightedClasses);
+      console.log('selectedBlock', selectedBlock);
     });
     
   }
