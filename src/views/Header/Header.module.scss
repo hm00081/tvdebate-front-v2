@@ -15,11 +15,10 @@ $navi: #9c27b0;
   height: 60px;
   background-color: $navi;
   color: white;
-  padding-right: 150px;
 }
 
 .title {
-  flex: 3.5;
+  min-width: 240px;
   display: flex;
   align-items: center;
   margin-left: 20px;
@@ -28,59 +27,95 @@ $navi: #9c27b0;
 }
 
 .initializeLocation {
-  flex: 1.6;
+  width: 120px;
   display: flex;
   flex-direction: row;
+  // background-color: red;
+  margin-right: 20px;
+}
+
+.subtitle {
+  width: 70px;
+  height: 100%;
+  display: flex;
   align-items: center;
-  margin-right: 10px;
-  margin-left: -20px;
+  font-size: 12px;
+  text-align: center;
+  // background-color: black;
+  margin-right: 5px;
+  font-weight: bold;
+}
+
+.initializeLocation .subtitle {
+  width: 55px;
+}
+.participantsFilter .subtitle {
+  width: 75px;
+}
+.keywordFilter .subtitle {
+  width: 55px;
+}
+.scriptOption .subtitle {
+  width: 43px;
+}
+.frequencyOfDebate .subtitle {
+  margin-right: 0px;
 }
 
 .resetButton {
-  font-size: 11px;  
-  color: #333333;
-}
-
-.button {
-  background-color: #74c562;
-  width: 50px;
-  height: 20px;
-  border-radius: 5px;
-  border-width: 0px;
+  width: 60px;
+  // background-color: #3498db;
+  display: flex;
+  align-items: center;
 }
 
 .resetButton button {
   background-color: #74c562;
-  font-size: 10px;
+  font-size: 11px;
   font-weight: bold;
   color: white;
   width: 60px;
   height: 25px;
   border-radius: 20px;
   border-width: 0px;
+  cursor: pointer;
 }
 
 .participantsFilter {
-  flex: 3.5;
+  width: 290px;
   display: flex;
   flex-direction: row;
-  margin-right: 10px;
+  margin-right: 15px;
 }
 
 .pkGroup {
   display: flex;
-  width: 100%;
   flex-direction: row;
+  // background-color: #74c562;
+}
+
+.participantsFilter .pkGroup {
+  width: 210px;
+}
+
+.keywordFilter .pkGroup {
+  width: 84px;
 }
 
 .pkSpace {
+  width: 30px;
   flex: 1;
   display: flex;
   flex-direction: column;
-  width: 100%;
+  // background-color: #ffffff;
+  // border-color: black;
+  // border-style: solid;
+  // border-width: 1px;
+  // width: 100px;
   height: 100%;
   padding-top: 5px;
   padding-bottom: 2px;
+  margin-right: 5px;
 }
 
 .pkImage {
@@ -89,6 +124,7 @@ $navi: #9c27b0;
   align-items: center;
   justify-content: center;
   text-align: center;
+  cursor: pointer;
 }
 
 .pkName {
@@ -101,61 +137,18 @@ $navi: #9c27b0;
 }
 
 .keywordFilter {
-  flex: 1.8;
+  width: 145px;
   display: flex;
   flex-direction: row;
-  margin-right: 10px;
-  // background-color: blue;
+  margin-right: 15px;
 }
 
 .frequencyOfDebate {
-  flex: 3;
+  width: 240px;
   display: flex;
   flex-direction: row;
-  // background-color: red;
-}
-
-.scriptOption {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-}
-
-.subtitle {
-  font-weight: bold;
-}
-
-.toggle {
-  display: flex;
-  align-items: center;
-  width: 70px;
-  height: 30px;
-  padding: 5px;
-  border-radius: 20px;
-  cursor: pointer;
-  background-color: gray;
-  transition: background-color 0.3s ease-in-out;
-  position: relative;
-}
-
-/* 기본 상태(HIDE) - 텍스트 오른쪽 */
-.toggle {
-  justify-content: flex-end;
-}
-
-/* 활성화 상태(SHOW) */
-.active {
-  background-color: #3498db;
-  justify-content: flex-start;
-}
-
-.text {
-  font-size: 10px;
-  font-weight: bold;
-  color: white;
-  transition: color 0.3s;
-  padding: 0 5px;
-  z-index: 1;
+  // background-color: #3498db;
+  margin-right: 15px;
 }
 
 .circle {
@@ -165,27 +158,6 @@ $navi: #9c27b0;
   border-radius: 50%;
   transition: transform 0.3s ease-in-out;
   position: absolute;
-}
-
-/* 기본 상태(HIDE) - 원 왼쪽 */
-.circle {
-  left: 5px;
-}
-
-/* 활성화 상태(SHOW) - 원 오른쪽 */
-.active .circle {
-  left: calc(100% - 25px);
-}
-
-.subtitle {
-  width: 70px;
-  height: 100%;
-  display: flex;
-  align-items: center;
-  font-size: 12px;
-  text-align: center;
-  background-color: #9c27b0;
-  margin-right: 5px;
 }
 
 .svg {
@@ -199,10 +171,11 @@ $navi: #9c27b0;
 }
 
 .slider {
+  width: 170px;
+  height: 100%;
   display: flex;
   justify-content: center;
-  width: 100%;
-  height: 100%;
+  // background-color: orange;
 }
 
 .customSliderWrapper {
@@ -216,7 +189,7 @@ $navi: #9c27b0;
   pointer-events: none;
   appearance: none;
   left: 0.5rem;
-  width: 89%;
+  width: 151px;
   height: 0px;
   border-radius: 4px;
   background: none;
@@ -257,7 +230,7 @@ $navi: #9c27b0;
 
 .sliderRange {
   position: absolute;
-  width: 85%;
+  width: 140px;
   top: 1.5rem;
   left: 0.75rem;
   height: 8px;
@@ -268,12 +241,12 @@ $navi: #9c27b0;
 .sliderMarks {
   position: absolute;
   top: 0.4rem;
-  left: 1rem;
+  left: 0.98rem;
   display: flex;
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
-  width: 100%;
+  width: 99.5%;
   height: 100%;
   pointer-events: none;
 }
@@ -318,4 +291,54 @@ $navi: #9c27b0;
   margin: 0 auto;
   margin-top: -10px;
   margin-bottom: 5px;
+}
+
+.scriptOption {
+  width: 140px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.toggle {
+  display: flex;
+  align-items: center;
+  width: 70px;
+  height: 30px;
+  padding: 5px;
+  border-radius: 20px;
+  cursor: pointer;
+  background-color: gray;
+  transition: background-color 0.3s ease-in-out;
+  position: relative;
+}
+
+/* 기본 상태(HIDE) - 텍스트 오른쪽 */
+.toggle {
+  justify-content: flex-end;
+}
+
+/* 활성화 상태(SHOW) */
+.active {
+  background-color: #3498db;
+  justify-content: flex-start;
+}
+
+/* 기본 상태(HIDE) - 원 왼쪽 */
+.circle {
+  left: 5px;
+}
+
+/* 활성화 상태(SHOW) - 원 오른쪽 */
+.active .circle {
+  left: calc(100% - 25px);
+}
+
+.text {
+  font-size: 10px;
+  font-weight: bold;
+  color: white;
+  transition: color 0.3s;
+  padding: 0 5px;
+  z-index: 1;
 }
