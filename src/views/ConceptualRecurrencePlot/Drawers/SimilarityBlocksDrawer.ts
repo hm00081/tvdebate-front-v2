@@ -444,6 +444,10 @@ export class SimilarityBlocksDrawer {
                       )
                     : 'none';
             })
+            .style('cursor', (d) => {
+                const isWithinRange = Math.abs(d.beginningPointOfX - d.beginningPointOfY) < 200;
+                return isWithinRange ? 'pointer' : 'default';
+            })
             .style("opacity", function () {
                 const rowIdx = parseInt(d3.select(this).attr("rowIdx") || "-1", 10);
                 const colIdx = parseInt(d3.select(this).attr("colIdx") || "-1", 10);
