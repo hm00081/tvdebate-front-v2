@@ -62,7 +62,7 @@ export default function Header({ isOpen, setIsOpen }: HeaderProps) {
 
     const handleReset = () => {
         if (D3Drawer.allDrawers.length > 0) {
-            D3Drawer.allDrawers[0].resetView();
+            // D3Drawer.allDrawers[0].resetView();
             store.dispatch(clearSelectedBlock());
             store.dispatch(clearHighlightedClass());
             store.dispatch(clearHighlightedGroup());

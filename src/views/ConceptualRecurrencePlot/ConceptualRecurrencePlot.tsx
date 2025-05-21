@@ -30,6 +30,13 @@ import Header from "./../Header/Header";
 import HeaderTwoKor from "./../Header/HeaderTwoKor";
 import debateLegendSvg from '../Header/image/debateLegend.svg';
 import * as d3 from "d3";
+import {
+  TransformWrapper,
+  TransformComponent,
+  ReactZoomPanPinchRef,
+} from "react-zoom-pan-pinch";
+
+
 // TODO: 상태관리 Redux 사용하여 한곳에 관리하도록 추후 변경하기
 function ConceptualRecurrencePlot() {
   const query = new URLSearchParams(useLocation().search);
@@ -63,8 +70,12 @@ function ConceptualRecurrencePlot() {
     useState<UtteranceObjectForDrawing | null>(null);
   const [mouseoveredSimilarity, setMouseoveredSimilarity] =
     useState<SimilarityBlock | null>(null);
-  const [transform, setTransform] = useState<d3.ZoomTransform | null>(null);
+  // const [transform, setTransform] = useState<d3.ZoomTransform | null>(null);
   const [tooltipVisible, setTooltipVisible] = useState<boolean>(false);
+
+  //250516
+  const [initialTransform, setInitialTransform] = useState<{ x: number; y: number }>({ x: 0, y: 0 });
+  const transformWrapperRef = useRef<ReactZoomPanPinchRef | null>(null);
 
   useEffect(() => {
     if (dataStructureManager) {
@@ -140,9 +151,18 @@ function ConceptualRecurrencePlot() {
         transcriptViewerRef
       );
 
-      d3Drawer.zoomListener = (transform) => {
-        setTransform(transform);
-      };
+      // d3Drawer.zoomListener = (transform) => {
+      //   setTransform(transform);
+      // };
+      // const transform = d3Drawer.centerConceptualRecurrentPlot();
+      // if (transform && transformWrapperRef.current) {
+      //   transformWrapperRef.current.setTransform(
+      //     transform.x,
+      //     transform.y,
+      //     transform.scale ?? 1
+      //   );
+      // }
+
       d3Drawer.participantBlocksDrawer.mouseoverListener = (
         mouseEvent,
         utteranceObjectForDrawing
@@ -230,6 +250,7 @@ function ConceptualRecurrencePlot() {
     <div className="root-div" style={{ overflow: "hidden" }}>
       <Header isOpen={isOpen} setIsOpen={setIsOpen} />
       {/* <HeaderTwoKor isOpen={isOpen} setIsOpen={setIsOpen} /> */}
+  
       <div className="vis-area">
         <div
           className="concept-recurrence-plot"
@@ -249,34 +270,44 @@ function ConceptualRecurrencePlot() {
               marginLeft: "15px",
             }}
           ></div>
-          <svg
-            className="fullSvg"
-            ref={d3Container}
-            style={{ 
-              overflow: "visible"
-            }}
+
+          <TransformWrapper
+            initialScale={1}
+            minScale={0.8}
+            maxScale={5}
+            // initialPositionX={initialTransform.x}
+            // initialPositionY={initialTransform.y}
+            wheel={{ step: 0.1 }}
+            doubleClick={{ disabled: true }}
+            panning={{ velocityDisabled: true }}
           >
-            <g
-              className="zoomable"
-              transform={transform ? transform.toString() : undefined}
-            >
-              <g 
-                className="svgG" 
-                ref={svgGRef}
-              >  
-              </g>
-            </g>
-          </svg>
+            <TransformComponent>
+              <svg
+                className="fullSvg"
+                ref={d3Container}
+                style={{
+                  overflow: "visible",
+                  width: "100%",
+                  height: "100%",
+                }}
+              >
+                <g className="svgG" ref={svgGRef}></g>
+              </svg>
+            </TransformComponent>
+          </TransformWrapper>
         </div>
       </div>
-      <div className={`debateLegend ${isOpen ? 'open' : 'closed'}`}>
+  
+      <div className={`debateLegend ${isOpen ? "open" : "closed"}`}>
         <img src={debateLegendSvg} alt="Debate Legend" />
       </div>
+  
       <TranscriptViewer
         isOpen={isOpen}
         dataStructureMaker={dataStructureManager}
         ref={transcriptViewerRef}
-      ></TranscriptViewer>
+      />
+  
       <ConceptualMapModal
         ref={conceptualMapModalRef}
         participantDict={
@@ -292,8 +323,8 @@ function ConceptualRecurrencePlot() {
             : []
         }
         termType={termTypeOfQuery}
-      ></ConceptualMapModal>
+      />
     </div>
-  );
+  );  
 }
 export default ConceptualRecurrencePlot;

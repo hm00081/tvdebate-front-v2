@@ -186,7 +186,7 @@ export class D3Drawer {
     const translateX = (containerWidth - adjustedWidth * scale) / 2;
     const translateY = (containerHeight - adjustedHeight * scale) / 2;
   
-    console.log("scale:", scale, "translateX:", translateX, "translateY:", translateY);
+    // console.log("scale:", scale, "translateX:", translateX, "translateY:", translateY);
   
     this.initialTransform = d3.zoomIdentity.translate(translateX, translateY).scale(scale);
   
@@ -227,6 +227,7 @@ export class D3Drawer {
     .attr("width", this.svgWidth)
     .attr("height", this.svgHeight)
     .attr("transform", "scale(1, -1) rotate(-45)")
+    // Deactivate
     .call(
       d3
         .zoom<SVGSVGElement, D3ZoomEvent<SVGSVGElement, any>>()
@@ -242,9 +243,9 @@ export class D3Drawer {
     
     this.svgGSelection = this.svgSelection.select(".svgG");
 
-    setTimeout(() => {
-      this.updateInitialTransform();
-    }, 0);
+    // setTimeout(() => {
+    //   this.updateInitialTransform();
+    // }, 0);
 
     this.participantBlocksDrawer = new ParticipantBlocksDrawer(
       dataStructureSet.utteranceObjectsForDrawingManager.utteranceObjectsForDrawing,
@@ -445,7 +446,7 @@ export class D3Drawer {
       this.refutationIconDrawerTwo.update();
     });
   }
-
+//1
   public centerConceptualRecurrentPlot() {
     const utteranceObjectsForDrawing =
       this.dataStructureSet.utteranceObjectsForDrawingManager
@@ -465,9 +466,9 @@ export class D3Drawer {
         lastUtteranceObjectForDrawing.beginningPointOfXY +
         lastUtteranceObjectForDrawing.width;
       //console.log("minusWidth", minusWidth);
-      const adjustedWidth = (this.svgWidth - minusWidth) / 2;
+      const adjustedWidth = (this.svgWidth - minusWidth) / 2 - 330;
 
-      const adjustedHeight = (this.svgHeight - minusWidth) / 2;
+      const adjustedHeight = (this.svgHeight - minusWidth) / 2 + 330;
       //console.log(adjustedWidth, adjustedHeight);
       this.svgGSelection.attr(
         "transform",
@@ -483,6 +484,35 @@ export class D3Drawer {
       console.warn("no utteranceObjectsForDrawing");
     }
   }
+//2
+  // public centerConceptualRecurrentPlot() {
+  //   const utteranceObjectsForDrawing =
+  //     this.dataStructureSet.utteranceObjectsForDrawingManager
+  //       .utteranceObjectsForDrawing;
+  
+  //   if (utteranceObjectsForDrawing.length !== 0) {
+  //     const lastUtteranceObjectForDrawing =
+  //       utteranceObjectsForDrawing[utteranceObjectsForDrawing.length - 1];
+  
+  //     const minusWidth =
+  //       lastUtteranceObjectForDrawing.beginningPointOfXY +
+  //       lastUtteranceObjectForDrawing.width;
+  
+  //     const adjustedWidth = (this.svgWidth - minusWidth) / 2;
+  //     const adjustedHeight = (this.svgHeight - minusWidth) / 2;
+  
+  //     return {
+  //       x: adjustedWidth,
+  //       y: adjustedHeight,
+  //       scale: 1,
+  //     };
+  //   } else {
+  //     console.warn("no utteranceObjectsForDrawing");
+  //     return { x: 0, y: 0, scale: 1 };
+  //   }
+  // }
+  
+  
 
   public set zoomListener(zoomListener: (transform: d3.ZoomTransform) => void) {
     this._zoomListener = zoomListener;
