@@ -146,67 +146,25 @@ export class D3Drawer {
     };
   }
 
-  public resetView(): void {
-    if (!this.svgSelection) {
-      console.error("svgSelection is not defined");
-      return;
-    }
+  // public resetView(): void {
+  //   if (!this.svgSelection) {
+  //     console.error("svgSelection is not defined");
+  //     return;
+  //   }
   
-    this.svgSelection.transition().duration(750).call(
-      //@ts-ignore
-      d3.zoom<SVGSVGElement, any>().transform,
-      this.initialTransform
-    );
+  //   this.svgSelection.transition().duration(750).call(
+  //     //@ts-ignore
+  //     d3.zoom<SVGSVGElement, any>().transform,
+  //     this.initialTransform
+  //   );
   
-    this.svgGSelection.attr("transform", this.initialTransform.toString());
+  //   this.svgGSelection.attr("transform", this.initialTransform.toString());
   
-    if (this._zoomListener) {
-      this._zoomListener(this.initialTransform);
-    }
-  }
+  //   if (this._zoomListener) {
+  //     this._zoomListener(this.initialTransform);
+  //   }
+  // }
 
-  private updateInitialTransform() {
-    const rect = this.svgGSelection.node()?.getBoundingClientRect();
-    if (!rect) return;
-  
-    const scaleFactor = Math.SQRT2 / 2;
-    const adjustedWidth = rect.width * scaleFactor;
-    const adjustedHeight = rect.height * scaleFactor;
-  
-    const container = document.querySelector(".concept-recurrence-plot");
-    if (!container) return;
-    const containerRect = container.getBoundingClientRect();
-    const containerWidth = containerRect.width - 330;
-    const containerHeight = containerRect.height - 60;
-  
-    const scaleX = containerWidth / adjustedWidth;
-    const scaleY = containerHeight / adjustedHeight;
-    const scale = Math.min(scaleX, scaleY, 2.5);
-  
-    const translateX = (containerWidth - adjustedWidth * scale) / 2;
-    const translateY = (containerHeight - adjustedHeight * scale) / 2;
-  
-    console.log("scale:", scale, "translateX:", translateX, "translateY:", translateY);
-  
-    this.initialTransform = d3.zoomIdentity.translate(translateX, translateY).scale(scale);
-  
-    this.svgGSelection.attr(
-      "transform",
-      `translate(${translateX * scaleFactor}, ${translateY * scaleFactor}) scale(${scale})`
-    );
-  
-    this.svgSelection.call(
-      //@ts-ignore
-      d3.zoom<SVGSVGElement, D3ZoomEvent<SVGSVGElement, any>>().transform,
-      this.initialTransform
-    );
-  
-    if (this._zoomListener) {
-      this._zoomListener(this.initialTransform);
-    }
-  }
-  
-  
   public constructor(
     private readonly debateDataSet: DebateDataSet,
     private readonly dataStructureSet: DataStructureSet,
@@ -219,32 +177,45 @@ export class D3Drawer {
     // declare variables
     this.conceptRecurrencePlotDiv = d3.select(".concept-recurrence-plot");
     //this.setupZoom();
-    this.svgWidth = window.innerWidth - 330;
+    this.svgWidth = window.innerWidth - 0;
     this.svgHeight = window.innerHeight * 2;
 
-    this.svgSelection = this.conceptRecurrencePlotDiv
-    .select<SVGSVGElement>("svg")
-    .attr("width", this.svgWidth)
-    .attr("height", this.svgHeight)
-    .attr("transform", "scale(1, -1) rotate(-45)")
-    .call(
-      d3
-        .zoom<SVGSVGElement, D3ZoomEvent<SVGSVGElement, any>>()
-        .scaleExtent([0.8, 2])
-        .wheelDelta((event) => -event.deltaY * 0.0005) 
-        .on("zoom", (event) => {
-          this.svgGSelection.attr("transform", () => event.transform);
-          if (this._zoomListener) {
-            this._zoomListener(event.transform);
-          }
-        })
-    )
-    
-    this.svgGSelection = this.svgSelection.select(".svgG");
+    // 1. d3.zoom 설정
+this.svgSelection = this.conceptRecurrencePlotDiv
+.select<SVGSVGElement>("svg")
+.attr("width", this.svgWidth)
+.attr("height", this.svgHeight)
+.attr("transform", "scale(1, -1) rotate(-45)")
+.call(
+  d3
+    .zoom<SVGSVGElement, D3ZoomEvent<SVGSVGElement, any>>()
+    .scaleExtent([0.8, 2])
+    .wheelDelta((event) => -event.deltaY * 0.0005)
+    .on("zoom", (event) => {
+      this.svgGSelection.attr("transform", () => event.transform);
+      // optionally notify React or others
+      if (this._zoomListener) {
+        this._zoomListener(event.transform);
+      }
+    })
+);
 
-    setTimeout(() => {
-      this.updateInitialTransform();
-    }, 0);
+this.svgGSelection = this.svgSelection.select(".svgG");
+
+// 2. 중심 좌표 계산 및 초기 transform 적용
+const { adjustedWidth, adjustedHeight } = this.centerConceptualRecurrentPlot() || { adjustedWidth: 0, adjustedHeight: 0 };
+const initialTransform = d3.zoomIdentity.translate(adjustedWidth, adjustedHeight).scale(1);
+
+// 3. d3 zoom 상태로도 적용
+this.svgSelection.call(
+d3.zoom<SVGSVGElement, any>().transform,
+initialTransform
+);
+
+
+    // setTimeout(() => {
+    //   this.updateInitialTransform();
+    // }, 0);
 
     this.participantBlocksDrawer = new ParticipantBlocksDrawer(
       dataStructureSet.utteranceObjectsForDrawingManager.utteranceObjectsForDrawing,
@@ -445,7 +416,7 @@ export class D3Drawer {
       this.refutationIconDrawerTwo.update();
     });
   }
-
+//1
   public centerConceptualRecurrentPlot() {
     const utteranceObjectsForDrawing =
       this.dataStructureSet.utteranceObjectsForDrawingManager
@@ -465,9 +436,9 @@ export class D3Drawer {
         lastUtteranceObjectForDrawing.beginningPointOfXY +
         lastUtteranceObjectForDrawing.width;
       //console.log("minusWidth", minusWidth);
-      const adjustedWidth = (this.svgWidth - minusWidth) / 2;
+      const adjustedWidth = (this.svgWidth - minusWidth) / 2 - 330;
 
-      const adjustedHeight = (this.svgHeight - minusWidth) / 2;
+      const adjustedHeight = (this.svgHeight - minusWidth) / 2 + 330;
       //console.log(adjustedWidth, adjustedHeight);
       this.svgGSelection.attr(
         "transform",
@@ -483,6 +454,7 @@ export class D3Drawer {
       console.warn("no utteranceObjectsForDrawing");
     }
   }
+  
 
   public set zoomListener(zoomListener: (transform: d3.ZoomTransform) => void) {
     this._zoomListener = zoomListener;

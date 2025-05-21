@@ -62,7 +62,7 @@ export default function Header({ isOpen, setIsOpen }: HeaderProps) {
 
     const handleReset = () => {
         if (D3Drawer.allDrawers.length > 0) {
-            D3Drawer.allDrawers[0].resetView();
+            // D3Drawer.allDrawers[0].resetView();
             store.dispatch(clearSelectedBlock());
             store.dispatch(clearHighlightedClass());
             store.dispatch(clearHighlightedGroup());
@@ -108,8 +108,7 @@ export default function Header({ isOpen, setIsOpen }: HeaderProps) {
                             <div
                                 key={id}
                                 className={`${style.pkSpace} ${
-                                    //@ts-ignore
-                                    (highlightedGroup.length > 0 || selectedBlock.length > 0 || highlightedClasses.length === 0 || highlightedClasses.includes(id)) && !((selectedBlock[0]?.length === 2 && selectedBlock[1]?.length === 0) && (selectedBlock[0][0] !== id && selectedBlock[0][1] !== id)) ? style.selected : style.grayscale
+                                    highlightedGroup.length > 0 || selectedBlock.length > 0 || highlightedClasses.length === 0 || highlightedClasses.includes(id) ? style.selected : style.grayscale
                                 }`}
                             >
                                 <div className={style.pkImage}>
