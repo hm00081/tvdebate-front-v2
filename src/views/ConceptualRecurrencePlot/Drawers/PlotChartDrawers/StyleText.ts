@@ -12,13 +12,13 @@ export const styleText: string = `
     fill: #ffffff;
   }
   .stt3 {
-    fill: #b60c3d;
+    fill: #d62924;
   }
   .stt4 {
     fill: #0ea0e2;
   }
   .stt5 {
-    fill: #c7621e;
+    fill: #ffab51;
   }
   .stt6 {
     fill: #0caa6e;
@@ -35,7 +35,7 @@ export const styleText: string = `
   }
   .stt9 {
     fill: #ffffff;
-    stroke: #b60c3d;
+    stroke: #ffab51;
     stroke-width: 2;
     stroke-miterlimit: 10;
   }

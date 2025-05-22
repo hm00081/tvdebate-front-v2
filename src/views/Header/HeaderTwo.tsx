@@ -14,10 +14,10 @@ interface HeaderProps {
 }
 
 const participantColors = [
-  { color: "#B60E3C", label: "Lee Joonseok" },
-  { color: "#C7611E", label: "Park Hwirak" },
-  { color: "#00AB6E", label: "Kim Jongdae" },
-  { color: "#00a0e2", label: "Jang Kyungtae" },
+  { color: "#d62924", label: "Lee Joonseok" },
+  { color: "#ffab51", label: "Park Hwirak" },
+  { color: "#7cb53f", label: "Kim Jongdae" },
+  { color: "#03609b", label: "Jang Kyungtae" },
   { color: "#808080", label: "Host" },
 ];
 
@@ -182,24 +182,24 @@ export default function Header({ isOpen, setIsOpen }: HeaderProps) {
             <path
               d="M14.3,8H16c0-4.4-3.6-8-8-8v1.6C11.5,1.6,14.3,4.5,14.3,8z"
               style={{
-                fill: "#C7611E",
-                stroke: "#C7611E",
+                fill: "#ffab51",
+                stroke: "#ffab51",
                 strokeWidth: "1",
               }}
             ></path>
             <path
               d="M8,14.4c-3.5,0-6.4-2.8-6.4-6.4H0c0,4.4,3.6,8,8,8L8,14.4C8,14.4,8,14.4,8,14.4z"
               style={{
-                fill: "#00AB6E",
-                stroke: "#00AB6E",
+                fill: "#7cb53f",
+                stroke: "#7cb53f",
                 strokeWidth: "1",
               }}
             ></path>
             <path
               d="M14.3,8c0,3.5-2.8,6.4-6.3,6.4V16c4.4,0,8-3.6,8-8H14.3z"
               style={{
-                fill: "#00a0e2",
-                stroke: "#00a0e2",
+                fill: "#03609b",
+                stroke: "#03609b",
                 strokeWidth: "1",
               }}
             ></path>
