@@ -272,12 +272,12 @@ function ConceptualRecurrencePlot() {
           ></div>
 
           <TransformWrapper
-            initialScale={1}
-            minScale={0.8}
-            maxScale={2}
+            initialScale={0.9}
+            minScale={0.7}
+            maxScale={1.3}
             // initialPositionX={initialTransform.x}
             // initialPositionY={initialTransform.y}
-            wheel={{ step: 0.1 }}
+            wheel={{ step: 0.20 }}
             doubleClick={{ disabled: true }}
             panning={{ velocityDisabled: true }}
           >

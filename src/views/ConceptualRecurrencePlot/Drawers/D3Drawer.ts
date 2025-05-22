@@ -75,7 +75,7 @@ export class D3Drawer {
   private readonly svgWidth: number;
   private readonly svgHeight: number;
   private _zoomListener: ((transform: d3.ZoomTransform) => void) | null = null;
-  private initialTransform: d3.ZoomTransform = d3.zoomIdentity.translate(0, 0).scale(1);
+  private initialTransform: d3.ZoomTransform = d3.zoomIdentity.translate(0, 0).scale(0.9);
   
 
   setupClickListener(
@@ -189,8 +189,8 @@ this.svgSelection = this.conceptRecurrencePlotDiv
 .call(
   d3
     .zoom<SVGSVGElement, D3ZoomEvent<SVGSVGElement, any>>()
-    .scaleExtent([0.8, 2])
-    .wheelDelta((event) => -event.deltaY * 0.0005)
+    .scaleExtent([1, 1])
+    .wheelDelta((event) => -event.deltaY * 0.5)
     .on("zoom", (event) => {
       this.svgGSelection.attr("transform", () => event.transform);
       // optionally notify React or others
@@ -204,7 +204,7 @@ this.svgGSelection = this.svgSelection.select(".svgG");
 
 // 2. 중심 좌표 계산 및 초기 transform 적용
 const { adjustedWidth, adjustedHeight } = this.centerConceptualRecurrentPlot() || { adjustedWidth: 0, adjustedHeight: 0 };
-const initialTransform = d3.zoomIdentity.translate(adjustedWidth, adjustedHeight).scale(1);
+const initialTransform = d3.zoomIdentity.translate(adjustedWidth, adjustedHeight).scale(0.9);
 
 // 3. d3 zoom 상태로도 적용
 this.svgSelection.call(
