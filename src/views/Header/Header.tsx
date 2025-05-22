@@ -108,7 +108,8 @@ export default function Header({ isOpen, setIsOpen }: HeaderProps) {
                             <div
                                 key={id}
                                 className={`${style.pkSpace} ${
-                                    highlightedGroup.length > 0 || selectedBlock.length > 0 || highlightedClasses.length === 0 || highlightedClasses.includes(id) ? style.selected : style.grayscale
+                                    //@ts-ignore
+                                    (highlightedClasses.length === 0 || highlightedClasses.includes(id)) ? style.selected : style.grayscale
                                 }`}
                             >
                                 <div className={style.pkImage}>

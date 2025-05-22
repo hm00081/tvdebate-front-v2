@@ -15,13 +15,13 @@ export const styleText: string = `
     fill: #d62924;
   }
   .stt4 {
-    fill: #0ea0e2;
+    fill: #03609b;
   }
   .stt5 {
     fill: #ffab51;
   }
   .stt6 {
-    fill: #0caa6e;
+    fill: #7cb53f;
   }
   .stt7 {
     opacity: 0.7;
@@ -29,13 +29,13 @@ export const styleText: string = `
   }
   .stt8 {
     fill: #ffffff;
-    stroke: #0caa6e;
+    stroke: #7cb53f;
     stroke-width: 2;
     stroke-miterlimit: 10;
   }
   .stt9 {
     fill: #ffffff;
-    stroke: #ffab51;
+    stroke: #d62924;
     stroke-width: 2;
     stroke-miterlimit: 10;
   }
@@ -47,7 +47,7 @@ export const styleText: string = `
   }
   .stt12 {
     fill: #ffffff;
-    stroke: #0ea0e2;
+    stroke: #03609b;
     stroke-width: 2;
     stroke-miterlimit: 10;
   }
@@ -56,7 +56,7 @@ export const styleText: string = `
   }
   .stt14 {
     fill: #ffffff;
-    stroke: #c7621e;
+    stroke: #ffab51;
     stroke-width: 2;
     stroke-miterlimit: 10;
   }
