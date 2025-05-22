@@ -36,7 +36,6 @@ import {
   ReactZoomPanPinchRef,
 } from "react-zoom-pan-pinch";
 
-
 // TODO: 상태관리 Redux 사용하여 한곳에 관리하도록 추후 변경하기
 function ConceptualRecurrencePlot() {
   const query = new URLSearchParams(useLocation().search);
@@ -76,6 +75,41 @@ function ConceptualRecurrencePlot() {
   //250516
   const [initialTransform, setInitialTransform] = useState<{ x: number; y: number }>({ x: 0, y: 0 });
   const transformWrapperRef = useRef<ReactZoomPanPinchRef | null>(null);
+
+  const wrapperRef = useRef<HTMLDivElement | null>(null);
+
+  const zoomLevels = [0.75, 0.9, 1.15, 1.4];
+  const [zoomScale, setZoomScale] = useState(0.9);
+
+  const handleZoomIn = () => {
+    const currentIndex = zoomLevels.indexOf(zoomScale);
+    if (currentIndex < zoomLevels.length - 1 && transformWrapperRef.current && wrapperRef.current) {
+      const nextScale = zoomLevels[currentIndex + 1];
+      const bounds = wrapperRef.current.getBoundingClientRect();
+      const centerX = bounds.width / 2;
+      const centerY = bounds.height / 5;
+      const x = centerX * (1 - nextScale);
+      const y = centerY * (1 - nextScale);
+  
+      setZoomScale(nextScale);
+      transformWrapperRef.current.setTransform(x, y, nextScale);
+    }
+  };
+  
+  const handleZoomOut = () => {
+    const currentIndex = zoomLevels.indexOf(zoomScale);
+    if (currentIndex > 0 && transformWrapperRef.current && wrapperRef.current) {
+      const prevScale = zoomLevels[currentIndex - 1];
+      const bounds = wrapperRef.current.getBoundingClientRect();
+      const centerX = bounds.width / 2;
+      const centerY = bounds.height / 5;
+      const x = centerX * (1 - prevScale);
+      const y = centerY * (1 - prevScale);
+  
+      setZoomScale(prevScale);
+      transformWrapperRef.current.setTransform(x, y, prevScale);
+    }
+  };
 
   useEffect(() => {
     if (dataStructureManager) {
@@ -272,34 +306,56 @@ function ConceptualRecurrencePlot() {
           ></div>
 
           <TransformWrapper
+            ref={transformWrapperRef}
             initialScale={0.9}
-            minScale={0.7}
-            maxScale={1.3}
+            minScale={0.75}
+            maxScale={1.4}
             // initialPositionX={initialTransform.x}
             // initialPositionY={initialTransform.y}
-            wheel={{ step: 0.20 }}
+            wheel={{ step: 0.25 }}
             doubleClick={{ disabled: true }}
             panning={{ velocityDisabled: true }}
           >
-            <TransformComponent>
-              <svg
-                className="fullSvg"
-                ref={d3Container}
-                style={{
-                  overflow: "visible",
-                  width: "100%",
-                  height: "100%",
-                }}
-              >
-                <g className="svgG" ref={svgGRef}></g>
-              </svg>
-            </TransformComponent>
+            <div ref={wrapperRef}>
+              <TransformComponent>
+                <svg
+                  className="fullSvg"
+                  ref={d3Container}
+                  style={{
+                    overflow: "visible",
+                    width: "100%",
+                    height: "100%",
+                  }}
+                >
+                  <g className="svgG" ref={svgGRef}></g>
+                </svg>
+              </TransformComponent>
+            </div>
           </TransformWrapper>
         </div>
       </div>
   
       <div className={`debateLegend ${isOpen ? "open" : "closed"}`}>
         <img src={debateLegendSvg} alt="Debate Legend" />
+      </div>
+
+      <div className={`zoom-button-container ${isOpen ? "open" : "closed"}`}>
+        <button
+          onClick={handleZoomIn}
+          style={{
+            color: zoomScale === 1.4 ? "#aaa" : "#000", // 최대 줌이면 회색
+          }}
+        >
+          +
+        </button>
+        <button
+          onClick={handleZoomOut}
+          style={{
+            color: zoomScale === 0.75 ? "#aaa" : "#000", // 최소 줌이면 회색
+          }}
+        >
+          -
+        </button>
       </div>
   
       <TranscriptViewer

@@ -204,7 +204,7 @@ this.svgGSelection = this.svgSelection.select(".svgG");
 
 // 2. 중심 좌표 계산 및 초기 transform 적용
 const { adjustedWidth, adjustedHeight } = this.centerConceptualRecurrentPlot() || { adjustedWidth: 0, adjustedHeight: 0 };
-const initialTransform = d3.zoomIdentity.translate(adjustedWidth, adjustedHeight).scale(0.9);
+const initialTransform = d3.zoomIdentity.translate(adjustedWidth, adjustedHeight).scale(1);
 
 // 3. d3 zoom 상태로도 적용
 this.svgSelection.call(
