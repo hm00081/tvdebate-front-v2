@@ -118,8 +118,8 @@ export default function Header({ isOpen, setIsOpen }: HeaderProps) {
                                 <div className={style.pkName}>{name}</div>
                             </div>
                         ))}
-                        <div className={`${style.pkSpace} ${highlightedClasses.length > 0 && highlightedGroup.length === 0 && selectedBlock.length === 0 ? style.grayscale : ''}`}>
-                            <div className={`${style.pkImage} ${highlightedClasses.length > 0 && highlightedGroup.length === 0 && selectedBlock.length === 0 ? style.grayscale : ''}`}>
+                        <div className={`${style.pkSpace} ${highlightedClasses.length > 0 ? style.grayscale : ''}`}>
+                            <div className={`${style.pkImage} ${highlightedClasses.length > 0 ? style.grayscale : ''}`}>
                                 <img src={JHJ} alt="JHJ" width="35" height="35" />
                             </div>
                             <div className={style.pkName}>진행자</div>
