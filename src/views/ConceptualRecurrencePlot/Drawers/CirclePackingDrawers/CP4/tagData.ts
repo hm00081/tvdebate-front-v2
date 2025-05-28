@@ -445,7 +445,7 @@ export const CP4Data = [
           },
           {
             type: "tspan",
-            x: "9",
+            x: "8",
             y: "6",
             className: "st24 st1",
             onClick: "None",
@@ -493,7 +493,7 @@ export const CP4Data = [
           },
           {
             type: "tspan",
-            x: "4",
+            x: "3",
             y: "7.5",
             className: "st24 st1",
             onClick: "None",

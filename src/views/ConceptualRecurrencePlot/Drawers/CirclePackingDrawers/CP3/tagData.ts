@@ -118,7 +118,7 @@ export const CP3Data = [
         content: [
           {
             type: "tspan",
-            x: "5",
+            x: "3",
             y: "3",
             className: "st24 st1",
             onClick: "None",
@@ -127,7 +127,7 @@ export const CP3Data = [
           },
           {
             type: "tspan",
-            x: "6.5",
+            x: "6",
             y: "11",
             className: "st24 st1",
             onClick: "None",
@@ -136,7 +136,7 @@ export const CP3Data = [
           },
           {
             type: "tspan",
-            x: "5",
+            x: "3",
             y: "19",
             className: "st24 st1",
             onClick: "None",
@@ -628,7 +628,7 @@ export const CP3Data = [
         content: [
           {
             type: "tspan",
-            x: "7",
+            x: "6",
             y: "2",
             className: "st24 st1",
             onClick: "None",
@@ -637,7 +637,7 @@ export const CP3Data = [
           },
           {
             type: "tspan",
-            x: "16",
+            x: "14",
             y: "15",
             className: "st24 st1",
             onClick: "None",
@@ -646,7 +646,7 @@ export const CP3Data = [
           },
           {
             type: "tspan",
-            x: "11",
+            x: "10",
             y: "28",
             className: "st24 st1",
             onClick: "None",

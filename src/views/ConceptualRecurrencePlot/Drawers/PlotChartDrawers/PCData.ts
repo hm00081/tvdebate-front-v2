@@ -1080,8 +1080,8 @@ export const personPCData = [
           x: "42.2",
           y: "86",
           className: "stt8",
-          width: "33",
-          height: "12.8",
+          width: "42",
+          height: "18",
           rx: null,
           ry: null,
         },
@@ -1089,7 +1089,7 @@ export const personPCData = [
       {
         type: "text",
         attributes: {
-          transform: "matrix(0.9048 0 0 1 44.8876 93.2448)",
+          transform: "matrix(0.9048 0 0 1 45.8876 94.2448)",
         },
         content: [
           {
@@ -1110,16 +1110,16 @@ export const personPCData = [
     children: [
       {
         type: "title",
-        content: "청년인구 감소, 군 부적응자 증가",
+        content: "청년감소,군부적응자증가",
       },
       {
         type: "rect",
         attributes: {
-          x: "180.4",
+          x: "175",
           y: "86",
           className: "stt8",
-          width: "90",
-          height: "12.8",
+          width: "100",
+          height: "18",
           rx: null,
           ry: null,
         },
@@ -1127,7 +1127,7 @@ export const personPCData = [
       {
         type: "text",
         attributes: {
-          transform: "matrix(0.9048 0 0 1 190.0822 90.9879)",
+          transform: "matrix(0.9048 0 0 1 183.5822 91.9879)",
         },
         content: [
           {
@@ -1137,7 +1137,7 @@ export const personPCData = [
               y: "3",
               className: "stt40 stt0 stt22",
             },
-            content: "청년인구 감소, 군 부적응자 증가",
+            content: "청년감소,군부적응자증가",
           },
         ],
       },
@@ -1148,16 +1148,16 @@ export const personPCData = [
     children: [
       {
         type: "title",
-        content: "50만 군 유지불가, 전쟁양상 무인화",
+        content: "50만군유지불가,무인화전쟁양상",
       },
       {
         type: "rect",
         attributes: {
-          x: "294.6",
+          x: "285",
           y: "86",
           className: "stt8",
-          width: "103",
-          height: "12.8",
+          width: "127",
+          height: "18",
           rx: null,
           ry: null,
         },
@@ -1165,7 +1165,7 @@ export const personPCData = [
       {
         type: "text",
         attributes: {
-          transform: "matrix(0.9048 0 0 1 298.7792 90.9879)",
+          transform: "matrix(0.9048 0 0 1 286.7792 91.9879)",
         },
         content: [
           {
@@ -1175,7 +1175,7 @@ export const personPCData = [
               y: "3",
               className: "stt40 stt0 stt22",
             },
-            content: "50만 군 유지불가, 전쟁양상 무인화",
+            content: "50만군유지불가,무인화전쟁양상",
           },
         ],
       },
@@ -1186,16 +1186,16 @@ export const personPCData = [
     children: [
       {
         type: "title",
-        content: "사회적가치 제공",
+        content: "사회적가치",
       },
       {
         type: "rect",
         attributes: {
-          x: "415.7",
+          x: "417.7",
           y: "86",
           className: "stt8",
-          width: "50",
-          height: "12.8",
+          width: "47",
+          height: "18",
           rx: null,
           ry: null,
         },
@@ -1203,7 +1203,7 @@ export const personPCData = [
       {
         type: "text",
         attributes: {
-          transform: "matrix(0.9048 0 0 1 418.5161 93.4811)",
+          transform: "matrix(0.9048 0 0 1 420.5161 94.4811)",
         },
         content: [
           {
@@ -1213,7 +1213,7 @@ export const personPCData = [
               y: "0",
               className: "stt40 stt0 stt22",
             },
-            content: "사회적가치 제공",
+            content: "사회적가치",
           },
         ],
       },
@@ -1224,16 +1224,16 @@ export const personPCData = [
     children: [
       {
         type: "title",
-        content: "악폐습 감소, 자기개발",
+        content: "악폐습감소,자기개발",
       },
       {
         type: "rect",
         attributes: {
-          x: "680",
+          x: "665",
           y: "86",
           className: "stt8",
-          width: "70",
-          height: "12.8",
+          width: "85",
+          height: "18",
           rx: null,
           ry: null,
         },
@@ -1241,7 +1241,7 @@ export const personPCData = [
       {
         type: "text",
         attributes: {
-          transform: "matrix(0.9048 0 0 1 700.0448 90.9882)",
+          transform: "matrix(0.9048 0 0 1 682.0448 91.9882)",
         },
         content: [
           {
@@ -1251,7 +1251,7 @@ export const personPCData = [
               y: "3",
               className: "stt40 stt0 stt22",
             },
-            content: "악폐습 감소, 자기개발",
+            content: "악폐습감소,자기개발",
           },
         ],
       },
@@ -1262,16 +1262,16 @@ export const personPCData = [
     children: [
       {
         type: "title",
-        content: "직무혼합단계, 특수병과 직업군인 전환",
+        content: "직무혼합,특수병과직업군전환",
       },
       {
         type: "rect",
         attributes: {
-          x: "760.1",
+          x: "755.5",
           y: "86",
           className: "stt8",
-          width: "105",
-          height: "12.8",
+          width: "118",
+          height: "18",
           rx: null,
           ry: null,
         },
@@ -1279,7 +1279,7 @@ export const personPCData = [
       {
         type: "text",
         attributes: {
-          transform: "matrix(0.9048 0 0 1 762.6777 90.6489)",
+          transform: "matrix(0.9048 0 0 1 757.6777 91.6489)",
         },
         content: [
           {
@@ -1289,7 +1289,7 @@ export const personPCData = [
               y: "3",
               className: "stt40 stt0 stt22",
             },
-            content: "직무혼합단계, 특수병과 직업군인 전환",
+            content: "직무혼합,특수병과직업군전환",
           },
         ],
       },
@@ -1308,8 +1308,8 @@ export const personPCData = [
           x: "1267.1",
           y: "86",
           className: "stt8",
-          width: "57.5",
-          height: "12.8",
+          width: "77",
+          height: "18",
           rx: null,
           ry: null,
         },
@@ -1317,7 +1317,7 @@ export const personPCData = [
       {
         type: "text",
         attributes: {
-          transform: "matrix(0.9048 0 0 1 1269.0715 91.1128)",
+          transform: "matrix(0.9048 0 0 1 1269.0715 92.1128)",
         },
         content: [
           {
@@ -1346,8 +1346,8 @@ export const personPCData = [
           x: "1354",
           y: "86",
           className: "stt8",
-          width: "55",
-          height: "12.8",
+          width: "75",
+          height: "18",
           rx: null,
           ry: null,
         },
@@ -1355,7 +1355,7 @@ export const personPCData = [
       {
         type: "text",
         attributes: {
-          transform: "matrix(0.9048 0 0 1 1356.4791 91.1128)",
+          transform: "matrix(0.9048 0 0 1 1356.4791 92.1128)",
         },
         content: [
           {
@@ -1381,11 +1381,11 @@ export const personPCData = [
       {
         type: "rect",
         attributes: {
-          x: "1529",
+          x: "1510",
           y: "86",
           className: "stt8",
-          width: "43.9",
-          height: "12.8",
+          width: "58",
+          height: "18",
           rx: null,
           ry: null,
         },
@@ -1393,7 +1393,7 @@ export const personPCData = [
       {
         type: "text",
         attributes: {
-          transform: "matrix(0.9048 0 0 1 1532.1721 91.1128)",
+          transform: "matrix(0.9048 0 0 1 1512.1721 92.1128)",
         },
         content: [
           {
@@ -1419,11 +1419,11 @@ export const personPCData = [
       {
         type: "rect",
         attributes: {
-          x: "68",
+          x: "48",
           y: "17",
           className: "stt9",
-          width: "57",
-          height: "12.8",
+          width: "78",
+          height: "18",
           rx: null,
           ry: null,
         },
@@ -1431,7 +1431,7 @@ export const personPCData = [
       {
         type: "text",
         attributes: {
-          transform: "matrix(0.9587 0 0 1 88.9567 21.0914)",
+          transform: "matrix(0.9587 0 0 1 65.9567 22.0914)",
         },
         content: [
           {
@@ -1452,16 +1452,16 @@ export const personPCData = [
     children: [
       {
         type: "title",
-        content: "감군대비 무대책",
+        content: "감군무대책",
       },
       {
         type: "rect",
         attributes: {
           x: "165",
-          y: "15",
+          y: "17",
           className: "stt9",
-          width: "50",
-          height: "12.8",
+          width: "47",
+          height: "18",
           rx: null,
           ry: null,
         },
@@ -1469,7 +1469,7 @@ export const personPCData = [
       {
         type: "text",
         attributes: {
-          transform: "matrix(0.9048 0 0 1 171.5255 21.8512)",
+          transform: "matrix(0.9048 0 0 1 171.5255 22.8512)",
         },
         content: [
           {
@@ -1479,7 +1479,7 @@ export const personPCData = [
               y: "3",
               className: "stt40 stt0 stt22",
             },
-            content: "감군대비 무대책",
+            content: "감군무대책",
           },
         ],
       },
@@ -1490,16 +1490,16 @@ export const personPCData = [
     children: [
       {
         type: "title",
-        content: "자주국방 어려움",
+        content: "자주국방어려움",
       },
       {
         type: "rect",
         attributes: {
-          x: "220",
-          y: "15",
+          x: "215",
+          y: "17",
           className: "stt9",
-          width: "50",
-          height: "12.8",
+          width: "63",
+          height: "18",
           rx: null,
           ry: null,
         },
@@ -1507,7 +1507,7 @@ export const personPCData = [
       {
         type: "text",
         attributes: {
-          transform: "matrix(0.9048 0 0 1 220.0312 24.8564)",
+          transform: "matrix(0.9048 0 0 1 214.0312 25.8564)",
         },
         content: [
           {
@@ -1516,7 +1516,7 @@ export const personPCData = [
               x: "3",
               className: "stt40 stt0 stt22",
             },
-            content: "자주국방 어려움",
+            content: "자주국방어려움",
           },
         ],
       },
@@ -1532,11 +1532,11 @@ export const personPCData = [
       {
         type: "rect",
         attributes: {
-          x: "309.9",
+          x: "291.9",
           y: "17",
           className: "stt9",
-          width: "125",
-          height: "12.8",
+          width: "175",
+          height: "18",
           rx: null,
           ry: null,
         },
@@ -1544,7 +1544,7 @@ export const personPCData = [
       {
         type: "text",
         attributes: {
-          transform: "matrix(0.9048 0 0 1 330.0588 21.5068)",
+          transform: "matrix(0.9048 0 0 1 309.5588 22.1068)",
         },
         content: [
           {
@@ -1573,8 +1573,8 @@ export const personPCData = [
           x: "489.7",
           y: "17",
           className: "stt9",
-          width: "50",
-          height: "12.8",
+          width: "69",
+          height: "18",
           rx: null,
           ry: null,
         },
@@ -1582,7 +1582,7 @@ export const personPCData = [
       {
         type: "text",
         attributes: {
-          transform: "matrix(0.9048 0 0 1 491.3352 24.856)",
+          transform: "matrix(0.9048 0 0 1 491.7352 25.856)",
         },
         // content: "일자리 총량 일정",
         content: [
@@ -1604,16 +1604,16 @@ export const personPCData = [
     children: [
       {
         type: "title",
-        content: "병사 장기복무 어려움, 취업시장 제한",
+        content: "장기복무어려움,취업제한",
       },
       {
         type: "rect",
         attributes: {
           x: "739.3",
-          y: "15",
+          y: "17",
           className: "stt9",
           width: "105",
-          height: "12.8",
+          height: "18",
           rx: null,
           ry: null,
         },
@@ -1621,7 +1621,7 @@ export const personPCData = [
       {
         type: "text",
         attributes: {
-          transform: "matrix(0.9048 0 0 1 743.3804 24.8013)",
+          transform: "matrix(0.9048 0 0 1 743.3804 25.8013)",
           className: "stt40 stt0 stt22",
         },
         content: [
@@ -1632,7 +1632,7 @@ export const personPCData = [
               y: "0",
               className: "stt40 stt0 stt22",
             },
-            content: "병사 장기복무 어려움, 취업시장 제한",
+            content: "장기복무어려움,취업제한",
           },
         ],
       },
@@ -1643,16 +1643,16 @@ export const personPCData = [
     children: [
       {
         type: "title",
-        content: "남성 2년 늦는 취업시기, 평등권 침해",
+        content: "남성2년늦은취업,평등권침해",
       },
       {
         type: "rect",
         attributes: {
-          x: "968.8",
+          x: "960.8",
           y: "17",
           className: "stt9",
-          width: "105",
-          height: "12.8",
+          width: "115",
+          height: "18",
           rx: null,
           ry: null,
         },
@@ -1660,7 +1660,7 @@ export const personPCData = [
       {
         type: "text",
         attributes: {
-          transform: "matrix(0.9048 0 0 1 976.5809 22.1646)",
+          transform: "matrix(0.9048 0 0 1 967.5809 22.6646)",
         },
         content: [
           {
@@ -1670,7 +1670,7 @@ export const personPCData = [
               y: "3",
               className: "stt40 stt0 stt22",
             },
-            content: "남성 2년 늦는 취업시기, 평등권 침해",
+            content: "남성2년늦은취업,평등권침해",
           },
         ],
       },
@@ -1681,16 +1681,16 @@ export const personPCData = [
     children: [
       {
         type: "title",
-        content: "국방예산 조정불가, 사병인건비 2조",
+        content: "국방예산조정불가,사병인건비2조",
       },
       {
         type: "rect",
         attributes: {
           x: "1300.5",
-          y: "15",
+          y: "17",
           className: "stt9",
-          width: "98",
-          height: "12.8",
+          width: "132",
+          height: "18",
           rx: null,
           ry: null,
         },
@@ -1698,7 +1698,7 @@ export const personPCData = [
       {
         type: "text",
         attributes: {
-          transform: "matrix(0.9048 0 0 1 1303.4590 22.1646)",
+          transform: "matrix(0.9048 0 0 1 1303.4590 23.1646)",
         },
         content: [
           {
@@ -1708,7 +1708,7 @@ export const personPCData = [
               y: "2.5",
               className: "stt40 stt0 stt22",
             },
-            content: "국방예산 조정불가, 사병인건비 2조",
+            content: "국방예산조정불가,사병인건비2조",
           },
         ],
       },
@@ -1725,10 +1725,10 @@ export const personPCData = [
         type: "rect",
         attributes: {
           x: "1479.8",
-          y: "15",
+          y: "17",
           className: "stt9",
-          width: "55",
-          height: "12.8",
+          width: "75",
+          height: "18",
           rx: null,
           ry: null,
         },
@@ -1736,7 +1736,7 @@ export const personPCData = [
       {
         type: "text",
         attributes: {
-          transform: "matrix(0.9048 0 0 1 1482.2146 22.1646)",
+          transform: "matrix(0.9048 0 0 1 1482.2146 23.6646)",
         },
         content: [
           {
@@ -1757,16 +1757,16 @@ export const personPCData = [
     children: [
       {
         type: "title",
-        content: "50만군 유지불가, 인구절벽",
+        content: "인구절벽,군 유지불가",
       },
       {
         type: "rect",
         attributes: {
-          x: "45",
+          x: "43",
           y: "40",
           className: "stt12",
-          width: "80",
-          height: "12.8",
+          width: "85",
+          height: "18",
           rx: null,
           ry: null,
         },
@@ -1774,7 +1774,7 @@ export const personPCData = [
       {
         type: "text",
         attributes: {
-          transform: "matrix(0.9048 0 0 1 62.1424 43.9254)",
+          transform: "matrix(0.9048 0 0 1 57.1424 44.9254)",
         },
         content: [
           {
@@ -1784,7 +1784,7 @@ export const personPCData = [
               y: "4.5",
               className: "stt40 stt0 stt22",
             },
-            content: "50만군 유지불가, 인구절벽",
+            content: "인구절벽,군 유지불가",
           },
         ],
       },
@@ -1795,7 +1795,7 @@ export const personPCData = [
     children: [
       {
         type: "title",
-        content: "작지만 강한 스마트군대",
+        content: "강한스마트군대",
       },
       {
         type: "rect",
@@ -1804,7 +1804,7 @@ export const personPCData = [
           y: "40",
           className: "stt12",
           width: "70",
-          height: "12.8",
+          height: "18",
           rx: null,
           ry: null,
         },
@@ -1812,7 +1812,7 @@ export const personPCData = [
       {
         type: "text",
         attributes: {
-          transform: "matrix(0.9048 0 0 1 167.2165 47.8141)",
+          transform: "matrix(0.9048 0 0 1 167.2165 48.8141)",
         },
         content: [
           {
@@ -1821,7 +1821,7 @@ export const personPCData = [
               y: "0.5",
               className: "stt40 stt0 stt22",
             },
-            content: "작지만 강한 스마트군대",
+            content: "강한스마트군대",
           },
         ],
       },
@@ -1837,11 +1837,11 @@ export const personPCData = [
       {
         type: "rect",
         attributes: {
-          x: "343.4",
+          x: "335.4",
           y: "40",
           className: "stt12",
-          width: "93",
-          height: "12.8",
+          width: "126",
+          height: "18",
           rx: null,
           ry: null,
         },
@@ -1849,7 +1849,7 @@ export const personPCData = [
       {
         type: "text",
         attributes: {
-          transform: "matrix(0.9781 0 0 1 348.0743 44.5465)",
+          transform: "matrix(0.9781 0 0 1 337.5743 45.5465)",
         },
         content: [
           {
@@ -1870,16 +1870,16 @@ export const personPCData = [
     children: [
       {
         type: "title",
-        content: "정예화된 보병, 21만 일자리 제공",
+        content: "정예화보병,21만일자리제공",
       },
       {
         type: "rect",
         attributes: {
-          x: "491",
+          x: "486",
           y: "40",
           className: "stt12",
-          width: "98",
-          height: "12.8",
+          width: "118",
+          height: "18",
           rx: null,
           ry: null,
         },
@@ -1887,7 +1887,7 @@ export const personPCData = [
       {
         type: "text",
         attributes: {
-          transform: "matrix(0.9781 0 0 1 523.1106 46.7104)",
+          transform: "matrix(0.9781 0 0 1 516.5106 47.7104)",
         },
         content: [
           {
@@ -1897,7 +1897,7 @@ export const personPCData = [
               y: "1.5",
               className: "stt40 stt0 stt22",
             },
-            content: "정예화된 보병, 21만 일자리 제공",
+            content: "정예화보병,21만일자리제공",
           },
         ],
       },
@@ -1913,11 +1913,11 @@ export const personPCData = [
       {
         type: "rect",
         attributes: {
-          x: "892.6",
+          x: "882.6",
           y: "40",
           className: "stt12",
-          width: "57",
-          height: "12.8",
+          width: "73",
+          height: "18",
           rx: null,
           ry: null,
         },
@@ -1925,7 +1925,7 @@ export const personPCData = [
       {
         type: "text",
         attributes: {
-          transform: "matrix(0.9781 0 0 1 895.3335 44.5464)",
+          transform: "matrix(0.9781 0 0 1 884.3335 45.5464)",
         },
         content: [
           {
@@ -1951,11 +1951,11 @@ export const personPCData = [
       {
         type: "rect",
         attributes: {
-          x: "978",
+          x: "959",
           y: "40",
           className: "stt12",
-          width: "95",
-          height: "12.8",
+          width: "128",
+          height: "18",
           rx: null,
           ry: null,
         },
@@ -1963,7 +1963,7 @@ export const personPCData = [
       {
         type: "text",
         attributes: {
-          transform: "matrix(0.9781 0 0 1 991.8525 44.5464)",
+          transform: "matrix(0.9781 0 0 1 968.0525 46.0464)",
         },
         content: [
           {
@@ -1984,16 +1984,16 @@ export const personPCData = [
     children: [
       {
         type: "title",
-        content: "예산절감 어려움, 징병유지 국방력약화",
+        content: "예산절감어려움,징병유지국방력약화",
       },
       {
         type: "rect",
         attributes: {
-          x: "1320",
+          x: "1290",
           y: "40",
           className: "stt12",
-          width: "118",
-          height: "12.8",
+          width: "153",
+          height: "18",
           rx: null,
           ry: null,
         },
@@ -2001,7 +2001,7 @@ export const personPCData = [
       {
         type: "text",
         attributes: {
-          transform: "matrix(0.9781 0 0 1 1332.6628 44.9459)",
+          transform: "matrix(0.9781 0 0 1 1299.6628 45.9459)",
         },
         content: [
           {
@@ -2011,7 +2011,7 @@ export const personPCData = [
               y: "3",
               className: "stt40 stt0 stt22",
             },
-            content: "예산절감 어려움, 징병유지 국방력약화",
+            content: "예산절감어려움,징병유지국방력약화",
           },
         ],
       },
@@ -2027,11 +2027,11 @@ export const personPCData = [
       {
         type: "rect",
         attributes: {
-          x: "1500",
+          x: "1491",
           y: "40",
           className: "stt12",
-          width: "58",
-          height: "12.8",
+          width: "81",
+          height: "18",
           rx: null,
           ry: null,
         },
@@ -2039,7 +2039,7 @@ export const personPCData = [
       {
         type: "text",
         attributes: {
-          transform: "matrix(0.9781 0 0 1 1506.838 47.2965)",
+          transform: "matrix(0.9781 0 0 1 1495.638 48.2965)",
         },
         content: [
           {
@@ -2068,8 +2068,8 @@ export const personPCData = [
           x: "47.4",
           y: "63",
           className: "stt14",
-          width: "33",
-          height: "12.8",
+          width: "42",
+          height: "18",
           rx: null,
           ry: null,
         },
@@ -2077,7 +2077,7 @@ export const personPCData = [
       {
         type: "text",
         attributes: {
-          transform: "matrix(0.9048 0 0 1 48.7585 70.4)",
+          transform: "matrix(0.9048 0 0 1 48.7585 71.4)",
         },
         content: [
           {
@@ -2098,16 +2098,16 @@ export const personPCData = [
     children: [
       {
         type: "title",
-        content: "총선용 모병제, 미비한 군정책검토",
+        content: "총선용모병제,정책검토미비",
       },
       {
         type: "rect",
         attributes: {
-          x: "178",
+          x: "165",
           y: "63",
           className: "stt14",
-          width: "95",
-          height: "12.8",
+          width: "109",
+          height: "18",
           rx: null,
           ry: null,
         },
@@ -2115,7 +2115,7 @@ export const personPCData = [
       {
         type: "text",
         attributes: {
-          transform: "matrix(0.9048 0 0 1 192.7844 67.7929)",
+          transform: "matrix(0.9048 0 0 1 178.7844 67.7929)",
         },
         content: [
           {
@@ -2125,7 +2125,7 @@ export const personPCData = [
               y: "4",
               className: "stt40 stt0 stt22",
             },
-            content: "총선용 모병제, 미비한 군정책검토",
+            content: "총선용모병제,정책검토미비",
           },
         ],
       },
@@ -2141,11 +2141,11 @@ export const personPCData = [
       {
         type: "rect",
         attributes: {
-          x: "380",
+          x: "365",
           y: "63",
           className: "stt14",
-          width: "68",
-          height: "12.8",
+          width: "95",
+          height: "18",
           rx: null,
           ry: null,
         },
@@ -2153,7 +2153,7 @@ export const personPCData = [
       {
         type: "text",
         attributes: {
-          transform: "matrix(0.9048 0 0 1 384.0538 67.7929)",
+          transform: "matrix(0.9048 0 0 1 368.4538 67.7929)",
         },
         content: [
           {
@@ -2182,8 +2182,8 @@ export const personPCData = [
           x: "688.5",
           y: "62",
           className: "stt14",
-          width: "58",
-          height: "12.8",
+          width: "78",
+          height: "18",
           rx: null,
           ry: null,
         },
@@ -2191,7 +2191,7 @@ export const personPCData = [
       {
         type: "text",
         attributes: {
-          transform: "matrix(0.9048 0 0 1 691.2057 70.8967)",
+          transform: "matrix(0.9048 0 0 1 691.2057 71.3967)",
         },
         content: [
           {
@@ -2212,7 +2212,7 @@ export const personPCData = [
     children: [
       {
         type: "title",
-        content: "예비역 소멸문제, 충분한 부사관 수, 여군 후방투입",
+        content: "예비역소멸,충분한부사관,여군후방투입",
       },
       {
         type: "rect",
@@ -2220,8 +2220,8 @@ export const personPCData = [
           x: "904.5",
           y: "63",
           className: "stt14",
-          width: "140",
-          height: "12.8",
+          width: "155",
+          height: "18",
           rx: null,
           ry: null,
         },
@@ -2229,7 +2229,7 @@ export const personPCData = [
       {
         type: "text",
         attributes: {
-          transform: "matrix(0.9048 0 0 1 906.7999 68.1227)",
+          transform: "matrix(0.9048 0 0 1 906.7999 68.3227)",
         },
         content: [
           {
@@ -2239,7 +2239,7 @@ export const personPCData = [
               y: "3.5",
               className: "stt40 stt0 stt22",
             },
-            content: "예비역 소멸문제, 충분한 부사관 수, 여군 후방투입",
+            content: "예비역소멸,충분한부사관,여군후방투입",
           },
         ],
       },
@@ -2258,8 +2258,8 @@ export const personPCData = [
           x: "1257",
           y: "62",
           className: "stt14",
-          width: "43",
-          height: "12.8",
+          width: "57",
+          height: "18",
           rx: null,
           ry: null,
         },
@@ -2269,7 +2269,7 @@ export const personPCData = [
         attributes: {
           x: "5",
           y: "0",
-          transform: "matrix(0.9048 0 0 1 1258.0261 70.8969)",
+          transform: "matrix(0.9048 0 0 1 1260.0261 70.8969)",
         },
         content: [
           {
@@ -2288,16 +2288,16 @@ export const personPCData = [
     children: [
       {
         type: "title",
-        content: "악폐습철폐, 군문화개선",
+        content: "악폐습철폐,군문화개선",
       },
       {
         type: "rect",
         attributes: {
-          x: "1500",
+          x: "1484",
           y: "62",
           className: "stt14",
-          width: "70",
-          height: "12.8",
+          width: "91",
+          height: "18",
           rx: null,
           ry: null,
         },
@@ -2305,7 +2305,7 @@ export const personPCData = [
       {
         type: "text",
         attributes: {
-          transform: "matrix(0.9048 0 0 1 1513.6693 68.3844)",
+          transform: "matrix(0.9048 0 0 1 1495.4693 68.3844)",
         },
         content: [
           {
@@ -2315,7 +2315,7 @@ export const personPCData = [
               y: "3",
               className: "stt40 stt0 stt22",
             },
-            content: "악폐습철폐, 군문화개선",
+            content: "악폐습철폐,군문화개선",
           },
         ],
       },

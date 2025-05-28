@@ -221,7 +221,7 @@ export const CP1Data = [
         content: [
           {
             type: "tspan",
-            x: "11",
+            x: "10",
             y: "6.5",
             className: "st24 st1",
             onClick: "None",
@@ -230,7 +230,7 @@ export const CP1Data = [
           },
           {
             type: "tspan",
-            x: "1.3",
+            x: "0",
             y: "20.5",
             className: "st24 st1",
             onClick: "None",

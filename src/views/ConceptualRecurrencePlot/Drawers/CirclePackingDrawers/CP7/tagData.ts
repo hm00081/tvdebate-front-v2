@@ -108,7 +108,7 @@ export const CP7Data = [
         content: [
           {
             type: "tspan",
-            x: "7",
+            x: "5",
             y: "2",
             className: "st24 st1",
             onClick: "None",
@@ -117,7 +117,7 @@ export const CP7Data = [
           },
           {
             type: "tspan",
-            x: "11",
+            x: "12",
             y: "14",
             className: "st24 st1",
             onClick: "None",
@@ -240,7 +240,7 @@ export const CP7Data = [
         content: [
           {
             type: "tspan",
-            x: "6",
+            x: "4",
             y: "3",
             className: "st24 st1",
             onClick: "None",
@@ -279,7 +279,7 @@ export const CP7Data = [
         content: [
           {
             type: "tspan",
-            x: "5.5",
+            x: "5",
             y: "4",
             className: "st24 st1",
             onClick: "None",
@@ -288,7 +288,7 @@ export const CP7Data = [
           },
           {
             type: "tspan",
-            x: "5.5",
+            x: "5",
             y: "13",
             className: "st24 st1",
             onClick: "None",
@@ -428,7 +428,7 @@ export const CP7Data = [
         content: [
           {
             type: "tspan",
-            x: "3",
+            x: "1",
             y: "5",
             className: "st24 st1",
             onClick: "None",
@@ -437,7 +437,7 @@ export const CP7Data = [
           },
           {
             type: "tspan",
-            x: "3",
+            x: "1",
             y: "17",
             className: "st24 st1",
             onClick: "None",
@@ -471,7 +471,7 @@ export const CP7Data = [
         content: [
           {
             type: "tspan",
-            x: "10",
+            x: "8",
             y: "4",
             className: "st24 st1",
             onClick: "None",
@@ -480,7 +480,7 @@ export const CP7Data = [
           },
           {
             type: "tspan",
-            x: "10",
+            x: "8",
             y: "15",
             className: "st24 st1",
             onClick: "None",
@@ -600,7 +600,7 @@ export const CP7Data = [
         content: [
           {
             type: "tspan",
-            x: "-4.5",
+            x: "-5.5",
             y: "2",
             className: "st24 st1",
             onClick: "None",
@@ -609,7 +609,7 @@ export const CP7Data = [
           },
           {
             type: "tspan",
-            x: "-4.5",
+            x: "-5.5",
             y: "11",
             className: "st24 st1",
             onClick: "None",

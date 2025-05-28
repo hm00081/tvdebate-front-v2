@@ -910,7 +910,7 @@ export class PlotChartDrawer {
                         //@ts-ignore
                         .attr('x', child.attributes.x)
                         //@ts-ignore
-                        .attr('y', child.attributes.y)
+                        .attr('y', child.attributes.y-3)
                         //@ts-ignore
                         .attr('width', child.attributes.width)
                         //@ts-ignore
@@ -937,7 +937,7 @@ export class PlotChartDrawer {
                         const className = tspanData?.attributes?.className ?? '';
                         //@ts-ignore
                         const content = tspanData?.content ?? '';
-                        text.append('tspan').attr('x', x).attr('y', y).attr('class', className).text(content);
+                        text.append('tspan').attr('x', x).attr('y', y).attr('class', className).style('font-size', '10px').text(content);
                     });
                 }
             });

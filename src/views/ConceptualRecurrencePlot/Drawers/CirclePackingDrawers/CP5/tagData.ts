@@ -127,7 +127,7 @@ export const CP5Data = [
           },
           {
             type: "tspan",
-            x: "8",
+            x: "7",
             y: "7",
             className: "st24 st1",
             onClick: "None",
@@ -226,7 +226,7 @@ export const CP5Data = [
           },
           {
             type: "tspan",
-            x: "6.8",
+            x: "6",
             y: "6",
             className: "st24 st1",
             onClick: "None",
@@ -256,7 +256,7 @@ export const CP5Data = [
         content: [
           {
             type: "tspan",
-            x: "9.5",
+            x: "8",
             y: "0",
             className: "st24 st1",
             onClick: "None",
@@ -355,7 +355,7 @@ export const CP5Data = [
           },
           {
             type: "tspan",
-            x: "8",
+            x: "7",
             y: "7",
             className: "st24 st1",
             onClick: "None",
@@ -364,7 +364,7 @@ export const CP5Data = [
           },
           {
             type: "tspan",
-            x: "8",
+            x: "7",
             y: "15",
             className: "st24 st1",
             onClick: "None",
@@ -526,7 +526,7 @@ export const CP5Data = [
           },
           {
             type: "tspan",
-            x: "3",
+            x: "1.5",
             y: "9",
             className: "st24 st1",
             onClick: "None",
@@ -607,7 +607,7 @@ export const CP5Data = [
         content: [
           {
             type: "tspan",
-            x: "4.5",
+            x: "3",
             y: "7",
             className: "st24 st1",
             onClick: "None",
@@ -616,7 +616,7 @@ export const CP5Data = [
           },
           {
             type: "tspan",
-            x: "4.5",
+            x: "3",
             y: "22",
             className: "st24 st1",
             onClick: "None",
@@ -655,7 +655,7 @@ export const CP5Data = [
           },
           {
             type: "tspan",
-            x: "2",
+            x: "1",
             y: "17",
             className: "st24 st1 ",
             onClick: "None",

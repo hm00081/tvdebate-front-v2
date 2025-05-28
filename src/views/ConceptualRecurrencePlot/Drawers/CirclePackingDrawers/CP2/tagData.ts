@@ -128,7 +128,7 @@ export const CP2Data = [
                 content: [
                     {
                         type: 'tspan',
-                        x: '7',
+                        x: '6',
                         y: '1',
                         className: 'st24 st1',
                         onClick: 'None',
@@ -137,7 +137,7 @@ export const CP2Data = [
                     },
                     {
                         type: 'tspan',
-                        x: '10',
+                        x: '8',
                         y: '8',
                         className: 'st24 st1',
                         onClick: 'None',
@@ -146,7 +146,7 @@ export const CP2Data = [
                     },
                     {
                         type: 'tspan',
-                        x: '10',
+                        x: '8',
                         y: '15',
                         className: 'st24 st1',
                         onClick: 'None',
@@ -305,7 +305,7 @@ export const CP2Data = [
                     },
                     {
                         type: 'tspan',
-                        x: '3.2',
+                        x: '2.2',
                         y: '10',
                         className: 'st24 st1',
                         onClick: 'None',
@@ -380,7 +380,7 @@ export const CP2Data = [
                 content: [
                     {
                         type: 'tspan',
-                        x: '7',
+                        x: '5',
                         y: '2',
                         className: 'st24 st1',
                         onClick: 'None',
@@ -389,7 +389,7 @@ export const CP2Data = [
                     },
                     {
                         type: 'tspan',
-                        x: '5',
+                        x: '1',
                         y: '16',
                         className: 'st24 st1',
                         onClick: 'None',
@@ -457,7 +457,7 @@ export const CP2Data = [
                 content: [
                     {
                         type: 'tspan',
-                        x: '2',
+                        x: '0',
                         y: '2',
                         className: 'st24 st1',
                         onClick: 'None',
@@ -466,7 +466,7 @@ export const CP2Data = [
                     },
                     {
                         type: 'tspan',
-                        x: '4',
+                        x: '1',
                         y: '11',
                         className: 'st24 st1',
                         onClick: 'None',
@@ -475,7 +475,7 @@ export const CP2Data = [
                     },
                     {
                         type: 'tspan',
-                        x: '2',
+                        x: '0',
                         y: '20.5',
                         className: 'st24 st1',
                         onClick: 'None',
