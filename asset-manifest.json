@@ -1,21 +1,21 @@
 {
   "files": {
-    "main.css": "/tvdebate-front-v2/static/css/main.99e70219.css",
-    "main.js": "/tvdebate-front-v2/static/js/main.0bb0ef89.js",
-    "static/media/KJD.svg": "/tvdebate-front-v2/static/media/KJD.5b8bc44d24111bb4a5a9d9be2036483f.svg",
-    "static/media/JKT.svg": "/tvdebate-front-v2/static/media/JKT.b8e4a6ab6f6d776ca1998be3b59eb709.svg",
-    "static/media/PHR.svg": "/tvdebate-front-v2/static/media/PHR.32b08364409b096cd91e456241311910.svg",
-    "static/media/LJS.svg": "/tvdebate-front-v2/static/media/LJS.526803705a55f1c3a68c02e400dd2558.svg",
-    "static/media/JHJ.svg": "/tvdebate-front-v2/static/media/JHJ.41480c45ad8eb65ac37d70a991cef553.svg",
-    "static/media/debateLegend.svg": "/tvdebate-front-v2/static/media/debateLegend.59a1fd6addd31a06cebff65c1a4282fe.svg",
-    "static/media/cons.svg": "/tvdebate-front-v2/static/media/cons.9a857f6ba47d6a2502a1fbe10a51d722.svg",
-    "static/media/pros.svg": "/tvdebate-front-v2/static/media/pros.eb05f480c84ab0c6fa67bea988810bf2.svg",
+    "main.css": "/tvdebate-front-v2/static/css/main.ec0db540.css",
+    "main.js": "/tvdebate-front-v2/static/js/main.ea0bdd44.js",
+    "static/media/KJD.svg": "/tvdebate-front-v2/static/media/KJD.6e54136e8922498c4579d9357cba1804.svg",
+    "static/media/JKT.svg": "/tvdebate-front-v2/static/media/JKT.f4d4a7382700659a23ac69d31006eb5e.svg",
+    "static/media/PHR.svg": "/tvdebate-front-v2/static/media/PHR.8c4a9d7b84c5837d77243e6fc55e4c22.svg",
+    "static/media/LJS.svg": "/tvdebate-front-v2/static/media/LJS.a088a63280a188080de55be534b35483.svg",
+    "static/media/JHJ.svg": "/tvdebate-front-v2/static/media/JHJ.ccfb021fd054546f1a071601f76800d2.svg",
+    "static/media/debateLegend.svg": "/tvdebate-front-v2/static/media/debateLegend.126edd9eb67379dfe2c93dd1536ef8bb.svg",
+    "static/media/cons.svg": "/tvdebate-front-v2/static/media/cons.e5c092f629eb11aace9034d34501b6f4.svg",
+    "static/media/pros.svg": "/tvdebate-front-v2/static/media/pros.1cef1fb9b675c1d3aedc884245ac2c71.svg",
     "index.html": "/tvdebate-front-v2/index.html",
-    "main.99e70219.css.map": "/tvdebate-front-v2/static/css/main.99e70219.css.map",
-    "main.0bb0ef89.js.map": "/tvdebate-front-v2/static/js/main.0bb0ef89.js.map"
+    "main.ec0db540.css.map": "/tvdebate-front-v2/static/css/main.ec0db540.css.map",
+    "main.ea0bdd44.js.map": "/tvdebate-front-v2/static/js/main.ea0bdd44.js.map"
   },
   "entrypoints": [
-    "static/css/main.99e70219.css",
-    "static/js/main.0bb0ef89.js"
+    "static/css/main.ec0db540.css",
+    "static/js/main.ea0bdd44.js"
   ]
 }
