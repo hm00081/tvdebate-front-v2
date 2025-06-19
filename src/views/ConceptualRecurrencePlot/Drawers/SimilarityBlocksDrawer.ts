@@ -572,22 +572,46 @@ export class SimilarityBlocksDrawer {
                 return this._showEngagementPoint && d.engagementPoint ? 'rgb(97, 64, 65)' : null;
             })
             //@ts-ignore
-            .on('click', (d: SimilarityBlock, i: number) => {
-                const mouseEvent = d as unknown as MouseEvent;
+            .on('click', (event: MouseEvent, d: SimilarityBlock) => {
+                // 유효성 검사
+                const rowName = d.rowUtteranceName;
+                const colName = d.colUtteranceName;
+            
+                // 🔐 조건 확인 (예시)
+                const disallowedPairs = [
+                    ["이준석", "박휘락"], ["박휘락", "이준석"],
+                    ["장경태", "김종대"], ["김종대", "장경태"],
+                ];
+            
+                if (rowName === colName) {
+                    // console.log("같은 참여자입니다.");
+                    return;
+                }
+                if (disallowedPairs.some(([a, b]) => a === rowName && b === colName)) {
+                    // console.log("같은 의견을 가진 조합입니다.");
+                    return;
+                }
+            
+                const allowedPairs = [
+                    ["이준석", "김종대"], ["이준석", "장경태"],
+                    ["박휘락", "김종대"], ["박휘락", "장경태"],
+                ];
+            
+                if (!allowedPairs.some(([a, b]) => a === rowName && b === colName)) {
+                    // console.log("진행자가 포함된 조합입니다.");
+                    return;
+                }
+            
+                // 선택 처리
                 this._selectedBlockIndices.push([d.rowUtteranceIndex, d.columnUtteranceIndex]);
-
-                // 하이라이팅 업데이트
                 this.updateSelectedBlock();
-
-                // 이벤트 전파 중단
-                mouseEvent.stopPropagation();
-
-                // 클릭 리스너 호출
-                const similarityBlock = i as unknown as SimilarityBlock;
+                event.stopPropagation();
+            
                 if (this._clickListener) {
-                    this._clickListener(mouseEvent, similarityBlock);
+                    this._clickListener(event, d);
                 }
             })
+            
             .append('title')
             .text((d, i) => {
                 const argumentScore = this.calculateArgumentScore(d); // argumentScore 계산
