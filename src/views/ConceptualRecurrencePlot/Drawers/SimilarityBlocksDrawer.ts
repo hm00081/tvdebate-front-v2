@@ -481,22 +481,22 @@ export class SimilarityBlocksDrawer {
                     }
 
                     // 논쟁 마름모 선택 시, 선택된 마름모만 강조하고자 하면 이 코드 사용
-                    // if (highlightedClasses.length === 1) {
-                    //     if (selectedBlock[1][0] === rowIdx || selectedBlock[1][1] === colIdx) {
-                    //         return 1;
-                    //     }
-                    // }
-                    // if (highlightedClasses.length === 2) {
-                    //     if (selectedBlock[1][0] === rowIdx && selectedBlock[1][1] === colIdx) {
-                    //         return 1;
-                    //     }
-                    // }
+                    if (highlightedClasses.length === 1) {
+                        if (selectedBlock[1][0] === rowIdx || selectedBlock[1][1] === colIdx) {
+                            return 1;
+                        }
+                    }
+                    if (highlightedClasses.length === 2) {
+                        if (selectedBlock[1][0] === rowIdx && selectedBlock[1][1] === colIdx) {
+                            return 1;
+                        }
+                    }
 
                     // OX 선택과 논쟁 마름모 선택 시 결과가 같다면 아래 코드 사용
-                    if (selectedBlock[1][0] === rowIdx || selectedBlock[1][1] === colIdx) {
-                        return 1;
-                    }
-                    return 0.01;
+                    // if (selectedBlock[1][0] === rowIdx || selectedBlock[1][1] === colIdx) {
+                    //     return 1;
+                    // }
+                    return 0.1;
                 }
 
                 if (highlightedClasses && highlightedClasses.length > 0) {
@@ -557,8 +557,20 @@ export class SimilarityBlocksDrawer {
                 }
                 return 0.2; // Dim the element
               })
-            .style('stroke-width', 3)
-            .style('stroke', (d) => (this._showEngagementPoint && d.engagementPoint ? 'rgb(97, 64, 65)' : null))
+            .style('stroke-width', 1)
+            .style('stroke', (d) => {
+                const isSelected =
+                    selectedBlock &&
+                    Array.isArray(selectedBlock[1]) &&
+                    selectedBlock[1][0] === d.rowUtteranceIndex &&
+                    selectedBlock[1][1] === d.columnUtteranceIndex;
+            
+                if (isSelected) {
+                    return 'red'; // 선택된 마름모에 붉은 테두리
+                }
+            
+                return this._showEngagementPoint && d.engagementPoint ? 'rgb(97, 64, 65)' : null;
+            })
             //@ts-ignore
             .on('click', (d: SimilarityBlock, i: number) => {
                 const mouseEvent = d as unknown as MouseEvent;
