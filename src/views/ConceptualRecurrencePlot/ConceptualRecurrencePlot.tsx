@@ -81,10 +81,35 @@ function ConceptualRecurrencePlot() {
   const zoomLevels = [0.75, 0.9, 1.15, 1.4];
   const [zoomScale, setZoomScale] = useState(0.9);
 
+  const EPSILON = 0.01;
+
+  const isAtMaxZoom = (scale: number) =>
+    scale >= zoomLevels[zoomLevels.length - 1] - EPSILON;
+  
+  const isAtMinZoom = (scale: number) =>
+    scale <= zoomLevels[0] + EPSILON;  
+
+  const getClosestZoomLevelIndex = (scale: number) => {
+    let closestIndex = 0;
+    let minDiff = Infinity;
+  
+    zoomLevels.forEach((level, index) => {
+      const diff = Math.abs(scale - level);
+      if (diff < minDiff) {
+        minDiff = diff;
+        closestIndex = index;
+      }
+    });
+  
+    return closestIndex;
+  };
+
   const handleZoomIn = () => {
-    const currentIndex = zoomLevels.indexOf(zoomScale);
-    if (currentIndex < zoomLevels.length - 1 && transformWrapperRef.current && wrapperRef.current) {
-      const nextScale = zoomLevels[currentIndex + 1];
+    const currentIndex = getClosestZoomLevelIndex(zoomScale);
+  
+    // 아직 최대보다 살짝 작은 경우에는 바로 최대 확대
+    if (zoomScale < zoomLevels[zoomLevels.length - 1] - EPSILON && transformWrapperRef.current && wrapperRef.current) {
+      const nextScale = zoomLevels[Math.min(currentIndex + 1, zoomLevels.length - 1)];
       const bounds = wrapperRef.current.getBoundingClientRect();
       const centerX = bounds.width / 2;
       const centerY = bounds.height / 5;
@@ -97,19 +122,20 @@ function ConceptualRecurrencePlot() {
   };
   
   const handleZoomOut = () => {
-    const currentIndex = zoomLevels.indexOf(zoomScale);
-    if (currentIndex > 0 && transformWrapperRef.current && wrapperRef.current) {
-      const prevScale = zoomLevels[currentIndex - 1];
-      const bounds = wrapperRef.current.getBoundingClientRect();
-      const centerX = bounds.width / 2;
-      const centerY = bounds.height / 5;
-      const x = centerX * (1 - prevScale);
-      const y = centerY * (1 - prevScale);
-  
-      setZoomScale(prevScale);
-      transformWrapperRef.current.setTransform(x, y, prevScale);
-    }
-  };
+  const currentIndex = getClosestZoomLevelIndex(zoomScale);
+
+  if (zoomScale > zoomLevels[0] + EPSILON && transformWrapperRef.current && wrapperRef.current) {
+    const prevScale = zoomLevels[Math.max(currentIndex - 1, 0)];
+    const bounds = wrapperRef.current.getBoundingClientRect();
+    const centerX = bounds.width / 2;
+    const centerY = bounds.height / 5;
+    const x = centerX * (1 - prevScale);
+    const y = centerY * (1 - prevScale);
+
+    setZoomScale(prevScale);
+    transformWrapperRef.current.setTransform(x, y, prevScale);
+  }
+};
 
   useEffect(() => {
     if (dataStructureManager) {
@@ -310,11 +336,24 @@ function ConceptualRecurrencePlot() {
             initialScale={0.9}
             minScale={0.75}
             maxScale={1.4}
-            // initialPositionX={initialTransform.x}
-            // initialPositionY={initialTransform.y}
             wheel={{ step: 0.25 }}
             doubleClick={{ disabled: true }}
             panning={{ velocityDisabled: true }}
+            onZoomStop={({ state }) => {
+              const currentScale = state.scale;
+            
+              // 가장 가까운 zoom level로 스냅
+              const closest = zoomLevels.reduce((prev, curr) =>
+                Math.abs(curr - currentScale) < Math.abs(prev - currentScale) ? curr : prev
+              );
+            
+              // 허용 오차 이내면 정확히 맞춰줌
+              if (Math.abs(closest - currentScale) < EPSILON) {
+                setZoomScale(closest);
+              } else {
+                setZoomScale(currentScale); // 애매한 경우 그대로 유지
+              }
+            }}
           >
             <div ref={wrapperRef}>
               <TransformComponent>
@@ -342,20 +381,24 @@ function ConceptualRecurrencePlot() {
       <div className={`zoom-button-container ${isOpen ? "open" : "closed"}`}>
         <button
           onClick={handleZoomIn}
+          disabled={isAtMaxZoom(zoomScale)}
           style={{
-            color: zoomScale === 1.4 ? "#aaa" : "#000", // 최대 줌이면 회색
+            color: isAtMaxZoom(zoomScale) ? "#aaa" : "#000",
           }}
         >
           +
         </button>
+
         <button
           onClick={handleZoomOut}
+          disabled={isAtMinZoom(zoomScale)}
           style={{
-            color: zoomScale === 0.75 ? "#aaa" : "#000", // 최소 줌이면 회색
+            color: isAtMinZoom(zoomScale) ? "#aaa" : "#000",
           }}
         >
           -
         </button>
+
       </div>
   
       <TranscriptViewer
