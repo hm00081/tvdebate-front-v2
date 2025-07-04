@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/tvdebate-front-v2/static/css/main.ec0db540.css",
-    "main.js": "/tvdebate-front-v2/static/js/main.ea0bdd44.js",
+    "main.js": "/tvdebate-front-v2/static/js/main.18d39b0f.js",
     "static/media/KJD.svg": "/tvdebate-front-v2/static/media/KJD.6e54136e8922498c4579d9357cba1804.svg",
     "static/media/JKT.svg": "/tvdebate-front-v2/static/media/JKT.f4d4a7382700659a23ac69d31006eb5e.svg",
     "static/media/PHR.svg": "/tvdebate-front-v2/static/media/PHR.8c4a9d7b84c5837d77243e6fc55e4c22.svg",
@@ -12,10 +12,10 @@
     "static/media/pros.svg": "/tvdebate-front-v2/static/media/pros.1cef1fb9b675c1d3aedc884245ac2c71.svg",
     "index.html": "/tvdebate-front-v2/index.html",
     "main.ec0db540.css.map": "/tvdebate-front-v2/static/css/main.ec0db540.css.map",
-    "main.ea0bdd44.js.map": "/tvdebate-front-v2/static/js/main.ea0bdd44.js.map"
+    "main.18d39b0f.js.map": "/tvdebate-front-v2/static/js/main.18d39b0f.js.map"
   },
   "entrypoints": [
     "static/css/main.ec0db540.css",
-    "static/js/main.ea0bdd44.js"
+    "static/js/main.18d39b0f.js"
   ]
 }
