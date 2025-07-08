@@ -282,7 +282,7 @@ function ConceptualRecurrencePlot() {
       };
   
       d3Drawer.participantBlocksDrawer.update();
-      d3Drawer.insistenceMarkersDrawer.update();
+      // d3Drawer.insistenceMarkersDrawer.update();
       d3Drawer!.similarityBlocksDrawer.standardHighPointOfSimilarityScore =
         standardSimilarityScore;
       d3Drawer.similarityBlocksDrawer.update();

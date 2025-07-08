@@ -1,5 +1,4 @@
 /* eslint-disable no-unused-vars */
-import { UncertainIconDrawer } from "./UncertainIconDrawer";
 import { TermType } from "./../DataImporter";
 import { DataStructureSet } from "../DataStructureMaker/DataStructureManager";
 import { DebateDataSet } from "./../../../interfaces/DebateDataInterface";
@@ -18,11 +17,12 @@ import { CP6Drawer } from "./CirclePackingDrawers/CP6/CP6";
 import { CP7Drawer } from "./CirclePackingDrawers/CP7/CP7";
 import { PlotChartDrawer } from "./PlotChartDrawers/PlotChart";
 import { D3ZoomEvent, zoomTransform } from "d3";
-import { InsistenceMarkersDrawer } from "./InsistenceMarkersDrawer";
-import { RefutationIconDrawer } from "./RefutationIconDrawer";
-import { InsistenceIconDrawer } from "./InsistenceIconDrawer";
-import { InsistenceIconDrawerTwo } from "./InsistenceIconDrawerTwo";
-import { RefutationIconDrawerTwo } from "./RefutationIconDrawerTwo";
+// import { UncertainIconDrawer } from "./UncertainIconDrawer";
+// import { InsistenceMarkersDrawer } from "./InsistenceMarkersDrawer";
+// import { RefutationIconDrawer } from "./RefutationIconDrawer";
+// import { InsistenceIconDrawer } from "./InsistenceIconDrawer";
+// import { InsistenceIconDrawerTwo } from "./InsistenceIconDrawerTwo";
+// import { RefutationIconDrawerTwo } from "./RefutationIconDrawerTwo";
 import { TranscriptViewerMethods } from "../TranscriptViewer/TranscriptViewer";
 import { SentenceObject } from "./../../../interfaces/DebateDataInterface";
 export class D3Drawer {
@@ -46,12 +46,12 @@ export class D3Drawer {
   >;
 
   public readonly participantBlocksDrawer: ParticipantBlocksDrawer;
-  public readonly insistenceMarkersDrawer: InsistenceMarkersDrawer;
-  public readonly refutationIconDrawer: RefutationIconDrawer;
-  public readonly refutationIconDrawerTwo: RefutationIconDrawerTwo;
-  public readonly insistenceIconDrawer: InsistenceIconDrawer;
-  public readonly uncertainIconDrawer: InsistenceIconDrawer;
-  public readonly insistenceIconDrawerTwo: InsistenceIconDrawerTwo;
+  // public readonly insistenceMarkersDrawer: InsistenceMarkersDrawer;
+  // public readonly refutationIconDrawer: RefutationIconDrawer;
+  // public readonly refutationIconDrawerTwo: RefutationIconDrawerTwo;
+  // public readonly insistenceIconDrawer: InsistenceIconDrawer;
+  // public readonly uncertainIconDrawer: InsistenceIconDrawer;
+  // public readonly insistenceIconDrawerTwo: InsistenceIconDrawerTwo;
   //public readonly uncertainIconDrawer: uncertainIconDrawer;
   public readonly similarityBlocksDrawer: SimilarityBlocksDrawer;
   public readonly topicGroupsDrawer: TopicGroupsDrawer;
@@ -225,31 +225,31 @@ initialTransform
       debateDataSet.keytermObjects,
       this.svgGSelection
     ); // 주장 marker drawer
-    this.insistenceMarkersDrawer = new InsistenceMarkersDrawer(
-      dataStructureSet.utteranceObjectsForDrawingManager.utteranceObjectsForDrawing,
-      dataStructureSet.similarityBlockManager.similarityBlockGroup,
-      this.svgGSelection
-    ); // 불확실 아이콘 drawer
-    this.refutationIconDrawer = new RefutationIconDrawer(
-      dataStructureSet.utteranceObjectsForDrawingManager.utteranceObjectsForDrawing,
-      this.svgGSelection
-    ); // 반박 아이콘 drawer
-    this.refutationIconDrawerTwo = new RefutationIconDrawerTwo(
-      dataStructureSet.utteranceObjectsForDrawingManager.utteranceObjectsForDrawing,
-      this.svgGSelection
-    );
-    this.insistenceIconDrawer = new InsistenceIconDrawer(
-      dataStructureSet.utteranceObjectsForDrawingManager.utteranceObjectsForDrawing,
-      this.svgGSelection
-    );
-    this.insistenceIconDrawerTwo = new InsistenceIconDrawerTwo(
-      dataStructureSet.utteranceObjectsForDrawingManager.utteranceObjectsForDrawing,
-      this.svgGSelection
-    ); // 불확실 아이콘 drawer
-    this.uncertainIconDrawer = new InsistenceIconDrawer(
-      dataStructureSet.utteranceObjectsForDrawingManager.utteranceObjectsForDrawing,
-      this.svgGSelection
-    );
+    // this.insistenceMarkersDrawer = new InsistenceMarkersDrawer(
+    //   dataStructureSet.utteranceObjectsForDrawingManager.utteranceObjectsForDrawing,
+    //   dataStructureSet.similarityBlockManager.similarityBlockGroup,
+    //   this.svgGSelection
+    // ); // 불확실 아이콘 drawer
+    // this.refutationIconDrawer = new RefutationIconDrawer(
+    //   dataStructureSet.utteranceObjectsForDrawingManager.utteranceObjectsForDrawing,
+    //   this.svgGSelection
+    // ); // 반박 아이콘 drawer
+    // this.refutationIconDrawerTwo = new RefutationIconDrawerTwo(
+    //   dataStructureSet.utteranceObjectsForDrawingManager.utteranceObjectsForDrawing,
+    //   this.svgGSelection
+    // );
+    // this.insistenceIconDrawer = new InsistenceIconDrawer(
+    //   dataStructureSet.utteranceObjectsForDrawingManager.utteranceObjectsForDrawing,
+    //   this.svgGSelection
+    // );
+    // this.insistenceIconDrawerTwo = new InsistenceIconDrawerTwo(
+    //   dataStructureSet.utteranceObjectsForDrawingManager.utteranceObjectsForDrawing,
+    //   this.svgGSelection
+    // ); // 불확실 아이콘 drawer
+    // this.uncertainIconDrawer = new InsistenceIconDrawer(
+    //   dataStructureSet.utteranceObjectsForDrawingManager.utteranceObjectsForDrawing,
+    //   this.svgGSelection
+    // );
 
     this.similarityBlocksDrawer = new SimilarityBlocksDrawer(
       dataStructureSet.utteranceObjectsForDrawingManager.utteranceObjectsForDrawing,
@@ -263,52 +263,52 @@ initialTransform
       e: MouseEvent,
       d: SimilarityBlock
     ) => {
-      if (d.colUtteranceName === "이준석" || d.colUtteranceName === "박휘락") {
-        this.insistenceIconDrawerTwo.similarityBlock = d;
-        this.refutationIconDrawer.similarityBlock = d;
-      } else if (
-        d.colUtteranceName === "김종대" ||
-        d.colUtteranceName === "장경태"
-      ) {
-        this.insistenceIconDrawer.similarityBlock = d;
-        this.refutationIconDrawerTwo.similarityBlock = d;
-      } else if (
-        d.rowUtteranceName === "이준석" ||
-        d.rowUtteranceName === "박휘락"
-      ) {
-        this.refutationIconDrawerTwo.similarityBlock = d;
-        this.insistenceIconDrawer.similarityBlock = d;
-      } else if (
-        d.rowUtteranceName === "김종대" ||
-        d.rowUtteranceName === "장경태"
-      ) {
-        this.refutationIconDrawer.similarityBlock = d;
-        this.insistenceIconDrawerTwo.similarityBlock = d;
-      } else {
-      }
-      this.refutationIconDrawer.update();
-      this.refutationIconDrawerTwo.update();
-      this.insistenceIconDrawer.update();
-      this.insistenceIconDrawerTwo.update();
-      this.uncertainIconDrawer.update();
+      // if (d.colUtteranceName === "이준석" || d.colUtteranceName === "박휘락") {
+      //   this.insistenceIconDrawerTwo.similarityBlock = d;
+      //   this.refutationIconDrawer.similarityBlock = d;
+      // } else if (
+      //   d.colUtteranceName === "김종대" ||
+      //   d.colUtteranceName === "장경태"
+      // ) {
+      //   this.insistenceIconDrawer.similarityBlock = d;
+      //   this.refutationIconDrawerTwo.similarityBlock = d;
+      // } else if (
+      //   d.rowUtteranceName === "이준석" ||
+      //   d.rowUtteranceName === "박휘락"
+      // ) {
+      //   this.refutationIconDrawerTwo.similarityBlock = d;
+      //   this.insistenceIconDrawer.similarityBlock = d;
+      // } else if (
+      //   d.rowUtteranceName === "김종대" ||
+      //   d.rowUtteranceName === "장경태"
+      // ) {
+      //   this.refutationIconDrawer.similarityBlock = d;
+      //   this.insistenceIconDrawerTwo.similarityBlock = d;
+      // } else {
+      // }
+      // this.refutationIconDrawer.update();
+      // this.refutationIconDrawerTwo.update();
+      // this.insistenceIconDrawer.update();
+      // this.insistenceIconDrawerTwo.update();
+      // this.uncertainIconDrawer.update();
     };
 
     this.participantBlocksDrawer.clickListener = (
       e: MouseEvent,
       d: UtteranceObjectForDrawing
     ) => {
-      const iconDrawers = [
-        this.insistenceIconDrawer, // 박휘락,
-        this.insistenceIconDrawerTwo, // 이준석,
-        this.refutationIconDrawer, // 박휘락,
-        this.refutationIconDrawerTwo, // 이준석,
-      ];
-      for (const iconDrawer of iconDrawers) {
-        if (iconDrawer.participantBlock?.name === d.name) {
-          iconDrawer.participantBlock = d;
-          iconDrawer.update();
-        }
-      }
+      // const iconDrawers = [
+      //   this.insistenceIconDrawer, // 박휘락,
+      //   this.insistenceIconDrawerTwo, // 이준석,
+      //   this.refutationIconDrawer, // 박휘락,
+      //   this.refutationIconDrawerTwo, // 이준석,
+      // ];
+      // for (const iconDrawer of iconDrawers) {
+      //   if (iconDrawer.participantBlock?.name === d.name) {
+      //     iconDrawer.participantBlock = d;
+      //     iconDrawer.update();
+      //   }
+      // }
     };
 
     this.topicGroupsDrawer = new TopicGroupsDrawer(
@@ -404,16 +404,16 @@ initialTransform
       );
       this.similarityBlocksDrawer.update();
       this.participantBlocksDrawer.update();
-      this.insistenceIconDrawer.similarityBlock = null;
-      this.insistenceIconDrawer.update();
-      this.refutationIconDrawer.similarityBlock = null;
-      this.refutationIconDrawer.update();
-      this.uncertainIconDrawer.similarityBlock = null;
-      this.uncertainIconDrawer.update(); // 불확실성 icon
-      this.insistenceIconDrawerTwo.similarityBlock = null;
-      this.insistenceIconDrawerTwo.update();
-      this.refutationIconDrawerTwo.similarityBlock = null;
-      this.refutationIconDrawerTwo.update();
+      // this.insistenceIconDrawer.similarityBlock = null;
+      // this.insistenceIconDrawer.update();
+      // this.refutationIconDrawer.similarityBlock = null;
+      // this.refutationIconDrawer.update();
+      // this.uncertainIconDrawer.similarityBlock = null;
+      // this.uncertainIconDrawer.update(); // 불확실성 icon
+      // this.insistenceIconDrawerTwo.similarityBlock = null;
+      // this.insistenceIconDrawerTwo.update();
+      // this.refutationIconDrawerTwo.similarityBlock = null;
+      // this.refutationIconDrawerTwo.update();
     });
   }
 //1
