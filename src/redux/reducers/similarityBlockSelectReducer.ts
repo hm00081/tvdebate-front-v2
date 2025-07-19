@@ -1,13 +1,22 @@
-// reducers/highlightReducer.js
-import { createSlice } from "@reduxjs/toolkit";
+// reducers/highlightReducer.ts
+import { createSlice, PayloadAction } from "@reduxjs/toolkit";
+
+type SelectedBlock = [[string, string], [number, number]] | [];
+
+interface SimilarityBlockSelectState {
+  selectedBlock: SelectedBlock;
+}
+
+// 초기 상태
+const initialState: SimilarityBlockSelectState = {
+  selectedBlock: [],
+};
 
 const similarityBlockSelectSlice = createSlice({
   name: "similarityBlockSelect",
-  initialState: {
-    selectedBlock: [],
-  },
+  initialState,
   reducers: {
-    setSelectedBlock(state, action) {
+    setSelectedBlock(state, action: PayloadAction<SelectedBlock>) {
       state.selectedBlock = action.payload;
     },
     clearSelectedBlock(state) {
@@ -16,6 +25,5 @@ const similarityBlockSelectSlice = createSlice({
   },
 });
 
-export const { setSelectedBlock, clearSelectedBlock } =
-similarityBlockSelectSlice.actions;
+export const { setSelectedBlock, clearSelectedBlock } = similarityBlockSelectSlice.actions;
 export default similarityBlockSelectSlice.reducer;

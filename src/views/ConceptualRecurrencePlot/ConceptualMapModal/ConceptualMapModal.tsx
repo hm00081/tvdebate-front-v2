@@ -56,18 +56,18 @@ function ConceptualMapModal(
   const [graphDataStructureMaker, setGraphDataStructureMaker] =
     useState<GraphDataStructureMaker>();
 
-  useEffect(() => {
-    const modalPadding = 24;
-    const conrollerWidth = 200;
-    setConceptualMapDrawer(
-      new ConceptualMapDrawer(
-        `.${conceptualMapDivClassName}`,
-        modalContentWidth - modalPadding * 2 - conrollerWidth,
-        modalContentHeight - modalPadding * 2,
-        props.participantDict
-      )
-    );
-  }, []); // 마운트 될때만 실행.
+  // useEffect(() => {
+  //   const modalPadding = 24;
+  //   const conrollerWidth = 200;
+  //   setConceptualMapDrawer(
+  //     new ConceptualMapDrawer(
+  //       `.${conceptualMapDivClassName}`,
+  //       modalContentWidth - modalPadding * 2 - conrollerWidth,
+  //       modalContentHeight - modalPadding * 2,
+  //       props.participantDict
+  //     )
+  //   );
+  // }, []); // 마운트 될때만 실행.
 
   useEffect(() => {
     if (conceptualMapDrawer) {

@@ -2,12 +2,8 @@
 /* eslint-disable no-unused-vars */
 import React, { useEffect, useState, useRef } from "react";
 import "./ConceptualRecurrencePlot.scss";
-import _ from "lodash";
 import { SimilarityBlock, UtteranceObjectForDrawing } from "./interfaces";
 import { D3Drawer } from "./Drawers/D3Drawer";
-import ConceptualMapModal, {
-  ConceptualMapModalRef,
-} from "./ConceptualMapModal/ConceptualMapModal";
 import { useLocation } from "react-router-dom";
 import TranscriptViewer, {
   TranscriptViewerMethods,
@@ -27,7 +23,6 @@ import DataImporter, { DebateName, TermType } from "./DataImporter";
 import { CHANGE_STANDARD_SIMILARITY_SCORE } from "../../redux/actionTypes";
 import CombinedEGsMaker from "./DataStructureMaker/CombinedEGsMaker";
 import Header from "./../Header/Header";
-import HeaderTwoKor from "./../Header/HeaderTwoKor";
 import debateLegendSvg from '../Header/image/debateLegend.svg';
 import * as d3 from "d3";
 import {
@@ -35,6 +30,7 @@ import {
   TransformComponent,
   ReactZoomPanPinchRef,
 } from "react-zoom-pan-pinch";
+import _ from "lodash";
 
 // TODO: 상태관리 Redux 사용하여 한곳에 관리하도록 추후 변경하기
 function ConceptualRecurrencePlot() {
@@ -57,7 +53,7 @@ function ConceptualRecurrencePlot() {
     useState<CombinedEGsMaker | null>(null); // relate similarity
   const [d3Drawer, setD3Drawer] = useState<D3Drawer | null>(null);
 
-  const conceptualMapModalRef = React.useRef<ConceptualMapModalRef>(null);
+  // const conceptualMapModalRef = React.useRef<ConceptualMapModalRef>(null);
   const standardSimilarityScore = useSelector<
     RootState,
     number
@@ -160,21 +156,18 @@ function ConceptualRecurrencePlot() {
         debateNameOfQuery === "정시확대clipped" ||
         debateNameOfQuery === "모병제clipped"
       ) {
-        const dataImporter = new DataImporter(
-          debateNameOfQuery,
-          termTypeOfQuery
-        );
-
+        const dataImporter = new DataImporter(debateNameOfQuery, termTypeOfQuery);
+  
         const dataStructureMaker = new DataStructureManager(
           debateNameOfQuery,
           dataImporter.debateDataSet!
         );
-        // use dispatch
+  
         const combinedEGsMaker = new CombinedEGsMaker(
           dataStructureMaker.dataStructureSet.similarityBlockManager.similarityBlockGroup,
           dataImporter.debateDataSet!.utteranceObjects
         );
-
+  
         dispatch({
           type: CHANGE_STANDARD_SIMILARITY_SCORE,
           payload: {
@@ -182,14 +175,20 @@ function ConceptualRecurrencePlot() {
               dataStructureMaker.dataStructureSet.maxSimilarityScore,
           },
         });
-
+  
         setDebateDataset(dataImporter.debateDataSet);
         setDataStructureManager(dataStructureMaker);
         setCombinedEGsMaker(combinedEGsMaker);
         setEvaluationDataSet(dataImporter.evaluationDataSet);
       }
     }
-  }, []); // 마운트 될 때마다 dispath
+  }, [
+    dataStructureManager,
+    debateNameOfQuery,
+    termTypeOfQuery,
+    dispatch,
+  ]);
+  
 
   // Control MapModal (각 토론 주제 클릭 시 모달창)
   useEffect(() => {
@@ -200,117 +199,90 @@ function ConceptualRecurrencePlot() {
       const manualMiddleEGTitles = datasetOfManualEGs.manualMiddleEGTitles;
       const manualSmallEGs = datasetOfManualEGs.manualSmallEGs;
       const manualSmallEGTitles = datasetOfManualEGs.manualSmallEGTitles;
-      
+  
       d3.select(svgGRef.current).selectAll("*").remove();
-      
-      // settings of d3Drawer
+  
       const d3Drawer = new D3Drawer(
         debateDataset,
         dataStructureSet,
         termTypeOfQuery,
         transcriptViewerRef
       );
-
-      // d3Drawer.zoomListener = (transform) => {
-      //   setTransform(transform);
-      // };
-      // const transform = d3Drawer.centerConceptualRecurrentPlot();
-      // if (transform && transformWrapperRef.current) {
-      //   transformWrapperRef.current.setTransform(
-      //     transform.x,
-      //     transform.y,
-      //     transform.scale ?? 1
-      //   );
-      // }
-
-      d3Drawer.participantBlocksDrawer.mouseoverListener = (
-        mouseEvent,
-        utteranceObjectForDrawing
-      ) => {
-        setMouseoveredUtterance(utteranceObjectForDrawing);
-        setTooltipVisible(true);
-      };
-      d3Drawer.participantBlocksDrawer.mouseoutLisener = () => {};
-      d3Drawer.similarityBlocksDrawer.mouseoverListener = (
-        mouseEvent,
-        similarityBlock
-      ) => {
-        setMouseoveredSimilarity(similarityBlock);
-        setTooltipVisible(true);
-      };
-      d3Drawer.similarityBlocksDrawer.mouseoutLisener = () => {};
-      // 클릭 리스너 설정
-      d3Drawer.setupClickListener(transcriptViewerRef);
-      d3Drawer.manualSmallTGsDrawer.topicGroups = manualSmallEGs;
-      d3Drawer.manualSmallTGsDrawer.topicGroupTitles = manualSmallEGTitles;
-      d3Drawer.manualSmallTGsDrawer.onTitleClicked = (
-        mouseEvent: MouseEvent,
-        engagementGroup: SimilarityBlock[][],
-        engagementGroupIndex: number
-      ) => {
-        conceptualMapModalRef.current?.openModal(
-          `Manual Small Engagement Group ${engagementGroupIndex}`,
-          engagementGroup
-        );
-      };
-      d3Drawer.manualSmallTGsDrawer.visible = true;
-
-      // Manual Middle Engagement Group Drawer's Settings
-      d3Drawer.manualMiddleTGsDrawer.topicGroups = manualMiddleEGs;
-      d3Drawer.manualMiddleTGsDrawer.topicGroupTitles = manualMiddleEGTitles;
-      d3Drawer.manualMiddleTGsDrawer.onTitleClicked = (
-        mouseEvent: MouseEvent,
-        engagementGroup: SimilarityBlock[][],
-        engagementGroupIndex: number
-      ) => {
-        conceptualMapModalRef.current?.openModal(
-          `Manual Middle Engagement Group ${engagementGroupIndex}`,
-          engagementGroup
-        );
-      };
-      d3Drawer.manualMiddleTGsDrawer.visible = true;
-
-      d3Drawer.manualPeopleTGsDrawer.onTitleClicked = (
-        mouseEvent: MouseEvent,
-        engagementGroup: SimilarityBlock[][],
-        engagementGroupIndex: number
-      ) => {
-        conceptualMapModalRef.current?.openModal(
-          `Manual People Engagement Group ${engagementGroupIndex}`,
-          engagementGroup
-        );
+  
+      // 최적화된 mouseover 리스너 설정 (throttled + rAF)
+      d3Drawer.participantBlocksDrawer.mouseoverListener = _.throttle(
+        (mouseEvent, utteranceObjectForDrawing) => {
+          requestAnimationFrame(() => {
+            setMouseoveredUtterance(utteranceObjectForDrawing);
+            setTooltipVisible(true);
+          });
+        },
+        16,
+        { leading: true, trailing: true }
+      );
+  
+      d3Drawer.participantBlocksDrawer.mouseoutLisener = () => {
+        requestAnimationFrame(() => {
+          setTooltipVisible(false);
+          setMouseoveredUtterance(null);
+        });
       };
   
-      d3Drawer.participantBlocksDrawer.update();
-      // d3Drawer.insistenceMarkersDrawer.update();
-      d3Drawer!.similarityBlocksDrawer.standardHighPointOfSimilarityScore =
-        standardSimilarityScore;
-      d3Drawer.similarityBlocksDrawer.update();
-      d3Drawer.CP1Drawer.update();
-      d3Drawer.CP2Drawer.update();
-      d3Drawer.CP3Drawer.update();
-      d3Drawer.CP4Drawer.update();
-      d3Drawer.CP5Drawer.update();
-      d3Drawer.CP6Drawer.update();
-      d3Drawer.CP7Drawer.update();
-      d3Drawer.PlotChartDrawer.update(); // test
-      d3Drawer.manualSmallTGsDrawer.update();
-      d3Drawer.manualMiddleTGsDrawer.update();
-      d3Drawer.manualPeopleTGsDrawer.update();
-      setD3Drawer(d3Drawer);
+      d3Drawer.similarityBlocksDrawer.mouseoverListener = _.throttle(
+        (mouseEvent, similarityBlock) => {
+          requestAnimationFrame(() => {
+            setMouseoveredSimilarity(similarityBlock);
+            setTooltipVisible(true);
+          });
+        },
+        16,
+        { leading: true, trailing: true }
+      );
+  
+      d3Drawer.similarityBlocksDrawer.mouseoutLisener = () => {
+        requestAnimationFrame(() => {
+          setTooltipVisible(false);
+          setMouseoveredSimilarity(null);
+        });
+      };
+  
+      // 클릭 리스너 설정
+      d3Drawer.setupClickListener(transcriptViewerRef);
+  
+      d3Drawer.manualSmallTGsDrawer.topicGroups = manualSmallEGs;
+      d3Drawer.manualSmallTGsDrawer.topicGroupTitles = manualSmallEGTitles;
+      d3Drawer.manualMiddleTGsDrawer.topicGroups = manualMiddleEGs;
+      d3Drawer.manualMiddleTGsDrawer.topicGroupTitles = manualMiddleEGTitles;
+  
+      // 한 프레임에 update 처리
+      requestAnimationFrame(() => {
+        d3Drawer.participantBlocksDrawer.update();
+  
+        d3Drawer.similarityBlocksDrawer.standardHighPointOfSimilarityScore =
+          standardSimilarityScore;
+        d3Drawer.similarityBlocksDrawer.update();
+  
+        d3Drawer.CP1Drawer.update();
+        d3Drawer.CP2Drawer.update();
+        d3Drawer.CP3Drawer.update();
+        d3Drawer.CP4Drawer.update();
+        d3Drawer.CP5Drawer.update();
+        d3Drawer.CP6Drawer.update();
+        d3Drawer.CP7Drawer.update();
+  
+        d3Drawer.PlotChartDrawer.update();
+        d3Drawer.manualSmallTGsDrawer.update();
+        d3Drawer.manualMiddleTGsDrawer.update();
+        d3Drawer.manualPeopleTGsDrawer.update();
+  
+        setD3Drawer(d3Drawer);
+      });
     }
-  }, [
-    dataStructureManager,
-    debateDataset,
-    d3Container.current,
-    transcriptViewerRef,
-  ]);
+  }, [dataStructureManager, debateDataset, d3Container.current, transcriptViewerRef]);
 
   return (
     <div className="root-div" style={{ overflow: "hidden" }}>
-      <Header isOpen={isOpen} setIsOpen={setIsOpen} />
-      {/* <HeaderTwoKor isOpen={isOpen} setIsOpen={setIsOpen} /> */}
-  
+      <Header isOpen={isOpen} setIsOpen={setIsOpen} />  
       <div className="vis-area">
         <div
           className="concept-recurrence-plot"
@@ -405,23 +377,6 @@ function ConceptualRecurrencePlot() {
         isOpen={isOpen}
         dataStructureMaker={dataStructureManager}
         ref={transcriptViewerRef}
-      />
-  
-      <ConceptualMapModal
-        ref={conceptualMapModalRef}
-        participantDict={
-          dataStructureManager
-            ? dataStructureManager.dataStructureSet.participantDict
-            : {}
-        }
-        utteranceObjects={debateDataset ? debateDataset.utteranceObjects : []}
-        termList={debateDataset ? debateDataset.termList : []}
-        termUtteranceBooleanMatrixTransposed={
-          debateDataset
-            ? debateDataset.termUtteranceBooleanMatrixTransposed
-            : []
-        }
-        termType={termTypeOfQuery}
       />
     </div>
   );  

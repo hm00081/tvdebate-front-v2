@@ -83,6 +83,7 @@ export class PlotChartDrawer {
         }
 
         store.dispatch(clearSelectedBlock());
+        //@ts-ignore
         store.dispatch(setSelectedBlock([[nameMap[block.colUtteranceName], nameMap[block.rowUtteranceName]], []]));
         store.dispatch(setHighlightedGroup([group, group]));
         store.dispatch(clearHighlightedClass());
@@ -724,7 +725,9 @@ export class PlotChartDrawer {
                         // 🔹 selectedBlock이 존재하면서 highlightedGroup도 있는 경우
                         //@ts-ignore
                         if (highlightedGroup && Array.isArray(selectedBlock) && selectedBlock.length > 0 && selectedBlock[0].length > 1) {
+                            //@ts-ignore
                         const selected1 = selectedBlock[0][0]; // 첫 번째 선택된 인물
+                        //@ts-ignore
                         const selected2 = selectedBlock[0][1]; // 두 번째 선택된 인물
 
                         const groupArray = Array.isArray(highlightedGroup) ? highlightedGroup : highlightedGroup ? [highlightedGroup] : [];

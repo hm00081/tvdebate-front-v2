@@ -57,9 +57,9 @@ export class TopicGroupsDrawer {
       
       this.applyHighlightEffect(highlightedClasses, highlightedGroup, selectedBlock);
     
-      console.log('highlightedGroup', highlightedGroup);
-      console.log('highlightedClasses', highlightedClasses);
-      console.log('selectedBlock', selectedBlock);
+      // console.log('highlightedGroup', highlightedGroup);
+      // console.log('highlightedClasses', highlightedClasses);
+      // console.log('selectedBlock', selectedBlock);
     });
     
   }
@@ -106,7 +106,7 @@ export class TopicGroupsDrawer {
     });
   }
 
-  private applyHighlightEffect(highlightedClasses: string[] | null, highlightedGroup: string | null, selectedBlock: never[] | null) {
+  private applyHighlightEffect(highlightedClasses: string[] | null, highlightedGroup: string | null, selectedBlock: any[] | null) {
     // const groupRanges: Record<string, { row: [number, number]; col: [number, number] }> = {
     //   g1: { row: [0, 18], col: [0, 19] },
     //   g2: { row: [14, 37], col: [15, 38] },
