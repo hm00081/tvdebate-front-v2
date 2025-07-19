@@ -17,6 +17,12 @@ import { CP6Drawer } from "./CirclePackingDrawers/CP6/CP6";
 import { CP7Drawer } from "./CirclePackingDrawers/CP7/CP7";
 import { PlotChartDrawer } from "./PlotChartDrawers/PlotChart";
 import { D3ZoomEvent, zoomTransform } from "d3";
+// import { UncertainIconDrawer } from "./UncertainIconDrawer";
+// import { InsistenceMarkersDrawer } from "./InsistenceMarkersDrawer";
+// import { RefutationIconDrawer } from "./RefutationIconDrawer";
+// import { InsistenceIconDrawer } from "./InsistenceIconDrawer";
+// import { InsistenceIconDrawerTwo } from "./InsistenceIconDrawerTwo";
+// import { RefutationIconDrawerTwo } from "./RefutationIconDrawerTwo";
 import { TranscriptViewerMethods } from "../TranscriptViewer/TranscriptViewer";
 import { SentenceObject } from "./../../../interfaces/DebateDataInterface";
 export class D3Drawer {
@@ -40,6 +46,13 @@ export class D3Drawer {
   >;
 
   public readonly participantBlocksDrawer: ParticipantBlocksDrawer;
+  // public readonly insistenceMarkersDrawer: InsistenceMarkersDrawer;
+  // public readonly refutationIconDrawer: RefutationIconDrawer;
+  // public readonly refutationIconDrawerTwo: RefutationIconDrawerTwo;
+  // public readonly insistenceIconDrawer: InsistenceIconDrawer;
+  // public readonly uncertainIconDrawer: InsistenceIconDrawer;
+  // public readonly insistenceIconDrawerTwo: InsistenceIconDrawerTwo;
+  //public readonly uncertainIconDrawer: uncertainIconDrawer;
   public readonly similarityBlocksDrawer: SimilarityBlocksDrawer;
   public readonly topicGroupsDrawer: TopicGroupsDrawer;
   public readonly manualSmallTGsDrawer: TopicGroupsDrawer;
@@ -62,7 +75,9 @@ export class D3Drawer {
   private readonly svgWidth: number;
   private readonly svgHeight: number;
   private _zoomListener: ((transform: d3.ZoomTransform) => void) | null = null;
+  private initialTransform: d3.ZoomTransform = d3.zoomIdentity.translate(0, 0).scale(0.9);
   
+
   setupClickListener(
     transcriptViewerRef: React.RefObject<TranscriptViewerMethods>
   ) {
@@ -125,9 +140,28 @@ export class D3Drawer {
         d.rowUtteranceIndex,
         d.columnUtteranceIndex
       );
+      this.similarityBlocksDrawer.updateSelectedBlock();
     };
   }
 
+  // public resetView(): void {
+  //   if (!this.svgSelection) {
+  //     console.error("svgSelection is not defined");
+  //     return;
+  //   }
+  
+  //   this.svgSelection.transition().duration(750).call(
+  //     //@ts-ignore
+  //     d3.zoom<SVGSVGElement, any>().transform,
+  //     this.initialTransform
+  //   );
+  
+  //   this.svgGSelection.attr("transform", this.initialTransform.toString());
+  
+  //   if (this._zoomListener) {
+  //     this._zoomListener(this.initialTransform);
+  //   }
+  // }
 
   public constructor(
     private readonly debateDataSet: DebateDataSet,
@@ -176,6 +210,11 @@ d3.zoom<SVGSVGElement, any>().transform,
 initialTransform
 );
 
+
+    // setTimeout(() => {
+    //   this.updateInitialTransform();
+    // }, 0);
+
     this.participantBlocksDrawer = new ParticipantBlocksDrawer(
       dataStructureSet.utteranceObjectsForDrawingManager.utteranceObjectsForDrawing,
       dataStructureSet.participantDict,
@@ -184,6 +223,31 @@ initialTransform
       debateDataSet.keytermObjects,
       this.svgGSelection
     ); // 주장 marker drawer
+    // this.insistenceMarkersDrawer = new InsistenceMarkersDrawer(
+    //   dataStructureSet.utteranceObjectsForDrawingManager.utteranceObjectsForDrawing,
+    //   dataStructureSet.similarityBlockManager.similarityBlockGroup,
+    //   this.svgGSelection
+    // ); // 불확실 아이콘 drawer
+    // this.refutationIconDrawer = new RefutationIconDrawer(
+    //   dataStructureSet.utteranceObjectsForDrawingManager.utteranceObjectsForDrawing,
+    //   this.svgGSelection
+    // ); // 반박 아이콘 drawer
+    // this.refutationIconDrawerTwo = new RefutationIconDrawerTwo(
+    //   dataStructureSet.utteranceObjectsForDrawingManager.utteranceObjectsForDrawing,
+    //   this.svgGSelection
+    // );
+    // this.insistenceIconDrawer = new InsistenceIconDrawer(
+    //   dataStructureSet.utteranceObjectsForDrawingManager.utteranceObjectsForDrawing,
+    //   this.svgGSelection
+    // );
+    // this.insistenceIconDrawerTwo = new InsistenceIconDrawerTwo(
+    //   dataStructureSet.utteranceObjectsForDrawingManager.utteranceObjectsForDrawing,
+    //   this.svgGSelection
+    // ); // 불확실 아이콘 drawer
+    // this.uncertainIconDrawer = new InsistenceIconDrawer(
+    //   dataStructureSet.utteranceObjectsForDrawingManager.utteranceObjectsForDrawing,
+    //   this.svgGSelection
+    // );
 
     this.similarityBlocksDrawer = new SimilarityBlocksDrawer(
       dataStructureSet.utteranceObjectsForDrawingManager.utteranceObjectsForDrawing,
@@ -192,6 +256,58 @@ initialTransform
       dataStructureSet.participantDict,
       this.svgGSelection
     ); // 유사도 구간 색지정
+
+    // this.similarityBlocksDrawer.mouseoverListener = (
+    //   e: MouseEvent,
+    //   d: SimilarityBlock
+    // ) => {
+      // if (d.colUtteranceName === "이준석" || d.colUtteranceName === "박휘락") {
+      //   this.insistenceIconDrawerTwo.similarityBlock = d;
+      //   this.refutationIconDrawer.similarityBlock = d;
+      // } else if (
+      //   d.colUtteranceName === "김종대" ||
+      //   d.colUtteranceName === "장경태"
+      // ) {
+      //   this.insistenceIconDrawer.similarityBlock = d;
+      //   this.refutationIconDrawerTwo.similarityBlock = d;
+      // } else if (
+      //   d.rowUtteranceName === "이준석" ||
+      //   d.rowUtteranceName === "박휘락"
+      // ) {
+      //   this.refutationIconDrawerTwo.similarityBlock = d;
+      //   this.insistenceIconDrawer.similarityBlock = d;
+      // } else if (
+      //   d.rowUtteranceName === "김종대" ||
+      //   d.rowUtteranceName === "장경태"
+      // ) {
+      //   this.refutationIconDrawer.similarityBlock = d;
+      //   this.insistenceIconDrawerTwo.similarityBlock = d;
+      // } else {
+      // }
+      // this.refutationIconDrawer.update();
+      // this.refutationIconDrawerTwo.update();
+      // this.insistenceIconDrawer.update();
+      // this.insistenceIconDrawerTwo.update();
+      // this.uncertainIconDrawer.update();
+    // };
+
+    // this.participantBlocksDrawer.clickListener = (
+    //   e: MouseEvent,
+    //   d: UtteranceObjectForDrawing
+    // ) => {
+      // const iconDrawers = [
+      //   this.insistenceIconDrawer, // 박휘락,
+      //   this.insistenceIconDrawerTwo, // 이준석,
+      //   this.refutationIconDrawer, // 박휘락,
+      //   this.refutationIconDrawerTwo, // 이준석,
+      // ];
+      // for (const iconDrawer of iconDrawers) {
+      //   if (iconDrawer.participantBlock?.name === d.name) {
+      //     iconDrawer.participantBlock = d;
+      //     iconDrawer.update();
+      //   }
+      // }
+    // };
 
     this.topicGroupsDrawer = new TopicGroupsDrawer(
       this.svgGSelection,
@@ -284,8 +400,9 @@ initialTransform
           similarityBlock.visible = true;
         }
       );
-      this.similarityBlocksDrawer.update();
-      this.participantBlocksDrawer.update();     
+      // this.similarityBlocksDrawer.update();
+      // this.participantBlocksDrawer.update();
+      
     });
   }
 //1
@@ -307,10 +424,11 @@ initialTransform
       const minusWidth =
         lastUtteranceObjectForDrawing.beginningPointOfXY +
         lastUtteranceObjectForDrawing.width;
+      //console.log("minusWidth", minusWidth);
       const adjustedWidth = (this.svgWidth - minusWidth) / 2 - 330;
 
       const adjustedHeight = (this.svgHeight - minusWidth) / 2 + 330;
-
+      //console.log(adjustedWidth, adjustedHeight);
       this.svgGSelection.attr(
         "transform",
         `translate(${adjustedWidth}, ${adjustedHeight})`

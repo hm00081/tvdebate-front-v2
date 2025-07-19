@@ -209,43 +209,6 @@ function ConceptualRecurrencePlot() {
         transcriptViewerRef
       );
   
-      // 최적화된 mouseover 리스너 설정 (throttled + rAF)
-      d3Drawer.participantBlocksDrawer.mouseoverListener = _.throttle(
-        (mouseEvent, utteranceObjectForDrawing) => {
-          requestAnimationFrame(() => {
-            setMouseoveredUtterance(utteranceObjectForDrawing);
-            setTooltipVisible(true);
-          });
-        },
-        16,
-        { leading: true, trailing: true }
-      );
-  
-      d3Drawer.participantBlocksDrawer.mouseoutLisener = () => {
-        requestAnimationFrame(() => {
-          setTooltipVisible(false);
-          setMouseoveredUtterance(null);
-        });
-      };
-  
-      d3Drawer.similarityBlocksDrawer.mouseoverListener = _.throttle(
-        (mouseEvent, similarityBlock) => {
-          requestAnimationFrame(() => {
-            setMouseoveredSimilarity(similarityBlock);
-            setTooltipVisible(true);
-          });
-        },
-        16,
-        { leading: true, trailing: true }
-      );
-  
-      d3Drawer.similarityBlocksDrawer.mouseoutLisener = () => {
-        requestAnimationFrame(() => {
-          setTooltipVisible(false);
-          setMouseoveredSimilarity(null);
-        });
-      };
-  
       // 클릭 리스너 설정
       d3Drawer.setupClickListener(transcriptViewerRef);
   
@@ -254,14 +217,11 @@ function ConceptualRecurrencePlot() {
       d3Drawer.manualMiddleTGsDrawer.topicGroups = manualMiddleEGs;
       d3Drawer.manualMiddleTGsDrawer.topicGroupTitles = manualMiddleEGTitles;
   
-      // 한 프레임에 update 처리
       requestAnimationFrame(() => {
         d3Drawer.participantBlocksDrawer.update();
-  
         d3Drawer.similarityBlocksDrawer.standardHighPointOfSimilarityScore =
           standardSimilarityScore;
-        d3Drawer.similarityBlocksDrawer.update();
-  
+        d3Drawer.similarityBlocksDrawer.update();  
         d3Drawer.CP1Drawer.update();
         d3Drawer.CP2Drawer.update();
         d3Drawer.CP3Drawer.update();
@@ -372,7 +332,6 @@ function ConceptualRecurrencePlot() {
         </button>
 
       </div>
-  
       <TranscriptViewer
         isOpen={isOpen}
         dataStructureMaker={dataStructureManager}

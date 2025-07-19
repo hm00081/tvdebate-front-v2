@@ -325,7 +325,6 @@ export class ParticipantBlocksDrawer {
           .slice(0, 3) // 상위 3개 항목만 추출
           .map(([term, count]) => term)
           .join(", ");
-        //console.log(sortedTerms);
         return `mainTerms:${sortedTerms}\n ${d.name}: ${d.utterance}
             `;
       })
@@ -335,7 +334,6 @@ export class ParticipantBlocksDrawer {
         const utteranceObjectForDrawing =
           u as unknown as UtteranceObjectForDrawing;
 
-        // TODO adjust transcript-view
         if (this._mouseoverListener) {
           this._mouseoverListener(mouseEvent, utteranceObjectForDrawing);
         }
@@ -347,68 +345,6 @@ export class ParticipantBlocksDrawer {
       });
   }
 
-  public click(
-    e: MouseEvent | React.MouseEvent<HTMLDivElement, MouseEvent>,
-    u: UtteranceObjectForDrawing
-  ) {
-    const mouseEvent = e;
-    mouseEvent.stopPropagation();
-    const selectedParticipant = u;
-
-    this.selectedParticipants.push(
-      this.participantDict[selectedParticipant.name]
-    );
-
-    //console.log("this.selectedParticipants", this.selectedParticipants);
-
-    if (this.selectedParticipants.length === 1) {
-      // remain same participant's similairity_block. remove other participant's similarity_block
-      _.forEach(this.conceptSimilarityBlocks, (similarityBlock) => {
-        const rowParticipantName =
-          this.utteranceObjectsForDrawing[similarityBlock.rowUtteranceIndex]
-            .name;
-        const colParticipantName =
-          this.utteranceObjectsForDrawing[similarityBlock.columnUtteranceIndex]
-            .name;
-        if (
-          selectedParticipant.name === rowParticipantName ||
-          selectedParticipant.name === colParticipantName
-        ) {
-          similarityBlock.visible = true;
-        } else {
-          similarityBlock.visible = false;
-        }
-      });
-    } else if (this.selectedParticipants.length === 2) {
-      //
-      const participant1 = this.selectedParticipants[0];
-      const participant2 = this.selectedParticipants[1];
-
-      _.forEach(this.conceptSimilarityBlocks, (similarityBlock) => {
-        const rowParticipantName =
-          this.utteranceObjectsForDrawing[similarityBlock.rowUtteranceIndex]
-            .name;
-        const colParticipantName =
-          this.utteranceObjectsForDrawing[similarityBlock.columnUtteranceIndex]
-            .name;
-        if (
-          (rowParticipantName === participant1.name &&
-            colParticipantName === participant2.name) ||
-          (rowParticipantName === participant2.name &&
-            colParticipantName === participant1.name) ||
-          (rowParticipantName === participant1.name &&
-            colParticipantName === participant1.name) ||
-          (rowParticipantName === participant2.name &&
-            colParticipantName === participant2.name)
-        ) {
-          similarityBlock.visible = true;
-        } else {
-          similarityBlock.visible = false;
-        }
-      });
-    }
-  }
-
   public emptySelectedParticipants() {
     this.selectedParticipants = [];
   }
@@ -417,18 +353,5 @@ export class ParticipantBlocksDrawer {
     clickListener: (e: MouseEvent, d: UtteranceObjectForDrawing) => void
   ) {
     this._clickListener = clickListener;
-  }
-
-  public set mouseoverListener(
-    mouseoverListener: (
-      mouseEvent: MouseEvent,
-      utteranceObjectForDrawing: UtteranceObjectForDrawing
-    ) => void
-  ) {
-    this._mouseoverListener = mouseoverListener;
-  }
-
-  public set mouseoutLisener(mouseoutListener: () => void) {
-    this._mouseoutListener = mouseoutListener;
   }
 }
