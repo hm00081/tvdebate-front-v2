@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/tvdebate-front-v2/static/css/main.24e76e4a.css",
-    "main.js": "/tvdebate-front-v2/static/js/main.37ef757a.js",
+    "main.js": "/tvdebate-front-v2/static/js/main.f70a8916.js",
     "static/media/KJD.svg": "/tvdebate-front-v2/static/media/KJD.66753830566ac31a585b4e580185a1f5.svg",
     "static/media/JKT.svg": "/tvdebate-front-v2/static/media/JKT.448689ba1d3bfb85f6d3a381fe04ee36.svg",
     "static/media/PHR.svg": "/tvdebate-front-v2/static/media/PHR.bded16f0f0e4986880f9bbd9b0dd7f22.svg",
@@ -14,6 +14,6 @@
   },
   "entrypoints": [
     "static/css/main.24e76e4a.css",
-    "static/js/main.37ef757a.js"
+    "static/js/main.f70a8916.js"
   ]
 }
