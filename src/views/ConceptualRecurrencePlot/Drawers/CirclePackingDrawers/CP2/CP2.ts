@@ -643,6 +643,7 @@ export class CP2Drawer extends CPDrawer {
                               .attr('y', Number(content.y))
                               //@ts-ignore
                               .attr('class', content.className)
+                              .attr('pointer-events', 'none')
                               //@ts-ignore
                               .text(content.text)
                               //@ts-ignore
