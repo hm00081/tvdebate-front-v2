@@ -188,6 +188,19 @@ function ConceptualRecurrencePlot() {
     termTypeOfQuery,
     dispatch,
   ]);
+
+useEffect(() => {
+  if (d3Container.current) {
+    const width = window.innerWidth - 260;
+    const height = window.innerHeight;
+
+    d3Container.current.setAttribute("width", `${width}`);
+    d3Container.current.setAttribute("height", `${height}`);
+    d3Container.current.setAttribute("viewBox", `0 0 ${width} ${height}`);
+  }
+}, [d3Drawer]);
+
+
   
 
   // Control MapModal (각 토론 주제 클릭 시 모달창)
@@ -294,8 +307,6 @@ function ConceptualRecurrencePlot() {
                   ref={d3Container}
                   style={{
                     overflow: "visible",
-                    width: "100%",
-                    height: "100%",
                   }}
                 >
                   <g className="svgG" ref={svgGRef}></g>

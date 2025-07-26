@@ -175,8 +175,9 @@ export class D3Drawer {
     // declare variables
     this.conceptRecurrencePlotDiv = d3.select(".concept-recurrence-plot");
     //this.setupZoom();
-    this.svgWidth = window.innerWidth - 0;
-    this.svgHeight = window.innerHeight * 2;
+    
+    this.svgWidth = window.innerWidth - 260;
+    this.svgHeight = window.innerHeight;
 
     // 1. d3.zoom 설정
 this.svgSelection = this.conceptRecurrencePlotDiv
@@ -424,11 +425,9 @@ initialTransform
       const minusWidth =
         lastUtteranceObjectForDrawing.beginningPointOfXY +
         lastUtteranceObjectForDrawing.width;
-      //console.log("minusWidth", minusWidth);
-      const adjustedWidth = (this.svgWidth - minusWidth) / 2 - 330;
 
-      const adjustedHeight = (this.svgHeight - minusWidth) / 2 + 330;
-      //console.log(adjustedWidth, adjustedHeight);
+      const adjustedWidth = (this.svgWidth - minusWidth) / 2 + 170;
+      const adjustedHeight = (this.svgHeight - minusWidth) / 2 - 170;
       this.svgGSelection.attr(
         "transform",
         `translate(${adjustedWidth}, ${adjustedHeight})`
